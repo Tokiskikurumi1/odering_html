@@ -126,5 +126,19 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
+    // --- SECTION 3 ANIMATION: PRODUCT IMAGES SLIDE UP ---
+    gsap.from(".product-card .product-img", {
+        scrollTrigger: {
+            trigger: ".third-section",
+            start: "top 80%", // Bắt đầu khi đầu Section 3 chạm 80% chiều cao viewport
+            toggleActions: "play none none none",
+        },
+        y: 150, // Trượt từ dưới lên 150px
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.15, // Từng ảnh hiện lần lượt (premium feel)
+        ease: "power3.out"
+    });
+
     ScrollTrigger.refresh();
 });
