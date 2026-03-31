@@ -1,91 +1,130 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-  // --- SETUP: LOCOMOTIVE SCROLL ---
-  const scrollContainer = document.querySelector(".smooth-scroll");
+    // --- SETUP: LOCOMOTIVE SCROLL ---
+    const scrollContainer = document.querySelector(".smooth-scroll");
+    const locoScroll = new LocomotiveScroll({
+        el: scrollContainer,
+        smooth: true,
+        multiplier: 1,
+    });
 
-  const locoScroll = new LocomotiveScroll({
-    el: scrollContainer,
-    smooth: true,
-    multiplier: 1,
-  });
+    locoScroll.on("scroll", ScrollTrigger.update);
 
-  locoScroll.on("scroll", ScrollTrigger.update);
+    ScrollTrigger.scrollerProxy(scrollContainer, {
+        scrollTop(value) {
+            return arguments.length
+                ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+                : locoScroll.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+            return {
+                top: 0,
+                left: 0,
+                width: window.innerWidth,
+                height: window.innerHeight,
+            };
+        },
+        pinType: scrollContainer.style.transform ? "transform" : "fixed",
+    });
 
-  ScrollTrigger.scrollerProxy(scrollContainer, {
-    scrollTop(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-        : locoScroll.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-    pinType: scrollContainer.style.transform ? "transform" : "fixed",
-  });
+    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+    ScrollTrigger.defaults({ scroller: ".smooth-scroll" });
 
-  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+    // --- FLYING COOKIE SETUP ---
+    let flyingCookie = document.createElement("img");
+    flyingCookie.id = "flying-cookie";
+    flyingCookie.style.position = "absolute";
+    flyingCookie.style.top = "calc(100vh - 650px)";
+    flyingCookie.style.left = "50%";
+    flyingCookie.style.transform = "translateX(-50%)";
+    flyingCookie.style.height = "420px";
+    flyingCookie.style.zIndex = "1000";
+    flyingCookie.style.opacity = "0";
+    flyingCookie.style.pointerEvents = "none";
+    document.querySelector(".smooth-scroll").appendChild(flyingCookie);
 
-  ScrollTrigger.defaults({ scroller: ".smooth-scroll" });
+    // --- SLIDER PIZZA LOGIC ---
+    let prev = document.getElementById('prev');
+    let next = document.getElementById('next');
+    let image = document.querySelector('.images');
+    let items = document.querySelectorAll('.images .item');
+    let contents = document.querySelectorAll('.content .item');
 
-  // --- ANIMATION SECTION ---
-  
-  ScrollTrigger.matchMedia({
-    "(min-width: 1024px)": function () {
-      // first section animation
-      const tl1 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".second-section",
-          start: "20% 100%",
-          end: "50% 50%",
-          scrub: true,
-          // markers: true
-        }
-      });
+    let rotate = 0;
+    let active = 0;
+    let countItem = items.length;
+    let rotateAdd = 360 / countItem;
+    let isScrolled = false;
 
-      tl1.to("#cookie", {
-        top: "138%",
-        left: 0,
-        rotate: "50deg",
-      }, 'cookie');
+    function nextSlider() {
+        if (isScrolled) return;
+        active = active + 1 > countItem - 1 ? 0 : active + 1;
+        rotate = rotate + rotateAdd;
+        show();
+    }
+    function prevSlider() {
+        if (isScrolled) return;
+        active = active - 1 < 0 ? countItem - 1 : active - 1;
+        rotate = rotate - rotateAdd;
+        show();
+    }
 
-      tl1.to("#chips", {
-        width: "8vw",
-        top: "125%",
-        left: "88%"
-      }, 'cookie')
-      
-      // second section animation
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".third-section",
-          start: "20% 100%",
-          end: "50% 50%",
-          scrub: true,
-          // markers: true
-        }
-      });
+    function show() {
+        image.style.setProperty("--rotate", rotate + 'deg');
+        contents.forEach((content, key) => {
+            if (key == active) {
+                content.classList.add('active');
+                items[key].classList.add('active');
+                flyingCookie.src = items[key].querySelector("img").src;
 
-      tl2.to("#cookie", {
-        top: "237%",
-        left: "43%",
-        width: "13vw",
-        rotate: "-50deg",
-      }, 'cookism');
+                document.getElementById('section2-title').innerText = contents[key].querySelector('h1').innerText;
+                document.getElementById('section2-desc').innerText = contents[key].querySelector('.des').innerText;
+            } else {
+                content.classList.remove('active');
+                items[key].classList.remove('active');
+            }
+        })
+    }
+    next.onclick = nextSlider;
+    prev.onclick = prevSlider;
+    show();
 
-      tl2.to("#cookism", {
-        rotate: "-50deg"
-      }, 'cookism')
+    // --- SCROLL ANIMATION (REFINED ALIGNMENT) ---
+    ScrollTrigger.matchMedia({
+        "(min-width: 1024px)": function () {
 
-    },
-  });
+            // Flight: Slider -> Section 2 (Higher landing spot to avoid overlap)
+            const tl1 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".second-section",
+                    start: "top bottom",
+                    end: "top 50%",
+                    scrub: true,
+                    onEnter: () => {
+                        isScrolled = true;
+                        document.querySelector(".item.active img").style.opacity = 0;
+                        gsap.set(flyingCookie, { opacity: 1 });
+                    },
+                    onLeaveBack: () => {
+                        isScrolled = false;
+                        document.querySelector(".item.active img").style.opacity = 1;
+                        gsap.set(flyingCookie, { opacity: 0 });
+                    }
+                }
+            });
 
-  // Force a refresh after setup
-  ScrollTrigger.refresh();
+            tl1.to("#flying-cookie", {
+                top: "110vh", // Nâng mốc đáp lên 130vh thay vì 135vh để tránh đè Section 3
+                left: "25vw",
+                height: "22vw",
+                rotate: "50deg",
+                ease: "power1.inOut"
+            });
+
+        },
+    });
+
+    ScrollTrigger.refresh();
 });
