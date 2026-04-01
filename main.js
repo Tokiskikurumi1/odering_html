@@ -98,14 +98,47 @@ document.addEventListener("DOMContentLoaded", () => {
   prev.onclick = prevSlider;
   show();
 
-  // Auto slide every 3 seconds
-  let autoSlide = setInterval(autoNextSlider, 3000);
+  // Auto slide helper to avoid duplicated intervals
+  let autoSlide = null;
 
-  // Pause auto slide on hover
+  function startAutoSlide() {
+    stopAutoSlide();
+    if (!isScrolled) {
+      autoSlide = setInterval(autoNextSlider, 3000);
+    }
+  }
+
+  function stopAutoSlide() {
+    if (autoSlide !== null) {
+      clearInterval(autoSlide);
+      autoSlide = null;
+    }
+  }
+
+  // Start initially
+  startAutoSlide();
+
+  // Optionally pause auto slide on hover in mobile only (desktop không pause)
   let slider = document.querySelector(".hero-section.slider");
-  slider.addEventListener("mouseenter", () => clearInterval(autoSlide));
-  slider.addEventListener("mouseleave", () => {
-    if (!isScrolled) autoSlide = setInterval(autoNextSlider, 3000);
+  if (window.matchMedia("(max-width: 1023px)").matches) {
+    slider.addEventListener("mouseenter", stopAutoSlide);
+    slider.addEventListener("mouseleave", () => {
+      if (!isScrolled) startAutoSlide();
+    });
+  }
+
+  // Visibility / focus management
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopAutoSlide();
+    } else {
+      if (!isScrolled) startAutoSlide();
+    }
+  });
+
+  window.addEventListener("blur", stopAutoSlide);
+  window.addEventListener("focus", () => {
+    if (!isScrolled) startAutoSlide();
   });
 
   // --- SCROLL ANIMATION (REFINED ALIGNMENT) ---
@@ -130,13 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
           isScrolled = true;
           document.querySelector(".item.active img").style.opacity = 0;
           gsap.set(flyingCookie, { opacity: 1 });
-          clearInterval(autoSlide);
+          stopAutoSlide();
         },
         onLeaveBack: () => {
           isScrolled = false;
           document.querySelector(".item.active img").style.opacity = 1;
           gsap.set(flyingCookie, { opacity: 0 });
-          autoSlide = setInterval(autoNextSlider, 3000);
+          startAutoSlide();
         },
       });
 
