@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -705,7 +709,204 @@
         </div>
       </section>
 
-      <footer><h1>hien</h1></footer>
+      <!-- STEP 6: BOOKING FORM -->
+      <section class="sixth-section">
+        <div class="container">
+          <h2 class="section-title">Đặt Bàn Ngay</h2>
+          <p class="section-subtitle">
+            Đặt bàn trước để có trải nghiệm tốt nhất tại Cooki.co
+          </p>
+          <div class="booking-form-container">
+            <form class="booking-form" action="#" method="post">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Họ và tên *</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Số điện thoại *</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" />
+                </div>
+                <div class="form-group">
+                  <label for="guests">Số người *</label>
+                  <select id="guests" name="guests" required>
+                    <option value="">Chọn số người</option>
+                    <option value="1">1 người</option>
+                    <option value="2">2 người</option>
+                    <option value="3">3 người</option>
+                    <option value="4">4 người</option>
+                    <option value="5">5 người</option>
+                    <option value="6">6 người</option>
+                    <option value="7+">7+ người</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="date">Ngày *</label>
+                  <input type="date" id="date" name="date" required />
+                </div>
+                <div class="form-group">
+                  <label for="time">Giờ *</label>
+                  <select id="time" name="time" required>
+                    <option value="">Chọn giờ</option>
+                    <option value="11:00">11:00</option>
+                    <option value="11:30">11:30</option>
+                    <option value="12:00">12:00</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:00">13:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="17:30">17:30</option>
+                    <option value="18:00">18:00</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label for="notes">Ghi chú</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  placeholder="Yêu cầu đặc biệt, dị ứng thực phẩm..."
+                ></textarea>
+              </div>
+              <button type="submit" class="cta-button">Đặt Bàn Ngay</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 7: TESTIMONIALS -->
+      <section class="seventh-section">
+        <div class="container">
+          <h2 class="section-title">Khách hàng nói gì về chúng tôi</h2>
+          <div class="swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Món ăn thơm ngon, phục vụ nhanh, không gian ấm cúng. Mình
+                      ấn tượng đặc biệt với sốt BBQ."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Nguyễn An</h4>
+                      <span>Khách hàng thân thiết</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Dịch vụ giao hàng đúng giờ và gói kỹ, đồ ăn tới vẫn nóng.
+                      Chắc chắn sẽ đặt lại."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Trần Mai</h4>
+                      <span>Buôn bán Online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Không gian dễ chịu, nhân viên thân thiện. Giá cả hợp lý,
+                      phù hợp tụ họp gia đình."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Phan Duy</h4>
+                      <span>Gia đình 4 người</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Đồ ăn ngon miệng, giá cả phải chăng. Đặc biệt là combo gia
+                      đình rất tiết kiệm."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Lê Minh</h4>
+                      <span>Nhân viên văn phòng</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Phục vụ tận tình, không gian sạch sẽ. Mình thích nhất là
+                      món tôm nướng."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Hoàng Lan</h4>
+                      <span>Sinh viên</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Giao hàng nhanh chóng, đóng gói cẩn thận. Sẽ ủng hộ lâu
+                      dài."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Đỗ Quang</h4>
+                      <span>Doanh nhân</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="main-footer">
+        <div class="container footer-content">
+          <div class="footer-col">
+            <h4>Cooki.co</h4>
+            <p>
+              Giá trị bằng hương vị, mỗi góc nhỏ đều để lại trải nghiệm trọn
+              vẹn.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Liên hệ</h4>
+            <p>Địa chỉ: 123 Đường Hương Vị, TP.HCM</p>
+            <p>Hotline: 0123 456 789</p>
+            <p>Email: support@cooki.co</p>
+          </div>
+          <div class="footer-col">
+            <h4>Giờ mở cửa</h4>
+            <p>Thứ 2 - Chủ nhật: 09:00 - 22:00</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2026 Cooki.co. All rights reserved.
+        </div>
+      </footer>
     </main>
 
     <!-- Floating Chat Widget -->
@@ -747,6 +948,7 @@
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

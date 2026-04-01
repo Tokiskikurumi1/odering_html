@@ -263,4 +263,28 @@ document.addEventListener("DOMContentLoaded", () => {
       sendMessage();
     }
   });
+
+  // --- SWIPER INITIALIZATION ---
+  const testimonialSwiper = new Swiper(".testimonial-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
 });
