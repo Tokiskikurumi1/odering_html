@@ -140,5 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "power3.out"
     });
 
+
+
     ScrollTrigger.refresh();
 });
