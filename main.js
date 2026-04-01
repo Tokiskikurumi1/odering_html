@@ -143,4 +143,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     ScrollTrigger.refresh();
+
+    // Fix for white space / height calculation
+    window.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+        locoScroll.update();
+    });
 });

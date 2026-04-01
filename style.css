@@ -7,10 +7,22 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 .container {
@@ -39,14 +51,49 @@ body {
   background-color: #e88735;
 }
 
-.slider .container nav {
-  background: transparent;
-  padding: 4vh 0;
+.hero-section.slider .container nav {
+  padding: 2rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 200;
+}
+
+.hero-section.slider .container nav .logo a {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  font-family: "Pacifico", cursive;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.hero-section.slider .container nav .menu ul {
+  display: flex;
+  gap: 2.5vw;
+  list-style: none;
+}
+
+.hero-section.slider .container nav .menu ul li a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.hero-section.slider .container nav .menu ul li a:hover {
+  color: #e88735;
+}
+
+.hero-section.slider .container nav .cta-btn {
+  color: #fff;
+  border: 1.5px solid #fff;
+  padding: 10px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .title {
@@ -126,6 +173,7 @@ body {
 
 .content .item.active {
   display: block;
+  z-index: 100;
 }
 
 @keyframes showContent {
@@ -603,7 +651,12 @@ body {
   width: 250px;
 }
 
-.fifth-section .product-area .filter-bar .bar-left .search-container input:focus {
+.fifth-section
+  .product-area
+  .filter-bar
+  .bar-left
+  .search-container
+  input:focus {
   outline: none;
 }
 
@@ -639,8 +692,18 @@ body {
   transition: 0.3s;
 }
 
-.fifth-section .product-area .filter-bar .bar-right .filter-group .filter-btn.active,
-.fifth-section .product-area .filter-bar .bar-right .filter-group .filter-btn:hover {
+.fifth-section
+  .product-area
+  .filter-bar
+  .bar-right
+  .filter-group
+  .filter-btn.active,
+.fifth-section
+  .product-area
+  .filter-bar
+  .bar-right
+  .filter-group
+  .filter-btn:hover {
   background-color: #eee;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -875,4 +938,11 @@ body {
 
 .chat-widget .cart-badge:hover {
   transform: scale(1.1);
+}
+
+footer {
+  margin-top: auto;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  text-align: center;
 }
