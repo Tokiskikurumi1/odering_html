@@ -183,6 +183,15 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  // --- HEADER SCROLL EFFECT ---
+  ScrollTrigger.create({
+    start: "top -80",
+    onEnter: () =>
+      document.querySelector(".main-header").classList.add("scrolled"),
+    onLeaveBack: () =>
+      document.querySelector(".main-header").classList.remove("scrolled"),
+  });
+
   // --- SECTION 3 ANIMATION: PRODUCT IMAGES SLIDE UP ---
   gsap.from(".product-card .product-img", {
     scrollTrigger: {
