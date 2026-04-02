@@ -88,10 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
         items[key].classList.add("active");
         flyingCookie.src = items[key].querySelector("img").src;
 
-        document.getElementById("section2-title").innerText =
+        document.getElementById("section-description-title").innerText =
           contents[key].querySelector("h1").innerText;
-        document.getElementById("section2-desc").innerText =
-          contents[key].querySelector(".des").innerText;
+        document.getElementById("section-description-desc").innerText =
+          contents[key].querySelector(".section-content-item-des").innerText;
       } else {
         content.classList.remove("active");
         items[key].classList.remove("active");
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Flight: Slider -> Section 2 (Higher landing spot to avoid overlap)
       const tl1 = gsap.timeline({
         scrollTrigger: {
-          trigger: ".des-food",
+          trigger: ".description-food-section",
           start: "top bottom",
           end: "top 50%",
           scrub: true,
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Separate ScrollTrigger for auto slide control
       ScrollTrigger.create({
-        trigger: ".des-food",
+        trigger: ".description-food-section",
         start: "top bottom",
         end: "top 50%",
         onEnter: () => {

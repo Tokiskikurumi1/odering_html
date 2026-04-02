@@ -165,7 +165,7 @@
   font-size: 2rem;
 }
 
-.hero-section-content .des {
+.hero-section-content .section-content-item-des {
   margin-top: 10px;
 }
 
@@ -206,7 +206,7 @@
   animation: showContent 0.5s ease-in-out 1 forwards;
 }
 
-.hero-section-content .section-content-item.active .des {
+.hero-section-content .section-content-item.active .section-content-item-des {
   opacity: 0;
   animation: showContent 0.5s 0.3s ease-in-out 1 forwards;
 }
@@ -243,33 +243,43 @@
 }
 
 /* --- OTHER SECTIONS --- */
-.des-food {
+.description-food-section {
   height: 60vh;
   background-color: var(--des-food-bg);
 }
 
-.des-food .container {
+.description-food-section .container {
   height: 100%;
 }
 
-.des-food .container .content-wrapper {
+.description-food-section .container .description-food-section-wrapper {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.des-food .container .content-wrapper .img-section {
+.description-food-section
+  .container
+  .description-food-section-wrapper
+  .img-section-description {
   flex-basis: 50%;
   min-height: 400px;
 }
 
-.des-food .container .content-wrapper .content-section {
+.description-food-section
+  .container
+  .description-food-section-wrapper
+  .content-description-section {
   flex-basis: 50%;
   color: #fff;
 }
 
-.des-food .container .content-wrapper .content-section h2 {
+.description-food-section
+  .container
+  .description-food-section-wrapper
+  .content-description-section
+  h2 {
   font-family: "Pacifico", cursive;
   font-size: 5vw;
   line-height: 1.2;
