@@ -1,9 +1,13 @@
-/* --- HERO SLIDER (SECTION 1) --- */
+﻿/* --- HERO SLIDER (SECTION 1) --- */
 .slider {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to right, var(--color-left-slide), var(--color-right-slide));
+  background-image: linear-gradient(
+    to right,
+    var(--color-left-slide),
+    var(--color-right-slide)
+  );
   overflow: hidden;
 }
 
@@ -40,7 +44,7 @@
   width: 90%;
 }
 
-.main-header nav {
+.main-header .navbar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,7 +52,7 @@
   transition: padding 0.4s ease;
 }
 
-.main-header.scrolled nav {
+.main-header.scrolled .navbar-header {
   padding: 0;
 }
 
@@ -106,7 +110,7 @@
   border-color: var(--color-title-slide);
 }
 
-.title {
+.hero-section-title {
   position: absolute;
   top: 20%;
   left: 5%;
@@ -120,7 +124,7 @@
   transform: rotate(-5deg);
 }
 
-.images {
+.hero-section-images {
   position: absolute;
   bottom: 0%;
   left: 50%;
@@ -133,7 +137,7 @@
   outline-offset: -100px;
 }
 
-.images .item {
+.hero-section-images .section-image-item {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -141,13 +145,13 @@
   rotate: calc(-60deg * (var(--i) - 1));
 }
 
-.images .item img {
+.hero-section-images .section-image-item img {
   height: 420px;
   transition: transform 0.2s linear;
   will-change: transform;
 }
 
-.content {
+.hero-section-content {
   color: #fff;
   position: absolute;
   top: 20%;
@@ -156,16 +160,16 @@
   width: 350px;
 }
 
-.content h1 {
+.hero-section-content h1 {
   color: var(--color-title-slide);
   font-size: 2rem;
 }
 
-.content .des {
+.hero-section-content .des {
   margin-top: 10px;
 }
 
-.content button {
+.hero-section-content button {
   margin-top: 30px;
   padding: 10px 30px;
   border-radius: 20px;
@@ -176,11 +180,11 @@
   cursor: pointer;
 }
 
-.content .item {
+.hero-section-content .section-content-item {
   display: none;
 }
 
-.content .item.active {
+.hero-section-content .section-content-item.active {
   display: block;
   z-index: 100;
 }
@@ -197,17 +201,17 @@
   }
 }
 
-.content .item.active h1 {
+.hero-section-content .section-content-item.active h1 {
   opacity: 0;
   animation: showContent 0.5s ease-in-out 1 forwards;
 }
 
-.content .item.active .des {
+.hero-section-content .section-content-item.active .des {
   opacity: 0;
   animation: showContent 0.5s 0.3s ease-in-out 1 forwards;
 }
 
-.content .item.active button {
+.hero-section-content .section-content-item.active button {
   opacity: 0;
   animation: showContent 0.5s 0.6s ease-in-out 1 forwards;
 }

@@ -47,9 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- SLIDER PIZZA LOGIC ---
   let prev = document.getElementById("prev");
   let next = document.getElementById("next");
-  let image = document.querySelector(".images");
-  let items = document.querySelectorAll(".images .item");
-  let contents = document.querySelectorAll(".content .item");
+  let image = document.querySelector(".hero-section-images");
+  let items = document.querySelectorAll(
+    ".hero-section-images .section-image-item",
+  );
+  let contents = document.querySelectorAll(
+    ".hero-section-content .section-content-item",
+  );
 
   let rotate = 0;
   let active = 0;
@@ -161,13 +165,17 @@ document.addEventListener("DOMContentLoaded", () => {
         end: "top 50%",
         onEnter: () => {
           isScrolled = true;
-          document.querySelector(".item.active img").style.opacity = 0;
+          document.querySelector(
+            ".section-image-item.active img",
+          ).style.opacity = 0;
           gsap.set(flyingCookie, { opacity: 1 });
           stopAutoSlide();
         },
         onLeaveBack: () => {
           isScrolled = false;
-          document.querySelector(".item.active img").style.opacity = 1;
+          document.querySelector(
+            ".section-image-item.active img",
+          ).style.opacity = 1;
           gsap.set(flyingCookie, { opacity: 0 });
           startAutoSlide();
         },
