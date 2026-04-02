@@ -370,7 +370,7 @@
 .best-seller-food-section
   .best-seller-product-card
   .best-seller-section-img-box
-  .product-img {
+  .best-seller-product-img {
   width: 80%;
   height: 80%;
   object-fit: contain;
