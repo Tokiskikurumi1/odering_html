@@ -1,956 +1,969 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie - Slider Pizza Logic</title>
+    <!-- GOOGLE FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cookie - Slider Pizza Logic</title>
-  <!-- GOOGLE FONTS -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;800;900&display=swap"
-    rel="stylesheet" />
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="common.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <header class="main-header">
-    <div class="containerHeader">
-      <nav>
-        <div class="menu-left">
-          <ul>
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Thực đơn</a></li>
-            <li><a href="#">Đặt bàn</a></li>
-          </ul>
-        </div>
-        <div class="logo">
-          <a href="./index.html">Kurumi.co</a>
-        </div>
-        <div class="menu-right">
-          <ul>
-            <li><a href="#">Trợ giúp</a></li>
-            <li><a href="#">Thông báo</a></li>
-            <li><a href="#">Đăng nhập</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main class="smooth-scroll">
-    <!-- STEP 1: HERO SECTION AS SLIDER -->
-    <section class="hero-section slider">
-      <div class="title">Kurumi!<br><br>BBQ</div>
-
-      <div class="images">
-        <div class="item active" style="--i: 1">
-          <img src="images/1.PNG" />
-        </div>
-        <div class="item" style="--i: 2">
-          <img src="images/2.PNG" />
-        </div>
-        <div class="item" style="--i: 3">
-          <img src="images/3.PNG" />
-        </div>
-        <div class="item" style="--i: 4">
-          <img src="images/4.PNG" />
-        </div>
-        <div class="item" style="--i: 5">
-          <img src="images/5.PNG" />
-        </div>
-        <div class="item" style="--i: 6">
-          <img src="images/6.PNG" />
-        </div>
-      </div>
-
-      <div class="content">
-        <div class="item active">
-          <h1>COOKIE NAME 1</h1>
-          <div class="des">
-            Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương vị
-            đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu tươi
-            ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn, tôn lên
-            vị chua của kim chi và vị ngọt tự nhiên của các thành phần khác...
+  <body>
+    <header class="main-header">
+      <div class="containerHeader">
+        <nav>
+          <div class="menu-left">
+            <ul>
+              <li><a href="#">Trang chủ</a></li>
+              <li><a href="#">Thực đơn</a></li>
+              <li><a href="#">Đặt bàn</a></li>
+            </ul>
           </div>
-          <button>See more</button>
-        </div>
-        <div class="item">
-          <h1>COOKIE NAME 2</h1>
-          <div class="des">com ga.</div>
-          <button>See more</button>
-        </div>
-        <div class="item">
-          <h1>COOKIE NAME 3</h1>
-          <div class="des">an ngon lam</div>
-          <button>See more</button>
-        </div>
-        <div class="item">
-          <h1>COOKIE NAME 4</h1>
-          <div class="des">ngon bổ rẻ</div>
-          <button>See more</button>
-        </div>
-        <div class="item">
-          <h1>COOKIE NAME 5</h1>
-          <div class="des">nong hoi</div>
-          <button>See more</button>
-        </div>
-        <div class="item">
-          <h1>COOKIE NAME 6</h1>
-          <div class="des">ngon vcl.</div>
-          <button>See more</button>
-        </div>
-      </div>
-
-      <button id="prev">
-        << /button>
-          <button id="next">></button>
-    </section>
-
-    <!-- STEP 2: SECOND SECTION (Canh Kim Chi) -->
-    <section class="des-food">
-      <div class="container">
-        <div class="content-wrapper">
-          <div class="img-section">
-            <!-- Flying cookie will land here -->
+          <div class="logo">
+            <a href="./index.html">Kurumi.co</a>
           </div>
-          <div class="content-section">
-            <h2 id="section2-title">Canh kim chi</h2>
-            <div class="sub-heading">Món ngon đa dạng</div>
-            <p id="section2-desc">
-              Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương
-              vị đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu
-              tươi ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn,
-              tôn lên vị chua của kim chi và vị ngọt tự nhiên của các thành
-              phần khác...
+          <div class="menu-right">
+            <ul>
+              <li><a href="#">Trợ giúp</a></li>
+              <li><a href="#">Thông báo</a></li>
+              <li><a href="#">Đăng nhập</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="smooth-scroll">
+      <!-- STEP 1: HERO SECTION AS SLIDER -->
+      <section class="hero-section slider">
+        <div class="title">Kurumi!<br /><br />BBQ</div>
+
+        <div class="images">
+          <div class="item active" style="--i: 1">
+            <img src="images/1.PNG" />
+          </div>
+          <div class="item" style="--i: 2">
+            <img src="images/2.PNG" />
+          </div>
+          <div class="item" style="--i: 3">
+            <img src="images/3.PNG" />
+          </div>
+          <div class="item" style="--i: 4">
+            <img src="images/4.PNG" />
+          </div>
+          <div class="item" style="--i: 5">
+            <img src="images/5.PNG" />
+          </div>
+          <div class="item" style="--i: 6">
+            <img src="images/6.PNG" />
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="item active">
+            <h1>COOKIE NAME 1</h1>
+            <div class="des">
+              Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương vị
+              đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu tươi
+              ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn, tôn lên
+              vị chua của kim chi và vị ngọt tự nhiên của các thành phần khác...
+            </div>
+            <button>See more</button>
+          </div>
+          <div class="item">
+            <h1>COOKIE NAME 2</h1>
+            <div class="des">com ga.</div>
+            <button>See more</button>
+          </div>
+          <div class="item">
+            <h1>COOKIE NAME 3</h1>
+            <div class="des">an ngon lam</div>
+            <button>See more</button>
+          </div>
+          <div class="item">
+            <h1>COOKIE NAME 4</h1>
+            <div class="des">ngon bổ rẻ</div>
+            <button>See more</button>
+          </div>
+          <div class="item">
+            <h1>COOKIE NAME 5</h1>
+            <div class="des">nong hoi</div>
+            <button>See more</button>
+          </div>
+          <div class="item">
+            <h1>COOKIE NAME 6</h1>
+            <div class="des">ngon vcl.</div>
+            <button>See more</button>
+          </div>
+        </div>
+
+        <button id="prev"><</button>
+        <button id="next">></button>
+      </section>
+
+      <!-- STEP 2: SECOND SECTION (Canh Kim Chi) -->
+      <section class="des-food">
+        <div class="container">
+          <div class="content-wrapper">
+            <div class="img-section">
+              <!-- Flying cookie will land here -->
+            </div>
+            <div class="content-section">
+              <h2 id="section2-title">Canh kim chi</h2>
+              <div class="sub-heading">Món ngon đa dạng</div>
+              <p id="section2-desc">
+                Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương
+                vị đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu
+                tươi ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn,
+                tôn lên vị chua của kim chi và vị ngọt tự nhiên của các thành
+                phần khác...
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 3: THIRD SECTION (6 PRODUCTS DISPLAY) -->
+      <section class="best-seller-food">
+        <div class="container">
+          <h2 class="sec-title">Best Seller</h2>
+          <div class="content-wrapper products-grid">
+            <div class="product-card">
+              <div class="badge">BESTSELLER</div>
+              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+              <div class="img-box">
+                <img src="images/1.PNG" alt="Cookie" class="product-img" />
+              </div>
+              <div class="product-info">
+                <h3>Tôm Nướng Gogi (ALC)</h3>
+                <p class="price">Giá: 229.000₫</p>
+                <div class="rating-sold">
+                  <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="sold">Đã bán: 999</span>
+                </div>
+                <button class="add-to-cart">
+                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="badge">BESTSELLER</div>
+              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+              <div class="img-box">
+                <img src="images/2.PNG" alt="Cookie" class="product-img" />
+              </div>
+              <div class="product-info">
+                <h3>Tôm Nướng Gogi (ALC)</h3>
+                <p class="price">Giá: 229.000₫</p>
+                <div class="rating-sold">
+                  <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="sold">Đã bán: 999</span>
+                </div>
+                <button class="add-to-cart">
+                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="badge">BESTSELLER</div>
+              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+              <div class="img-box">
+                <img src="images/3.PNG" alt="Cookie" class="product-img" />
+              </div>
+              <div class="product-info">
+                <h3>Tôm Nướng Gogi (ALC)</h3>
+                <p class="price">Giá: 229.000₫</p>
+                <div class="rating-sold">
+                  <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="sold">Đã bán: 999</span>
+                </div>
+                <button class="add-to-cart">
+                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="badge">BESTSELLER</div>
+              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+              <div class="img-box">
+                <img src="images/4.PNG" alt="Cookie" class="product-img" />
+              </div>
+              <div class="product-info">
+                <h3>Tôm Nướng Gogi (ALC)</h3>
+                <p class="price">Giá: 229.000₫</p>
+                <div class="rating-sold">
+                  <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="sold">Đã bán: 999</span>
+                </div>
+                <button class="add-to-cart">
+                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="badge">BESTSELLER</div>
+              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+              <div class="img-box">
+                <img src="images/5.PNG" alt="Cookie" class="product-img" />
+              </div>
+              <div class="product-info">
+                <h3>Tôm Nướng Gogi (ALC)</h3>
+                <p class="price">Giá: 229.000₫</p>
+                <div class="rating-sold">
+                  <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="sold">Đã bán: 999</span>
+                </div>
+                <button class="add-to-cart">
+                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="badge">BESTSELLER</div>
+              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+              <div class="img-box">
+                <img src="images/6.PNG" alt="Cookie" class="product-img" />
+              </div>
+              <div class="product-info">
+                <h3>Tôm Nướng Gogi (ALC)</h3>
+                <p class="price">Giá: 229.000₫</p>
+                <div class="rating-sold">
+                  <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="sold">Đã bán: 999</span>
+                </div>
+                <button class="add-to-cart">
+                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--STEP 4: FOURTH SECTION -->
+      <section class="combos-food">
+        <div class="combos-banner">
+          <div class="combos-flex">
+            <div class="combo-item">
+              <span class="label">GỌI MÓN <small>Từ</small></span>
+              <div class="price-val">
+                <span class="num">69</span>
+                <div class="unit-group">
+                  <span class="zero">000</span>
+                  <span class="currency">VNĐ/món</span>
+                </div>
+              </div>
+            </div>
+            <div class="v-line"></div>
+            <div class="combo-item">
+              <span class="label">COMBO <small>Từ</small></span>
+              <div class="price-val">
+                <span class="num">200</span>
+                <div class="unit-group">
+                  <span class="zero">000<sup>*</sup></span>
+                  <span class="currency">VNĐ/người</span>
+                </div>
+              </div>
+            </div>
+            <div class="v-line"></div>
+            <div class="combo-item">
+              <span class="label">XÈO XÈO THỎA THÍCH <small>Từ</small></span>
+              <div class="price-val">
+                <span class="num">419</span>
+                <div class="unit-group">
+                  <span class="zero">000<sup>**</sup></span>
+                  <span class="currency">VNĐ/người</span>
+                </div>
+              </div>
+            </div>
+            <div class="v-line"></div>
+            <div class="combo-item children">
+              <span class="label">TRẺ EM</span>
+              <div class="child-flex">
+                <div class="c-price">
+                  <span class="val orange">FREE</span>
+                  <span class="cond">&lt;1m</span>
+                </div>
+                <div class="c-price">
+                  <span class="val orange">-70%</span>
+                  <span class="cond">&lt;1,3m</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="choice-section">
+          <div class="container">
+            <h2 class="choice-title">Your Best Choice</h2>
+            <div class="choices-grid">
+              <div class="choice-item">
+                <i class="fa-solid fa-bowl-hot"></i>
+                <p>CHUẨN VỊ NƯỚNG HÀNG</p>
+              </div>
+              <div class="choice-item">
+                <i class="fa-solid fa-book-open"></i>
+                <p>THỰC ĐƠN ĐA DẠNG</p>
+              </div>
+              <div class="choice-item">
+                <i class="fa-solid fa-candle-holder"></i>
+                <p>KHÔNG GIAN ẤM CÚNG</p>
+              </div>
+              <div class="choice-item">
+                <i class="fa-solid fa-user-tie"></i>
+                <p>PHỤC VỤ TẬN TÌNH</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 5: FIFTH SECTION (Product Category & Grid) -->
+      <section class="product-category">
+        <div class="" style="margin: 0px 100px">
+          <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+              <div class="sidebar-header">
+                <i class="fa-solid fa-list"></i> DANH MỤC SẢN PHẨM
+              </div>
+              <ul class="category-list">
+                <li class="active">
+                  Gọi Món <i class="fa-solid fa-arrow-right"></i>
+                </li>
+                <li>Buffet <i class="fa-solid fa-arrow-right"></i></li>
+                <li>Lẩu <i class="fa-solid fa-arrow-right"></i></li>
+                <li>Nướng <i class="fa-solid fa-arrow-right"></i></li>
+                <li>Combo <i class="fa-solid fa-arrow-right"></i></li>
+                <li>Tất cả <i class="fa-solid fa-arrow-right"></i></li>
+              </ul>
+            </aside>
+
+            <!-- Product List Area -->
+            <div class="product-area">
+              <!-- Filter Bar -->
+              <div class="filter-bar">
+                <div class="bar-left">
+                  <span class="sec-label">SẢN PHẨM NỔI BẬT</span>
+                  <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search" />
+                  </div>
+                </div>
+                <div class="bar-right">
+                  <div class="filter-group">
+                    <button class="filter-btn active">Ngẫu nhiên</button>
+                    <button class="filter-btn">Mới nhất</button>
+                    <button class="filter-btn">Giá Thấp</button>
+                    <button class="filter-btn">Giá Cao</button>
+                  </div>
+                  <span class="page-info">1/2</span>
+                </div>
+              </div>
+
+              <!-- Product Grid -->
+              <div class="grid-container">
+                <!-- Product Card 1 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/1.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Sườn Non Bò Mỹ Sốt Obathan</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">415.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI</span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 13</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/2.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Sườn Non Bò Mỹ LA Sốt Galbi 150gr</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">239.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI</span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 18</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/3.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Dẻ sườn bò Mỹ (ALC)</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">379.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI</span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 2</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/4.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Sườn non bò Mỹ hảo hạng tươi 200g</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">449.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI</span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 15</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product Card 1 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/1.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Sườn Non Bò Mỹ Sốt Obathan</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">415.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI</span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 13</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/2.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Sườn Non Bò Mỹ LA Sốt Galbi 150gr</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">239.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI</span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 18</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/3.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Dẻ sườn bò Mỹ (ALC)</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">379.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI</span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 2</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="p-card">
+                  <div class="p-wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </div>
+                  <div class="p-img">
+                    <img src="images/4.PNG" alt="Product" />
+                  </div>
+                  <div class="p-details">
+                    <h4 class="p-name">Sườn non bò Mỹ hảo hạng tươi 200g</h4>
+                    <div class="p-meta">
+                      <div class="meta-item">
+                        <span class="label">GIÁ</span>
+                        <span class="value">449.000₫</span>
+                      </div>
+                      <div class="meta-item">
+                        <span class="label">LOẠI: </span>
+                        <span class="value">Thịt Bò</span>
+                      </div>
+                    </div>
+                    <div class="p-rating">
+                      <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                      <span class="sold-count">đã bán 15</span>
+                    </div>
+                    <div class="p-actions">
+                      <button class="btn-detail">Xem chi tiết</button>
+                      <button class="btn-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 6: BOOKING FORM -->
+      <section class="booking-section">
+        <div class="container">
+          <h2 class="section-title">Đặt Bàn Ngay</h2>
+          <p class="section-subtitle">
+            Đặt bàn trước để có trải nghiệm tốt nhất tại Cooki.co
+          </p>
+          <div class="booking-form-container">
+            <form class="booking-form" action="#" method="post">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Họ và tên *</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Số điện thoại *</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" />
+                </div>
+                <div class="form-group">
+                  <label for="guests">Số người *</label>
+                  <select id="guests" name="guests" required>
+                    <option value="">Chọn số người</option>
+                    <option value="1">1 người</option>
+                    <option value="2">2 người</option>
+                    <option value="3">3 người</option>
+                    <option value="4">4 người</option>
+                    <option value="5">5 người</option>
+                    <option value="6">6 người</option>
+                    <option value="7+">7+ người</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="date">Ngày *</label>
+                  <input type="date" id="date" name="date" required />
+                </div>
+                <div class="form-group">
+                  <label for="time">Giờ *</label>
+                  <select id="time" name="time" required>
+                    <option value="">Chọn giờ</option>
+                    <option value="11:00">11:00</option>
+                    <option value="11:30">11:30</option>
+                    <option value="12:00">12:00</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:00">13:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="17:30">17:30</option>
+                    <option value="18:00">18:00</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label for="notes">Ghi chú</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  placeholder="Yêu cầu đặc biệt, dị ứng thực phẩm..."
+                ></textarea>
+              </div>
+              <button type="submit" class="cta-button">Đặt Bàn Ngay</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 7: TESTIMONIALS -->
+      <section class="testimonials-section">
+        <div class="container">
+          <h2 class="section-title">Khách hàng nói gì về chúng tôi</h2>
+          <div class="swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Món ăn thơm ngon, phục vụ nhanh, không gian ấm cúng. Mình
+                      ấn tượng đặc biệt với sốt BBQ."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Nguyễn An</h4>
+                      <span>Khách hàng thân thiết</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Dịch vụ giao hàng đúng giờ và gói kỹ, đồ ăn tới vẫn nóng.
+                      Chắc chắn sẽ đặt lại."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Trần Mai</h4>
+                      <span>Buôn bán Online</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Không gian dễ chịu, nhân viên thân thiện. Giá cả hợp lý,
+                      phù hợp tụ họp gia đình."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Phan Duy</h4>
+                      <span>Gia đình 4 người</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Đồ ăn ngon miệng, giá cả phải chăng. Đặc biệt là combo
+                      gia đình rất tiết kiệm."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Lê Minh</h4>
+                      <span>Nhân viên văn phòng</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Phục vụ tận tình, không gian sạch sẽ. Mình thích nhất là
+                      món tôm nướng."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Hoàng Lan</h4>
+                      <span>Sinh viên</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>
+                      "Giao hàng nhanh chóng, đóng gói cẩn thận. Sẽ ủng hộ lâu
+                      dài."
+                    </p>
+                    <div class="testimonial-author">
+                      <h4>Đỗ Quang</h4>
+                      <span>Doanh nhân</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="main-footer">
+        <div class="container footer-content">
+          <div class="footer-col">
+            <h4>Cooki.co</h4>
+            <p>
+              Giá trị bằng hương vị, mỗi góc nhỏ đều để lại trải nghiệm trọn
+              vẹn.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STEP 3: THIRD SECTION (6 PRODUCTS DISPLAY) -->
-    <section class="best-seller-food">
-      <div class="container">
-        <h2 class="sec-title">Best Seller</h2>
-        <div class="content-wrapper products-grid">
-          <div class="product-card">
-            <div class="badge">BESTSELLER</div>
-            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-            <div class="img-box">
-              <img src="images/1.PNG" alt="Cookie" class="product-img" />
-            </div>
-            <div class="product-info">
-              <h3>Tôm Nướng Gogi (ALC)</h3>
-              <p class="price">Giá: 229.000₫</p>
-              <div class="rating-sold">
-                <div class="stars">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="sold">Đã bán: 999</span>
-              </div>
-              <button class="add-to-cart">
-                <i class="fa-solid fa-cart-shopping"></i> Add to cart
-              </button>
-            </div>
+          <div class="footer-col">
+            <h4>Liên hệ</h4>
+            <p>Địa chỉ: 123 Đường Hương Vị, TP.HCM</p>
+            <p>Hotline: 0123 456 789</p>
+            <p>Email: support@cooki.co</p>
           </div>
-          <div class="product-card">
-            <div class="badge">BESTSELLER</div>
-            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-            <div class="img-box">
-              <img src="images/2.PNG" alt="Cookie" class="product-img" />
-            </div>
-            <div class="product-info">
-              <h3>Tôm Nướng Gogi (ALC)</h3>
-              <p class="price">Giá: 229.000₫</p>
-              <div class="rating-sold">
-                <div class="stars">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="sold">Đã bán: 999</span>
-              </div>
-              <button class="add-to-cart">
-                <i class="fa-solid fa-cart-shopping"></i> Add to cart
-              </button>
-            </div>
-          </div>
-          <div class="product-card">
-            <div class="badge">BESTSELLER</div>
-            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-            <div class="img-box">
-              <img src="images/3.PNG" alt="Cookie" class="product-img" />
-            </div>
-            <div class="product-info">
-              <h3>Tôm Nướng Gogi (ALC)</h3>
-              <p class="price">Giá: 229.000₫</p>
-              <div class="rating-sold">
-                <div class="stars">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="sold">Đã bán: 999</span>
-              </div>
-              <button class="add-to-cart">
-                <i class="fa-solid fa-cart-shopping"></i> Add to cart
-              </button>
-            </div>
-          </div>
-          <div class="product-card">
-            <div class="badge">BESTSELLER</div>
-            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-            <div class="img-box">
-              <img src="images/4.PNG" alt="Cookie" class="product-img" />
-            </div>
-            <div class="product-info">
-              <h3>Tôm Nướng Gogi (ALC)</h3>
-              <p class="price">Giá: 229.000₫</p>
-              <div class="rating-sold">
-                <div class="stars">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="sold">Đã bán: 999</span>
-              </div>
-              <button class="add-to-cart">
-                <i class="fa-solid fa-cart-shopping"></i> Add to cart
-              </button>
-            </div>
-          </div>
-          <div class="product-card">
-            <div class="badge">BESTSELLER</div>
-            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-            <div class="img-box">
-              <img src="images/5.PNG" alt="Cookie" class="product-img" />
-            </div>
-            <div class="product-info">
-              <h3>Tôm Nướng Gogi (ALC)</h3>
-              <p class="price">Giá: 229.000₫</p>
-              <div class="rating-sold">
-                <div class="stars">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="sold">Đã bán: 999</span>
-              </div>
-              <button class="add-to-cart">
-                <i class="fa-solid fa-cart-shopping"></i> Add to cart
-              </button>
-            </div>
-          </div>
-          <div class="product-card">
-            <div class="badge">BESTSELLER</div>
-            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-            <div class="img-box">
-              <img src="images/6.PNG" alt="Cookie" class="product-img" />
-            </div>
-            <div class="product-info">
-              <h3>Tôm Nướng Gogi (ALC)</h3>
-              <p class="price">Giá: 229.000₫</p>
-              <div class="rating-sold">
-                <div class="stars">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <span class="sold">Đã bán: 999</span>
-              </div>
-              <button class="add-to-cart">
-                <i class="fa-solid fa-cart-shopping"></i> Add to cart
-              </button>
-            </div>
+          <div class="footer-col">
+            <h4>Giờ mở cửa</h4>
+            <p>Thứ 2 - Chủ nhật: 09:00 - 22:00</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!--STEP 4: FOURTH SECTION -->
-    <section class="combos-food">
-      <div class="combos-banner">
-        <div class="combos-flex">
-          <div class="combo-item">
-            <span class="label">GỌI MÓN <small>Từ</small></span>
-            <div class="price-val">
-              <span class="num">69</span>
-              <div class="unit-group">
-                <span class="zero">000</span>
-                <span class="currency">VNĐ/món</span>
-              </div>
-            </div>
-          </div>
-          <div class="v-line"></div>
-          <div class="combo-item">
-            <span class="label">COMBO <small>Từ</small></span>
-            <div class="price-val">
-              <span class="num">200</span>
-              <div class="unit-group">
-                <span class="zero">000<sup>*</sup></span>
-                <span class="currency">VNĐ/người</span>
-              </div>
-            </div>
-          </div>
-          <div class="v-line"></div>
-          <div class="combo-item">
-            <span class="label">XÈO XÈO THỎA THÍCH <small>Từ</small></span>
-            <div class="price-val">
-              <span class="num">419</span>
-              <div class="unit-group">
-                <span class="zero">000<sup>**</sup></span>
-                <span class="currency">VNĐ/người</span>
-              </div>
-            </div>
-          </div>
-          <div class="v-line"></div>
-          <div class="combo-item children">
-            <span class="label">TRẺ EM</span>
-            <div class="child-flex">
-              <div class="c-price">
-                <span class="val orange">FREE</span>
-                <span class="cond">&lt;1m</span>
-              </div>
-              <div class="c-price">
-                <span class="val orange">-70%</span>
-                <span class="cond">&lt;1,3m</span>
-              </div>
-            </div>
-          </div>
+        <div class="footer-bottom">
+          &copy; 2026 Cooki.co. All rights reserved.
         </div>
+      </footer>
+    </main>
+
+    <!-- Floating Chat Widget -->
+    <div class="chat-widget">
+      <div class="chat-bubble">
+        <span>Chat</span>
+        <i class="fa-regular fa-comment-dots"></i>
       </div>
-
-      <div class="choice-section">
-        <div class="container">
-          <h2 class="choice-title">Your Best Choice</h2>
-          <div class="choices-grid">
-            <div class="choice-item">
-              <i class="fa-solid fa-bowl-hot"></i>
-              <p>CHUẨN VỊ NƯỚNG HÀNG</p>
-            </div>
-            <div class="choice-item">
-              <i class="fa-solid fa-book-open"></i>
-              <p>THỰC ĐƠN ĐA DẠNG</p>
-            </div>
-            <div class="choice-item">
-              <i class="fa-solid fa-candle-holder"></i>
-              <p>KHÔNG GIAN ẤM CÚNG</p>
-            </div>
-            <div class="choice-item">
-              <i class="fa-solid fa-user-tie"></i>
-              <p>PHỤC VỤ TẬN TÌNH</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STEP 5: FIFTH SECTION (Product Category & Grid) -->
-    <section class="product-category">
-      <div class="" style="margin: 0px 100px">
-        <div class="main-layout">
-          <!-- Sidebar -->
-          <aside class="sidebar">
-            <div class="sidebar-header">
-              <i class="fa-solid fa-list"></i> DANH MỤC SẢN PHẨM
-            </div>
-            <ul class="category-list">
-              <li class="active">
-                Gọi Món <i class="fa-solid fa-arrow-right"></i>
-              </li>
-              <li>Buffet <i class="fa-solid fa-arrow-right"></i></li>
-              <li>Lẩu <i class="fa-solid fa-arrow-right"></i></li>
-              <li>Nướng <i class="fa-solid fa-arrow-right"></i></li>
-              <li>Combo <i class="fa-solid fa-arrow-right"></i></li>
-              <li>Tất cả <i class="fa-solid fa-arrow-right"></i></li>
-            </ul>
-          </aside>
-
-          <!-- Product List Area -->
-          <div class="product-area">
-            <!-- Filter Bar -->
-            <div class="filter-bar">
-              <div class="bar-left">
-                <span class="sec-label">SẢN PHẨM NỔI BẬT</span>
-                <div class="search-container">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Search" />
-                </div>
-              </div>
-              <div class="bar-right">
-                <div class="filter-group">
-                  <button class="filter-btn active">Ngẫu nhiên</button>
-                  <button class="filter-btn">Mới nhất</button>
-                  <button class="filter-btn">Giá Thấp</button>
-                  <button class="filter-btn">Giá Cao</button>
-                </div>
-                <span class="page-info">1/2</span>
-              </div>
-            </div>
-
-            <!-- Product Grid -->
-            <div class="grid-container">
-              <!-- Product Card 1 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/1.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Sườn Non Bò Mỹ Sốt Obathan</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">415.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI</span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 13</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Product Card 2 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/2.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Sườn Non Bò Mỹ LA Sốt Galbi 150gr</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">239.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI</span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 18</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Product Card 3 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/3.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Dẻ sườn bò Mỹ (ALC)</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">379.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI</span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 2</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Product Card 4 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/4.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Sườn non bò Mỹ hảo hạng tươi 200g</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">449.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI</span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 15</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Product Card 1 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/1.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Sườn Non Bò Mỹ Sốt Obathan</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">415.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI</span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 13</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Product Card 2 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/2.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Sườn Non Bò Mỹ LA Sốt Galbi 150gr</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">239.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI</span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 18</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Product Card 3 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/3.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Dẻ sườn bò Mỹ (ALC)</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">379.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI</span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 2</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <!-- Product Card 4 -->
-              <div class="p-card">
-                <div class="p-wishlist">
-                  <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="p-img">
-                  <img src="images/4.PNG" alt="Product" />
-                </div>
-                <div class="p-details">
-                  <h4 class="p-name">Sườn non bò Mỹ hảo hạng tươi 200g</h4>
-                  <div class="p-meta">
-                    <div class="meta-item">
-                      <span class="label">GIÁ</span>
-                      <span class="value">449.000₫</span>
-                    </div>
-                    <div class="meta-item">
-                      <span class="label">LOẠI: </span>
-                      <span class="value">Thịt Bò</span>
-                    </div>
-                  </div>
-                  <div class="p-rating">
-                    <div class="stars">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                    </div>
-                    <span class="sold-count">đã bán 15</span>
-                  </div>
-                  <div class="p-actions">
-                    <button class="btn-detail">Xem chi tiết</button>
-                    <button class="btn-cart">
-                      <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STEP 6: BOOKING FORM -->
-    <section class="booking-section">
-      <div class="container">
-        <h2 class="section-title">Đặt Bàn Ngay</h2>
-        <p class="section-subtitle">
-          Đặt bàn trước để có trải nghiệm tốt nhất tại Cooki.co
-        </p>
-        <div class="booking-form-container">
-          <form class="booking-form" action="#" method="post">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Họ và tên *</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Số điện thoại *</label>
-                <input type="tel" id="phone" name="phone" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" />
-              </div>
-              <div class="form-group">
-                <label for="guests">Số người *</label>
-                <select id="guests" name="guests" required>
-                  <option value="">Chọn số người</option>
-                  <option value="1">1 người</option>
-                  <option value="2">2 người</option>
-                  <option value="3">3 người</option>
-                  <option value="4">4 người</option>
-                  <option value="5">5 người</option>
-                  <option value="6">6 người</option>
-                  <option value="7+">7+ người</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="date">Ngày *</label>
-                <input type="date" id="date" name="date" required />
-              </div>
-              <div class="form-group">
-                <label for="time">Giờ *</label>
-                <select id="time" name="time" required>
-                  <option value="">Chọn giờ</option>
-                  <option value="11:00">11:00</option>
-                  <option value="11:30">11:30</option>
-                  <option value="12:00">12:00</option>
-                  <option value="12:30">12:30</option>
-                  <option value="13:00">13:00</option>
-                  <option value="17:00">17:00</option>
-                  <option value="17:30">17:30</option>
-                  <option value="18:00">18:00</option>
-                  <option value="18:30">18:30</option>
-                  <option value="19:00">19:00</option>
-                  <option value="19:30">19:30</option>
-                  <option value="20:00">20:00</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group full-width">
-              <label for="notes">Ghi chú</label>
-              <textarea id="notes" name="notes" rows="4" placeholder="Yêu cầu đặc biệt, dị ứng thực phẩm..."></textarea>
-            </div>
-            <button type="submit" class="cta-button">Đặt Bàn Ngay</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- STEP 7: TESTIMONIALS -->
-    <section class="testimonials-section">
-      <div class="container">
-        <h2 class="section-title">Khách hàng nói gì về chúng tôi</h2>
-        <div class="swiper testimonial-swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="testimonial-content">
-                  <p>
-                    "Món ăn thơm ngon, phục vụ nhanh, không gian ấm cúng. Mình
-                    ấn tượng đặc biệt với sốt BBQ."
-                  </p>
-                  <div class="testimonial-author">
-                    <h4>Nguyễn An</h4>
-                    <span>Khách hàng thân thiết</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="testimonial-content">
-                  <p>
-                    "Dịch vụ giao hàng đúng giờ và gói kỹ, đồ ăn tới vẫn nóng.
-                    Chắc chắn sẽ đặt lại."
-                  </p>
-                  <div class="testimonial-author">
-                    <h4>Trần Mai</h4>
-                    <span>Buôn bán Online</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="testimonial-content">
-                  <p>
-                    "Không gian dễ chịu, nhân viên thân thiện. Giá cả hợp lý,
-                    phù hợp tụ họp gia đình."
-                  </p>
-                  <div class="testimonial-author">
-                    <h4>Phan Duy</h4>
-                    <span>Gia đình 4 người</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="testimonial-content">
-                  <p>
-                    "Đồ ăn ngon miệng, giá cả phải chăng. Đặc biệt là combo
-                    gia đình rất tiết kiệm."
-                  </p>
-                  <div class="testimonial-author">
-                    <h4>Lê Minh</h4>
-                    <span>Nhân viên văn phòng</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="testimonial-content">
-                  <p>
-                    "Phục vụ tận tình, không gian sạch sẽ. Mình thích nhất là
-                    món tôm nướng."
-                  </p>
-                  <div class="testimonial-author">
-                    <h4>Hoàng Lan</h4>
-                    <span>Sinh viên</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="testimonial-content">
-                  <p>
-                    "Giao hàng nhanh chóng, đóng gói cẩn thận. Sẽ ủng hộ lâu
-                    dài."
-                  </p>
-                  <div class="testimonial-author">
-                    <h4>Đỗ Quang</h4>
-                    <span>Doanh nhân</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="main-footer">
-      <div class="container footer-content">
-        <div class="footer-col">
-          <h4>Cooki.co</h4>
-          <p>
-            Giá trị bằng hương vị, mỗi góc nhỏ đều để lại trải nghiệm trọn
-            vẹn.
-          </p>
-        </div>
-        <div class="footer-col">
-          <h4>Liên hệ</h4>
-          <p>Địa chỉ: 123 Đường Hương Vị, TP.HCM</p>
-          <p>Hotline: 0123 456 789</p>
-          <p>Email: support@cooki.co</p>
-        </div>
-        <div class="footer-col">
-          <h4>Giờ mở cửa</h4>
-          <p>Thứ 2 - Chủ nhật: 09:00 - 22:00</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; 2026 Cooki.co. All rights reserved.
-      </div>
-    </footer>
-  </main>
-
-  <!-- Floating Chat Widget -->
-  <div class="chat-widget">
-    <div class="chat-bubble">
-      <span>Chat</span>
-      <i class="fa-regular fa-comment-dots"></i>
-    </div>
-    <div class="cart-badge">
-      <i class="fa-solid fa-basket-shopping"></i>
-      <span class="count">0</span>
-    </div>
-  </div>
-
-  <!-- Chat Modal -->
-  <div id="chat-modal" class="chat-modal">
-    <div class="chat-container">
-      <div class="chat-header">
-        <h3>Chat với chúng tôi</h3>
-        <button class="close-chat">&times;</button>
-      </div>
-      <div class="chat-messages" id="chat-messages">
-        <div class="message bot">
-          <p>Chào bạn! Chúng tôi có thể giúp gì cho bạn hôm nay?</p>
-        </div>
-      </div>
-      <div class="chat-input">
-        <input type="text" id="message-input" placeholder="Nhập tin nhắn..." />
-        <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+      <div class="cart-badge">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="count">0</span>
       </div>
     </div>
-  </div>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="main.js"></script>
-</body>
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="chat-modal">
+      <div class="chat-container">
+        <div class="chat-header">
+          <h3>Chat với chúng tôi</h3>
+          <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+          <div class="message bot">
+            <p>Chào bạn! Chúng tôi có thể giúp gì cho bạn hôm nay?</p>
+          </div>
+        </div>
+        <div class="chat-input">
+          <input
+            type="text"
+            id="message-input"
+            placeholder="Nhập tin nhắn..."
+          />
+          <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
 
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>

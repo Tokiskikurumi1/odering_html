@@ -1,6 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
+:root {
+  /* --- HERO SLIDER --- */
+  --color-left-slide: #1a1e23;
+  --color-right-slide: #0e1215;
+  --color-before-slide: #a40f01;
+  --color-title-slide: #e88735;
+  --color-title-shadow: #478860;
+
+  /* --- GLOBAL THEME COLORS --- */
+  --color-primary: #e88735;
+  --color-white: #fff;
+  --color-dark: #333;
+  --color-gray: #444;
+
+  /* --- SECTIONS BACKGROUNDS --- */
+  --des-food-bg: #0d0e12;
+  --best-seller-bg: #121212;
+  --product-card-bg: #252525;
+  --combos-bg: #fff;
+  --combos-banner-bg: #552c10;
+  --category-bg: #efece8;
+  --filter-bar-bg: #c2a78b;
+  --grid-container-bg: #c2a78b;
+  --booking-bg-start: #fef7f0;
+  --booking-bg-end: #fff8f2;
+}
+
 * {
   margin: 0;
   padding: 0;
