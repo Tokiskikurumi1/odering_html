@@ -1,9 +1,9 @@
-/* --- HERO SLIDER (SECTION 1) --- */
+﻿/* --- HERO SLIDER (SECTION 1) --- */
 .slider {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to right, #2b2f3a, #0d0e12);
+  background-image: linear-gradient(to right, #1a1e23, #0e1215);
   overflow: hidden;
 }
 
@@ -44,16 +44,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   transition: padding 0.4s ease;
 }
 
 .main-header.scrolled nav {
-  padding: 10px 0;
+  padding: 0;
 }
 
 .main-header .logo a {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #fff;
   font-family: "Pacifico", cursive;
@@ -108,15 +108,15 @@
 
 .title {
   position: absolute;
-  top: 10%;
-  right: 60%;
-  text-align: right;
+  top: 20%;
+  left: 5%;
+  text-align: left;
   color: #fff;
   font-size: 150px;
   width: 40%;
   font-family: "Pacifico", cursive;
   text-shadow: 3px 5px 0px #478860;
-  line-height: 0.9em;
+  line-height: 0.5em;
   transform: rotate(-5deg);
 }
 
@@ -150,15 +150,15 @@
 .content {
   color: #fff;
   position: absolute;
-  top: 10%;
-  left: 60%;
+  top: 20%;
+  left: 70%;
   text-align: justify;
   width: 350px;
 }
 
 .content h1 {
   color: #e88735;
-  font-size: xxx-large;
+  font-size: 2rem;
 }
 
 .content .des {
@@ -576,7 +576,7 @@
 }
 
 .product-category .sidebar .sidebar-header {
-  background-color: #b88a44;
+  background-color: #c2a78b;
   color: #fff;
   padding: 15px 20px;
   font-weight: 700;
@@ -630,7 +630,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #b88a44;
+  background-color: #c2a78b;
   padding: 10px 20px;
   border-radius: 5px;
   color: #fff;
@@ -689,7 +689,12 @@
   gap: 10px;
 }
 
-.product-category .product-area .filter-bar .bar-right .filter-group .filter-btn {
+.product-category
+  .product-area
+  .filter-bar
+  .bar-right
+  .filter-group
+  .filter-btn {
   background: #fff;
   border: none;
   padding: 6px 15px;
@@ -726,6 +731,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
+  background-color: #c2a78b;
+  padding: 30px;
+  /* border-radius: 15px; */
 }
 
 /* Product Card Styling */
@@ -785,23 +793,44 @@
 
 .p-card .p-details .p-meta {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 15px;
 }
 
 .p-card .p-details .p-meta .meta-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+  border-bottom: 1px dashed #eaeaea;
+  padding-bottom: 5px;
+}
+
+.p-card .p-details .p-meta .meta-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Đảo vị trí: Loại lên trên, Giá xuống dưới */
+.p-card .p-details .p-meta .meta-item:nth-child(1) {
+  order: 2;
+  /* Giá */
+}
+
+.p-card .p-details .p-meta .meta-item:nth-child(2) {
+  order: 1;
+  /* Loại */
 }
 
 .p-card .p-details .p-meta .meta-item .label {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: #999;
   font-weight: 700;
 }
 
 .p-card .p-details .p-meta .meta-item .value {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #552c10;
 }
@@ -993,8 +1022,10 @@
 /* Testimonials Swiper */
 .testimonial-swiper {
   width: 100%;
-  padding: 50px 0 80px !important; /* Extra padding for pagination */
-  overflow: visible !important; /* Allow slides to be seen when entering/exit */
+  padding: 50px 0 80px !important;
+  /* Extra padding for pagination */
+  overflow: visible !important;
+  /* Allow slides to be seen when entering/exit */
 }
 
 .testimonial-swiper .swiper-slide {
