@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Flight: Slider -> Section 2 (Higher landing spot to avoid overlap)
       const tl1 = gsap.timeline({
         scrollTrigger: {
-          trigger: ".second-section",
+          trigger: ".des-food",
           start: "top bottom",
           end: "top 50%",
           scrub: true,
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Separate ScrollTrigger for auto slide control
       ScrollTrigger.create({
-        trigger: ".second-section",
+        trigger: ".des-food",
         start: "top bottom",
         end: "top 50%",
         onEnter: () => {
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- SECTION 3 ANIMATION: PRODUCT IMAGES SLIDE UP ---
   gsap.from(".product-card .product-img", {
     scrollTrigger: {
-      trigger: ".third-section",
+      trigger: ".best-seller-food",
       start: "top 80%", // Bắt đầu khi đầu Section 3 chạm 80% chiều cao viewport
       toggleActions: "play none none none",
     },
