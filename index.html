@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cookie - Slider Pizza Logic</title>
+    <title>Ordering - Slider</title>
     <!-- GOOGLE FONTS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;800;900&display=swap"
@@ -314,7 +314,7 @@
         </div>
       </section>
 
-      <!--STEP 4: FOURTH SECTION -->
+      <!--STEP 4: COMBOS SECTION -->
       <section class="section-combos-food">
         <div class="combos-banner">
           <div class="combos-flex">
@@ -372,7 +372,7 @@
             <h2 class="choice-title">Your Best Choice</h2>
             <div class="choices-grid">
               <div class="choice-item">
-                <i class="fa-solid fa-fire"></i>
+                <i class="fa-solid fa-utensils"></i>
                 <p>CHUẨN VỊ NƯỚNG HÀNG</p>
               </div>
               <div class="choice-item">
@@ -392,51 +392,63 @@
         </div>
       </section>
 
-      <!-- STEP 5: FIFTH SECTION (Product Category & Grid) -->
-      <section class="product-category">
-        <div class="" style="margin: 0px 100px">
-          <div class="main-layout">
+      <!-- STEP 5: PRODUCT CATEGORY SECTION -->
+      <section class="product-category-section">
+        <div class="product-category-container">
+          <div class="product-category-main-layout">
             <!-- Sidebar -->
-            <aside class="sidebar">
-              <div class="sidebar-header">
+            <aside class="product-category-main-layout-sidebar">
+              <div class="main-layout-sidebar-header">
                 <i class="fa-solid fa-list"></i> DANH MỤC SẢN PHẨM
               </div>
-              <ul class="category-list">
-                <li class="active">
+              <ul class="main-layout-category-list">
+                <li class="category-list active">
                   Gọi Món <i class="fa-solid fa-arrow-right"></i>
                 </li>
-                <li>Buffet <i class="fa-solid fa-arrow-right"></i></li>
-                <li>Lẩu <i class="fa-solid fa-arrow-right"></i></li>
-                <li>Nướng <i class="fa-solid fa-arrow-right"></i></li>
-                <li>Combo <i class="fa-solid fa-arrow-right"></i></li>
-                <li>Tất cả <i class="fa-solid fa-arrow-right"></i></li>
+                <li class="category-list">
+                  Buffet <i class="fa-solid fa-arrow-right"></i>
+                </li>
+                <li class="category-list">
+                  Lẩu <i class="fa-solid fa-arrow-right"></i>
+                </li>
+                <li class="category-list">
+                  Nướng <i class="fa-solid fa-arrow-right"></i>
+                </li>
+                <li class="category-list">
+                  Combo <i class="fa-solid fa-arrow-right"></i>
+                </li>
+                <li class="category-list">
+                  Tất cả <i class="fa-solid fa-arrow-right"></i>
+                </li>
               </ul>
             </aside>
 
             <!-- Product List Area -->
-            <div class="product-area">
+            <div class="product-area-main-layout">
               <!-- Filter Bar -->
-              <div class="filter-bar">
-                <div class="bar-left">
+              <div class="product-area-filter-bar">
+                <div class="product-area-bar-left">
                   <span class="sec-label">SẢN PHẨM NỔI BẬT</span>
                   <div class="search-container">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Search" />
                   </div>
                 </div>
-                <div class="bar-right">
-                  <div class="filter-group">
-                    <button class="filter-btn active">Ngẫu nhiên</button>
-                    <button class="filter-btn">Mới nhất</button>
-                    <button class="filter-btn">Giá Thấp</button>
-                    <button class="filter-btn">Giá Cao</button>
+                <div class="product-area-bar-right">
+                  <div class="product-area-bar-right-filter-group">
+                    <button class="bar-right-filter-btn active">
+                      Ngẫu nhiên
+                    </button>
+                    <button class="bar-right-filter-btn">Mới nhất</button>
+                    <button class="bar-right-filter-btn">Giá Thấp</button>
+                    <button class="bar-right-filter-btn">Giá Cao</button>
                   </div>
                   <span class="page-info">1/2</span>
                 </div>
               </div>
 
               <!-- Product Grid -->
-              <div class="grid-container">
+              <div class="grid-product-container">
                 <!-- Product Card 1 -->
                 <div class="p-card">
                   <div class="p-wishlist">
