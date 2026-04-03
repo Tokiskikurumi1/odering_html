@@ -473,7 +473,7 @@
 }
 
 /* --- FOURTH SECTION --- */
-.combos-food {
+.section-combos-food {
   background-color: #fff;
 }
 
@@ -497,43 +497,51 @@
   gap: 5px;
 }
 
-.combos-banner .combo-item .label {
+.combos-banner .combo-item .combo-item-label {
   font-size: 1.2rem;
   font-weight: 700;
   opacity: 0.9;
 }
 
-.combos-banner .combo-item .label small {
+.combos-banner .combo-item .combo-item-label small {
   font-size: 0.8rem;
   margin-left: 5px;
 }
 
-.combos-banner .combo-item .price-val {
+.combos-banner .combo-item .combo-item-second-label {
   display: flex;
   align-items: baseline;
   gap: 5px;
 }
 
-.combos-banner .combo-item .price-val .num {
+.combos-banner .combo-item .combo-item-second-label .item-second-label-large {
   font-size: 4rem;
   font-weight: 900;
   line-height: 1;
   color: #f39c12;
 }
 
-.combos-banner .combo-item .price-val .unit-group {
+.combos-banner .combo-item .combo-item-second-label .item-third-label-small {
   display: flex;
   flex-direction: column;
 }
 
-.combos-banner .combo-item .price-val .unit-group .zero {
+.combos-banner
+  .combo-item
+  .combo-item-second-label
+  .item-third-label-small
+  .item-label-small-first {
   font-size: 1.8rem;
   font-weight: 800;
   line-height: 1;
   color: #f39c12;
 }
 
-.combos-banner .combo-item .price-val .unit-group .currency {
+.combos-banner
+  .combo-item
+  .combo-item-second-label
+  .item-third-label-small
+  .item-label-small-second {
   font-size: 0.85rem;
   font-weight: 600;
   opacity: 0.8;
