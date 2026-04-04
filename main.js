@@ -3,33 +3,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- SETUP: LOCOMOTIVE SCROLL ---
   const scrollContainer = document.querySelector(".smooth-scroll");
+  const isTouchDevice = window.innerWidth <= 1440 || ('ontouchstart' in window);
+
   const locoScroll = new LocomotiveScroll({
     el: scrollContainer,
     smooth: true,
     multiplier: 1,
   });
 
-  locoScroll.on("scroll", ScrollTrigger.update);
+  if (!isTouchDevice) {
+    locoScroll.on("scroll", ScrollTrigger.update);
 
-  ScrollTrigger.scrollerProxy(scrollContainer, {
-    scrollTop(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-        : locoScroll.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-    pinType: scrollContainer.style.transform ? "transform" : "fixed",
-  });
+    ScrollTrigger.scrollerProxy(scrollContainer, {
+      scrollTop(value) {
+        return arguments.length
+          ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+          : locoScroll.scroll.instance.scroll.y;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      pinType: scrollContainer.style.transform ? "transform" : "fixed",
+    });
 
-  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-  ScrollTrigger.defaults({ scroller: ".smooth-scroll" });
+    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+    ScrollTrigger.defaults({ scroller: scrollContainer });
+  } else {
+    ScrollTrigger.defaults({ scroller: window });
+  }
 
   // --- FLYING COOKIE SETUP ---
   let flyingCookie = document.createElement("img");
@@ -87,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         content.classList.add("active");
         items[key].classList.add("active");
         flyingCookie.src = items[key].querySelector("img").src;
+        document.getElementById("section-description-img").src = items[key].querySelector("img").src;
 
         document.getElementById("section-description-title").innerText =
           contents[key].querySelector("h1").innerText;
@@ -145,50 +152,69 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isScrolled) startAutoSlide();
   });
 
+  // --- AUTO RECALCULATE SCROLL METRICS ---
+  // Hàm tự động tính toán tọa độ dựa theo chiều cao thiết bị phòng khi slider bị thu ngắn (đổi vh)
+  function getScrollMetrics() {
+    const isMobile = window.innerWidth <= 768;
+    const sliderHeight = document.querySelector(".slider").offsetHeight;
+    const vh = window.innerHeight;
+
+    // Thay vì "top 90%", trigger chạy chuẩn xác khi cuộn vuột qua 50px so với chiều cao slider
+    const startTrigger = `top ${sliderHeight - 50}px`;
+    const endTrigger = `top ${sliderHeight - (vh * 0.4)}px`;
+    
+    // Tọa độ nơi dĩa ăn hạ cánh ở Section 2, tự động bằng sliderHeight + thêm 15% màn hình
+    const dropTarget = isMobile ? `${sliderHeight + vh * 0.08}px` : `${sliderHeight + vh * 0.15}px`;
+    
+    // Chỉnh tọa độ bay theo điện thoại (giữa màn hình) hay máy tính (bên trái)
+    const dropTargetLeft = isMobile ? "50vw" : "25vw";
+    const cookieHeight = isMobile ? "45vw" : "22vw";
+
+    return { startTrigger, endTrigger, dropTarget, dropTargetLeft, cookieHeight };
+  }
+
   // --- SCROLL ANIMATION (REFINED ALIGNMENT) ---
-  ScrollTrigger.matchMedia({
-    "(min-width: 1024px)": function () {
-      // Flight: Slider -> Section 2 (Higher landing spot to avoid overlap)
-      const tl1 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".description-food-section",
-          start: "top bottom",
-          end: "top 50%",
-          scrub: true,
-        },
-      });
-
-      // Separate ScrollTrigger for auto slide control
-      ScrollTrigger.create({
+  let mm = gsap.matchMedia();
+  mm.add("(min-width: 1280px)", function () {
+    const tl1 = gsap.timeline({
+      scrollTrigger: {
         trigger: ".description-food-section",
-        start: "top bottom",
-        end: "top 50%",
-        onEnter: () => {
-          isScrolled = true;
-          document.querySelector(
-            ".section-image-item.active img",
-          ).style.opacity = 0;
-          gsap.set(flyingCookie, { opacity: 1 });
-          stopAutoSlide();
-        },
-        onLeaveBack: () => {
-          isScrolled = false;
-          document.querySelector(
-            ".section-image-item.active img",
-          ).style.opacity = 1;
-          gsap.set(flyingCookie, { opacity: 0 });
-          startAutoSlide();
-        },
-      });
+        start: () => getScrollMetrics().startTrigger,
+        end: () => getScrollMetrics().endTrigger,
+        invalidateOnRefresh: true, // Auto tính toán lại hàm trên khi resize màn hình
+        scrub: true,
+      },
+    });
 
-      tl1.to("#flying-cookie", {
-        top: "110vh", // Nâng mốc đáp lên 130vh thay vì 135vh để tránh đè Section 3
-        left: "25vw",
-        height: "22vw",
-        rotate: "50deg",
-        ease: "power1.inOut",
-      });
-    },
+    // Separate ScrollTrigger for auto slide control
+    ScrollTrigger.create({
+      trigger: ".description-food-section",
+      start: () => getScrollMetrics().startTrigger,
+      end: () => getScrollMetrics().endTrigger,
+      invalidateOnRefresh: true, // Đồng bộ
+      onEnter: () => {
+        isScrolled = true;
+        const activeImg = document.querySelector(".section-image-item.active img");
+        if(activeImg) activeImg.style.opacity = 0;
+        gsap.set(flyingCookie, { opacity: 1 });
+        stopAutoSlide();
+      },
+      onLeaveBack: () => {
+        isScrolled = false;
+        const activeImg = document.querySelector(".section-image-item.active img");
+        if(activeImg) activeImg.style.opacity = 1;
+        gsap.set(flyingCookie, { opacity: 0 });
+        startAutoSlide();
+      },
+    });
+
+    tl1.to("#flying-cookie", {
+      top: () => getScrollMetrics().dropTarget, // Tự động hạ cánh đúng điểm
+      left: "25vw",
+      height: "22vw",
+      rotate: "50deg",
+      ease: "power1.inOut",
+    });
   });
 
   // --- HEADER SCROLL EFFECT ---
