@@ -1,321 +1,325 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ordering - Slider</title>
-    <!-- GOOGLE FONTS -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="common.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <header class="main-header">
-      <div class="container-header">
-        <nav class="navbar-header">
-          <div class="menu-left">
-            <ul>
-              <li><a href="#">Trang chủ</a></li>
-              <li><a href="#">Thực đơn</a></li>
-              <li><a href="#">Đặt bàn</a></li>
-            </ul>
-          </div>
-          <div class="logo">
-            <a href="./index.html">Kurumi.co</a>
-          </div>
-          <div class="menu-right">
-            <ul>
-              <li><a href="#">Trợ giúp</a></li>
-              <li><a href="#">Thông báo</a></li>
-              <li><a href="#">Đăng nhập</a></li>
-            </ul>
-          </div>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ordering - Slider</title>
+  <!-- GOOGLE FONTS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="style.css?v=5" />
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container-header">
+      <nav class="navbar-header">
+        <div class="menu-left">
+          <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Thực đơn</a> </li>
+            <li><a href="#">Đặt bàn</a> </li>
+          </ul>
+        </div>
+        <div class="logo">
+          <a href="./index.html">Kurumi.co</a>
+        </div>
+        <div class="menu-right">
+          <ul>
+            <li><a href="#">Trợ giúp</a> </li>
+            <li><a href="#">Thông báo</a> </li>
+            <li class="desktop-login"><a href="#">Đăng nhập</a> </li>
+          </ul>
+        </div>
+        <div class="mobile-actions">
+          <a href="#" class="mobile-login"><i class="fa-solid fa-user"></i><span>Đăng nhập</span></a>
+          <button class="mobile-nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SIDEBAR MOBILE -->
+  <div class="sidebar-overlay"></div>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <a href="./index.html">Kurumi.co</a>
       </div>
-    </header>
+      <button class="sidebar-close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="sidebar-content">
+      <ul class="sidebar-menu">
+        <li><a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+        <li><a href="#"><i class="fa-solid fa-utensils"></i> Thực đơn</a></li>
+        <li><a href="#"><i class="fa-solid fa-calendar-check"></i> Đặt bàn</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle-question"></i> Trợ giúp</a></li>
+        <li><a href="#"><i class="fa-solid fa-bell"></i> Thông báo</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-login-btn">Đăng nhập</a>
+      </div>
+    </div>
+  </aside>
 
-    <main class="smooth-scroll">
-      <!-- STEP 1: HERO SECTION AS SLIDER -->
-      <section class="hero-section slider">
-        <div class="hero-section-title">Kurumi!<br /><br />BBQ</div>
+  <main class="smooth-scroll">
+    <!-- STEP 1: HERO SECTION AS SLIDER -->
+    <section class="hero-section slider">
+      <div class="hero-section-title">Kurumi!<br /><br />BBQ</div>
 
-        <div class="hero-section-images">
-          <div class="section-image-item active" style="--i: 1">
-            <img src="images/1.PNG" />
+      <div class="hero-section-images">
+        <div class="section-image-item active" style="--i: 1">
+          <img src="images/1.PNG" />
+        </div>
+        <div class="section-image-item" style="--i: 2">
+          <img src="images/2.PNG" />
+        </div>
+        <div class="section-image-item" style="--i: 3">
+          <img src="images/3.PNG" />
+        </div>
+        <div class="section-image-item" style="--i: 4">
+          <img src="images/4.PNG" />
+        </div>
+        <div class="section-image-item" style="--i: 5">
+          <img src="images/5.PNG" />
+        </div>
+        <div class="section-image-item" style="--i: 6">
+          <img src="images/6.PNG" />
+        </div>
+      </div>
+
+      <div class="hero-section-content">
+        <div class="section-content-item active">
+          <h1>COOKIE NAME 1</h1>
+          <div class="section-content-item-des">
+            Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương vị
+            đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu tươi
+            ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn, tôn lên
+            vị chua của kim chi và vị ngọt tự nhiên của các thành phần khác...
           </div>
-          <div class="section-image-item" style="--i: 2">
-            <img src="images/2.PNG" />
+          <button>See more</button>
+        </div>
+        <div class="section-content-item">
+          <h1>COOKIE NAME 2</h1>
+          <div class="section-content-item-des">com ga.</div>
+          <button>See more</button>
+        </div>
+        <div class="section-content-item">
+          <h1>COOKIE NAME 3</h1>
+          <div class="section-content-item-des">an ngon lam</div>
+          <button>See more</button>
+        </div>
+        <div class="section-content-item">
+          <h1>COOKIE NAME 4</h1>
+          <div class="section-content-item-des">ngon bổ rẻ</div>
+          <button>See more</button>
+        </div>
+        <div class="section-content-item">
+          <h1>COOKIE NAME 5</h1>
+          <div class="section-content-item-des">nong hoi</div>
+          <button>See more</button>
+        </div>
+        <div class="section-content-item">
+          <h1>COOKIE NAME 6</h1>
+          <div class="section-content-item-des">ngon vcl.</div>
+          <button>See more</button>
+        </div>
+      </div>
+
+      <button id="prev">
+        << /button>
+          <button id="next">></button>
+    </section>
+
+    <!-- STEP 2: DESCRIPTION FOOD  -->
+    <section class="description-food-section">
+      <div class="container">
+        <div class="description-food-section-wrapper">
+          <div class="img-section-description">
+            <img id="section-description-img" src="" alt="Active Product" />
           </div>
-          <div class="section-image-item" style="--i: 3">
-            <img src="images/3.PNG" />
-          </div>
-          <div class="section-image-item" style="--i: 4">
-            <img src="images/4.PNG" />
-          </div>
-          <div class="section-image-item" style="--i: 5">
-            <img src="images/5.PNG" />
-          </div>
-          <div class="section-image-item" style="--i: 6">
-            <img src="images/6.PNG" />
+          <div class="content-description-section">
+            <h2 id="section-description-title">Canh kim chi</h2>
+            <div class="sub-heading">Món ngon đa dạng</div>
+            <p id="section-description-desc">
+              Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương
+              vị đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu
+              tươi ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn,
+              tôn lên vị chua của kim chi và vị ngọt tự nhiên của các thành
+              phần khác...
+            </p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hero-section-content">
-          <div class="section-content-item active">
-            <h1>COOKIE NAME 1</h1>
-            <div class="section-content-item-des">
-              Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương vị
-              đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu tươi
-              ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn, tôn lên
-              vị chua của kim chi và vị ngọt tự nhiên của các thành phần khác...
+    <!-- STEP 3: BEST SELLER FOODS -->
+    <section class="best-seller-food-section">
+      <div class="container">
+        <h2 class="best-seller-section-title">Best Seller</h2>
+        <div class="best-seller-section-products-grid">
+          <div class="best-seller-product-card">
+            <div class="badge">BESTSELLER</div>
+            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+            <div class="best-seller-section-img-box">
+              <img src="images/1.PNG" alt="Cookie" class="best-seller-product-img" />
             </div>
-            <button>See more</button>
-          </div>
-          <div class="section-content-item">
-            <h1>COOKIE NAME 2</h1>
-            <div class="section-content-item-des">com ga.</div>
-            <button>See more</button>
-          </div>
-          <div class="section-content-item">
-            <h1>COOKIE NAME 3</h1>
-            <div class="section-content-item-des">an ngon lam</div>
-            <button>See more</button>
-          </div>
-          <div class="section-content-item">
-            <h1>COOKIE NAME 4</h1>
-            <div class="section-content-item-des">ngon bổ rẻ</div>
-            <button>See more</button>
-          </div>
-          <div class="section-content-item">
-            <h1>COOKIE NAME 5</h1>
-            <div class="section-content-item-des">nong hoi</div>
-            <button>See more</button>
-          </div>
-          <div class="section-content-item">
-            <h1>COOKIE NAME 6</h1>
-            <div class="section-content-item-des">ngon vcl.</div>
-            <button>See more</button>
-          </div>
-        </div>
-
-        <button id="prev"><</button>
-        <button id="next">></button>
-      </section>
-
-      <!-- STEP 2: DESCRIPTION FOOD  -->
-      <section class="description-food-section">
-        <div class="container">
-          <div class="description-food-section-wrapper">
-            <div class="img-section-description">
-              <img id="section-description-img" src="" alt="Active Product" />
-            </div>
-            <div class="content-description-section">
-              <h2 id="section-description-title">Canh kim chi</h2>
-              <div class="sub-heading">Món ngon đa dạng</div>
-              <p id="section-description-desc">
-                Canh Kim Chi là món canh truyền thống của Hàn Quốc, mang hương
-                vị đặc trưng của kim chi chua cay, kết hợp cùng các nguyên liệu
-                tươi ngon khác. Lớp nước canh trong veo được nêm nếm vừa vặn,
-                tôn lên vị chua của kim chi và vị ngọt tự nhiên của các thành
-                phần khác...
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- STEP 3: BEST SELLER FOODS -->
-      <section class="best-seller-food-section">
-        <div class="container">
-          <h2 class="best-seller-section-title">Best Seller</h2>
-          <div class="best-seller-section-products-grid">
-            <div class="best-seller-product-card">
-              <div class="badge">BESTSELLER</div>
-              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-              <div class="best-seller-section-img-box">
-                <img
-                  src="images/1.PNG"
-                  alt="Cookie"
-                  class="best-seller-product-img"
-                />
-              </div>
-              <div class="best-seller-section-product-info">
-                <h3>Tôm Nướng Gogi (ALC)</h3>
-                <p class="best-seller-section-price">Giá: 229.000₫</p>
-                <div class="best-seller-section-rating-sold">
-                  <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <span class="best-seller-section-sold">Đã bán: 999</span>
+            <div class="best-seller-section-product-info">
+              <h3>Tôm Nướng Gogi (ALC)</h3>
+              <p class="best-seller-section-price">Giá: 229.000₫</p>
+              <div class="best-seller-section-rating-sold">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
                 </div>
-                <button class="best-seller-section-add-to-cart">
-                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                </button>
+                <span class="best-seller-section-sold">Đã bán: 999</span>
               </div>
+              <button class="best-seller-section-add-to-cart">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
             </div>
-            <div class="best-seller-product-card">
-              <div class="badge">BESTSELLER</div>
-              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-              <div class="best-seller-section-img-box">
-                <img
-                  src="images/1.PNG"
-                  alt="Cookie"
-                  class="best-seller-product-img"
-                />
-              </div>
-              <div class="best-seller-section-product-info">
-                <h3>Tôm Nướng Gogi (ALC)</h3>
-                <p class="best-seller-section-price">Giá: 229.000₫</p>
-                <div class="best-seller-section-rating-sold">
-                  <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <span class="best-seller-section-sold">Đã bán: 999</span>
-                </div>
-                <button class="best-seller-section-add-to-cart">
-                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                </button>
-              </div>
+          </div>
+          <div class="best-seller-product-card">
+            <div class="badge">BESTSELLER</div>
+            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+            <div class="best-seller-section-img-box">
+              <img src="images/1.PNG" alt="Cookie" class="best-seller-product-img" />
             </div>
-            <div class="best-seller-product-card">
-              <div class="badge">BESTSELLER</div>
-              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-              <div class="best-seller-section-img-box">
-                <img
-                  src="images/1.PNG"
-                  alt="Cookie"
-                  class="best-seller-product-img"
-                />
-              </div>
-              <div class="best-seller-section-product-info">
-                <h3>Tôm Nướng Gogi (ALC)</h3>
-                <p class="best-seller-section-price">Giá: 229.000₫</p>
-                <div class="best-seller-section-rating-sold">
-                  <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <span class="best-seller-section-sold">Đã bán: 999</span>
+            <div class="best-seller-section-product-info">
+              <h3>Tôm Nướng Gogi (ALC)</h3>
+              <p class="best-seller-section-price">Giá: 229.000₫</p>
+              <div class="best-seller-section-rating-sold">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
                 </div>
-                <button class="best-seller-section-add-to-cart">
-                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                </button>
+                <span class="best-seller-section-sold">Đã bán: 999</span>
               </div>
+              <button class="best-seller-section-add-to-cart">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
             </div>
-            <div class="best-seller-product-card">
-              <div class="badge">BESTSELLER</div>
-              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-              <div class="best-seller-section-img-box">
-                <img
-                  src="images/1.PNG"
-                  alt="Cookie"
-                  class="best-seller-product-img"
-                />
-              </div>
-              <div class="best-seller-section-product-info">
-                <h3>Tôm Nướng Gogi (ALC)</h3>
-                <p class="best-seller-section-price">Giá: 229.000₫</p>
-                <div class="best-seller-section-rating-sold">
-                  <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <span class="best-seller-section-sold">Đã bán: 999</span>
-                </div>
-                <button class="best-seller-section-add-to-cart">
-                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                </button>
-              </div>
+          </div>
+          <div class="best-seller-product-card">
+            <div class="badge">BESTSELLER</div>
+            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+            <div class="best-seller-section-img-box">
+              <img src="images/1.PNG" alt="Cookie" class="best-seller-product-img" />
             </div>
-            <div class="best-seller-product-card">
-              <div class="badge">BESTSELLER</div>
-              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-              <div class="best-seller-section-img-box">
-                <img
-                  src="images/1.PNG"
-                  alt="Cookie"
-                  class="best-seller-product-img"
-                />
-              </div>
-              <div class="best-seller-section-product-info">
-                <h3>Tôm Nướng Gogi (ALC)</h3>
-                <p class="best-seller-section-price">Giá: 229.000₫</p>
-                <div class="best-seller-section-rating-sold">
-                  <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <span class="best-seller-section-sold">Đã bán: 999</span>
+            <div class="best-seller-section-product-info">
+              <h3>Tôm Nướng Gogi (ALC)</h3>
+              <p class="best-seller-section-price">Giá: 229.000₫</p>
+              <div class="best-seller-section-rating-sold">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
                 </div>
-                <button class="best-seller-section-add-to-cart">
-                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                </button>
+                <span class="best-seller-section-sold">Đã bán: 999</span>
               </div>
+              <button class="best-seller-section-add-to-cart">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
             </div>
-            <div class="best-seller-product-card">
-              <div class="badge">BESTSELLER</div>
-              <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
-              <div class="best-seller-section-img-box">
-                <img
-                  src="images/1.PNG"
-                  alt="Cookie"
-                  class="best-seller-product-img"
-                />
-              </div>
-              <div class="best-seller-section-product-info">
-                <h3>Tôm Nướng Gogi (ALC)</h3>
-                <p class="best-seller-section-price">Giá: 229.000₫</p>
-                <div class="best-seller-section-rating-sold">
-                  <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                  </div>
-                  <span class="best-seller-section-sold">Đã bán: 999</span>
+          </div>
+          <div class="best-seller-product-card">
+            <div class="badge">BESTSELLER</div>
+            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+            <div class="best-seller-section-img-box">
+              <img src="images/1.PNG" alt="Cookie" class="best-seller-product-img" />
+            </div>
+            <div class="best-seller-section-product-info">
+              <h3>Tôm Nướng Gogi (ALC)</h3>
+              <p class="best-seller-section-price">Giá: 229.000₫</p>
+              <div class="best-seller-section-rating-sold">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
                 </div>
-                <button class="best-seller-section-add-to-cart">
-                  <i class="fa-solid fa-cart-shopping"></i> Add to cart
-                </button>
+                <span class="best-seller-section-sold">Đã bán: 999</span>
               </div>
+              <button class="best-seller-section-add-to-cart">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
+            </div>
+          </div>
+          <div class="best-seller-product-card">
+            <div class="badge">BESTSELLER</div>
+            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+            <div class="best-seller-section-img-box">
+              <img src="images/1.PNG" alt="Cookie" class="best-seller-product-img" />
+            </div>
+            <div class="best-seller-section-product-info">
+              <h3>Tôm Nướng Gogi (ALC)</h3>
+              <p class="best-seller-section-price">Giá: 229.000₫</p>
+              <div class="best-seller-section-rating-sold">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="best-seller-section-sold">Đã bán: 999</span>
+              </div>
+              <button class="best-seller-section-add-to-cart">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
+            </div>
+          </div>
+          <div class="best-seller-product-card">
+            <div class="badge">BESTSELLER</div>
+            <div class="wishlist"><i class="fa-solid fa-heart"></i></div>
+            <div class="best-seller-section-img-box">
+              <img src="images/1.PNG" alt="Cookie" class="best-seller-product-img" />
+            </div>
+            <div class="best-seller-section-product-info">
+              <h3>Tôm Nướng Gogi (ALC)</h3>
+              <p class="best-seller-section-price">Giá: 229.000₫</p>
+              <div class="best-seller-section-rating-sold">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="best-seller-section-sold">Đã bán: 999</span>
+              </div>
+              <button class="best-seller-section-add-to-cart">
+                <i class="fa-solid fa-cart-shopping"></i> Add to cart
+              </button>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!--STEP 4: COMBOS SECTION -->
-      <!-- <section class="section-combos-food">
+    <!--STEP 4: COMBOS SECTION -->
+    <!-- <section class="section-combos-food">
         <div class="combos-banner">
           <div class="combos-flex">
             <div class="combo-item">
@@ -391,8 +395,8 @@
         </div>
       </section> -->
 
-      <!-- STEP 5: PRODUCT CATEGORY SECTION -->
-      <!-- <section class="product-category-section">
+    <!-- STEP 5: PRODUCT CATEGORY SECTION -->
+    <!-- <section class="product-category-section">
         <div class="product-category-container">
           <div class="product-category-main-layout">
             <aside class="product-category-main-layout-sidebar">
@@ -747,8 +751,8 @@
         </div>
       </section> -->
 
-      <!-- STEP 6: BOOKING FORM -->
-      <!-- <section class="booking-section">
+    <!-- STEP 6: BOOKING FORM -->
+    <!-- <section class="booking-section">
         <div class="container">
           <h2 class="booking-section-title">Đặt Bàn Ngay</h2>
           <p class="booking-section-subtitle">
@@ -824,8 +828,8 @@
         </div>
       </section> -->
 
-      <!-- STEP 7: TESTIMONIALS -->
-      <!-- <section class="testimonials-section">
+    <!-- STEP 7: TESTIMONIALS -->
+    <!-- <section class="testimonials-section">
         <div class="container">
           <h2 class="testimonials-section-title">
             Khách hàng nói gì về chúng tôi
@@ -922,72 +926,69 @@
         </div>
       </section> -->
 
-      <footer class="main-footer">
-        <div class="container footer-content">
-          <div class="footer-col">
-            <h4>Cooki.co</h4>
-            <p>
-              Giá trị bằng hương vị, mỗi góc nhỏ đều để lại trải nghiệm trọn
-              vẹn.
-            </p>
-          </div>
-          <div class="footer-col">
-            <h4>Liên hệ</h4>
-            <p>Địa chỉ: 123 Đường Hương Vị, TP.HCM</p>
-            <p>Hotline: 0123 456 789</p>
-            <p>Email: support@cooki.co</p>
-          </div>
-          <div class="footer-col">
-            <h4>Giờ mở cửa</h4>
-            <p>Thứ 2 - Chủ nhật: 09:00 - 22:00</p>
-          </div>
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <div class="footer-col">
+          <h4>Cooki.co</h4>
+          <p>
+            Giá trị bằng hương vị, mỗi góc nhỏ đều để lại trải nghiệm trọn
+            vẹn.
+          </p>
         </div>
-        <div class="footer-bottom">
-          &copy; 2026 Cooki.co. All rights reserved.
+        <div class="footer-col">
+          <h4>Liên hệ</h4>
+          <p>Địa chỉ: 123 Đường Hương Vị, TP.HCM</p>
+          <p>Hotline: 0123 456 789</p>
+          <p>Email: support@cooki.co</p>
         </div>
-      </footer>
-    </main>
-
-    <!-- Floating Chat Widget -->
-    <div class="chat-widget">
-      <div class="chat-bubble">
-        <span>Chat</span>
-        <i class="fa-regular fa-comment-dots"></i>
+        <div class="footer-col">
+          <h4>Giờ mở cửa</h4>
+          <p>Thứ 2 - Chủ nhật: 09:00 - 22:00</p>
+        </div>
       </div>
-      <div class="cart-badge">
-        <i class="fa-solid fa-basket-shopping"></i>
-        <span class="count">0</span>
+      <div class="footer-bottom">
+        &copy; 2026 Cooki.co. All rights reserved.
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating Chat Widget -->
+  <div class="chat-widget">
+    <div class="chat-bubble">
+      <span>Chat</span>
+      <i class="fa-regular fa-comment-dots"></i>
+    </div>
+    <div class="cart-badge">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <span class="count">0</span>
+    </div>
+  </div>
+
+  <!-- Chat Modal -->
+  <div id="chat-modal" class="chat-modal">
+    <div class="chat-container">
+      <div class="chat-header">
+        <h3>Chat với chúng tôi</h3>
+        <button class="close-chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="message bot">
+          <p>Chào bạn! Chúng tôi có thể giúp gì cho bạn hôm nay?</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="message-input" placeholder="Nhập tin nhắn..." />
+        <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
+  </div>
 
-    <!-- Chat Modal -->
-    <div id="chat-modal" class="chat-modal">
-      <div class="chat-container">
-        <div class="chat-header">
-          <h3>Chat với chúng tôi</h3>
-          <button class="close-chat">&times;</button>
-        </div>
-        <div class="chat-messages" id="chat-messages">
-          <div class="message bot">
-            <p>Chào bạn! Chúng tôi có thể giúp gì cho bạn hôm nay?</p>
-          </div>
-        </div>
-        <div class="chat-input">
-          <input
-            type="text"
-            id="message-input"
-            placeholder="Nhập tin nhắn..."
-          />
-          <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
-        </div>
-      </div>
-    </div>
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="main.js"></script>
-  </body>
 </html>

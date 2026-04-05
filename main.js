@@ -330,4 +330,34 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
+
+  // --- SIDEBAR TOGGLE ---
+  const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
+  const sidebar = document.querySelector(".sidebar");
+  const sidebarClose = document.querySelector(".sidebar-close");
+  const sidebarOverlay = document.querySelector(".sidebar-overlay");
+
+  function toggleSidebar() {
+    sidebar.classList.toggle("active");
+    sidebarOverlay.classList.toggle("active");
+    
+    // Disable/Enable Locomotive Scroll when sidebar is open
+    if (sidebar.classList.contains("active")) {
+      locoScroll.stop();
+    } else {
+      locoScroll.start();
+    }
+  }
+
+  if (mobileNavToggle) {
+    mobileNavToggle.addEventListener("click", toggleSidebar);
+  }
+
+  if (sidebarClose) {
+    sidebarClose.addEventListener("click", toggleSidebar);
+  }
+
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener("click", toggleSidebar);
+  }
 });
