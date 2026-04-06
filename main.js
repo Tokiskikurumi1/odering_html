@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const isDesktop = window.innerWidth >= 1280;
   gsap.registerPlugin(ScrollTrigger);
 
   // --- SETUP: LOCOMOTIVE SCROLL ---
   const scrollContainer = document.querySelector(".smooth-scroll");
-  const isTouchDevice = window.innerWidth <= 1440 || ('ontouchstart' in window);
+  const isTouchDevice = window.innerWidth <= 1440 || "ontouchstart" in window;
 
   const locoScroll = new LocomotiveScroll({
     el: scrollContainer,
@@ -38,18 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- FLYING COOKIE SETUP ---
-  let flyingCookie = document.createElement("img");
-  flyingCookie.id = "flying-cookie";
-  flyingCookie.style.position = "absolute";
-  flyingCookie.style.top = "calc(100vh - 650px)";
-  flyingCookie.style.left = "50%";
-  flyingCookie.style.transform = "translateX(-50%)";
-  flyingCookie.style.height = "420px";
-  flyingCookie.style.zIndex = "1000";
-  flyingCookie.style.opacity = "0";
-  flyingCookie.style.pointerEvents = "none";
-  document.querySelector(".smooth-scroll").appendChild(flyingCookie);
+  let flyingCookie = null;
+  if (isDesktop) {
+    flyingCookie = document.createElement("img");
+    flyingCookie.id = "flying-cookie";
+    flyingCookie.style.position = "absolute";
+    flyingCookie.style.top = "calc(100vh - 650px)";
+    flyingCookie.style.left = "50%";
+    flyingCookie.style.transform = "translateX(-50%)";
+    flyingCookie.style.height = "420px";
+    flyingCookie.style.zIndex = "1000";
+    flyingCookie.style.opacity = "0";
+    flyingCookie.style.pointerEvents = "none";
 
+    document.querySelector(".smooth-scroll").appendChild(flyingCookie);
+  }
   // --- SLIDER PIZZA LOGIC ---
   let prev = document.getElementById("prev");
   let next = document.getElementById("next");
@@ -92,8 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (key == active) {
         content.classList.add("active");
         items[key].classList.add("active");
-        flyingCookie.src = items[key].querySelector("img").src;
-        document.getElementById("section-description-img").src = items[key].querySelector("img").src;
+        if (flyingCookie) {
+          flyingCookie.src = items[key].querySelector("img").src;
+        }
+        document.getElementById("section-description-img").src =
+          items[key].querySelector("img").src;
 
         document.getElementById("section-description-title").innerText =
           contents[key].querySelector("h1").innerText;
@@ -161,16 +168,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Thay vì "top 90%", trigger chạy chuẩn xác khi cuộn vuột qua 50px so với chiều cao slider
     const startTrigger = `top ${sliderHeight - 50}px`;
-    const endTrigger = `top ${sliderHeight - (vh * 0.4)}px`;
-    
+    const endTrigger = `top ${sliderHeight - vh * 0.4}px`;
+
     // Tọa độ nơi dĩa ăn hạ cánh ở Section 2, tự động bằng sliderHeight + thêm 15% màn hình
-    const dropTarget = isMobile ? `${sliderHeight + vh * 0.08}px` : `${sliderHeight + vh * 0.15}px`;
-    
+    const dropTarget = isMobile
+      ? `${sliderHeight + vh * 0.08}px`
+      : `${sliderHeight + vh * 0.15}px`;
+
     // Chỉnh tọa độ bay theo điện thoại (giữa màn hình) hay máy tính (bên trái)
     const dropTargetLeft = isMobile ? "50vw" : "25vw";
     const cookieHeight = isMobile ? "45vw" : "22vw";
 
-    return { startTrigger, endTrigger, dropTarget, dropTargetLeft, cookieHeight };
+    return {
+      startTrigger,
+      endTrigger,
+      dropTarget,
+      dropTargetLeft,
+      cookieHeight,
+    };
   }
 
   // --- SCROLL ANIMATION (REFINED ALIGNMENT) ---
@@ -194,27 +209,35 @@ document.addEventListener("DOMContentLoaded", () => {
       invalidateOnRefresh: true, // Đồng bộ
       onEnter: () => {
         isScrolled = true;
-        const activeImg = document.querySelector(".section-image-item.active img");
-        if(activeImg) activeImg.style.opacity = 0;
-        gsap.set(flyingCookie, { opacity: 1 });
+        const activeImg = document.querySelector(
+          ".section-image-item.active img",
+        );
+        if (activeImg) activeImg.style.opacity = 0;
+        if (flyingCookie) {
+          gsap.set(flyingCookie, { opacity: 1 });
+        }
         stopAutoSlide();
       },
       onLeaveBack: () => {
         isScrolled = false;
-        const activeImg = document.querySelector(".section-image-item.active img");
-        if(activeImg) activeImg.style.opacity = 1;
+        const activeImg = document.querySelector(
+          ".section-image-item.active img",
+        );
+        if (activeImg) activeImg.style.opacity = 1;
         gsap.set(flyingCookie, { opacity: 0 });
         startAutoSlide();
       },
     });
 
-    tl1.to("#flying-cookie", {
-      top: () => getScrollMetrics().dropTarget, // Tự động hạ cánh đúng điểm
-      left: "25vw",
-      height: "22vw",
-      rotate: "50deg",
-      ease: "power1.inOut",
-    });
+    if (flyingCookie) {
+      tl1.to("#flying-cookie", {
+        top: () => getScrollMetrics().dropTarget,
+        left: "25vw",
+        height: "22vw",
+        rotate: "50deg",
+        ease: "power1.inOut",
+      });
+    }
   });
 
   // --- HEADER SCROLL EFFECT ---
@@ -340,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function toggleSidebar() {
     sidebar.classList.toggle("active");
     sidebarOverlay.classList.toggle("active");
-    
+
     // Disable/Enable Locomotive Scroll when sidebar is open
     if (sidebar.classList.contains("active")) {
       locoScroll.stop();
