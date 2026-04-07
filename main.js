@@ -354,6 +354,28 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  const combosSwiper = new Swiper(".combos-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    speed: 1000,
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+      1280: {
+        slidesPerView: 4,
+      },
+    },
+  });
+
   // --- SIDEBAR TOGGLE ---
   const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
   const sidebar = document.querySelector(".sidebar");
