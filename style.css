@@ -463,16 +463,15 @@
   /* Hidden by default for GSAP animation screen size */
 }
 
-@media screen and (max-width: 1279px) {
+/* @media screen and (max-width: 1280px) {
   .description-food-section
     .container
     .description-food-section-wrapper
     .img-section-description
     img {
     display: block;
-    /* Show static image on small screens where GSAP animation is off */
   }
-}
+} */
 
 .description-food-section
   .container
@@ -1230,6 +1229,38 @@
   background-color: #a31515;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: none;
+  background: #222;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:hover {
+  background: #ff6600;
+}
+
+#pageNumbers span {
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#pageNumbers .active {
+  background: #ff6600;
+  color: white;
+}
+
 /* Section 6 & 7 + Footer */
 .booking-section,
 .testimonials-section {
@@ -1703,6 +1734,15 @@ footer {
     display: none !important;
   }
 
+  .description-food-section
+    .container
+    .description-food-section-wrapper
+    .img-section-description
+    img {
+    display: block;
+    /* Show static image on small screens where GSAP animation is off */
+  }
+
   /* Section 5 Responsive */
   .product-category-section .product-category-container {
     margin: 0 30px;
@@ -1748,6 +1788,14 @@ footer {
     padding: 20px;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 20px;
+  }
+
+  .product-category-section
+    .product-area-main-layout
+    .product-area-filter-bar
+    .product-area-bar-left {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .p-card {
@@ -1813,14 +1861,6 @@ footer {
 
   .description-food-section {
     height: 70vh;
-  }
-
-  .product-category-section
-    .product-area-main-layout
-    .product-area-filter-bar
-    .product-area-bar-left {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 
@@ -2062,5 +2102,9 @@ footer {
   .booking-form-container {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .best-seller-food-section .best-seller-section-title {
+    font-size: 50px;
   }
 }

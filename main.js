@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const isDesktop = window.innerWidth >= 1280;
+  const isDesktop = window.innerWidth > 1280;
   gsap.registerPlugin(ScrollTrigger);
 
   // --- SETUP: LOCOMOTIVE SCROLL ---
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- SCROLL ANIMATION (REFINED ALIGNMENT) ---
   let mm = gsap.matchMedia();
-  mm.add("(min-width: 1280px)", function () {
+  mm.add("(min-width: 1281px)", function () {
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: ".description-food-section",
