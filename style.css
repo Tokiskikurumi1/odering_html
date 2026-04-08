@@ -1355,8 +1355,7 @@
 .testimonial-swiper {
   width: 100%;
   padding: 50px 0 80px !important;
-  /* Extra padding for pagination */
-  overflow: hidden;
+  overflow: visible;
   /* Allow slides to be seen when entering/exit */
 }
 
@@ -1764,6 +1763,11 @@ footer {
       padding: 20px;
       /* giảm từ 40 xuống */
     }
+  }
+
+  /* Testimonials Swiper */
+  .testimonial-swiper {
+    overflow: hidden;
   }
 }
 
