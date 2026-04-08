@@ -1217,7 +1217,7 @@
   width: 100%;
   padding: 50px 0 80px !important;
   /* Extra padding for pagination */
-  overflow: visible !important;
+  overflow: hidden;
   /* Allow slides to be seen when entering/exit */
 }
 
@@ -1230,8 +1230,12 @@
 
 .testimonial-swiper .swiper-slide-active {
   opacity: 1;
-  transform: scale(1.05);
+  transform: scale(1);
   z-index: 2;
+}
+
+.swiper-slide {
+  max-width: 100%;
 }
 
 .testimonial-item {
@@ -1603,6 +1607,13 @@ footer {
 
   .p-card .p-img {
     height: 160px;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-item {
+      padding: 20px;
+      /* giảm từ 40 xuống */
+    }
   }
 }
 
