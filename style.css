@@ -1597,16 +1597,6 @@
   transform: translateY(0);
 }
 
-@media (max-width: 768px) {
-  .chat-modal {
-    width: 100vw;
-    height: 70vh;
-    bottom: 0;
-    right: 0;
-    border-radius: 0;
-  }
-}
-
 .chat-container {
   display: flex;
   flex-direction: column;
@@ -1968,9 +1958,21 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 15px;
   }
+
+  /* .chat-modal {
+    width: 100vw;
+    height: 70vh;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+  } */
 }
 
 @media screen and (max-width: 600px) {
+  .main-header.scrolled {
+    border-radius: 10px;
+  }
+
   .mobile-actions .mobile-login {
     display: flex !important;
     align-items: center !important;
