@@ -240,14 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- HEADER SCROLL EFFECT ---
-  ScrollTrigger.create({
-    start: "top -80",
-    onEnter: () =>
-      document.querySelector(".main-header").classList.add("scrolled"),
-    onLeaveBack: () =>
-      document.querySelector(".main-header").classList.remove("scrolled"),
-  });
+  // --- HEADER SCROLL EFFECT MOVED TO header_footer.js ---
 
   // --- SECTION 3 ANIMATION: PRODUCT IMAGES SLIDE UP ---
   gsap.from(".best-seller-product-card .best-seller-product-img", {
@@ -377,32 +370,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- SIDEBAR TOGGLE ---
-  const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
-  const sidebar = document.querySelector(".sidebar");
-  const sidebarClose = document.querySelector(".sidebar-close");
-  const sidebarOverlay = document.querySelector(".sidebar-overlay");
-
-  function toggleSidebar() {
-    sidebar.classList.toggle("active");
-    sidebarOverlay.classList.toggle("active");
-
-    // Disable/Enable Locomotive Scroll when sidebar is open
-    if (sidebar.classList.contains("active")) {
+  window.addEventListener("sidebarToggle", (e) => {
+    if (e.detail.active) {
       locoScroll.stop();
     } else {
       locoScroll.start();
     }
-  }
-
-  if (mobileNavToggle) {
-    mobileNavToggle.addEventListener("click", toggleSidebar);
-  }
-
-  if (sidebarClose) {
-    sidebarClose.addEventListener("click", toggleSidebar);
-  }
-
-  if (sidebarOverlay) {
-    sidebarOverlay.addEventListener("click", toggleSidebar);
-  }
+  });
 });
