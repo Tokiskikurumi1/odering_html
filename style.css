@@ -2082,6 +2082,11 @@ footer {
   .booking-form-row {
     grid-template-columns: 1fr;
   }
+
+  .chat-widget {
+    bottom: 30px;
+    right: 10px;
+  }
 }
 
 @media screen and (max-width: 430px) {
