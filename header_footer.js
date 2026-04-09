@@ -9,7 +9,8 @@ async function loadComponents() {
   const components = [
     { id: "header-placeholder", url: "header.html", init: initHeaderLogic },
     { id: "sidebar-placeholder", url: "sidebar_mobile.html", init: initSidebarLogic },
-    { id: "footer-placeholder", url: "footer.html", init: null }
+    { id: "footer-placeholder", url: "footer.html", init: null },
+    { id: "chat-placeholder", url: "chat_widget_chat_modal.html", init: initChatLogic }
   ];
 
   for (const component of components) {
