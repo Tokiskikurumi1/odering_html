@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("menus-search-input");
   const clearBtn = document.getElementById("menus-search-clear");
 
+  const gridWrapper = document.querySelector(".menus-dish-grid-wrapper");
+
   // Empty state element
   const emptyState = document.createElement("div");
   emptyState.className = "menus-empty-state";
@@ -24,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Không tồn tại sản phẩm!</p>
   `;
   emptyState.style.display = "none";
+
+  // Chèn cố định vào wrapper, ngay sau grid
+  if (gridWrapper) gridWrapper.insertBefore(emptyState, pgContainer);
 
   if (!grid) return;
 
@@ -48,22 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
     allCards.forEach((card) => (card.style.display = "none"));
 
     if (isEmpty) {
-      // Show empty state inside grid, hide pagination
-      allCards.forEach((card) => (card.style.display = "none"));
-
-      if (!grid.contains(emptyState)) {
-        grid.appendChild(emptyState);
-      }
-
+      // Ẩn grid, hiện emptyState (vẫn nằm trong wrapper)
+      grid.style.display = "none";
       emptyState.style.display = "flex";
       if (pgContainer) pgContainer.style.display = "none";
     } else {
-      // Restore grid if it was showing empty state
-      if (grid.contains(emptyState)) {
-        grid.innerHTML = "";
-        allCards.forEach(card => grid.appendChild(card));
-      }
-
+      // Hiện grid, ẩn emptyState
+      grid.style.display = "grid";
       emptyState.style.display = "none";
       if (pgContainer) pgContainer.style.display = "";
 

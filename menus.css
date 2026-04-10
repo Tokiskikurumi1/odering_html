@@ -118,6 +118,9 @@
   padding: 0 30px 80px;
   gap: 30px;
   align-items: flex-start;
+  justify-content: flex-start;
+  /* Ép nội dung về bên trái, giữ Sidebar cố định */
+  width: 100%;
 }
 
 /* Sidebar Filter */
@@ -129,6 +132,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-self: flex-start;
 }
 
 .ms-filter-group {
@@ -179,6 +183,10 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   align-content: start;
+  min-height: 500px;
+  width: 100%;
+  justify-items: stretch;
+  align-items: stretch;
 }
 
 /* Menu Dish Card */
@@ -314,34 +322,36 @@
 /* ── Grid Wrapper ────────────────────────────── */
 .menus-dish-grid-wrapper {
   flex: 1;
+  /* Chiếm toàn bộ phần còn lại bên phải */
   display: flex;
   flex-direction: column;
   min-width: 0;
-  /* Cho phép flex item co dãn đúng cách */
-}
-
-/* Grid và empty state cùng chiếm đúng chiều cao nhau */
-/* .menus-dish-grid-display {
-  display: grid;
   width: 100%;
-  min-height: 500px;
 }
 
-.menus-empty-state {
-  min-height: 500px;
-} */
+/* Product Grid */
+.menus-dish-grid-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  min-height: 600px;
+  align-content: start;
+}
 
 /* ── Empty State ─────────────────────────────── */
 .menus-empty-state {
-  grid-column: 1 / -1;
   width: 100%;
+  min-height: 600px;
+  /* Chiều cao tương đương 2 hàng sản phẩm */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   color: rgba(254, 247, 240, 0.45);
   text-align: center;
+  flex: 1;
 }
 
 .menus-empty-state i {
@@ -421,7 +431,6 @@
   line-height: 1;
 }
 
-
 /* Responsive */
 @media screen and (max-width: 1280px) {
   .menus-dish-grid-display {
@@ -481,11 +490,5 @@
     padding: 12px 0;
   }
 
-  .ms-card-img-wrapper {
-    aspect-ratio: 1;
-  }
 
-  .ms-card-img-wrapper img {
-    max-width: 300px;
-  }
 }
