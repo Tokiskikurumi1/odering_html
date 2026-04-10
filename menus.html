@@ -1,15 +1,294 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Thực đơn - Ordering System</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Styles -->
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="style.css?v=5" />
+    <link rel="stylesheet" href="header_footer.css" />
+    <link rel="stylesheet" href="sidebar_mobile.css" />
+    <link rel="stylesheet" href="chat_widget_chat_modal.css" />
+    <link rel="stylesheet" href="menus.css" />
   </head>
-  <body>
+  <body style="background-color: #0b2e26">
     <!-- HEADER PLACEHOLDER -->
     <div id="header-placeholder"></div>
 
     <!-- SIDEBAR PLACEHOLDER -->
     <div id="sidebar-placeholder"></div>
+
+    <main class="menus-page-wrapper">
+      <section class="menus-top-banner">
+        <h1 class="menus-main-title">
+          <i class="fa-solid fa-plate-wheat"></i>
+          Thực đơn của chúng tôi
+          <i class="fa-solid fa-plate-wheat"></i>
+        </h1>
+
+        <div class="menus-category-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="menus-search-input"
+            placeholder="Tìm kiếm món ăn..."
+            autocomplete="off"
+          />
+          <button class="menus-search-clear-btn" id="menus-search-clear" aria-label="Xóa tìm kiếm">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </section>
+
+      <section class="menus-content-flex-container">
+        <!-- Filter Sidebar -->
+        <aside class="aside-menus-filter-panel">
+          <div class="ms-filter-group">
+            <div class="ms-filter-header">Chọn mức giá:</div>
+            <div class="ms-filter-content">
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Dưới 100.000đ
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Từ 100.000đ - 200.000đ
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Từ 200.000đ - 500.000đ
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Từ 500.000đ - 1 triệu
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Trên 1 triệu
+              </label>
+            </div>
+          </div>
+
+          <div class="ms-filter-group">
+            <div class="ms-filter-header">Hương vị</div>
+            <div class="ms-filter-content">
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Mặn
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Ngọt
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Chua
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Cay
+              </label>
+            </div>
+          </div>
+
+          <div class="ms-filter-group">
+            <div class="ms-filter-header">Kích cỡ</div>
+            <div class="ms-filter-content">
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Lớn
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Vừa
+              </label>
+              <label class="ms-filter-item">
+                <input type="checkbox" /> Nhỏ
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid Wrapper -->
+        <div class="menus-dish-grid-wrapper">
+          <div class="menus-dish-grid-display" id="menus-dish-grid">
+
+          <!-- Sample Card 1 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <div class="ms-card-discount-badge">- 3%</div>
+              <img src="images/1.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Salad rau mùa sốt cam</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">68.000₫</span>
+                <span class="ms-card-old-price">70.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Card 2 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <img src="images/2.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Salad rau mùa sốt mác mác</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">68.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Card 3 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <div class="ms-card-discount-badge">- 9%</div>
+              <img src="images/3.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Phở cuốn</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">82.000₫</span>
+                <span class="ms-card-old-price">90.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Card 4 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <img src="images/4.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Gỏi tai heo hoa chuối</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">125.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Card 5 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <img src="images/1.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Gà cuốn lá dứa</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">168.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Card 6 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <img src="images/2.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Ức gà đút lò phủ lá...</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">185.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Card 7 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <div class="ms-card-discount-badge">- 9%</div>
+              <img src="images/3.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Ba rọi nướng riềng mẻ</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">155.000₫</span>
+                <span class="ms-card-old-price">170.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Card 8 -->
+          <div class="menu-dish-card-item">
+            <div class="ms-card-img-wrapper">
+              <div class="ms-card-discount-badge">- 8%</div>
+              <img src="images/4.PNG" alt="Food" />
+            </div>
+            <div class="ms-card-info">
+              <h3 class="ms-card-name">Canh mướp hương nh...</h3>
+              <div class="ms-card-price-container">
+                <span class="ms-card-current-price">120.000₫</span>
+                <span class="ms-card-old-price">130.000₫</span>
+              </div>
+              <div class="ms-card-actions">
+                <button class="btn-menus-detail">Xem chi tiết</button>
+                <button class="btn-menus-card"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="menus-pagination" id="menus-pagination">
+            <button class="pg-btn pg-prev" id="pg-prev" aria-label="Trang trước">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="pg-info">
+              <span class="pg-current" id="pg-current">1</span>
+              <span class="pg-separator">/</span>
+              <span class="pg-total" id="pg-total">1</span>
+            </div>
+            <button class="pg-btn pg-next" id="pg-next" aria-label="Trang sau">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      <div id="footer-placeholder"></div>
+    </main>
+
+    <!-- CHAT PLACEHOLDER -->
+    <div id="chat-placeholder"></div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="sidebar_mobile.js"></script>
+    <script src="chat_widget_chat_modal.js"></script>
+    <script src="header_footer.js"></script>
+    <script src="menus.js"></script>
   </body>
 </html>
