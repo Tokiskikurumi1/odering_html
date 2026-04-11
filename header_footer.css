@@ -55,6 +55,11 @@
   list-style: none;
 }
 
+.main-header .menu-right ul li {
+  margin-left: auto;
+}
+
+
 .main-header .menu-left ul li a,
 .main-header .menu-right ul li a {
   color: #fff;
@@ -63,6 +68,7 @@
   transition: all 0.4s ease;
   text-decoration: none;
 }
+
 
 .main-header.scrolled .menu-left ul li a,
 .main-header.scrolled .menu-right ul li a {
@@ -180,6 +186,7 @@
   .mobile-actions {
     display: flex;
   }
+
   .main-header .menu-left,
   .main-header .menu-right {
     display: none;

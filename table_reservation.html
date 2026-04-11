@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="style.css?v=5" />
+    <link rel="stylesheet" href="header_footer.css" />
+    <link rel="stylesheet" href="sidebar_mobile.css" />
+    <link rel="stylesheet" href="chat_widget_chat_modal.css" />
+    <link rel="stylesheet" href="table_reservation.css" />
+    <title>Đặt bàn</title>
+  </head>
+
+  <body style="background-color: #0b2e26">
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- SIDEBAR PLACEHOLDER -->
+    <div id="sidebar-placeholder"></div>
+
+    <main class="tbl-resrv-page-wrapper">
+      <section class="tbl-resrv-hero-banner">
+        <h1 class="tbl-resrv-main-title">
+          <i class="fa-regular fa-calendar-check"></i>
+          Đặt Bàn Trực Tuyến
+          <i class="fa-regular fa-calendar-check"></i>
+        </h1>
+        <p class="tbl-resrv-subtitle">
+          Trải nghiệm không gian ẩm thực sang trọng bậc nhất
+        </p>
+      </section>
+
+      <section class="tbl-resrv-content-container">
+        <div class="tbl-resrv-flex-layout">
+          <!-- Laze/Glass Form Column -->
+          <div class="tbl-resrv-form-column">
+            <h2 class="tbl-resrv-form-header">Thông tin đặt bàn</h2>
+            <form class="tbl-resrv-booking-form">
+              <div class="tbl-resrv-input-group">
+                <div class="tbl-resrv-input-field">
+                  <label for="resrv-date">Ngày đặt</label>
+                  <div class="tbl-resrv-input-wrapper">
+                    <i class="fa-regular fa-calendar"></i>
+                    <input
+                      type="date"
+                      id="resrv-date"
+                      class="tbl-resrv-input"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="tbl-resrv-input-field">
+                  <label for="resrv-time">Giờ đến</label>
+                  <div class="tbl-resrv-input-wrapper">
+                    <i class="fa-regular fa-clock"></i>
+                    <input
+                      type="time"
+                      id="resrv-time"
+                      class="tbl-resrv-input"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="tbl-resrv-input-group">
+                <div class="tbl-resrv-input-field">
+                  <label for="resrv-people">Số lượng khách</label>
+                  <div class="tbl-resrv-input-wrapper">
+                    <i class="fa-solid fa-user-group"></i>
+                    <select id="resrv-people" class="tbl-resrv-select" required>
+                      <option value="" disabled selected>Chọn số người</option>
+                      <option value="1">1 Người</option>
+                      <option value="2">2 Người</option>
+                      <option value="3">3 Người</option>
+                      <option value="4">4 Người</option>
+                      <option value="5-8">5 - 8 Người</option>
+                      <option value="9+">
+                        Nhóm trên 8 người (Ghi chú thêm)
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tbl-resrv-input-group">
+                <div class="tbl-resrv-input-field">
+                  <label for="resrv-name">Họ và tên</label>
+                  <div class="tbl-resrv-input-wrapper">
+                    <i class="fa-regular fa-user"></i>
+                    <input
+                      type="text"
+                      id="resrv-name"
+                      class="tbl-resrv-input"
+                      placeholder="Nhập tên của bạn"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="tbl-resrv-input-field">
+                  <label for="resrv-phone">Số điện thoại</label>
+                  <div class="tbl-resrv-input-wrapper">
+                    <i class="fa-solid fa-phone"></i>
+                    <input
+                      type="tel"
+                      id="resrv-phone"
+                      class="tbl-resrv-input"
+                      placeholder="Nhập SĐT..."
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="tbl-resrv-input-field">
+                <label for="resrv-note">Ghi chú (Tuỳ chọn)</label>
+                <div class="tbl-resrv-input-wrapper tbl-resrv-textarea-wrapper">
+                  <i class="fa-regular fa-comment-dots"></i>
+                  <textarea
+                    id="resrv-note"
+                    class="tbl-resrv-input tbl-resrv-textarea"
+                    rows="3"
+                    placeholder="Yêu cầu đặc biệt (vị trí bàn, trang trí, ghế trẻ em...)"
+                  ></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="tbl-resrv-submit-btn">
+                <span>Khởi tạo đặt bàn</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Restaurant Image/Info Column -->
+          <div class="tbl-resrv-info-column">
+            <div class="tbl-resrv-image-card">
+              <!-- Placeholder Image, using one existing on site like images/1.PNG if present, else a placeholder -->
+              <img
+                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1000&auto=format&fit=crop"
+                alt="Không gian nhà hàng"
+                class="tbl-resrv-restaurant-img"
+              />
+              <div class="tbl-resrv-image-overlay">
+                <div class="tbl-resrv-hours-info">
+                  <h3 class="tbl-resrv-hours-title">Trải Nghiệm Đẳng Cấp</h3>
+                  <ul class="tbl-resrv-info-list">
+                    <li>
+                      <div class="tbl-resrv-info-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                      </div>
+                      <div class="tbl-resrv-info-text">
+                        <strong>Địa chỉ:</strong> 123 Ẩm Thực, Quận 1, HCM
+                      </div>
+                    </li>
+                    <li>
+                      <div class="tbl-resrv-info-icon">
+                        <i class="fa-regular fa-clock"></i>
+                      </div>
+                      <div class="tbl-resrv-info-text">
+                        <strong>Mở cửa:</strong> 08:00 AM - 10:00 PM <br />
+                        <span style="font-size: 0.85rem; opacity: 0.8"
+                          >(Tất cả các ngày trong tuần)</span
+                        >
+                      </div>
+                    </li>
+                    <li>
+                      <div class="tbl-resrv-info-icon">
+                        <i class="fa-solid fa-phone-volume"></i>
+                      </div>
+                      <div class="tbl-resrv-info-text">
+                        <strong>Hotline hỗ trợ:</strong> 1900 6868
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <!-- CHAT PLACEHOLDER -->
+    <div id="chat-placeholder"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="sidebar_mobile.js"></script>
+    <script src="chat_widget_chat_modal.js"></script>
+    <script src="header_footer.js"></script>
+    <script src="table_reservation.js"></script>
+  </body>
+</html>

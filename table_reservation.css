@@ -1,0 +1,347 @@
+/* =========================================
+   TABLE RESERVATION PAGE STYLES
+   Prefix: tbl-resrv-
+   Note: All classes are prefixed to avoid 
+   conflicts when migrating to React.
+   ========================================= */
+
+/* Main Layout Wrapper */
+.tbl-resrv-page-wrapper {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  padding: 80px 0 100px;
+}
+
+/* Container limits width */
+.tbl-resrv-content-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.tbl-resrv-hero-banner {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.tbl-resrv-main-title {
+  font-family: "Pacifico", cursive;
+  font-size: 3rem;
+  color: #e88735;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.tbl-resrv-main-title i {
+  font-size: 2.2rem;
+  margin: 0 15px;
+  opacity: 0.8;
+}
+
+.tbl-resrv-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Flex Layout for 2 Columns */
+.tbl-resrv-flex-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* Let the columns have equal width roughly */
+.tbl-resrv-form-column,
+.tbl-resrv-info-column {
+  flex: 1;
+}
+
+/* =========================================
+   FORM COLUMN (GLASSMORPHISM)
+   ========================================= */
+.tbl-resrv-form-column {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.tbl-resrv-form-header {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.tbl-resrv-booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Fields Wrapper */
+.tbl-resrv-input-group {
+  display: flex;
+  gap: 20px;
+}
+
+.tbl-resrv-input-group>div {
+  flex: 1;
+}
+
+.tbl-resrv-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tbl-resrv-input-field label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.tbl-resrv-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tbl-resrv-input-wrapper i {
+  position: absolute;
+  left: 15px;
+  color: #e88735;
+  font-size: 1.1rem;
+}
+
+.tbl-resrv-textarea-wrapper {
+  align-items: flex-start;
+}
+
+.tbl-resrv-textarea-wrapper i {
+  top: 15px;
+}
+
+/* Inputs & Select Elements */
+.tbl-resrv-input,
+.tbl-resrv-select {
+  width: 100%;
+  padding: 14px 15px 14px 45px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.tbl-resrv-select {
+  cursor: pointer;
+  appearance: none;
+}
+
+/* Style option items separately for better contrast since native ones can be ugly in darkmode */
+.tbl-resrv-select option {
+  background-color: #0b2e26;
+  color: #fff;
+}
+
+.tbl-resrv-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.tbl-resrv-input::placeholder,
+.tbl-resrv-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Focus Effects */
+.tbl-resrv-input-wrapper:focus-within {
+  border-color: #e88735;
+  box-shadow: 0 0 10px rgba(232, 135, 53, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Workaround for Date/Time Picker icon centering visually */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.tbl-resrv-submit-btn {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #e88735, #d17526);
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(232, 135, 53, 0.3);
+}
+
+.tbl-resrv-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(232, 135, 53, 0.4);
+}
+
+.tbl-resrv-submit-btn:active {
+  transform: translateY(1px);
+}
+
+/* =========================================
+   INFORMATION COLUMN (RIGHT SIDE)
+   ========================================= */
+.tbl-resrv-info-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.tbl-resrv-image-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.tbl-resrv-restaurant-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.tbl-resrv-image-card:hover .tbl-resrv-restaurant-img {
+  transform: scale(1.05);
+}
+
+.tbl-resrv-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 50px 30px 30px;
+}
+
+.tbl-resrv-hours-info {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.tbl-resrv-hours-title {
+  color: #e88735;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.tbl-resrv-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tbl-resrv-info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.tbl-resrv-info-icon {
+  color: #e88735;
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+
+.tbl-resrv-info-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tbl-resrv-info-text strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+/* =========================================
+   RESPONSIVE SCREENS
+   ========================================= */
+
+@media (max-width: 992px) {
+  .tbl-resrv-flex-layout {
+    flex-direction: column;
+  }
+
+  .tbl-resrv-image-card {
+    min-height: 400px;
+    /* Ensure image section has area to display */
+  }
+}
+
+@media (max-width: 600px) {
+  .tbl-resrv-input-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .tbl-resrv-main-title {
+    font-size: 2.2rem;
+  }
+
+  .tbl-resrv-main-title i {
+    font-size: 1.5rem;
+  }
+
+  .tbl-resrv-form-column {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 430px) {
+  .tbl-resrv-main-title {
+    font-size: 1.8rem;
+
+  }
+
+  .tbl-resrv-main-title i {
+    font-size: 1.5rem;
+  }
+}
