@@ -1,0 +1,277 @@
+/* Global Wrapper & Container */
+.hlp-page-wrapper {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  padding: 100px 0 80px;
+}
+
+.hlp-container {
+  max-width: 900px; /* Thinner container for FAQ readability */
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* =========================================
+   SEARCH SECTION
+   ========================================= */
+.hlp-search-section {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hlp-main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.hlp-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+}
+
+.hlp-search-box {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  padding: 8px 10px 8px 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.hlp-search-box:focus-within {
+  border-color: #e88735;
+  box-shadow: 0 0 20px rgba(232, 135, 53, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hlp-search-box i {
+  color: #e88735;
+  font-size: 1.2rem;
+}
+
+.hlp-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 15px;
+  outline: none;
+}
+
+.hlp-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.hlp-search-btn {
+  background: linear-gradient(135deg, #e88735, #d17526);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.hlp-search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(232, 135, 53, 0.4);
+}
+
+/* =========================================
+   FAQ ACCORDION SECTION
+   ========================================= */
+.hlp-faq-section {
+  margin-bottom: 80px;
+}
+
+.hlp-section-header {
+  font-size: 1.8rem;
+  color: #e88735;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.hlp-accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hlp-accordion-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hlp-accordion-item.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(232, 135, 53, 0.3);
+}
+
+.hlp-accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hlp-accordion-header h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+  padding-right: 20px;
+}
+
+.hlp-accordion-icon {
+  color: #e88735;
+  font-size: 1.2rem;
+  transition: transform 0.4s ease;
+}
+
+.hlp-accordion-item.active .hlp-accordion-icon {
+  transform: rotate(180deg);
+}
+
+.hlp-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+
+.hlp-accordion-content-inner {
+  padding: 0 25px 25px 25px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* =========================================
+   CONTACT CARDS (GLASSMORPHISM)
+   ========================================= */
+.hlp-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.hlp-contact-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.hlp-contact-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(232, 135, 53, 0.4);
+}
+
+.hlp-contact-icon-wrap {
+  width: 70px;
+  height: 70px;
+  background: rgba(232, 135, 53, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: #e88735;
+  font-size: 1.8rem;
+}
+
+.hlp-contact-card h4 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.hlp-contact-card p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.hlp-contact-link {
+  display: inline-block;
+  color: #e88735;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.hlp-contact-link:hover {
+  color: #fff;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .hlp-main-title {
+    font-size: 2rem;
+  }
+
+  .hlp-search-box {
+    flex-direction: column;
+    padding: 8px;
+    border-radius: 25px;
+  }
+
+  .hlp-search-box i {
+    display: none; /* Hide icon on very small mobile for space */
+  }
+
+  .hlp-search-input {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 20px;
+  }
+
+  .hlp-search-btn {
+    width: 100%;
+  }
+
+  .hlp-accordion-header h3 {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hlp-main-title {
+    font-size: 1.8rem;
+  }
+}
