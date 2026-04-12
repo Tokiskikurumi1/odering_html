@@ -274,4 +274,7 @@
   .hlp-main-title {
     font-size: 1.8rem;
   }
+  .hlp-contact-card {
+    padding: 30px 10px;
+  }
 }
