@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;900&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="style.css?v=5" />
+    <link rel="stylesheet" href="header_footer.css" />
+    <link rel="stylesheet" href="sidebar_mobile.css" />
+    <link rel="stylesheet" href="chat_widget_chat_modal.css" />
+    <link rel="stylesheet" href="notifications.css" />
+    <title>Thông Báo - Tài khoản cá nhân</title>
+  </head>
+
+  <body style="background-color: #0b2e26">
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- SIDEBAR PLACEHOLDER -->
+    <div id="sidebar-placeholder"></div>
+
+    <main class="acc-page-wrapper">
+      <div class="acc-container">
+        <div class="acc-layout">
+          <!-- SIDEBAR NAVIGATION -->
+          <aside class="acc-sidebar">
+            <div class="acc-user-profile">
+              <div class="acc-avatar">
+                <i class="fa-solid fa-user-astronaut"></i>
+              </div>
+              <div class="acc-user-info">
+                <h4>Khách Hàng VIP</h4>
+                <p>Thành viên từ 2024</p>
+              </div>
+            </div>
+
+            <nav class="acc-nav-menu">
+              <a href="#" class="acc-nav-link active">
+                <div class="acc-nav-icon">
+                  <i class="fa-regular fa-bell"></i>
+                </div>
+                <span>Thông báo</span>
+                <span class="acc-badge">3</span>
+              </a>
+              <a href="#" class="acc-nav-link">
+                <div class="acc-nav-icon">
+                  <i class="fa-solid fa-receipt"></i>
+                </div>
+                <span>Đơn đặt bàn</span>
+              </a>
+              <a href="#" class="acc-nav-link">
+                <div class="acc-nav-icon">
+                  <i class="fa-solid fa-ticket-simple"></i>
+                </div>
+                <span>Khuyến mãi</span>
+              </a>
+              <a href="#" class="acc-nav-link">
+                <div class="acc-nav-icon">
+                  <i class="fa-regular fa-user"></i>
+                </div>
+                <span>Tài khoản</span>
+              </a>
+              <a href="#" class="acc-nav-link logout">
+                <div class="acc-nav-icon">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </div>
+                <span>Thoát</span>
+              </a>
+            </nav>
+          </aside>
+
+          <!-- MAIN CONTENT (NOTIFICATIONS) -->
+          <section class="acc-content">
+            <div class="acc-content-header">
+              <h1 class="acc-page-title">Thông báo của bạn</h1>
+              <button class="acc-mark-read-btn">Đánh dấu tất cả đã đọc</button>
+            </div>
+
+            <div class="acc-filter-tabs">
+              <button class="acc-tab-btn active">Tất cả</button>
+              <button class="acc-tab-btn">
+                Chưa đọc <span class="acc-tab-badge">3</span>
+              </button>
+              <button class="acc-tab-btn">Cập nhật đơn hàng</button>
+            </div>
+
+            <div class="acc-notification-list">
+              <!-- Unread Notification (Order) -->
+              <div class="acc-notif-card unread">
+                <div class="acc-notif-icon-wrapper type-order">
+                  <i class="fa-solid fa-motorcycle"></i>
+                </div>
+                <div class="acc-notif-body">
+                  <h3 class="acc-notif-title">
+                    Đơn hàng #DH1094 đang trên đường giao
+                  </h3>
+                  <p class="acc-notif-desc">
+                    Shipper Nguyễn Văn A (098xxxxxxx) đang giao món ăn ngon tới
+                    bạn. Vui lòng chú ý điện thoại nhé!
+                  </p>
+                  <span class="acc-notif-time">10 phút trước</span>
+                </div>
+                <div class="acc-notif-status-dot"></div>
+              </div>
+
+              <!-- Unread Notification (Reservation) -->
+              <div class="acc-notif-card unread">
+                <div class="acc-notif-icon-wrapper type-reservation">
+                  <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <div class="acc-notif-body">
+                  <h3 class="acc-notif-title">Đặt bàn thành công!</h3>
+                  <p class="acc-notif-desc">
+                    Lịch hẹn bàn 4 người vào lúc 19:30 tối nay của bạn đã được
+                    chúng tôi xác nhận. Hẹn gặp bạn tại nhà hàng!
+                  </p>
+                  <span class="acc-notif-time">1 giờ trước</span>
+                </div>
+                <div class="acc-notif-status-dot"></div>
+              </div>
+
+              <!-- Unread Notification (Promo) -->
+              <div class="acc-notif-card unread">
+                <div class="acc-notif-icon-wrapper type-promo">
+                  <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="acc-notif-body">
+                  <h3 class="acc-notif-title">Tặng bạn Vocher Giảm 30%</h3>
+                  <p class="acc-notif-desc">
+                    Mã giảm giá đặc biệt nhân dịp cuối tuần dành riêng cho hội
+                    viên VIP. Sử dụng mã WEEKEND30 tại trang Thanh toán.
+                  </p>
+                  <span class="acc-notif-time">5 giờ trước</span>
+                </div>
+                <div class="acc-notif-status-dot"></div>
+              </div>
+
+              <!-- Read Notification -->
+              <div class="acc-notif-card">
+                <div class="acc-notif-icon-wrapper type-system">
+                  <i class="fa-solid fa-check-double"></i>
+                </div>
+                <div class="acc-notif-body">
+                  <h3 class="acc-notif-title">
+                    Đơn hàng #DH1080 đã hoàn thành
+                  </h3>
+                  <p class="acc-notif-desc">
+                    Đơn hàng của bạn đã được giao thành công. Cảm ơn bạn đã tin
+                    tưởng Hệ Thống Đặt Ngon!
+                  </p>
+                  <span class="acc-notif-time">Hôm qua, 18:45</span>
+                </div>
+              </div>
+
+              <!-- Read Notification -->
+              <div class="acc-notif-card">
+                <div class="acc-notif-icon-wrapper type-system">
+                  <i class="fa-solid fa-check-double"></i>
+                </div>
+                <div class="acc-notif-body">
+                  <h3 class="acc-notif-title">
+                    Đơn hàng #DH1002 đã hoàn thành
+                  </h3>
+                  <p class="acc-notif-desc">Kính chúc quý khách ngon miệng.</p>
+                  <span class="acc-notif-time">12 tháng 4, 12:30</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- CHAT PLACEHOLDER -->
+    <div id="chat-placeholder"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="sidebar_mobile.js"></script>
+    <script src="chat_widget_chat_modal.js"></script>
+    <script src="header_footer.js"></script>
+  </body>
+</html>

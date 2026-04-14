@@ -1,0 +1,473 @@
+/* =========================================
+   ACCOUNT AND NOTIFICATIONS STYLES
+   Prefix: acc-
+   Theme: Deep Green (#0b2e26) & Gold (#e88735)
+   ========================================= */
+
+/* Global Layout */
+.acc-page-wrapper {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  padding: 100px 0 60px;
+}
+
+.acc-container {
+  max-width: 1250px;
+  width: 95%;
+  margin: 30px auto;
+}
+
+.acc-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* =========================================
+   SIDEBAR MENU
+   ========================================= */
+.acc-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px 20px;
+  /* position: sticky;
+  top: 100px; */
+}
+
+.acc-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.acc-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e88735, #b8621d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(232, 135, 53, 0.4);
+}
+
+.acc-user-info h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.acc-user-info p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.acc-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.acc-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.acc-nav-icon {
+  width: 25px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.acc-badge {
+  background: #e88735;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: auto;
+  /* đẩy ra sát lề phải */
+  box-shadow: 0 2px 8px rgba(232, 135, 53, 0.4);
+}
+
+.acc-nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.acc-nav-link.active {
+  background: rgba(232, 135, 53, 0.15);
+  color: #e88735;
+}
+
+.acc-nav-link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 4px;
+  background: #e88735;
+  border-radius: 0 5px 5px 0;
+}
+
+.acc-nav-link.logout {
+  margin-top: 20px;
+  color: #ff6b6b;
+}
+
+.acc-nav-link.logout:hover {
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff8787;
+}
+
+/* =========================================
+   MAIN CONTENT AREA (NOTIFICATIONS)
+   ========================================= */
+.acc-content {
+  flex: 1;
+  min-width: 0;
+  /* Cho phép co giãn khi mobile */
+}
+
+.acc-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  /* Tránh tràn layout nhỏ */
+  gap: 15px;
+}
+
+.acc-page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.acc-mark-read-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.acc-mark-read-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* TABS */
+.acc-filter-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.acc-filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.acc-tab-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 10px 5px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.acc-tab-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.acc-tab-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.acc-tab-btn.active {
+  color: #e88735;
+}
+
+.acc-tab-btn.active .acc-tab-badge {
+  background: rgba(232, 135, 53, 0.2);
+  color: #e88735;
+}
+
+.acc-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #e88735;
+  border-radius: 5px 5px 0 0;
+}
+
+/* =========================================
+   NOTIFICATION CARDS
+   ========================================= */
+.acc-notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.acc-notif-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 22px;
+  position: relative;
+  transition:
+    transform 0.2s,
+    background 0.3s;
+}
+
+.acc-notif-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.acc-notif-card.unread {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(232, 135, 53, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Variations */
+.acc-notif-icon-wrapper {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+/* Styles cho từng loại icon (Orders, Resrv, Promo...) */
+.type-order {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+.type-reservation {
+  background: rgba(232, 135, 53, 0.15);
+  color: #e88735;
+}
+
+.type-promo {
+  background: rgba(244, 63, 94, 0.15);
+  color: #f43f5e;
+}
+
+.type-system {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Card Body Content */
+.acc-notif-body {
+  flex: 1;
+}
+
+.acc-notif-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.acc-notif-card.unread .acc-notif-title {
+  color: #fff;
+}
+
+.acc-notif-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+}
+
+.acc-notif-card.unread .acc-notif-desc {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.acc-notif-time {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
+
+.acc-notif-card.unread .acc-notif-time {
+  color: #e88735;
+}
+
+.acc-notif-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e88735;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  box-shadow: 0 0 10px rgba(232, 135, 53, 0.8);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 992px) {
+  .acc-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .acc-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .acc-sidebar {
+    width: 100%;
+    position: static;
+    padding: 20px;
+  }
+
+  /* Chuyển menu dọc thành ngang cuộn trên mobile/tablet */
+  .acc-nav-menu {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    gap: 15px;
+    scrollbar-width: none;
+  }
+
+  .acc-nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .acc-nav-link {
+    white-space: nowrap;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .acc-nav-link.active::before {
+    display: none;
+  }
+
+  .acc-nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: #e88735;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .acc-nav-link.logout {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .acc-page-title {
+    font-size: 1.6rem;
+  }
+
+  .acc-notif-card {
+    padding: 16px;
+    gap: 15px;
+  }
+
+  .acc-notif-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  .acc-notif-title {
+    font-size: 1.05rem;
+  }
+
+  .acc-notif-status-dot {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 413px) {
+  .acc-filter-tabs {
+    display: flex;
+    gap: 15px;
+
+    overflow-x: auto;
+    flex-wrap: nowrap;
+
+    scrollbar-width: none;
+    padding: 0 10px 10px;
+  }
+
+  .acc-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .acc-tab-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+
+    /* THÊM DÒNG NÀY */
+    min-width: max-content;
+  }
+}
