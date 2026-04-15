@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Đăng nhập hoặc tạo tài khoản để trải nghiệm dịch vụ nhà hàng cao cấp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="login.css" />
+  <title>Đăng Nhập / Đăng Ký — Nhà Hàng</title>
+</head>
+
+<body>
+  <div class="auth-page-wrapper">
+    <!-- Animated background blobs -->
+    <div class="auth-bg-blob auth-bg-blob--1"></div>
+    <div class="auth-bg-blob auth-bg-blob--2"></div>
+    <div class="auth-card-container">
+
+      <!-- ===== LEFT PANEL (Image / Branding) ===== -->
+      <aside class="auth-panel-left" id="auth-panel-left">
+
+      <!-- Overlay gradient -->
+      <div class="auth-panel-left__overlay"></div>
+
+      <!-- Back to home -->
+      <a href="index.html" class="auth-back-btn" id="auth-back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Trang chủ</span>
+      </a>
+
+      <!-- Center content -->
+      <div class="auth-panel-left__body">
+        <!-- Brand icon -->
+        <div class="auth-panel-left__icon">
+          <i class="fa-solid fa-utensils"></i>
+        </div>
+
+        <!-- Brand name -->
+        <h2 class="auth-panel-left__brand">Nhà Hàng</h2>
+
+        <!-- Tagline (switches between login / register) -->
+        <p class="auth-panel-left__tagline" id="panel-tagline">
+          Chào mừng trở lại!<br />
+          <span>Đăng nhập để tiếp tục hành trình ẩm thực của bạn.</span>
+        </p>
+
+        <!-- Decorative dots -->
+        <div class="auth-panel-left__dots">
+          <span class="auth-dot auth-dot--active" data-idx="0"></span>
+          <span class="auth-dot" data-idx="1"></span>
+          <span class="auth-dot" data-idx="2"></span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ===== RIGHT PANEL (Scrollable form) ===== -->
+    <div class="auth-panel-right" id="auth-panel-right">
+
+      <!-- Tab Switcher (sticky top) -->
+      <div class="auth-tabs-sticky">
+        <div class="auth-tabs" id="auth-tabs">
+          <button class="auth-tab auth-tab--active" id="tab-login" data-tab="login">Đăng Nhập</button>
+          <button class="auth-tab" id="tab-register" data-tab="register">Đăng Ký</button>
+          <span class="auth-tab-indicator" id="auth-tab-indicator"></span>
+        </div>
+      </div>
+
+      <!-- Scrollable content area -->
+      <div class="auth-panel-right__scroll">
+
+        <!-- ===== LOGIN FORM ===== -->
+        <form class="auth-form auth-form--active" id="form-login" novalidate>
+          <h1 class="auth-form__title">Chào mừng trở lại!</h1>
+          <p class="auth-form__subtitle">Đăng nhập để tiếp tục hành trình ẩm thực của bạn.</p>
+
+          <!-- Email -->
+          <div class="auth-field" id="login-field-email">
+            <label class="auth-field__label" for="login-email">Email</label>
+            <div class="auth-field__wrapper">
+              <i class="fa-regular fa-envelope auth-field__icon"></i>
+              <input type="email" id="login-email" class="auth-field__input" placeholder="example@email.com" autocomplete="email" />
+            </div>
+            <span class="auth-field__error" id="login-email-error"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="auth-field" id="login-field-password">
+            <label class="auth-field__label" for="login-password">Mật khẩu</label>
+            <div class="auth-field__wrapper">
+              <i class="fa-solid fa-lock auth-field__icon"></i>
+              <input type="password" id="login-password" class="auth-field__input" placeholder="Nhập mật khẩu..." autocomplete="current-password" />
+              <button type="button" class="auth-field__toggle-pw" id="toggle-login-pw" aria-label="Hiện/ẩn mật khẩu">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <span class="auth-field__error" id="login-password-error"></span>
+          </div>
+
+          <!-- Options Row -->
+          <div class="auth-options-row">
+            <label class="auth-checkbox" for="login-remember">
+              <input type="checkbox" id="login-remember" />
+              <span class="auth-checkbox__box"><i class="fa-solid fa-check"></i></span>
+              <span class="auth-checkbox__label">Ghi nhớ tôi</span>
+            </label>
+            <a href="#" class="auth-forgot-link" id="auth-forgot-link">Quên mật khẩu?</a>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="auth-btn" id="login-submit-btn">
+            <span class="auth-btn__text">Đăng Nhập</span>
+            <i class="fa-solid fa-arrow-right auth-btn__icon"></i>
+            <span class="auth-btn__loader"><i class="fa-solid fa-spinner fa-spin"></i></span>
+          </button>
+
+          <!-- Divider -->
+          <div class="auth-divider"><span>hoặc đăng nhập với</span></div>
+
+          <!-- Social Login -->
+          <div class="auth-social-row">
+            <button type="button" class="auth-social-btn" id="login-google" aria-label="Đăng nhập Google">
+              <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="20" height="20" />
+              <span>Google</span>
+            </button>
+            <button type="button" class="auth-social-btn" id="login-facebook" aria-label="Đăng nhập Facebook">
+              <i class="fa-brands fa-facebook" style="color:#1877f2;font-size:1.2rem;"></i>
+              <span>Facebook</span>
+            </button>
+          </div>
+
+          <!-- Switch -->
+          <p class="auth-switch-prompt">
+            Chưa có tài khoản?
+            <button type="button" class="auth-switch-btn" id="switch-to-register">Đăng ký ngay</button>
+          </p>
+        </form>
+
+        <!-- ===== REGISTER FORM ===== -->
+        <form class="auth-form" id="form-register" novalidate>
+          <h1 class="auth-form__title">Tạo tài khoản mới</h1>
+          <p class="auth-form__subtitle">Chỉ mất vài giây để bắt đầu trải nghiệm.</p>
+
+          <!-- Name Row -->
+          <div class="auth-row-2col">
+            <div class="auth-field" id="reg-field-firstname">
+              <label class="auth-field__label" for="reg-firstname">Họ</label>
+              <div class="auth-field__wrapper">
+                <i class="fa-regular fa-user auth-field__icon"></i>
+                <input type="text" id="reg-firstname" class="auth-field__input" placeholder="Nguyễn" autocomplete="given-name" />
+              </div>
+              <span class="auth-field__error" id="reg-firstname-error"></span>
+            </div>
+            <div class="auth-field" id="reg-field-lastname">
+              <label class="auth-field__label" for="reg-lastname">Tên</label>
+              <div class="auth-field__wrapper">
+                <i class="fa-regular fa-user auth-field__icon"></i>
+                <input type="text" id="reg-lastname" class="auth-field__input" placeholder="Văn A" autocomplete="family-name" />
+              </div>
+              <span class="auth-field__error" id="reg-lastname-error"></span>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="auth-field" id="reg-field-phone">
+            <label class="auth-field__label" for="reg-phone">Số điện thoại</label>
+            <div class="auth-field__wrapper">
+              <i class="fa-solid fa-phone auth-field__icon"></i>
+              <input type="tel" id="reg-phone" class="auth-field__input" placeholder="0901 234 567" autocomplete="tel" />
+            </div>
+            <span class="auth-field__error" id="reg-phone-error"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="auth-field" id="reg-field-email">
+            <label class="auth-field__label" for="reg-email">Email</label>
+            <div class="auth-field__wrapper">
+              <i class="fa-regular fa-envelope auth-field__icon"></i>
+              <input type="email" id="reg-email" class="auth-field__input" placeholder="example@email.com" autocomplete="email" />
+            </div>
+            <span class="auth-field__error" id="reg-email-error"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="auth-field" id="reg-field-password">
+            <label class="auth-field__label" for="reg-password">Mật khẩu</label>
+            <div class="auth-field__wrapper">
+              <i class="fa-solid fa-lock auth-field__icon"></i>
+              <input type="password" id="reg-password" class="auth-field__input" placeholder="Ít nhất 8 ký tự" autocomplete="new-password" />
+              <button type="button" class="auth-field__toggle-pw" id="toggle-reg-pw" aria-label="Hiện/ẩn mật khẩu">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <div class="auth-pw-strength" id="auth-pw-strength">
+              <div class="auth-pw-strength__bar">
+                <div class="auth-pw-strength__fill" id="pw-strength-fill"></div>
+              </div>
+              <span class="auth-pw-strength__label" id="pw-strength-label">Độ mạnh mật khẩu</span>
+            </div>
+            <span class="auth-field__error" id="reg-password-error"></span>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="auth-field" id="reg-field-confirm">
+            <label class="auth-field__label" for="reg-confirm">Xác nhận mật khẩu</label>
+            <div class="auth-field__wrapper">
+              <i class="fa-solid fa-lock auth-field__icon"></i>
+              <input type="password" id="reg-confirm" class="auth-field__input" placeholder="Nhập lại mật khẩu" autocomplete="new-password" />
+              <button type="button" class="auth-field__toggle-pw" id="toggle-reg-confirm-pw" aria-label="Hiện/ẩn mật khẩu">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <span class="auth-field__error" id="reg-confirm-error"></span>
+          </div>
+
+          <!-- Terms -->
+          <label class="auth-checkbox" for="reg-terms">
+            <input type="checkbox" id="reg-terms" />
+            <span class="auth-checkbox__box"><i class="fa-solid fa-check"></i></span>
+            <span class="auth-checkbox__label">
+              Tôi đồng ý với
+              <a href="#" class="auth-terms-link">Điều khoản dịch vụ</a>
+              và
+              <a href="#" class="auth-terms-link">Chính sách bảo mật</a>
+            </span>
+          </label>
+          <span class="auth-field__error" id="reg-terms-error"></span>
+
+          <!-- Submit -->
+          <button type="submit" class="auth-btn" id="register-submit-btn">
+            <span class="auth-btn__text">Tạo Tài Khoản</span>
+            <i class="fa-solid fa-user-plus auth-btn__icon"></i>
+            <span class="auth-btn__loader"><i class="fa-solid fa-spinner fa-spin"></i></span>
+          </button>
+
+          <!-- Switch -->
+          <p class="auth-switch-prompt">
+            Đã có tài khoản?
+            <button type="button" class="auth-switch-btn" id="switch-to-login">Đăng nhập ngay</button>
+          </p>
+        </form>
+
+      </div><!-- /.auth-panel-right__scroll -->
+    </div><!-- /.auth-panel-right -->
+
+    </div><!-- /.auth-card-container -->
+  </div><!-- /.auth-page-wrapper -->
+
+  <!-- Toast Notification -->
+  <div class="auth-toast" id="auth-toast">
+    <i class="auth-toast__icon fa-solid fa-circle-check"></i>
+    <span class="auth-toast__msg" id="auth-toast-msg">Thành công!</span>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

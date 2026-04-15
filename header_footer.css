@@ -55,11 +55,6 @@
   list-style: none;
 }
 
-.main-header .menu-right ul li {
-  margin-left: auto;
-}
-
-
 .main-header .menu-left ul li a,
 .main-header .menu-right ul li a {
   color: #fff;
