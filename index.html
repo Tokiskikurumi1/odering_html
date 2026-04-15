@@ -784,66 +784,94 @@
               <div class="booking-form-row">
                 <div class="booking-form-group">
                   <label for="name">Họ và tên *</label>
-                  <input type="text" id="name" name="name" required />
+                  <div class="booking-input-wrapper">
+                    <i class="fa-regular fa-user"></i>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Nhập tên của bạn"
+                      required
+                    />
+                  </div>
                 </div>
                 <div class="booking-form-group">
                   <label for="phone">Số điện thoại *</label>
-                  <input type="tel" id="phone" name="phone" required />
+                  <div class="booking-input-wrapper">
+                    <i class="fa-solid fa-phone"></i>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="Nhập SĐT..."
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="booking-form-row">
-                <div class="booking-form-group">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" />
-                </div>
+              <div class="booking-form-row-guests">
                 <div class="booking-form-group">
                   <label for="guests">Số người *</label>
-                  <select id="guests" name="guests" required>
-                    <option value="">Chọn số người</option>
-                    <option value="1">1 người</option>
-                    <option value="2">2 người</option>
-                    <option value="3">3 người</option>
-                    <option value="4">4 người</option>
-                    <option value="5">5 người</option>
-                    <option value="6">6 người</option>
-                    <option value="7+">7+ người</option>
-                  </select>
+                  <div class="booking-input-wrapper">
+                    <i class="fa-solid fa-user-group"></i>
+                    <select id="guests" name="guests" required>
+                      <option value="" disabled selected>Chọn số người</option>
+                      <option value="1">1 người</option>
+                      <option value="2">2 người</option>
+                      <option value="3">3 người</option>
+                      <option value="4">4 người</option>
+                      <option value="5-8">5 - 8 người</option>
+                      <option value="9+">Nhóm trên 8 người</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="booking-form-row">
                 <div class="booking-form-group">
                   <label for="date">Ngày *</label>
-                  <input type="date" id="date" name="date" required />
+                  <div class="booking-input-wrapper">
+                    <i class="fa-regular fa-calendar"></i>
+                    <input type="date" id="date" name="date" required />
+                  </div>
                 </div>
                 <div class="booking-form-group">
                   <label for="time">Giờ *</label>
-                  <select id="time" name="time" required>
-                    <option value="">Chọn giờ</option>
-                    <option value="11:00">11:00</option>
-                    <option value="11:30">11:30</option>
-                    <option value="12:00">12:00</option>
-                    <option value="12:30">12:30</option>
-                    <option value="13:00">13:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="17:30">17:30</option>
-                    <option value="18:00">18:00</option>
-                    <option value="18:30">18:30</option>
-                    <option value="19:00">19:00</option>
-                    <option value="19:30">19:30</option>
-                    <option value="20:00">20:00</option>
-                  </select>
+                  <div class="booking-input-wrapper">
+                    <i class="fa-regular fa-clock"></i>
+                    <select id="time" name="time" required>
+                      <option value="" disabled selected>Chọn giờ</option>
+                      <option value="11:00">11:00</option>
+                      <option value="11:30">11:30</option>
+                      <option value="12:00">12:00</option>
+                      <option value="12:30">12:30</option>
+                      <option value="13:00">13:00</option>
+                      <option value="17:00">17:00</option>
+                      <option value="17:30">17:30</option>
+                      <option value="18:00">18:00</option>
+                      <option value="18:30">18:30</option>
+                      <option value="19:00">19:00</option>
+                      <option value="19:30">19:30</option>
+                      <option value="20:00">20:00</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="booking-form-group full-width">
                 <label for="notes">Ghi chú</label>
-                <textarea
-                  id="notes"
-                  name="notes"
-                  rows="4"
-                  placeholder="Yêu cầu đặc biệt, dị ứng thực phẩm..."
-                ></textarea>
+                <div class="booking-input-wrapper booking-textarea-wrapper">
+                  <i class="fa-regular fa-comment-dots"></i>
+                  <textarea
+                    id="notes"
+                    name="notes"
+                    rows="4"
+                    placeholder="Yêu cầu đặc biệt, dị ứng thực phẩm..."
+                  ></textarea>
+                </div>
               </div>
-              <button type="submit" class="cta-button">Đặt Bàn Ngay</button>
+              <button type="submit" class="cta-button">
+                <span>Đặt Bàn Ngay</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
             </form>
           </div>
         </div>
