@@ -94,10 +94,11 @@
             id="section-notifications"
             style="display: block"
           >
-            <div class="acc-content-header">
-              <h1 class="acc-page-title">Thông báo của bạn</h1>
-              <button class="acc-mark-read-btn">Đánh dấu tất cả đã đọc</button>
-            </div>
+            <div class="acc-logged-in-content">
+              <div class="acc-content-header">
+                <h1 class="acc-page-title">Thông báo của bạn</h1>
+                <button class="acc-mark-read-btn">Đánh dấu tất cả đã đọc</button>
+              </div>
 
             <div class="acc-filter-tabs">
               <button class="acc-tab-btn active" data-filter="all">Tất cả</button>
@@ -188,6 +189,21 @@
                   <span class="acc-notif-time">12 tháng 4, 12:30</span>
                 </div>
               </div>
+
+              <!-- Empty State -->
+              <div class="acc-empty-state" style="display: none;">
+                <i class="fa-regular fa-bell-slash"></i>
+                <p>Chưa có thông báo mới</p>
+              </div>
+            </div>
+            </div> <!-- End logged in content -->
+
+            <!-- Guest Content -->
+            <div class="acc-guest-content" style="display: none;">
+              <i class="fa-solid fa-lock"></i>
+              <h2>Bạn chưa đăng nhập</h2>
+              <p>Vui lòng đăng nhập để xem các thông báo cá nhân của bạn.</p>
+              <a href="login.html" class="acc-btn-primary">Đăng nhập ngay</a>
             </div>
           </section>
 
@@ -197,9 +213,10 @@
             id="section-reservations"
             style="display: none; opacity: 0; transform: translateY(10px)"
           >
-            <div class="acc-content-header">
-              <h1 class="acc-page-title">Đơn đặt bàn của bạn</h1>
-            </div>
+            <div class="acc-logged-in-content">
+              <div class="acc-content-header">
+                <h1 class="acc-page-title">Đơn đặt bàn của bạn</h1>
+              </div>
 
             <div class="acc-filter-tabs">
               <button class="acc-tab-btn active" data-filter="all">Tất cả</button>
@@ -270,6 +287,21 @@
                   <div class="qr-overlay">Đợi xác nhận...</div>
                 </div>
               </div>
+
+              <!-- Empty State -->
+              <div class="acc-empty-state" style="display: none;">
+                <i class="fa-solid fa-file-invoice"></i>
+                <p>Chưa có đơn đặt bàn nào</p>
+              </div>
+            </div>
+            </div> <!-- End logged in content -->
+
+            <!-- Guest Content -->
+            <div class="acc-guest-content" style="display: none;">
+              <i class="fa-solid fa-lock"></i>
+              <h2>Bạn chưa đăng nhập</h2>
+              <p>Vui lòng đăng nhập để xem lịch sử đặt bàn của bạn.</p>
+              <a href="login.html" class="acc-btn-primary">Đăng nhập ngay</a>
             </div>
           </section>
 
@@ -279,9 +311,10 @@
             id="section-promotions"
             style="display: none; opacity: 0; transform: translateY(10px)"
           >
-            <div class="acc-content-header">
-              <h1 class="acc-page-title">Kho Voucher của bạn</h1>
-            </div>
+            <div class="acc-logged-in-content">
+              <div class="acc-content-header">
+                <h1 class="acc-page-title">Kho Voucher của bạn</h1>
+              </div>
 
             <div class="acc-filter-tabs">
               <button class="acc-tab-btn active" data-filter="newest">Mới nhất</button>
@@ -353,6 +386,21 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Empty State -->
+              <div class="acc-empty-state" style="display: none;">
+                <i class="fa-solid fa-box-open"></i>
+                <p>Chưa có khuyến mãi nào</p>
+              </div>
+            </div>
+            </div> <!-- End logged in content -->
+
+             <!-- Guest Content -->
+             <div class="acc-guest-content" style="display: none;">
+              <i class="fa-solid fa-lock"></i>
+              <h2>Bạn chưa đăng nhập</h2>
+              <p>Vui lòng đăng nhập để xem các mã khuyến mãi dành riêng cho bạn.</p>
+              <a href="login.html" class="acc-btn-primary">Đăng nhập ngay</a>
             </div>
           </section>
 
@@ -362,9 +410,10 @@
             id="section-account"
             style="display: none; opacity: 0; transform: translateY(10px)"
           >
-            <div class="acc-content-header">
-              <h1 class="acc-page-title">Thông tin cá nhân</h1>
-            </div>
+            <div class="acc-logged-in-content">
+              <div class="acc-content-header">
+                <h1 class="acc-page-title">Thông tin cá nhân</h1>
+              </div>
 
             <div class="acc-account-layout">
               <div class="acc-avatar-upload-box">
@@ -442,6 +491,15 @@
                   </div>
                 </form>
               </div>
+            </div>
+            </div> <!-- End logged in content -->
+
+            <!-- Guest Content -->
+            <div class="acc-guest-content" style="display: none;">
+              <i class="fa-solid fa-user-lock"></i>
+              <h2>Bạn chưa đăng nhập</h2>
+              <p>Hãy tạo tài khoản hoặc đăng nhập để quản lý thông tin đặt bàn của bạn nhanh chóng hơn.</p>
+              <a href="login.html" class="acc-btn-primary">Đăng nhập ngay</a>
             </div>
           </section>
         </div>

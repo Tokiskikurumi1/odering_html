@@ -531,7 +531,10 @@
 
 .qr-overlay {
   position: absolute;
-  top: 0; left: 20px; right: 0; bottom: 0;
+  top: 0;
+  left: 20px;
+  right: 0;
+  bottom: 0;
   background: rgba(11, 46, 38, 0.7);
   display: flex;
   align-items: center;
@@ -732,8 +735,13 @@
   text-align: center;
 }
 
-.mt-15 { margin-top: 15px; }
-.w-full { width: 100%; }
+.mt-15 {
+  margin-top: 15px;
+}
+
+.w-full {
+  width: 100%;
+}
 
 .acc-form-container {
   flex: 1;
@@ -830,8 +838,85 @@
 }
 
 /* =========================================
+   EMPTY STATES & GUEST STATES
+   ========================================= */
+.acc-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  margin-top: 10px;
+}
+
+.acc-empty-state i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.acc-empty-state p {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.acc-guest-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  height: 100%;
+  min-height: 300px;
+}
+
+.acc-guest-content i.fa-lock,
+.acc-guest-content i.fa-user-lock {
+  font-size: 4rem;
+  color: rgba(232, 135, 53, 0.8);
+  margin-bottom: 20px;
+}
+
+.acc-guest-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.acc-guest-content p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 25px;
+}
+
+.acc-guest-content .acc-btn-primary {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* =========================================
    RESPONSIVE DESIGN
    ========================================= */
+@media (max-width: 1200px) {
+  .acc-account-layout {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+}
+
 @media (max-width: 992px) {
   .acc-layout {
     flex-direction: column;
@@ -883,14 +968,8 @@
     border-radius: 3px 3px 0 0;
   }
 
-    .acc-nav-link.logout {
+  .acc-nav-link.logout {
     margin-top: 0;
-  }
-
-  .acc-account-layout {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
   }
 
   .acc-avatar-upload-box {
@@ -943,7 +1022,7 @@
   .acc-reservation-actions {
     flex-direction: column;
   }
-  
+
   .form-row {
     flex-direction: column;
     gap: 20px;

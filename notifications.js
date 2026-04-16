@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Kịch bản (Mockup): Biến giả lập trạng thái đăng nhập
+  let isLoggedIn = true; 
+
+  const contentSections = document.querySelectorAll('.acc-content-section');
+  
+  // Hàm cập nhật giao diện Auth
+  const updateAuthUI = () => {
+    contentSections.forEach(sec => {
+      const loggedInContent = sec.querySelector('.acc-logged-in-content');
+      const guestContent = sec.querySelector('.acc-guest-content');
+      
+      if (loggedInContent && guestContent) {
+        if (!isLoggedIn) {
+          loggedInContent.style.display = 'none';
+          guestContent.style.display = 'flex';
+        } else {
+          loggedInContent.style.display = 'block';
+          guestContent.style.display = 'none';
+        }
+      }
+    });
+
+    // Mở khóa empty state bằng cách re-trigger active tab
+    if (isLoggedIn) {
+      setTimeout(() => {
+        const initialTabs = document.querySelectorAll('.acc-filter-tabs .acc-tab-btn.active');
+        initialTabs.forEach(tab => tab.click());
+      }, 0);
+    }
+  };
+
+  // Khởi chạy lần đầu
+  updateAuthUI();
   // Lấy danh sách các liên kết menu sidebar
   const navLinks = document.querySelectorAll('.acc-nav-link');
   // Lấy danh sách các section chứa nội dung hiển thị
@@ -86,6 +119,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
         });
+
+        // Đếm số lượng card đang hiển thị
+        let visibleCount = 0;
+        cards.forEach(c => {
+          if (c.style.display !== 'none') visibleCount++;
+        });
+
+        // Hiển thị hoặc ẩn empty state
+        const emptyState = parentSection.querySelector('.acc-empty-state');
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.style.display = 'flex';
+          } else {
+            emptyState.style.display = 'none';
+          }
+        }
       });
     });
   });
