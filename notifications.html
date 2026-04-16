@@ -46,26 +46,34 @@
             </div>
 
             <nav class="acc-nav-menu">
-              <a href="#" class="acc-nav-link active">
+              <a
+                href="#"
+                class="acc-nav-link active"
+                data-target="section-notifications"
+              >
                 <div class="acc-nav-icon">
                   <i class="fa-regular fa-bell"></i>
                 </div>
                 <span>Thông báo</span>
                 <span class="acc-badge">3</span>
               </a>
-              <a href="#" class="acc-nav-link">
+              <a
+                href="#"
+                class="acc-nav-link"
+                data-target="section-reservations"
+              >
                 <div class="acc-nav-icon">
                   <i class="fa-solid fa-receipt"></i>
                 </div>
                 <span>Đơn đặt bàn</span>
               </a>
-              <a href="#" class="acc-nav-link">
+              <a href="#" class="acc-nav-link" data-target="section-promotions">
                 <div class="acc-nav-icon">
                   <i class="fa-solid fa-ticket-simple"></i>
                 </div>
                 <span>Khuyến mãi</span>
               </a>
-              <a href="#" class="acc-nav-link">
+              <a href="#" class="acc-nav-link" data-target="section-account">
                 <div class="acc-nav-icon">
                   <i class="fa-regular fa-user"></i>
                 </div>
@@ -81,7 +89,11 @@
           </aside>
 
           <!-- MAIN CONTENT (NOTIFICATIONS) -->
-          <section class="acc-content">
+          <section
+            class="acc-content acc-content-section"
+            id="section-notifications"
+            style="display: block"
+          >
             <div class="acc-content-header">
               <h1 class="acc-page-title">Thông báo của bạn</h1>
               <button class="acc-mark-read-btn">Đánh dấu tất cả đã đọc</button>
@@ -180,6 +192,258 @@
           </section>
 
           <!-- MAIN CONTENT (TABLE RESERVATION) -->
+          <section
+            class="acc-content acc-content-section"
+            id="section-reservations"
+            style="display: none; opacity: 0; transform: translateY(10px)"
+          >
+            <div class="acc-content-header">
+              <h1 class="acc-page-title">Đơn đặt bàn của bạn</h1>
+            </div>
+
+            <div class="acc-filter-tabs">
+              <button class="acc-tab-btn active">Tất cả</button>
+              <button class="acc-tab-btn">Chờ xác nhận</button>
+              <button class="acc-tab-btn">Đã xác nhận</button>
+              <button class="acc-tab-btn">Lịch sử</button>
+            </div>
+
+            <div class="acc-reservation-list">
+              <!-- Curent Reservation Card -->
+              <div class="acc-reservation-card upcoming">
+                <div class="acc-reservation-info">
+                  <div class="acc-reservation-badge confirmed">Đã xác nhận</div>
+                  <h3 class="acc-reservation-title">
+                    Bàn 4 Người - Phòng VIP 1
+                  </h3>
+                  <div class="acc-reservation-details">
+                    <p>
+                      <i class="fa-regular fa-calendar"></i> Hôm nay, 16/04/2026
+                    </p>
+                    <p><i class="fa-regular fa-clock"></i> 19:30</p>
+                    <p><i class="fa-solid fa-users"></i> 4 Khách</p>
+                  </div>
+                  <div class="acc-reservation-actions">
+                    <button class="acc-btn-primary">
+                      <i class="fa-solid fa-phone"></i> Gọi Lễ Tân
+                    </button>
+                    <button class="acc-btn-secondary">Hủy đặt bàn</button>
+                  </div>
+                </div>
+                <div class="acc-reservation-qr">
+                  <h5>Mã Xác Nhận Lễ Tân</h5>
+                  <div class="qr-code-box">
+                    <i class="fa-solid fa-qrcode"></i>
+                  </div>
+                  <p class="verification-code">XCV89P</p>
+                </div>
+              </div>
+
+              <!-- Pending Reservation Card -->
+              <div class="acc-reservation-card pending">
+                <div class="acc-reservation-info">
+                  <div class="acc-reservation-badge processing">
+                    Đang chờ xử lý
+                  </div>
+                  <h3 class="acc-reservation-title">
+                    Bàn 2 Người - Khu Sân Vườn
+                  </h3>
+                  <div class="acc-reservation-details">
+                    <p>
+                      <i class="fa-regular fa-calendar"></i> Ngày mai,
+                      17/04/2026
+                    </p>
+                    <p><i class="fa-regular fa-clock"></i> 18:00</p>
+                    <p><i class="fa-solid fa-users"></i> 2 Khách</p>
+                  </div>
+                  <div class="acc-reservation-actions">
+                    <button class="acc-btn-secondary">Đổi Thời Gian</button>
+                    <button class="acc-btn-secondary">Hủy đặt bàn</button>
+                  </div>
+                </div>
+                <div class="acc-reservation-qr blurred">
+                  <h5>Mã Xác Nhận Lễ Tân</h5>
+                  <div class="qr-code-box">
+                    <i class="fa-solid fa-qrcode"></i>
+                  </div>
+                  <p class="verification-code">------</p>
+                  <div class="qr-overlay">Đợi xác nhận...</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- MAIN CONTENT (PROMOTIONS) -->
+          <section
+            class="acc-content acc-content-section"
+            id="section-promotions"
+            style="display: none; opacity: 0; transform: translateY(10px)"
+          >
+            <div class="acc-content-header">
+              <h1 class="acc-page-title">Kho Voucher của bạn</h1>
+            </div>
+
+            <div class="acc-filter-tabs">
+              <button class="acc-tab-btn active">Mới nhất</button>
+              <button class="acc-tab-btn">Sắp hết hạn</button>
+              <button class="acc-tab-btn">Đã sử dụng</button>
+            </div>
+
+            <div class="acc-promo-grid">
+              <!-- Promo Card 1 -->
+              <div class="acc-promo-card">
+                <div class="acc-promo-left bg-gradient-gold">
+                  <span class="discount-value">30%</span>
+                  <span class="discount-type">GIẢM</span>
+                </div>
+                <div class="acc-promo-right">
+                  <h3>Giảm 30% Món Tráng Miệng</h3>
+                  <p>
+                    Áp dụng cho hóa đơn từ 500k. Dành riêng cho thành viên VIP.
+                  </p>
+                  <div class="promo-bottom">
+                    <span class="promo-date warning"
+                      ><i class="fa-regular fa-clock"></i> Hết hạn sau 2
+                      ngày</span
+                    >
+                    <button class="promo-copy-btn" data-code="WEEKEND30">
+                      Lấy mã
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Promo Card 2 -->
+              <div class="acc-promo-card">
+                <div class="acc-promo-left bg-gradient-green">
+                  <span class="discount-value">50k</span>
+                  <span class="discount-type">VND</span>
+                </div>
+                <div class="acc-promo-right">
+                  <h3>Giảm 50.000đ Bàn Đặt Trước</h3>
+                  <p>Áp dụng cho mọi đơn đặt bàn từ 4 người trở lên.</p>
+                  <div class="promo-bottom">
+                    <span class="promo-date"
+                      ><i class="fa-regular fa-clock"></i> Hết hạn:
+                      30/04/2026</span
+                    >
+                    <button class="promo-copy-btn" data-code="BAN4NGUOI">
+                      Lấy mã
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Promo Card 3 -->
+              <div class="acc-promo-card expired">
+                <div class="acc-promo-left bg-gradient-gray">
+                  <span class="discount-value">Món Mới</span>
+                  <span class="discount-type">FREE</span>
+                </div>
+                <div class="acc-promo-right">
+                  <h3>Tặng 1 Phần Beefsteak Nhỏ</h3>
+                  <p>
+                    Khuyến mãi dùng thử món mới trong tuần lễ mừng sinh nhật.
+                  </p>
+                  <div class="promo-bottom">
+                    <span class="promo-date">Đã hết hạn</span>
+                    <button class="promo-copy-btn disabled" disabled>
+                      Hết hạn
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- MAIN CONTENT (ACCOUNT) -->
+          <section
+            class="acc-content acc-content-section"
+            id="section-account"
+            style="display: none; opacity: 0; transform: translateY(10px)"
+          >
+            <div class="acc-content-header">
+              <h1 class="acc-page-title">Thông tin cá nhân</h1>
+            </div>
+
+            <div class="acc-account-layout">
+              <div class="acc-avatar-upload-box">
+                <div class="avatar-preview">
+                  <i class="fa-solid fa-user-astronaut"></i>
+                  <div class="upload-overlay">
+                    <i class="fa-solid fa-camera"></i>
+                  </div>
+                </div>
+                <button class="acc-btn-secondary mt-15">Tải ảnh lên</button>
+                <p class="upload-hint">Định dạng JPEG, PNG < 2MB</p>
+              </div>
+
+              <div class="acc-form-container">
+                <form class="acc-account-form">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Họ và tên</label>
+                      <input
+                        type="text"
+                        value="Khách Hàng VIP"
+                        class="glass-input"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Số điện thoại</label>
+                      <input
+                        type="text"
+                        value="0987654321"
+                        class="glass-input"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        placeholder="Nhập email của bạn..."
+                        class="glass-input"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Ngày sinh</label>
+                      <input
+                        type="date"
+                        value="1990-01-01"
+                        class="glass-input"
+                      />
+                    </div>
+                  </div>
+
+                  <hr class="acc-divider" />
+
+                  <div class="form-group w-full pwd-change-box">
+                    <label>Mật khẩu</label>
+                    <div class="pwd-input-wrapper">
+                      <input
+                        type="password"
+                        value="*********"
+                        class="glass-input"
+                        disabled
+                      />
+                      <button type="button" class="change-pwd-btn">
+                        Đổi Mật Khẩu
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <button type="button" class="acc-btn-primary large-btn">
+                      Lưu Thay Đổi
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </main>
@@ -197,5 +461,6 @@
     <script src="sidebar_mobile.js"></script>
     <script src="chat_widget_chat_modal.js"></script>
     <script src="header_footer.js"></script>
+    <script src="notifications.js"></script>
   </body>
 </html>
