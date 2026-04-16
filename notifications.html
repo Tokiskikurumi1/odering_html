@@ -100,16 +100,16 @@
             </div>
 
             <div class="acc-filter-tabs">
-              <button class="acc-tab-btn active">Tất cả</button>
-              <button class="acc-tab-btn">
+              <button class="acc-tab-btn active" data-filter="all">Tất cả</button>
+              <button class="acc-tab-btn" data-filter="unread">
                 Chưa đọc <span class="acc-tab-badge">3</span>
               </button>
-              <button class="acc-tab-btn">Cập nhật đơn hàng</button>
+              <button class="acc-tab-btn" data-filter="order">Cập nhật đơn hàng</button>
             </div>
 
             <div class="acc-notification-list">
               <!-- Unread Notification (Order) -->
-              <div class="acc-notif-card unread">
+              <div class="acc-notif-card unread" data-category="unread order">
                 <div class="acc-notif-icon-wrapper type-order">
                   <i class="fa-solid fa-motorcycle"></i>
                 </div>
@@ -127,7 +127,7 @@
               </div>
 
               <!-- Unread Notification (Reservation) -->
-              <div class="acc-notif-card unread">
+              <div class="acc-notif-card unread" data-category="unread">
                 <div class="acc-notif-icon-wrapper type-reservation">
                   <i class="fa-regular fa-calendar-check"></i>
                 </div>
@@ -143,7 +143,7 @@
               </div>
 
               <!-- Unread Notification (Promo) -->
-              <div class="acc-notif-card unread">
+              <div class="acc-notif-card unread" data-category="unread">
                 <div class="acc-notif-icon-wrapper type-promo">
                   <i class="fa-solid fa-gift"></i>
                 </div>
@@ -159,7 +159,7 @@
               </div>
 
               <!-- Read Notification -->
-              <div class="acc-notif-card">
+              <div class="acc-notif-card" data-category="order">
                 <div class="acc-notif-icon-wrapper type-system">
                   <i class="fa-solid fa-check-double"></i>
                 </div>
@@ -176,7 +176,7 @@
               </div>
 
               <!-- Read Notification -->
-              <div class="acc-notif-card">
+              <div class="acc-notif-card" data-category="order">
                 <div class="acc-notif-icon-wrapper type-system">
                   <i class="fa-solid fa-check-double"></i>
                 </div>
@@ -202,15 +202,15 @@
             </div>
 
             <div class="acc-filter-tabs">
-              <button class="acc-tab-btn active">Tất cả</button>
-              <button class="acc-tab-btn">Chờ xác nhận</button>
-              <button class="acc-tab-btn">Đã xác nhận</button>
-              <button class="acc-tab-btn">Lịch sử</button>
+              <button class="acc-tab-btn active" data-filter="all">Tất cả</button>
+              <button class="acc-tab-btn" data-filter="pending">Chờ xác nhận</button>
+              <button class="acc-tab-btn" data-filter="confirmed">Đã xác nhận</button>
+              <button class="acc-tab-btn" data-filter="cancelled">Đã hủy</button>
             </div>
 
             <div class="acc-reservation-list">
               <!-- Curent Reservation Card -->
-              <div class="acc-reservation-card upcoming">
+              <div class="acc-reservation-card upcoming" data-category="confirmed">
                 <div class="acc-reservation-info">
                   <div class="acc-reservation-badge confirmed">Đã xác nhận</div>
                   <h3 class="acc-reservation-title">
@@ -240,7 +240,7 @@
               </div>
 
               <!-- Pending Reservation Card -->
-              <div class="acc-reservation-card pending">
+              <div class="acc-reservation-card pending" data-category="pending">
                 <div class="acc-reservation-info">
                   <div class="acc-reservation-badge processing">
                     Đang chờ xử lý
@@ -284,14 +284,14 @@
             </div>
 
             <div class="acc-filter-tabs">
-              <button class="acc-tab-btn active">Mới nhất</button>
-              <button class="acc-tab-btn">Sắp hết hạn</button>
-              <button class="acc-tab-btn">Đã sử dụng</button>
+              <button class="acc-tab-btn active" data-filter="newest">Mới nhất</button>
+              <button class="acc-tab-btn" data-filter="expiring">Sắp hết hạn</button>
+              <button class="acc-tab-btn" data-filter="expired">Đã sử dụng</button>
             </div>
 
             <div class="acc-promo-grid">
               <!-- Promo Card 1 -->
-              <div class="acc-promo-card">
+              <div class="acc-promo-card" data-category="newest expiring">
                 <div class="acc-promo-left bg-gradient-gold">
                   <span class="discount-value">30%</span>
                   <span class="discount-type">GIẢM</span>
@@ -314,7 +314,7 @@
               </div>
 
               <!-- Promo Card 2 -->
-              <div class="acc-promo-card">
+              <div class="acc-promo-card" data-category="newest">
                 <div class="acc-promo-left bg-gradient-green">
                   <span class="discount-value">50k</span>
                   <span class="discount-type">VND</span>
@@ -335,7 +335,7 @@
               </div>
 
               <!-- Promo Card 3 -->
-              <div class="acc-promo-card expired">
+              <div class="acc-promo-card expired" data-category="expired">
                 <div class="acc-promo-left bg-gradient-gray">
                   <span class="discount-value">Món Mới</span>
                   <span class="discount-type">FREE</span>
