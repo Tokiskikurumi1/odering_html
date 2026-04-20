@@ -264,6 +264,107 @@ document.addEventListener("DOMContentLoaded", () => {
     locoScroll.update();
   });
 
+  // --- PRODUCT CATEGORY SECTION (SEARCH & PAGINATION) ---
+  const productGrid = document.querySelector(".grid-product-container");
+  const productSearchInput = document.querySelector(".product-area-search");
+  const productPrevPage = document.getElementById("prevPageProduct");
+  const productNextPage = document.getElementById("nextPageProduct");
+  const productPageNumbers = document.getElementById("pageNumbersProduct");
+  const pageInfo = document.querySelector(".page-info");
+
+  if (productGrid) {
+    let CARDS_PER_PAGE_PRODUCT = window.innerWidth >= 1080 ? 9 : 8;
+    const allProductCards = Array.from(productGrid.querySelectorAll(".p-card"));
+
+    window.addEventListener('resize', () => {
+      const newLimit = window.innerWidth >= 1080 ? 9 : 8;
+      if (newLimit !== CARDS_PER_PAGE_PRODUCT) {
+        CARDS_PER_PAGE_PRODUCT = newLimit;
+        currentProductPage = 1;
+        renderProductPage();
+      }
+    });
+
+    // Empty state element
+    const emptyStateProduct = document.createElement("div");
+    emptyStateProduct.className = "product-empty-state";
+    emptyStateProduct.innerHTML = '<i class="fa-solid fa-bowl-food"></i><p>Không tồn tại sản phẩm!</p>';
+    emptyStateProduct.style.display = "none";
+    productGrid.appendChild(emptyStateProduct);
+
+    let currentProductPage = 1;
+    let visibleProductCards = [...allProductCards];
+
+    function renderProductPage() {
+      const isEmpty = visibleProductCards.length === 0;
+      const totalPages = isEmpty ? 1 : Math.ceil(visibleProductCards.length / CARDS_PER_PAGE_PRODUCT);
+
+      if (currentProductPage > totalPages) currentProductPage = totalPages;
+      if (currentProductPage < 1) currentProductPage = 1;
+
+      // Hide all cards first
+      allProductCards.forEach((card) => { card.style.display = "none"; });
+
+      if (isEmpty) {
+        emptyStateProduct.style.display = "flex";
+        if (productPageNumbers) productPageNumbers.textContent = currentProductPage;
+        if (pageInfo) pageInfo.textContent = "0/0";
+      } else {
+        emptyStateProduct.style.display = "none";
+        const start = (currentProductPage - 1) * CARDS_PER_PAGE_PRODUCT;
+        const end = start + CARDS_PER_PAGE_PRODUCT;
+        visibleProductCards.slice(start, end).forEach((card) => { card.style.display = ""; });
+
+        if (productPageNumbers) productPageNumbers.textContent = currentProductPage;
+        if (pageInfo) pageInfo.textContent = currentProductPage + "/" + totalPages;
+      }
+
+      if (productPrevPage) productPrevPage.disabled = (currentProductPage === 1);
+      if (productNextPage) productNextPage.disabled = (currentProductPage === totalPages);
+    }
+
+    function applyProductFilter(keyword) {
+      const q = keyword.trim().toLowerCase();
+      if (q === "") {
+        visibleProductCards = [...allProductCards];
+      } else {
+        visibleProductCards = allProductCards.filter((card) => {
+          const name = card.querySelector(".p-name");
+          return name && name.textContent.toLowerCase().includes(q);
+        });
+      }
+      currentProductPage = 1;
+      renderProductPage();
+    }
+
+    if (productSearchInput) {
+      productSearchInput.addEventListener("input", () => {
+        applyProductFilter(productSearchInput.value);
+      });
+    }
+
+    if (productPrevPage) {
+      productPrevPage.addEventListener("click", () => {
+        if (currentProductPage > 1) {
+          currentProductPage--;
+          renderProductPage();
+        }
+      });
+    }
+
+    if (productNextPage) {
+      productNextPage.addEventListener("click", () => {
+        const totalPages = Math.ceil(visibleProductCards.length / CARDS_PER_PAGE_PRODUCT);
+        if (currentProductPage < totalPages) {
+          currentProductPage++;
+          renderProductPage();
+        }
+      });
+    }
+
+    renderProductPage();
+  }
+
   // --- CHAT FUNCTIONALITY MOVED TO chat_widget_chat_modal.js ---
 
   // --- SWIPER INITIALIZATION ---
