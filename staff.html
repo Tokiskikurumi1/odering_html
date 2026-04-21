@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff Dashboard - Table Management</title>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="staff.css" />
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-user-circle"></i>
+          <span>Hello Staff</span>
+        </div>
+      </div>
+
+      <div class="sidebar-menu">
+        <div class="menu-section">Pages</div>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <div class="menu-section">Tools & Components</div>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-bars-staggered"></i>
+          <span>Đơn Hàng</span>
+        </a>
+        <a href="#" class="menu-item active">
+          <i class="fa-solid fa-plus"></i>
+          <span>Bàn</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-border-all"></i>
+          <span>Hoạt động</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-images"></i>
+          <span>Slider</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-qrcode"></i>
+          <span>Tạo QR</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-star"></i>
+          <span>Đánh giá</span>
+        </a>
+
+        <div class="menu-section">Web Data</div>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Nhóm Sản phẩm</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-list-ul"></i>
+          <span>Chi Tiết Nhóm Sản Phẩm</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-tags"></i>
+          <span>Loại Sản phẩm</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-box-open"></i>
+          <span>Sản Phẩm</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-file-lines"></i>
+          <span>Chi Tiết Sản Phẩm</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Menu</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fa-solid fa-ticket-simple"></i>
+          <span>Voucher</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="#" class="upgrade-btn">Upgrade to Pro</a>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main class="main-content" id="main-content">
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <button class="toggle-btn" id="sidebar-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="header-actions">
+          <div class="notification-icon">
+            <i class="fa-solid fa-bell"></i>
+            <span class="badge">2</span>
+          </div>
+          <div class="notification-icon">
+            <i class="fa-solid fa-comment-dots"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE CONTENT -->
+      <div class="content-area">
+        <!-- TABLE CARD -->
+        <div class="card table-card">
+          <h2 class="card-title">Bàn</h2>
+          <div class="card-count" id="table-count">13/13</div>
+
+          <div class="table-grid" id="table-grid">
+            <!-- Tables rendered by JS -->
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-action">
+              Chỉnh sửa <i class="fa-solid fa-plus ms-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAT WIDGET (Static representation) -->
+      <div class="chat-widget">
+        <span>Chat</span>
+        <i
+          class="fa-solid fa-comment"
+          style="color: #d9534f; margin-left: 8px"
+        ></i>
+      </div>
+    </main>
+
+    <script src="staff.js"></script>
+  </body>
+</html>

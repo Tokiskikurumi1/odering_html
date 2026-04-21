@@ -1,10 +1,10 @@
 /**
  * Menus Page Logic
- * - Pagination: 4 cards / page, display < current / total >
+ * - Pagination: 8 cards / page, display < current / total >
  * - Search: filter cards by name
  */
 document.addEventListener("DOMContentLoaded", () => {
-  const CARDS_PER_PAGE = 12;
+  const CARDS_PER_PAGE = 8;
 
   // ── DOM refs ────────────────────────────────────────────
   const grid = document.getElementById("menus-dish-grid");
