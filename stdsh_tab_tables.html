@@ -1,0 +1,43 @@
+                <!-- TAB 2: Tables & Walk-in -->
+                <section id="stdsh-tab-tables" class="stdsh-tab-pane">
+                    <div class="stdsh-tables-layout">
+                        
+                        <!-- Walk-in Form -->
+                        <div class="stdsh-walkin-panel">
+                            <h3><i class="fa-solid fa-user-plus"></i> Đón Khách Trực Tiếp</h3>
+                            <form id="stdsh-walkin-form">
+                                <div class="stdsh-form-group">
+                                    <input type="text" id="stdsh-walkin-name" required placeholder=" ">
+                                    <label for="stdsh-walkin-name">Tên Khách Hàng</label>
+                                </div>
+                                <div class="stdsh-form-group">
+                                    <input type="number" id="stdsh-walkin-guests" min="1" required placeholder=" ">
+                                    <label for="stdsh-walkin-guests">Số Lượng Khách</label>
+                                </div>
+                                <div class="stdsh-form-group">
+                                    <select id="stdsh-walkin-table" required>
+                                        <option value="" disabled selected>-- Chọn Bàn Trống --</option>
+                                        <!-- Dynamic empty tables -->
+                                    </select>
+                                    <label for="stdsh-walkin-table" class="stdsh-static-label">Chọn Bàn</label>
+                                </div>
+                                <button type="submit" class="stdsh-btn-primary">
+                                    <i class="fa-solid fa-check"></i> Nhận Bàn
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Table Grid -->
+                        <div class="stdsh-table-map-panel">
+                            <div class="stdsh-table-legend">
+                                <div class="stdsh-legend-item"><span class="stdsh-dot stdsh-dot-empty"></span> Trống</div>
+                                <div class="stdsh-legend-item"><span class="stdsh-dot stdsh-dot-occupied"></span> Đang phục vụ</div>
+                                <div class="stdsh-legend-item"><span class="stdsh-dot stdsh-dot-reserved"></span> Đã đặt</div>
+                            </div>
+                            <div class="stdsh-table-grid" id="stdsh-table-grid-container">
+                                <!-- Dynamic tables injected by JS -->
+                            </div>
+                        </div>
+
+                    </div>
+                </section>

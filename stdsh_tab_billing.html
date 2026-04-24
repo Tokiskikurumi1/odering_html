@@ -1,0 +1,58 @@
+<!-- TAB 3: Billing -->
+<section id="stdsh-tab-billing" class="stdsh-tab-pane">
+    <div class="stdsh-billing-layout">
+
+        <!-- Select Table for Payment -->
+        <div class="stdsh-billing-sidebar">
+            <h3>Chọn Bàn Thanh Toán</h3>
+            <div class="stdsh-billing-table-list" id="stdsh-billing-table-list">
+                <!-- Dynamic occupied tables -->
+            </div>
+        </div>
+
+        <!-- Bill Details -->
+        <div class="stdsh-billing-details" id="stdsh-billing-details-panel">
+            <div class="stdsh-empty-state" id="stdsh-bill-empty-state">
+                <i class="fa-solid fa-receipt"></i>
+                <p>Vui lòng chọn bàn đang phục vụ để xem hóa đơn</p>
+            </div>
+
+            <div class="stdsh-bill-content hidden" id="stdsh-bill-content">
+                <div class="stdsh-bill-header">
+                    <h2>HÓA ĐƠN MUA HÀNG</h2>
+                    <p>Bàn: <span id="stdsh-bill-table-name">T1</span></p>
+                    <p>Khách: <span id="stdsh-bill-customer-name">Nguyễn Văn A</span></p>
+                </div>
+
+                <ul class="stdsh-bill-items" id="stdsh-bill-items-list">
+                    <!-- Items -->
+                </ul>
+
+                <div class="stdsh-bill-summary">
+                    <div class="stdsh-summary-row">
+                        <span>Tổng tiền:</span>
+                        <span id="stdsh-bill-subtotal">0₫</span>
+                    </div>
+                    <div class="stdsh-summary-row">
+                        <span>VAT (10%):</span>
+                        <span id="stdsh-bill-vat">0₫</span>
+                    </div>
+                    <div class="stdsh-summary-row stdsh-total-row">
+                        <span>THÀNH TIỀN:</span>
+                        <span id="stdsh-bill-total">0₫</span>
+                    </div>
+                </div>
+
+                <div class="stdsh-bill-actions">
+                    <button class="stdsh-btn-pay-qr" id="stdsh-btn-qr">
+                        <i class="fa-solid fa-qrcode"></i> Thanh Toán QR
+                    </button>
+                    <button class="stdsh-btn-pay-cash" id="stdsh-btn-cash">
+                        <i class="fa-solid fa-money-bill-wave"></i> Tiền Mặt
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

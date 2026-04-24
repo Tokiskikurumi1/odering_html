@@ -1,0 +1,125 @@
+/* --- SIDEBAR --- */
+.stdsh-nav-panel {
+    width: 280px;
+    background: var(--stdsh-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid var(--stdsh-glass-border);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    z-index: 10;
+}
+
+.stdsh-nav-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--stdsh-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.stdsh-nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
+    border: 1px solid var(--stdsh-glass-border);
+    margin-bottom: 40px;
+}
+
+.stdsh-profile-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--stdsh-primary);
+}
+
+.stdsh-profile-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.stdsh-profile-info p {
+    font-size: 0.8rem;
+    color: var(--stdsh-text-muted);
+}
+
+.stdsh-nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.stdsh-nav-item {
+    padding: 15px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+    color: var(--stdsh-text-muted);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.stdsh-nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: var(--stdsh-text-main);
+}
+
+.stdsh-nav-item.active {
+    background: linear-gradient(135deg, rgba(232, 135, 53, 0.2), rgba(232, 135, 53, 0.05));
+    color: var(--stdsh-primary);
+    border: 1px solid rgba(232, 135, 53, 0.3);
+}
+
+.stdsh-nav-item i {
+    font-size: 1.2rem;
+    width: 25px;
+    text-align: center;
+}
+
+.stdsh-badge {
+    background: var(--stdsh-danger);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    position: absolute;
+    right: 15px;
+}
+
+.stdsh-logout-btn {
+    background: transparent;
+    border: 1px solid var(--stdsh-glass-border);
+    color: var(--stdsh-text-muted);
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.stdsh-logout-btn:hover {
+    background: rgba(231, 76, 60, 0.1);
+    color: var(--stdsh-danger);
+    border-color: rgba(231, 76, 60, 0.3);
+}
+

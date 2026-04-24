@@ -1,0 +1,94 @@
+/* ==========================================================================
+   TAB 1: RESERVATIONS
+   ========================================================================== */
+.stdsh-res-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.stdsh-res-card {
+    background: var(--stdsh-glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--stdsh-glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stdsh-res-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(232, 135, 53, 0.1);
+    border-color: rgba(232, 135, 53, 0.4);
+}
+
+.stdsh-res-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.stdsh-res-header h3 {
+    font-size: 1.2rem;
+    color: var(--stdsh-primary);
+}
+
+.stdsh-res-time {
+    background: rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.stdsh-res-details p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--stdsh-text-muted);
+}
+
+.stdsh-res-details p i {
+    width: 20px;
+    color: var(--stdsh-text-main);
+}
+
+.stdsh-res-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.stdsh-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.stdsh-btn-accept {
+    background: var(--stdsh-primary);
+    color: #fff;
+}
+.stdsh-btn-accept:hover { background: var(--stdsh-primary-hover); }
+
+.stdsh-btn-reject {
+    background: transparent;
+    border: 1px solid var(--stdsh-danger);
+    color: var(--stdsh-danger);
+}
+.stdsh-btn-reject:hover {
+    background: rgba(231, 76, 60, 0.1);
+}
+

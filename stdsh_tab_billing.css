@@ -1,0 +1,320 @@
+/* ==========================================================================
+   TAB 3: BILLING
+   ========================================================================== */
+.stdsh-billing-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    height: 100%;
+}
+
+.stdsh-billing-sidebar {
+    background: var(--stdsh-glass-bg);
+    border: 1px solid var(--stdsh-glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stdsh-billing-sidebar h3 {
+    margin-bottom: 20px;
+    color: var(--stdsh-primary);
+}
+
+.stdsh-billing-table-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.stdsh-bill-table-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--stdsh-glass-border);
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stdsh-bill-table-card:hover, .stdsh-bill-table-card.active {
+    background: rgba(232, 135, 53, 0.1);
+    border-color: var(--stdsh-primary);
+}
+
+.stdsh-btc-info h4 {
+    color: var(--stdsh-text-main);
+    margin-bottom: 4px;
+}
+.stdsh-btc-info p {
+    font-size: 0.8rem;
+    color: var(--stdsh-text-muted);
+}
+.stdsh-btc-amount {
+    font-weight: 700;
+    color: var(--stdsh-primary);
+}
+
+.stdsh-billing-details {
+    background: var(--stdsh-glass-bg);
+    border: 1px solid var(--stdsh-glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+}
+
+.stdsh-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--stdsh-text-muted);
+    text-align: center;
+}
+
+.stdsh-empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.2;
+}
+
+.stdsh-bill-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.stdsh-bill-header {
+    text-align: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.stdsh-bill-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.stdsh-bill-header p {
+    color: var(--stdsh-text-muted);
+    font-size: 0.95rem;
+}
+
+.stdsh-bill-items {
+    list-style: none;
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.stdsh-bill-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.stdsh-bill-item-name {
+    flex: 2;
+}
+.stdsh-bill-item-qty {
+    flex: 1;
+    text-align: center;
+    color: var(--stdsh-text-muted);
+}
+.stdsh-bill-item-price {
+    flex: 1;
+    text-align: right;
+    font-weight: 600;
+}
+
+.stdsh-bill-summary {
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.stdsh-summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: var(--stdsh-text-muted);
+}
+
+.stdsh-total-row {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255,255,255,0.2);
+    color: var(--stdsh-primary);
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.stdsh-bill-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.stdsh-btn-pay-qr, .stdsh-btn-pay-cash {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+}
+
+.stdsh-btn-pay-qr {
+    background: var(--stdsh-primary);
+    color: #fff;
+}
+.stdsh-btn-pay-qr:hover {
+    background: var(--stdsh-primary-hover);
+    box-shadow: 0 5px 15px rgba(232, 135, 53, 0.3);
+}
+
+.stdsh-btn-pay-cash {
+    background: var(--stdsh-success);
+    color: #fff;
+}
+.stdsh-btn-pay-cash:hover {
+    background: var(--stdsh-success-hover);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* ==========================================================================
+   MODALS
+   ========================================================================== */
+.stdsh-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.stdsh-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.stdsh-modal-box {
+    background: #1a1e23;
+    border: 1px solid var(--stdsh-glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    transform: scale(0.9);
+    transition: 0.3s ease;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.stdsh-modal-overlay.active .stdsh-modal-box {
+    transform: scale(1);
+}
+
+.stdsh-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--stdsh-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.stdsh-modal-close:hover {
+    color: var(--stdsh-danger);
+}
+
+.stdsh-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.stdsh-qr-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.stdsh-qr-container img {
+    display: block;
+    width: 250px;
+    height: 250px;
+}
+
+.stdsh-qr-instruction {
+    color: var(--stdsh-text-muted);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.stdsh-qr-instruction strong {
+    color: var(--stdsh-primary);
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.stdsh-btn-full {
+    width: 100%;
+}
+
+.stdsh-success-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(46, 204, 113, 0.1);
+    color: var(--stdsh-success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 20px;
+}
+
+.stdsh-modal-success p {
+    color: var(--stdsh-text-muted);
+    margin-bottom: 30px;
+}
