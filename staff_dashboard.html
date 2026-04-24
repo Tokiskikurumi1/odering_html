@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - Kurumi BBQ</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="staff_dashboard.css">
+</head>
+<body class="stdsh-body">
+    <!-- Background Animated Elements -->
+    <div class="stdsh-bg-orb stdsh-bg-orb-1"></div>
+    <div class="stdsh-bg-orb stdsh-bg-orb-2"></div>
+    <div class="stdsh-bg-orb stdsh-bg-orb-3"></div>
+
+    <div class="stdsh-layout-wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="stdsh-nav-panel">
+            <div class="stdsh-nav-brand">
+                <i class="fa-solid fa-fire-burner"></i>
+                <span>Kurumi Staff</span>
+            </div>
+            
+            <div class="stdsh-nav-profile">
+                <div class="stdsh-profile-avatar">
+                    <img src="https://ui-avatars.com/api/?name=NV&background=e88735&color=fff" alt="Staff">
+                </div>
+                <div class="stdsh-profile-info">
+                    <h4>Nguyễn Văn A</h4>
+                    <p>Tiếp tân & Thu ngân</p>
+                </div>
+            </div>
+
+            <ul class="stdsh-nav-menu">
+                <li class="stdsh-nav-item active" data-tab="stdsh-tab-reservations">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Duyệt Đặt Bàn</span>
+                    <span class="stdsh-badge" id="stdsh-res-count">3</span>
+                </li>
+                <li class="stdsh-nav-item" data-tab="stdsh-tab-tables">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Sơ Đồ Bàn & Khách Đến</span>
+                </li>
+                <li class="stdsh-nav-item" data-tab="stdsh-tab-billing">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <span>Thanh Toán & Hóa Đơn</span>
+                </li>
+            </ul>
+
+            <button class="stdsh-logout-btn">
+                <i class="fa-solid fa-sign-out-alt"></i> Đăng Xuất
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="stdsh-main-content">
+            <header class="stdsh-main-header">
+                <h1 id="stdsh-header-title">Duyệt Đặt Bàn Trực Tuyến</h1>
+                <div class="stdsh-header-actions">
+                    <div class="stdsh-time-display" id="stdsh-current-time">10:00 AM</div>
+                </div>
+            </header>
+
+            <div class="stdsh-tab-container">
+                
+                <!-- TAB 1: Reservations -->
+                <section id="stdsh-tab-reservations" class="stdsh-tab-pane active">
+                    <div class="stdsh-res-grid" id="stdsh-res-grid-container">
+                        <!-- Dynamic content injected by JS -->
+                    </div>
+                </section>
+
+                <!-- TAB 2: Tables & Walk-in -->
+                <section id="stdsh-tab-tables" class="stdsh-tab-pane">
+                    <div class="stdsh-tables-layout">
+                        
+                        <!-- Walk-in Form -->
+                        <div class="stdsh-walkin-panel">
+                            <h3><i class="fa-solid fa-user-plus"></i> Đón Khách Trực Tiếp</h3>
+                            <form id="stdsh-walkin-form">
+                                <div class="stdsh-form-group">
+                                    <input type="text" id="stdsh-walkin-name" required placeholder=" ">
+                                    <label for="stdsh-walkin-name">Tên Khách Hàng</label>
+                                </div>
+                                <div class="stdsh-form-group">
+                                    <input type="number" id="stdsh-walkin-guests" min="1" required placeholder=" ">
+                                    <label for="stdsh-walkin-guests">Số Lượng Khách</label>
+                                </div>
+                                <div class="stdsh-form-group">
+                                    <select id="stdsh-walkin-table" required>
+                                        <option value="" disabled selected>-- Chọn Bàn Trống --</option>
+                                        <!-- Dynamic empty tables -->
+                                    </select>
+                                    <label for="stdsh-walkin-table" class="stdsh-static-label">Chọn Bàn</label>
+                                </div>
+                                <button type="submit" class="stdsh-btn-primary">
+                                    <i class="fa-solid fa-check"></i> Nhận Bàn
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Table Grid -->
+                        <div class="stdsh-table-map-panel">
+                            <div class="stdsh-table-legend">
+                                <div class="stdsh-legend-item"><span class="stdsh-dot stdsh-dot-empty"></span> Trống</div>
+                                <div class="stdsh-legend-item"><span class="stdsh-dot stdsh-dot-occupied"></span> Đang phục vụ</div>
+                                <div class="stdsh-legend-item"><span class="stdsh-dot stdsh-dot-reserved"></span> Đã đặt</div>
+                            </div>
+                            <div class="stdsh-table-grid" id="stdsh-table-grid-container">
+                                <!-- Dynamic tables injected by JS -->
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- TAB 3: Billing -->
+                <section id="stdsh-tab-billing" class="stdsh-tab-pane">
+                    <div class="stdsh-billing-layout">
+                        
+                        <!-- Select Table for Payment -->
+                        <div class="stdsh-billing-sidebar">
+                            <h3>Chọn Bàn Thanh Toán</h3>
+                            <div class="stdsh-billing-table-list" id="stdsh-billing-table-list">
+                                <!-- Dynamic occupied tables -->
+                            </div>
+                        </div>
+
+                        <!-- Bill Details -->
+                        <div class="stdsh-billing-details" id="stdsh-billing-details-panel">
+                            <div class="stdsh-empty-state" id="stdsh-bill-empty-state">
+                                <i class="fa-solid fa-receipt"></i>
+                                <p>Vui lòng chọn bàn đang phục vụ để xem hóa đơn</p>
+                            </div>
+                            
+                            <div class="stdsh-bill-content hidden" id="stdsh-bill-content">
+                                <div class="stdsh-bill-header">
+                                    <h2>HÓA ĐƠN MUA HÀNG</h2>
+                                    <p>Bàn: <span id="stdsh-bill-table-name">T1</span></p>
+                                    <p>Khách: <span id="stdsh-bill-customer-name">Nguyễn Văn A</span></p>
+                                </div>
+                                
+                                <ul class="stdsh-bill-items" id="stdsh-bill-items-list">
+                                    <!-- Items -->
+                                </ul>
+
+                                <div class="stdsh-bill-summary">
+                                    <div class="stdsh-summary-row">
+                                        <span>Tổng tiền:</span>
+                                        <span id="stdsh-bill-subtotal">0₫</span>
+                                    </div>
+                                    <div class="stdsh-summary-row">
+                                        <span>VAT (10%):</span>
+                                        <span id="stdsh-bill-vat">0₫</span>
+                                    </div>
+                                    <div class="stdsh-summary-row stdsh-total-row">
+                                        <span>THÀNH TIỀN:</span>
+                                        <span id="stdsh-bill-total">0₫</span>
+                                    </div>
+                                </div>
+
+                                <div class="stdsh-bill-actions">
+                                    <button class="stdsh-btn-pay-qr" id="stdsh-btn-qr">
+                                        <i class="fa-solid fa-qrcode"></i> Thanh Toán QR
+                                    </button>
+                                    <button class="stdsh-btn-pay-cash" id="stdsh-btn-cash">
+                                        <i class="fa-solid fa-money-bill-wave"></i> Tiền Mặt
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    
+    <!-- QR Payment Modal -->
+    <div class="stdsh-modal-overlay" id="stdsh-modal-qr">
+        <div class="stdsh-modal-box">
+            <button class="stdsh-modal-close" data-close="stdsh-modal-qr"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="stdsh-modal-title">Thanh Toán Chuyển Khoản</h3>
+            <div class="stdsh-qr-container">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=ThanhToan_Kurumi" alt="QR Code">
+            </div>
+            <p class="stdsh-qr-instruction">Khách hàng quét mã QR để thanh toán <br><strong id="stdsh-qr-amount"></strong></p>
+            <button class="stdsh-btn-primary stdsh-btn-full" id="stdsh-btn-confirm-qr-paid">
+                Xác nhận đã nhận tiền & Xuất hóa đơn
+            </button>
+        </div>
+    </div>
+
+    <!-- Invoice Success Modal -->
+    <div class="stdsh-modal-overlay" id="stdsh-modal-invoice">
+        <div class="stdsh-modal-box stdsh-modal-success">
+            <div class="stdsh-success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="stdsh-modal-title">Thanh Toán Thành Công!</h3>
+            <p>Hóa đơn đã được xuất và trạng thái bàn đã chuyển thành <strong>Trống</strong>.</p>
+            <button class="stdsh-btn-primary stdsh-btn-full" data-close="stdsh-modal-invoice">
+                Đóng
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="staff_dashboard.js"></script>
+</body>
+</html>
