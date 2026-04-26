@@ -3,12 +3,23 @@ window.initTablesTab = function() {
     const walkinTableSelect = document.getElementById('stdsh-walkin-table');
     const walkinForm = document.getElementById('stdsh-walkin-form');
 
+    let currentTableFilter = 'all';
+
     window.renderTables = function() {
         if (!tableGrid) return;
         tableGrid.innerHTML = '';
-        window.stdshState.tables.forEach(table => {
+        
+        let filteredTables = window.stdshState.tables;
+        if (currentTableFilter !== 'all') {
+            filteredTables = window.stdshState.tables.filter(t => t.type === currentTableFilter);
+        }
+
+        filteredTables.forEach(table => {
             const item = document.createElement('div');
             item.className = `stdsh-table-item stdsh-table-${table.status}`;
+            if (table.type === 'large') {
+                item.classList.add('stdsh-table-type-large');
+            }
             
             let metaText = '';
             if (table.status === 'empty') metaText = 'Trống';
@@ -88,6 +99,16 @@ window.initTablesTab = function() {
             if (window.renderBillingTableList) window.renderBillingTableList();
         });
     }
+
+    const navBtns = document.querySelectorAll('.stdsh-nav-btn');
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            navBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentTableFilter = e.target.getAttribute('data-filter');
+            window.renderTables();
+        });
+    });
 
     // Initial render
     window.renderTables();

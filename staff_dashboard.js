@@ -34,13 +34,26 @@ function initStaffDashboard() {
             { id: 2, name: "Lê Thị Hoa", time: "19:30 - Hôm nay", size: 2, phone: "0987654321" },
             { id: 3, name: "Phạm Hùng", time: "20:00 - Hôm nay", size: 6, phone: "0912345678" }
         ],
-        tables: Array.from({ length: 12 }, (_, i) => ({
-            id: `T${i + 1}`,
-            name: `Bàn ${i + 1}`,
-            status: i === 2 || i === 5 ? 'occupied' : (i === 8 ? 'reserved' : 'empty'),
-            customerName: i === 2 ? 'Nguyễn Văn A' : (i === 5 ? 'Lý Kim' : null),
-            billTotal: i === 2 ? 850000 : (i === 5 ? 1200000 : 0)
-        })),
+        tables: [
+            // Bàn nhỏ (12 bàn)
+            ...Array.from({ length: 12 }, (_, i) => ({
+                id: `TS${i + 1}`,
+                name: `Bàn ${i + 1}`,
+                type: 'small',
+                status: i === 2 || i === 5 ? 'occupied' : (i === 8 ? 'reserved' : 'empty'),
+                customerName: i === 2 ? 'Nguyễn Văn A' : (i === 5 ? 'Lý Kim' : null),
+                billTotal: i === 2 ? 850000 : (i === 5 ? 1200000 : 0)
+            })),
+            // Bàn lớn (8 bàn)
+            ...Array.from({ length: 8 }, (_, i) => ({
+                id: `TL${i + 1}`,
+                name: `Bàn VIP ${i + 1}`,
+                type: 'large',
+                status: i === 1 ? 'occupied' : (i === 4 ? 'reserved' : 'empty'),
+                customerName: i === 1 ? 'Trần Văn B' : null,
+                billTotal: i === 1 ? 2500000 : 0
+            }))
+        ],
         mockBillItems: [
             { name: "Combo Xèo Xèo", qty: 1, price: 419000 },
             { name: "Sườn Non Bò Mỹ", qty: 1, price: 415000 },
