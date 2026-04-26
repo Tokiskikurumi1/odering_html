@@ -181,10 +181,26 @@
     color: #3498db;
 }
 
-.stdsh-table-cancel-btn {
+.stdsh-table-actions {
     position: absolute;
     top: 5px;
     right: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.stdsh-table-reserved:hover .stdsh-table-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stdsh-table-cancel-btn,
+.stdsh-table-activate-btn {
     background: var(--stdsh-danger);
     color: white;
     border: none;
@@ -193,22 +209,24 @@
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
-    opacity: 0;
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
-    z-index: 10;
     display: flex;
     align-items: center;
     gap: 4px;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: flex-start;
 }
 
-.stdsh-table-reserved:hover .stdsh-table-cancel-btn {
-    opacity: 1;
-    transform: translateY(0);
+.stdsh-table-activate-btn {
+    background: var(--stdsh-success);
 }
 
 .stdsh-table-cancel-btn:hover {
     background: var(--stdsh-danger-hover);
+}
+
+.stdsh-table-activate-btn:hover {
+    background: var(--stdsh-success-hover);
 }
 
 .stdsh-table-meta {

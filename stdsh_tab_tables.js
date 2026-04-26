@@ -15,13 +15,18 @@ window.initTablesTab = function() {
             else if (table.status === 'occupied') metaText = table.customerName;
             else if (table.status === 'reserved') metaText = 'Đã đặt';
 
-            let cancelBtnHtml = '';
+            let actionBtnsHtml = '';
             if (table.status === 'reserved') {
-                cancelBtnHtml = `<button class="stdsh-table-cancel-btn" onclick="event.stopPropagation(); cancelReservation('${table.id}')"><i class="fa-solid fa-xmark"></i> Hủy</button>`;
+                actionBtnsHtml = `
+                    <div class="stdsh-table-actions">
+                        <button class="stdsh-table-activate-btn" onclick="event.stopPropagation(); activateReservation('${table.id}')"><i class="fa-solid fa-check"></i> Kích hoạt</button>
+                        <button class="stdsh-table-cancel-btn" onclick="event.stopPropagation(); cancelReservation('${table.id}')"><i class="fa-solid fa-xmark"></i> Hủy</button>
+                    </div>
+                `;
             }
 
             item.innerHTML = `
-                ${cancelBtnHtml}
+                ${actionBtnsHtml}
                 ${table.name}
                 <span class="stdsh-table-meta">${metaText}</span>
             `;
@@ -35,6 +40,18 @@ window.initTablesTab = function() {
             table.status = 'empty';
             window.renderTables();
             window.updateEmptyTableSelect();
+        }
+    };
+
+    window.activateReservation = (tableId) => {
+        const table = window.stdshState.tables.find(t => t.id === tableId);
+        if (table) {
+            table.status = 'occupied';
+            if (!table.customerName) table.customerName = 'Khách đặt trước';
+            table.billTotal = Math.floor(Math.random() * 500000) + 300000;
+            window.renderTables();
+            window.updateEmptyTableSelect();
+            if (window.renderBillingTableList) window.renderBillingTableList();
         }
     };
 
