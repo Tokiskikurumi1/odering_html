@@ -18,6 +18,7 @@ window.initBillingTab = function() {
         occupiedTables.forEach(t => {
             const card = document.createElement('div');
             card.className = 'stdsh-bill-table-card';
+            card.setAttribute('data-table-id', t.id);
             card.onclick = () => selectBillingTable(t.id, card);
             
             card.innerHTML = `
@@ -31,6 +32,15 @@ window.initBillingTab = function() {
             `;
             billingTableList.appendChild(card);
         });
+    };
+
+    window.selectBillingTableById = function(tableId) {
+        if (!billingTableList) return;
+        const listItems = billingTableList.querySelectorAll('.stdsh-bill-table-card');
+        const cardElement = Array.from(listItems).find(c => c.getAttribute('data-table-id') === tableId);
+        if (cardElement) {
+            selectBillingTable(tableId, cardElement);
+        }
     };
 
     function selectBillingTable(tableId, cardElement) {

@@ -241,13 +241,16 @@
     transition: all 0.3s ease;
 }
 
-.stdsh-table-reserved:hover .stdsh-table-actions {
+.stdsh-table-reserved:hover .stdsh-table-actions,
+.stdsh-table-occupied:hover .stdsh-table-actions {
     opacity: 1;
     transform: translateY(0);
 }
 
 .stdsh-table-cancel-btn,
-.stdsh-table-activate-btn {
+.stdsh-table-activate-btn,
+.stdsh-table-pay-btn,
+.stdsh-table-info-btn {
     background: var(--stdsh-danger);
     color: white;
     border: none;
@@ -274,6 +277,22 @@
 
 .stdsh-table-activate-btn:hover {
     background: var(--stdsh-success-hover);
+}
+
+.stdsh-table-pay-btn {
+    background: var(--stdsh-primary);
+}
+
+.stdsh-table-pay-btn:hover {
+    background: var(--stdsh-primary-hover);
+}
+
+.stdsh-table-info-btn {
+    background: #3498db;
+}
+
+.stdsh-table-info-btn:hover {
+    background: #2980b9;
 }
 
 .stdsh-table-meta {

@@ -30,8 +30,16 @@ window.initTablesTab = function() {
             if (table.status === 'reserved') {
                 actionBtnsHtml = `
                     <div class="stdsh-table-actions">
+                        <button class="stdsh-table-info-btn" onclick="event.stopPropagation(); viewTableDetails('${table.id}')"><i class="fa-solid fa-circle-info"></i> Chi tiết</button>
                         <button class="stdsh-table-activate-btn" onclick="event.stopPropagation(); activateReservation('${table.id}')"><i class="fa-solid fa-check"></i> Kích hoạt</button>
                         <button class="stdsh-table-cancel-btn" onclick="event.stopPropagation(); cancelReservation('${table.id}')"><i class="fa-solid fa-xmark"></i> Hủy</button>
+                    </div>
+                `;
+            } else if (table.status === 'occupied') {
+                actionBtnsHtml = `
+                    <div class="stdsh-table-actions">
+                        <button class="stdsh-table-info-btn" onclick="event.stopPropagation(); viewTableDetails('${table.id}')"><i class="fa-solid fa-circle-info"></i> Chi tiết</button>
+                        <button class="stdsh-table-pay-btn" onclick="event.stopPropagation(); checkoutTable('${table.id}')"><i class="fa-solid fa-credit-card"></i> Thanh toán</button>
                     </div>
                 `;
             }
@@ -60,9 +68,41 @@ window.initTablesTab = function() {
             table.status = 'occupied';
             if (!table.customerName) table.customerName = 'Khách đặt trước';
             table.billTotal = Math.floor(Math.random() * 500000) + 300000;
+            const now = new Date();
+            if (!table.time) table.time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} - Hôm nay`;
             window.renderTables();
             window.updateEmptyTableSelect();
             if (window.renderBillingTableList) window.renderBillingTableList();
+        }
+    };
+
+    window.viewTableDetails = (tableId) => {
+        const table = window.stdshState.tables.find(t => t.id === tableId);
+        if (table) {
+            document.getElementById('stdsh-detail-modal-table').textContent = table.name;
+            document.getElementById('stdsh-detail-modal-name').textContent = table.customerName || 'Khách vãng lai';
+            document.getElementById('stdsh-detail-modal-phone').textContent = table.phone || 'Không cung cấp';
+            document.getElementById('stdsh-detail-modal-size').textContent = table.size ? `${table.size} người` : 'Không xác định';
+            
+            const now = new Date();
+            const timeStr = table.time || `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} - Hôm nay`;
+            document.getElementById('stdsh-detail-modal-time').textContent = timeStr;
+
+            document.getElementById('stdsh-modal-table-details').classList.add('active');
+        }
+    };
+
+    window.checkoutTable = (tableId) => {
+        // Đóng modal chi tiết nếu đang mở
+        document.getElementById('stdsh-modal-table-details').classList.remove('active');
+        
+        // Chuyển sang tab thanh toán
+        const billingTab = document.querySelector('.stdsh-nav-item[data-tab="stdsh-tab-billing"]');
+        if (billingTab) billingTab.click();
+        
+        // Chọn đúng bàn đó bên tab thanh toán
+        if (typeof window.selectBillingTableById === 'function') {
+            window.selectBillingTableById(tableId);
         }
     };
 
@@ -90,6 +130,9 @@ window.initTablesTab = function() {
             if (table) {
                 table.status = 'occupied';
                 table.customerName = name;
+                table.size = document.getElementById('stdsh-walkin-guests').value;
+                const now = new Date();
+                table.time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} - Hôm nay`;
                 table.billTotal = Math.floor(Math.random() * 500000) + 300000;
             }
 
@@ -107,6 +150,13 @@ window.initTablesTab = function() {
             e.target.classList.add('active');
             currentTableFilter = e.target.getAttribute('data-filter');
             window.renderTables();
+        });
+    });
+
+    // Close details modal logic
+    document.querySelectorAll('[data-close="stdsh-modal-table-details"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('stdsh-modal-table-details').classList.remove('active');
         });
     });
 

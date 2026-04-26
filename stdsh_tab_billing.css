@@ -27,7 +27,8 @@
     flex-direction: column;
     gap: 15px;
     overflow-y: auto;
-    flex: 1;
+    max-height: 440px; /* Tương đương khoảng 5 bill */
+    padding-right: 5px;
 }
 
 .stdsh-bill-table-card {
