@@ -42,6 +42,7 @@ function initStaffDashboard() {
                 type: 'small',
                 status: i === 2 || i === 5 ? 'occupied' : (i === 8 ? 'reserved' : 'empty'),
                 customerName: i === 2 ? 'Nguyễn Văn A' : (i === 5 ? 'Lý Kim' : null),
+                phone: i === 2 ? '0981234567' : (i === 5 ? '0912233445' : null),
                 billTotal: i === 2 ? 850000 : (i === 5 ? 1200000 : 0)
             })),
             // Bàn lớn (8 bàn)
@@ -51,6 +52,7 @@ function initStaffDashboard() {
                 type: 'large',
                 status: i === 1 ? 'occupied' : (i === 4 ? 'reserved' : 'empty'),
                 customerName: i === 1 ? 'Trần Văn B' : null,
+                phone: i === 1 ? '0909988776' : null,
                 billTotal: i === 1 ? 2500000 : 0
             }))
         ],

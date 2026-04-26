@@ -5,13 +5,34 @@ window.initBillingTab = function() {
     
     let currentSelectedBillingTable = null;
 
+    let billingSearchTerm = '';
+    const billingSearchInput = document.getElementById('stdsh-billing-search');
+    
+    if (billingSearchInput) {
+        billingSearchInput.addEventListener('input', (e) => {
+            billingSearchTerm = e.target.value.toLowerCase().trim();
+            window.renderBillingTableList();
+        });
+    }
+
     window.renderBillingTableList = function() {
         if (!billingTableList) return;
         billingTableList.innerHTML = '';
-        const occupiedTables = window.stdshState.tables.filter(t => t.status === 'occupied');
+        let occupiedTables = window.stdshState.tables.filter(t => t.status === 'occupied');
+        
+        if (billingSearchTerm) {
+            occupiedTables = occupiedTables.filter(t => {
+                const tableName = (t.name || '').toLowerCase();
+                const custName = (t.customerName || '').toLowerCase();
+                const phone = (t.phone || '').toLowerCase();
+                return tableName.includes(billingSearchTerm) || 
+                       custName.includes(billingSearchTerm) || 
+                       phone.includes(billingSearchTerm);
+            });
+        }
         
         if (occupiedTables.length === 0) {
-            billingTableList.innerHTML = '<p style="color:var(--stdsh-text-muted); text-align:center; padding: 20px;">Không có bàn nào đang phục vụ.</p>';
+            billingTableList.innerHTML = '<p style="color:var(--stdsh-text-muted); text-align:center; padding: 20px;">Không tìm thấy bàn nào.</p>';
             return;
         }
 
@@ -24,7 +45,8 @@ window.initBillingTab = function() {
             card.innerHTML = `
                 <div class="stdsh-btc-info">
                     <h4>${t.name}</h4>
-                    <p>${t.customerName}</p>
+                    <p style="margin-bottom: 4px;"><i class="fa-solid fa-user"></i> ${t.customerName || 'Khách vãng lai'}</p>
+                    <p><i class="fa-solid fa-phone"></i> ${t.phone || 'Không cung cấp'}</p>
                 </div>
                 <div class="stdsh-btc-amount">
                     ${t.billTotal.toLocaleString('vi-VN')}₫

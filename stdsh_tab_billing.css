@@ -22,6 +22,33 @@
     color: var(--stdsh-primary);
 }
 
+.stdsh-billing-search-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+.stdsh-billing-search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--stdsh-text-muted);
+}
+.stdsh-billing-search-box input {
+    width: 100%;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--stdsh-glass-border);
+    color: #fff;
+    padding: 12px 15px 12px 40px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+.stdsh-billing-search-box input:focus {
+    outline: none;
+    border-color: var(--stdsh-primary);
+    box-shadow: 0 0 10px rgba(232, 135, 53, 0.2);
+}
+
 .stdsh-billing-table-list {
     display: flex;
     flex-direction: column;
