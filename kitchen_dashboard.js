@@ -32,7 +32,8 @@ function initKitchenDashboard() {
         tables: [
             { id: 'T1', name: 'Bàn 1' },
             { id: 'T2', name: 'Bàn 2' },
-            { id: 'T3', name: 'Bàn 3' }
+            { id: 'T3', name: 'Bàn 3' },
+            { id: 'T4', name: 'Bàn 4' }
         ],
         inventory: [
             { id: 'ing_suonbo', name: 'Sườn Non Bò Mỹ', stock: 15, icon: 'fa-drumstick-bite' },
@@ -41,13 +42,25 @@ function initKitchenDashboard() {
             { id: 'ing_nuoc', name: 'Nước Lẩu Cà Chua', stock: 50, icon: 'fa-water' }
         ],
         orders: [
-            // Bàn 1 (3 món)
-            { id: 1, tableId: 'T1', itemName: 'Sườn Non Bò Mỹ', qty: 3, status: 'cooking', timestamp: Date.now() - 600000, isNew: false, ingredientId: 'ing_suonbo' },
-            { id: 2, tableId: 'T1', itemName: 'Nấm Tổng Hợp', qty: 2, status: 'cooking', timestamp: Date.now() - 500000, isNew: false, ingredientId: 'ing_nam' },
-            { id: 3, tableId: 'T1', itemName: 'Nước Lẩu Cà Chua', qty: 1, status: 'pending', timestamp: Date.now() - 400000, isNew: false, ingredientId: 'ing_nuoc' },
-            // Bàn 2 (2 món)
-            { id: 4, tableId: 'T2', itemName: 'Combo Đặc Biệt', qty: 1, status: 'pending', timestamp: Date.now() - 200000, isNew: false, ingredientId: 'ing_combo' },
-            { id: 5, tableId: 'T2', itemName: 'Sườn Non Bò Mỹ', qty: 1, status: 'pending', timestamp: Date.now() - 120000, isNew: false, ingredientId: 'ing_suonbo' }
+            // Bàn 1 (3 món) - Batch 1
+            { id: 1, batchId: 'b1', tableId: 'T1', itemName: 'Sườn Non Bò Mỹ', qty: 3, status: 'cooking', timestamp: Date.now() - 600000, isNew: false, ingredientId: 'ing_suonbo' },
+            { id: 2, batchId: 'b1', tableId: 'T1', itemName: 'Nấm Tổng Hợp', qty: 2, status: 'cooking', timestamp: Date.now() - 500000, isNew: false, ingredientId: 'ing_nam' },
+            { id: 3, batchId: 'b1', tableId: 'T1', itemName: 'Nước Lẩu Cà Chua', qty: 1, status: 'pending', timestamp: Date.now() - 400000, isNew: false, ingredientId: 'ing_nuoc' },
+            // Bàn 2 (2 món) - Batch 2
+            { id: 4, batchId: 'b2', tableId: 'T2', itemName: 'Combo Đặc Biệt', qty: 1, status: 'pending', timestamp: Date.now() - 200000, isNew: false, ingredientId: 'ing_combo' },
+            { id: 5, batchId: 'b2', tableId: 'T2', itemName: 'Sườn Non Bò Mỹ', qty: 1, status: 'pending', timestamp: Date.now() - 120000, isNew: false, ingredientId: 'ing_suonbo' },
+            // Bàn 3 (3 món) - Batch 3 (Lần 1)
+            { id: 6, batchId: 'b3', tableId: 'T3', itemName: 'Sườn Non Bò Mỹ', qty: 2, status: 'cooking', timestamp: Date.now() - 1500000, isNew: false, ingredientId: 'ing_suonbo' },
+            { id: 7, batchId: 'b3', tableId: 'T3', itemName: 'Nấm Tổng Hợp', qty: 1, status: 'cooking', timestamp: Date.now() - 1500000, isNew: false, ingredientId: 'ing_nam' },
+            { id: 8, batchId: 'b3', tableId: 'T3', itemName: 'Nước Lẩu Cà Chua', qty: 1, status: 'cooking', timestamp: Date.now() - 1500000, isNew: false, ingredientId: 'ing_nuoc' },
+            // Bàn 3 (1 món) - Batch 4 (Lần 2)
+            { id: 9, batchId: 'b4', tableId: 'T3', itemName: 'Combo Đặc Biệt', qty: 1, status: 'pending', timestamp: Date.now() - 100000, isNew: false, ingredientId: 'ing_combo' },
+            // Bàn 4 (5 món) - Batch 5 (Đơn dài để test thanh cuộn)
+            { id: 10, batchId: 'b5', tableId: 'T4', itemName: 'Sườn Non Bò Mỹ', qty: 1, status: 'pending', timestamp: Date.now() - 50000, isNew: false, ingredientId: 'ing_suonbo' },
+            { id: 11, batchId: 'b5', tableId: 'T4', itemName: 'Nấm Tổng Hợp', qty: 1, status: 'pending', timestamp: Date.now() - 50000, isNew: false, ingredientId: 'ing_nam' },
+            { id: 12, batchId: 'b5', tableId: 'T4', itemName: 'Nước Lẩu Cà Chua', qty: 1, status: 'pending', timestamp: Date.now() - 50000, isNew: false, ingredientId: 'ing_nuoc' },
+            { id: 13, batchId: 'b5', tableId: 'T4', itemName: 'Combo Đặc Biệt', qty: 1, status: 'pending', timestamp: Date.now() - 50000, isNew: false, ingredientId: 'ing_combo' },
+            { id: 14, batchId: 'b5', tableId: 'T4', itemName: 'Sườn Non Bò Mỹ (Thêm)', qty: 1, status: 'pending', timestamp: Date.now() - 50000, isNew: false, ingredientId: 'ing_suonbo' }
         ]
     };
 

@@ -23,7 +23,13 @@ window.initKitchenSidebar = function() {
     window.updateKitchenPendingBadge = function() {
         const badge = document.getElementById('kitchen-pending-count');
         if (badge) {
-            const pendingCount = window.kitchenState.orders.filter(o => o.status === 'pending').length;
+            const pendingBatches = new Set();
+            window.kitchenState.orders.forEach(o => {
+                if (o.status === 'pending') {
+                    pendingBatches.add(o.batchId || o.tableId);
+                }
+            });
+            const pendingCount = pendingBatches.size;
             badge.textContent = pendingCount;
             if (pendingCount > 0) {
                 badge.style.display = 'inline-block';

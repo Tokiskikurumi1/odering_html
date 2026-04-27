@@ -91,6 +91,19 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-height: 280px; 
+    overflow-y: auto;
+}
+
+.kitchen-table-items::-webkit-scrollbar {
+    width: 6px;
+}
+.kitchen-table-items::-webkit-scrollbar-track {
+    background: transparent;
+}
+.kitchen-table-items::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 
 .kitchen-order-row {

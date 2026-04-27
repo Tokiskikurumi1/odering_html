@@ -18,16 +18,19 @@ window.initKitchenOrdersTab = function () {
         if (!gridContainer) return;
         gridContainer.innerHTML = '';
 
-        // 1. Determine which tables should be visible based on the filter
-        let tableIdsToShow = new Set();
+        // 1. Determine which batches should be visible based on the filter
+        let batchIdsToShow = new Set();
         window.kitchenState.orders.forEach(o => {
             if (currentFilter === 'all' || o.status === currentFilter) {
-                tableIdsToShow.add(o.tableId);
+                batchIdsToShow.add(o.batchId || o.tableId);
             }
         });
 
-        // 2. Show all items for the visible tables
-        let filteredOrders = window.kitchenState.orders.filter(o => tableIdsToShow.has(o.tableId));
+        // 2. Show all items for the visible batches
+        let filteredOrders = window.kitchenState.orders.filter(o => {
+            const groupKey = o.batchId || o.tableId;
+            return batchIdsToShow.has(groupKey);
+        });
 
         // Sort
         filteredOrders.sort((a, b) => {
@@ -35,22 +38,28 @@ window.initKitchenOrdersTab = function () {
             return b.timestamp - a.timestamp;
         });
 
-        // Group by Table
+        // Group by Batch
         const grouped = {};
         filteredOrders.forEach(o => {
-            if (!grouped[o.tableId]) {
+            const groupKey = o.batchId || o.tableId;
+            if (!grouped[groupKey]) {
                 const tableInfo = window.kitchenState.tables.find(t => t.id === o.tableId);
-                grouped[o.tableId] = {
+                grouped[groupKey] = {
+                    batchId: groupKey,
+                    tableId: o.tableId,
                     tableName: tableInfo ? tableInfo.name : o.tableId,
                     items: []
                 };
             }
-            grouped[o.tableId].items.push(o);
+            grouped[groupKey].items.push(o);
         });
 
+        // Check global busy state
+        const isKitchenBusy = window.kitchenState.orders.some(o => o.status === 'cooking');
+
         // Render Groups
-        Object.keys(grouped).forEach(tableId => {
-            const group = grouped[tableId];
+        Object.keys(grouped).forEach(groupKey => {
+            const group = grouped[groupKey];
 
             const groupEl = document.createElement('div');
             groupEl.className = 'kitchen-table-group';
@@ -110,18 +119,23 @@ window.initKitchenOrdersTab = function () {
             });
 
             let footerHtml = '';
+            // Determine Footer Actions
             if (hasPending || hasCooking) {
                 let receiveBtnHtml = '';
-                if (hasPending) {
-                    receiveBtnHtml = `<button class="kitchen-btn-action kitchen-btn-receive" onclick="window.updateTableStatus('${tableId}', 'pending', 'cooking')">Nhận đơn</button>`;
-                } else if (hasCooking) {
-                    receiveBtnHtml = `<button class="kitchen-btn-action kitchen-btn-complete" onclick="window.updateTableStatus('${tableId}', 'cooking', 'done')">Hoàn thành</button>`;
+                if (hasCooking) {
+                    receiveBtnHtml = `<button class="kitchen-btn-action kitchen-btn-complete" onclick="window.updateBatchStatus('${groupKey}', 'cooking', 'done')">Hoàn thành</button>`;
+                } else if (hasPending) {
+                    if (isKitchenBusy) {
+                        receiveBtnHtml = `<button class="kitchen-btn-action kitchen-btn-receive" disabled style="opacity: 0.5; cursor: not-allowed; background: var(--ktch-border); color: var(--ktch-text-muted);" title="Vui lòng hoàn thành đơn đang nấu trước">Nhận đơn</button>`;
+                    } else {
+                        receiveBtnHtml = `<button class="kitchen-btn-action kitchen-btn-receive" onclick="window.updateBatchStatus('${groupKey}', 'pending', 'cooking')">Nhận đơn</button>`;
+                    }
                 }
 
                 footerHtml = `
                     <div class="kitchen-table-footer">
                         ${receiveBtnHtml}
-                        <button class="kitchen-btn-action kitchen-btn-cancel" onclick="window.openCancelModal('${tableId}', true)">Hủy đơn</button>
+                        <button class="kitchen-btn-action kitchen-btn-cancel" onclick="window.openCancelModal('${groupKey}', true)">Hủy đơn</button>
                     </div>
                 `;
             }
@@ -143,9 +157,16 @@ window.initKitchenOrdersTab = function () {
                 tableStatusLabel = 'Đã hủy';
             }
 
+            const earliestTime = Math.min(...group.items.map(i => i.timestamp));
+
             groupEl.innerHTML = `
                 <div class="kitchen-table-header">
-                    <span><i class="fa-solid fa-utensils"></i> Bàn: ${group.tableName}</span>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <span><i class="fa-solid fa-utensils"></i> Bàn: ${group.tableName}</span>
+                        <span style="font-size: 0.9rem; font-weight: 500; color: var(--ktch-text-muted);">
+                            <i class="fa-regular fa-clock"></i> Gọi lúc: ${window.formatTime(earliestTime)}
+                        </span>
+                    </div>
                     <span class="kitchen-status-badge ${tableStatusClass}">${tableStatusLabel}</span>
                 </div>
                 <div class="kitchen-table-items">
@@ -191,9 +212,10 @@ window.initKitchenOrdersTab = function () {
         }
     };
 
-    window.updateTableStatus = function (tableId, fromStatus, toStatus) {
+    window.updateBatchStatus = function (batchId, fromStatus, toStatus) {
         window.kitchenState.orders.forEach(o => {
-            if (o.tableId === tableId && o.status === fromStatus) {
+            const groupKey = o.batchId || o.tableId;
+            if (groupKey === batchId && o.status === fromStatus) {
                 o.status = toStatus;
             }
         });
@@ -206,16 +228,18 @@ window.initKitchenOrdersTab = function () {
     const cancelNote = document.getElementById('kitchen-cancel-note');
     const cancelName = document.getElementById('kitchen-cancel-item-name');
     let cancelOrderId = null;
-    let cancelTableId = null;
+    let cancelBatchId = null;
 
-    window.openCancelModal = function (id, isTable = false) {
-        if (isTable) {
+    window.openCancelModal = function (id, isBatch = false) {
+        if (isBatch) {
             cancelOrderId = null;
-            cancelTableId = id;
-            if (cancelName) cancelName.textContent = `Toàn bộ đơn chờ/nấu của Bàn: ${id}`;
+            cancelBatchId = id;
+            const sample = window.kitchenState.orders.find(o => (o.batchId || o.tableId) === id);
+            const tableName = sample ? sample.tableId : id;
+            if (cancelName) cancelName.textContent = `Toàn bộ đơn chờ/nấu của Bàn: ${tableName}`;
         } else {
             cancelOrderId = id;
-            cancelTableId = null;
+            cancelBatchId = null;
             const order = window.kitchenState.orders.find(o => o.id === id);
             if (order && cancelName) {
                 cancelName.textContent = `${order.itemName} (x${order.qty}) - Bàn: ${order.tableId}`;
@@ -248,9 +272,10 @@ window.initKitchenOrdersTab = function () {
             if (cancelOrderId !== null) {
                 // Here we could save the cancel reason to the order object
                 window.updateOrderStatus(cancelOrderId, 'cancel');
-            } else if (cancelTableId !== null) {
+            } else if (cancelBatchId !== null) {
                 window.kitchenState.orders.forEach(o => {
-                    if (o.tableId === cancelTableId && (o.status === 'pending' || o.status === 'cooking')) {
+                    const groupKey = o.batchId || o.tableId;
+                    if (groupKey === cancelBatchId && (o.status === 'pending' || o.status === 'cooking')) {
                         o.status = 'cancel';
                     }
                 });
@@ -271,6 +296,7 @@ window.initKitchenOrdersTab = function () {
 
             const newOrder = {
                 id: Date.now(),
+                batchId: 'SIM_' + Date.now(),
                 tableId: table.id,
                 itemName: inv.name,
                 qty: Math.floor(Math.random() * 3) + 1,
