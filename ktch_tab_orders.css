@@ -93,37 +93,123 @@
     gap: 15px;
 }
 
-.kitchen-order-card {
-    background: var(--ktch-bg-base);
-    border: 1px solid var(--ktch-border);
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: 0.3s;
-}
-
-/* Highlight new items */
-.kitchen-order-card.new-item {
-    animation: highlight-new 2s ease-out;
-}
-
-@keyframes highlight-new {
-    0% { border-color: var(--ktch-primary); box-shadow: 0 0 15px rgba(13, 110, 253, 0.5); }
-    100% { border-color: var(--ktch-border); box-shadow: none; }
-}
-
-.kitchen-order-card-header {
+.kitchen-order-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
 }
 
-.kitchen-item-name {
-    font-size: 1.2rem;
-    font-weight: 700;
+.kitchen-order-row:last-child {
+    border-bottom: none;
+}
+
+.kitchen-order-row.new-item {
+    animation: highlight-new-row 2s ease-out;
+}
+
+.kitchen-row-cancelled {
+    opacity: 0.5;
+}
+
+.kitchen-row-cancelled .kitchen-row-name {
+    text-decoration: line-through;
+}
+
+@keyframes highlight-new-row {
+    0% {
+        background: rgba(13, 110, 253, 0.2);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+.kitchen-row-name {
+    flex: 2;
+    font-size: 1.1rem;
+    font-weight: 600;
     color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.kitchen-row-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.kitchen-row-qty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kitchen-row-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.kitchen-btn-row-cancel {
+    background: transparent;
+    border: 1px solid var(--ktch-border);
+    color: var(--ktch-text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kitchen-btn-row-cancel:hover {
+    background: rgba(220, 53, 69, 0.2);
+    color: var(--ktch-status-cancel);
+    border-color: var(--ktch-status-cancel);
+}
+
+.kitchen-table-footer {
+    display: flex;
+    gap: 15px;
+    padding: 15px 20px;
+    border-top: 1px solid var(--ktch-border);
+    background: var(--ktch-surface-light);
+}
+
+.kitchen-item-qty-container {
+    display: flex;
+    align-items: center;
+}
+
+.kitchen-low-stock-warning {
+    color: var(--ktch-status-cooking);
+    /* Orange color */
+    margin-right: 8px;
+    font-size: 1.1rem;
+    animation: pulse-warning 1.5s infinite;
+}
+
+@keyframes pulse-warning {
+    0% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
 }
 
 .kitchen-item-qty {
@@ -150,10 +236,26 @@
     font-size: 0.85rem;
     text-transform: uppercase;
 }
-.kitchen-status-badge.pending { background: var(--ktch-status-pending); color: #fff; }
-.kitchen-status-badge.cooking { background: var(--ktch-status-cooking); color: #fff; }
-.kitchen-status-badge.done { background: var(--ktch-status-done); color: #fff; }
-.kitchen-status-badge.cancel { background: var(--ktch-status-cancel); color: #fff; }
+
+.kitchen-status-badge.pending {
+    background: var(--ktch-status-pending);
+    color: #fff;
+}
+
+.kitchen-status-badge.cooking {
+    background: var(--ktch-status-cooking);
+    color: #fff;
+}
+
+.kitchen-status-badge.done {
+    background: var(--ktch-status-done);
+    color: #fff;
+}
+
+.kitchen-status-badge.cancel {
+    background: var(--ktch-status-cancel);
+    color: #fff;
+}
 
 .kitchen-order-actions {
     display: flex;
@@ -181,6 +283,7 @@
     color: var(--ktch-status-cooking);
     border: 1px solid var(--ktch-status-cooking);
 }
+
 .kitchen-btn-receive:hover {
     background: var(--ktch-status-cooking);
     color: #fff;
@@ -191,6 +294,7 @@
     color: var(--ktch-status-done);
     border: 1px solid var(--ktch-status-done);
 }
+
 .kitchen-btn-complete:hover {
     background: var(--ktch-status-done);
     color: #fff;
@@ -201,6 +305,7 @@
     color: var(--ktch-text-muted);
     border: 1px solid var(--ktch-border);
 }
+
 .kitchen-btn-cancel:hover {
     background: rgba(220, 53, 69, 0.2);
     color: var(--ktch-status-cancel);
