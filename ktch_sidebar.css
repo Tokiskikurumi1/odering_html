@@ -1,0 +1,126 @@
+/* ==========================================================================
+   KITCHEN SIDEBAR
+   ========================================================================== */
+.kitchen-nav-panel {
+    width: 280px;
+    background: var(--ktch-surface);
+    border-right: 1px solid var(--ktch-border);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    z-index: 10;
+}
+
+.kitchen-nav-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--ktch-status-cooking);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.kitchen-nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--ktch-surface-light);
+    border-radius: 12px;
+    border: 1px solid var(--ktch-border);
+    margin-bottom: 40px;
+}
+
+.kitchen-profile-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--ktch-status-cancel);
+}
+
+.kitchen-profile-info h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: var(--ktch-text-main);
+}
+
+.kitchen-profile-info p {
+    font-size: 0.8rem;
+    color: var(--ktch-text-muted);
+}
+
+.kitchen-nav-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.kitchen-nav-item {
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--ktch-text-muted);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.kitchen-nav-item:hover {
+    background: var(--ktch-surface-light);
+    color: var(--ktch-text-main);
+}
+
+.kitchen-nav-item.active {
+    background: rgba(253, 126, 20, 0.1);
+    color: var(--ktch-status-cooking);
+    border-left: 4px solid var(--ktch-status-cooking);
+}
+
+.kitchen-nav-item i {
+    font-size: 1.3rem;
+    width: 25px;
+    text-align: center;
+}
+
+.kitchen-badge {
+    background: var(--ktch-status-cancel);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    position: absolute;
+    right: 15px;
+}
+
+.kitchen-logout-btn {
+    background: transparent;
+    border: 1px solid var(--ktch-border);
+    color: var(--ktch-text-muted);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.kitchen-logout-btn:hover {
+    background: rgba(220, 53, 69, 0.1);
+    color: var(--ktch-status-cancel);
+    border-color: var(--ktch-status-cancel);
+}

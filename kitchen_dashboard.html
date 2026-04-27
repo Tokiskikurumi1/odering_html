@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Dashboard - Kurumi BBQ</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="kitchen_dashboard.css">
+    <link rel="stylesheet" href="ktch_sidebar.css">
+    <link rel="stylesheet" href="ktch_tab_orders.css">
+    <link rel="stylesheet" href="ktch_tab_inventory.css">
+</head>
+<body class="kitchen-body">
+    <div class="kitchen-layout-wrapper">
+        <!-- Sidebar -->
+        <div id="kitchen-sidebar-placeholder"></div>
+
+        <!-- Main Content -->
+        <main class="kitchen-main-content">
+            <header class="kitchen-main-header">
+                <h1 id="kitchen-header-title">Đơn Món Đang Chờ</h1>
+                <div class="kitchen-header-actions">
+                    <button id="kitchen-alert-badge" class="kitchen-alert-badge hidden">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Sắp Hết Nguyên Liệu
+                    </button>
+                    <button id="kitchen-sim-order-btn" class="kitchen-sim-btn">
+                        <i class="fa-solid fa-bell"></i> Gọi Món Mẫu
+                    </button>
+                    <div class="kitchen-time-display" id="kitchen-current-time">10:00 AM</div>
+                </div>
+            </header>
+
+            <div class="kitchen-tab-container">
+                <div id="kitchen-tab-orders-placeholder"></div>
+                <div id="kitchen-tab-inventory-placeholder"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Cancel Order -->
+    <div class="kitchen-modal-overlay" id="kitchen-modal-cancel">
+        <div class="kitchen-modal-box">
+            <button class="kitchen-modal-close" id="kitchen-close-cancel-modal"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="kitchen-modal-title">Lý Do Hủy Món</h3>
+            <p id="kitchen-cancel-item-name" class="kitchen-cancel-subtitle">Tên Món</p>
+            
+            <form id="kitchen-cancel-form">
+                <div class="kitchen-radio-group">
+                    <input type="radio" id="kitchen-reason-1" name="cancelReason" value="Không đủ nguyên liệu" required>
+                    <label for="kitchen-reason-1">Không đủ nguyên liệu</label>
+                </div>
+                <div class="kitchen-radio-group">
+                    <input type="radio" id="kitchen-reason-2" name="cancelReason" value="Món ngừng phục vụ">
+                    <label for="kitchen-reason-2">Món ngừng phục vụ</label>
+                </div>
+                <div class="kitchen-radio-group">
+                    <input type="radio" id="kitchen-reason-3" name="cancelReason" value="Lỗi yêu cầu / Hết thời gian">
+                    <label for="kitchen-reason-3">Lỗi yêu cầu / Khách đổi ý</label>
+                </div>
+                <div class="kitchen-radio-group">
+                    <input type="radio" id="kitchen-reason-4" name="cancelReason" value="Khác">
+                    <label for="kitchen-reason-4">Khác</label>
+                </div>
+                
+                <input type="text" id="kitchen-cancel-note" class="kitchen-input-text hidden" placeholder="Nhập lý do khác...">
+                
+                <button type="submit" class="kitchen-btn-danger kitchen-btn-full">Xác Nhận Hủy Món</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Sound -->
+    <!-- Using a base64 or safe url for notification sound -->
+    <audio id="kitchen-notification-sound" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Scripts -->
+    <script src="ktch_sidebar.js"></script>
+    <script src="ktch_tab_orders.js"></script>
+    <script src="ktch_tab_inventory.js"></script>
+    <script src="kitchen_dashboard.js"></script>
+</body>
+</html>

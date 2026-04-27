@@ -1,0 +1,278 @@
+/* ==========================================================================
+   KITCHEN DASHBOARD VARIABLES & BASE
+   ========================================================================== */
+:root {
+    --ktch-bg-base: #121212;
+    --ktch-surface: #1e1e24;
+    --ktch-surface-light: #2b2b36;
+    --ktch-border: #3f3f4e;
+    
+    --ktch-text-main: #f8f9fa;
+    --ktch-text-muted: #adb5bd;
+    
+    /* Status Colors */
+    --ktch-status-pending: #6c757d;
+    --ktch-status-cooking: #fd7e14;
+    --ktch-status-done: #20c997;
+    --ktch-status-cancel: #dc3545;
+    --ktch-status-cancel-hover: #c82333;
+
+    --ktch-primary: #0d6efd;
+    --ktch-primary-hover: #0b5ed7;
+    
+    --ktch-font: 'Montserrat', sans-serif;
+}
+
+.kitchen-body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--ktch-font);
+    background-color: var(--ktch-bg-base);
+    color: var(--ktch-text-main);
+    overflow: hidden;
+    height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+.kitchen-layout-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.kitchen-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.kitchen-main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ktch-border);
+}
+
+.kitchen-main-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.kitchen-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.kitchen-time-display {
+    background: var(--ktch-surface);
+    border: 1px solid var(--ktch-border);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.kitchen-alert-badge {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--ktch-status-cancel);
+    border: 1px solid var(--ktch-status-cancel);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    animation: kitchen-pulse 2s infinite;
+    cursor: pointer;
+}
+
+.kitchen-sim-btn {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: var(--ktch-primary);
+    border: 1px solid var(--ktch-primary);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.kitchen-sim-btn:hover {
+    background-color: var(--ktch-primary);
+    color: #fff;
+}
+
+@keyframes kitchen-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+.kitchen-tab-container {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+}
+
+.kitchen-tab-pane {
+    display: none;
+    animation: kitchen-fade-in 0.3s ease;
+}
+
+.kitchen-tab-pane.active {
+    display: block;
+}
+
+@keyframes kitchen-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   MODALS
+   ========================================================================== */
+.kitchen-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.kitchen-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.kitchen-modal-box {
+    background: var(--ktch-surface);
+    border: 1px solid var(--ktch-border);
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: scale(0.9);
+    transition: 0.3s ease;
+}
+
+.kitchen-modal-overlay.active .kitchen-modal-box {
+    transform: scale(1);
+}
+
+.kitchen-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--ktch-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.kitchen-modal-close:hover {
+    color: var(--ktch-status-cancel);
+}
+
+.kitchen-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.kitchen-cancel-subtitle {
+    color: var(--ktch-status-cooking);
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.kitchen-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: var(--ktch-surface-light);
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.kitchen-radio-group:hover {
+    border-color: var(--ktch-border);
+}
+
+.kitchen-radio-group input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--ktch-status-cancel);
+}
+
+.kitchen-radio-group label {
+    font-size: 1.1rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+.kitchen-input-text {
+    width: 100%;
+    background: var(--ktch-surface-light);
+    border: 1px solid var(--ktch-border);
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-family: inherit;
+}
+.kitchen-input-text:focus {
+    outline: none;
+    border-color: var(--ktch-status-cancel);
+}
+
+.kitchen-btn-danger {
+    background: var(--ktch-status-cancel);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+}
+.kitchen-btn-danger:hover {
+    background: var(--ktch-status-cancel-hover);
+}
+.kitchen-btn-full {
+    width: 100%;
+}

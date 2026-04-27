@@ -1,0 +1,26 @@
+<section id="kitchen-tab-orders" class="kitchen-tab-pane active">
+    
+    <!-- Filter Bar -->
+    <div class="kitchen-filter-bar">
+        <div class="kitchen-filter-group">
+            <button class="kitchen-filter-btn active" data-filter="all">Tất cả</button>
+            <button class="kitchen-filter-btn" data-filter="pending">Chờ xác nhận</button>
+            <button class="kitchen-filter-btn" data-filter="cooking">Đang làm</button>
+            <button class="kitchen-filter-btn" data-filter="done">Hoàn thành</button>
+            <button class="kitchen-filter-btn" data-filter="cancel">Đã hủy</button>
+        </div>
+        <div class="kitchen-sort-group">
+            <span>Sắp xếp:</span>
+            <select id="kitchen-sort-select">
+                <option value="oldest">Cũ nhất trước</option>
+                <option value="newest">Mới nhất trước</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Orders Grid Grouped by Table -->
+    <div class="kitchen-orders-grid" id="kitchen-orders-grid-container">
+        <!-- Dynamic content injected by JS -->
+    </div>
+
+</section>

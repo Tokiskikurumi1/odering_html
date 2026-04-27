@@ -1,0 +1,208 @@
+/* ==========================================================================
+   KITCHEN ORDERS TAB
+   ========================================================================== */
+.kitchen-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--ktch-surface);
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid var(--ktch-border);
+}
+
+.kitchen-filter-group {
+    display: flex;
+    gap: 10px;
+}
+
+.kitchen-filter-btn {
+    background: var(--ktch-surface-light);
+    color: var(--ktch-text-muted);
+    border: 1px solid var(--ktch-border);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.kitchen-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.kitchen-filter-btn.active {
+    background: var(--ktch-primary);
+    color: #fff;
+    border-color: var(--ktch-primary);
+}
+
+.kitchen-sort-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.kitchen-sort-group select {
+    background: var(--ktch-surface-light);
+    color: #fff;
+    border: 1px solid var(--ktch-border);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Orders Grid */
+.kitchen-orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.kitchen-table-group {
+    background: var(--ktch-surface);
+    border: 1px solid var(--ktch-border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.kitchen-table-header {
+    background: var(--ktch-surface-light);
+    padding: 15px 20px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--ktch-text-main);
+    border-bottom: 1px solid var(--ktch-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kitchen-table-items {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.kitchen-order-card {
+    background: var(--ktch-bg-base);
+    border: 1px solid var(--ktch-border);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+/* Highlight new items */
+.kitchen-order-card.new-item {
+    animation: highlight-new 2s ease-out;
+}
+
+@keyframes highlight-new {
+    0% { border-color: var(--ktch-primary); box-shadow: 0 0 15px rgba(13, 110, 253, 0.5); }
+    100% { border-color: var(--ktch-border); box-shadow: none; }
+}
+
+.kitchen-order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.kitchen-item-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.kitchen-item-qty {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--ktch-status-cooking);
+    background: rgba(253, 126, 20, 0.1);
+    padding: 2px 10px;
+    border-radius: 5px;
+}
+
+.kitchen-item-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--ktch-text-muted);
+}
+
+.kitchen-status-badge {
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+.kitchen-status-badge.pending { background: var(--ktch-status-pending); color: #fff; }
+.kitchen-status-badge.cooking { background: var(--ktch-status-cooking); color: #fff; }
+.kitchen-status-badge.done { background: var(--ktch-status-done); color: #fff; }
+.kitchen-status-badge.cancel { background: var(--ktch-status-cancel); color: #fff; }
+
+.kitchen-order-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.kitchen-btn-action {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.kitchen-btn-receive {
+    background: rgba(253, 126, 20, 0.2);
+    color: var(--ktch-status-cooking);
+    border: 1px solid var(--ktch-status-cooking);
+}
+.kitchen-btn-receive:hover {
+    background: var(--ktch-status-cooking);
+    color: #fff;
+}
+
+.kitchen-btn-complete {
+    background: rgba(32, 201, 151, 0.2);
+    color: var(--ktch-status-done);
+    border: 1px solid var(--ktch-status-done);
+}
+.kitchen-btn-complete:hover {
+    background: var(--ktch-status-done);
+    color: #fff;
+}
+
+.kitchen-btn-cancel {
+    background: transparent;
+    color: var(--ktch-text-muted);
+    border: 1px solid var(--ktch-border);
+}
+.kitchen-btn-cancel:hover {
+    background: rgba(220, 53, 69, 0.2);
+    color: var(--ktch-status-cancel);
+    border-color: var(--ktch-status-cancel);
+}
