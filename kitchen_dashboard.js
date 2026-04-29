@@ -36,10 +36,21 @@ function initKitchenDashboard() {
             { id: 'T4', name: 'Bàn 4' }
         ],
         inventory: [
-            { id: 'ing_suonbo', name: 'Sườn Non Bò Mỹ', stock: 15, icon: 'fa-drumstick-bite' },
-            { id: 'ing_nam', name: 'Nấm Tổng Hợp', stock: 8, icon: 'fa-carrot' }, // Initially <= 10 for warning demo
-            { id: 'ing_combo', name: 'Combo Đặc Biệt', stock: 12, icon: 'fa-fire' },
-            { id: 'ing_nuoc', name: 'Nước Lẩu Cà Chua', stock: 50, icon: 'fa-water' }
+            { id: 'ing_suonbo', name: 'Sườn Non Bò Mỹ', stock: 15, icon: 'fa-drumstick-bite', unit: 'kg' },
+            { id: 'ing_nam', name: 'Nấm Tổng Hợp', stock: 8, icon: 'fa-carrot', unit: 'kg' },
+            { id: 'ing_combo', name: 'Combo Đặc Biệt', stock: 12, icon: 'fa-fire', unit: 'g' },
+            { id: 'ing_nuoc', name: 'Nước Lẩu Cà Chua', stock: 50, icon: 'fa-water', unit: 'chai' },
+            { id: 'ing_bia', name: 'Bia Heineken', stock: 100, icon: 'fa-beer-mug-empty', unit: 'lon' },
+            { id: 'ing_rau_muong', name: 'Rau Muống', stock: 20, icon: 'fa-leaf', unit: 'kg' },
+            { id: 'ing_tom', name: 'Tôm Sú', stock: 5, icon: 'fa-shrimp', unit: 'kg' },
+            { id: 'ing_muc', name: 'Mực Trứng', stock: 3, icon: 'fa-fish', unit: 'kg' },
+            { id: 'ing_dau_hu', name: 'Đậu Hũ Tươi', stock: 30, icon: 'fa-cube', unit: 'kg' },
+            { id: 'ing_mi', name: 'Mì Trứng', stock: 45, icon: 'fa-bowl-rice', unit: 'g' },
+            { id: 'ing_trung', name: 'Trứng Gà', stock: 60, icon: 'fa-egg', unit: 'g' },
+            { id: 'ing_sa_te', name: 'Sa Tế', stock: 10, icon: 'fa-pepper-hot', unit: 'g' },
+            { id: 'ing_chanh', name: 'Chanh Tươi', stock: 15, icon: 'fa-lemon', unit: 'kg' },
+            { id: 'ing_ot', name: 'Ớt Hiểm', stock: 2, icon: 'fa-pepper-hot', unit: 'kg' },
+            { id: 'ing_toi', name: 'Tỏi Lý Sơn', stock: 7, icon: 'fa-clove', unit: 'kg' }
         ],
         orders: [
             // Bàn 1 (3 món) - Batch 1

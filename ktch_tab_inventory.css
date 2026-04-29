@@ -1,75 +1,351 @@
 /* ==========================================================================
-   KITCHEN INVENTORY TAB
+   KITCHEN INVENTORY TAB - OPTION 2 (SLEEK TABLE)
    ========================================================================== */
 .kitchen-inventory-layout {
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding: 10px;
 }
 
-.kitchen-inventory-header {
-    margin-bottom: 30px;
-}
-
-.kitchen-inventory-header h2 {
-    color: var(--ktch-status-cooking);
-    margin-bottom: 10px;
-}
-
-.kitchen-inventory-header p {
-    color: var(--ktch-text-muted);
-    font-size: 1.1rem;
-}
-
-.kitchen-inventory-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.kitchen-inventory-item {
-    background: var(--ktch-surface);
-    border: 1px solid var(--ktch-border);
-    border-radius: 12px;
-    padding: 20px;
+/* Header Bar (Similar to kitchen-filter-bar) */
+.ktch-inv-header-bar {
     display: flex;
     flex-direction: column;
+    background: var(--ktch-surface);
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid var(--ktch-border);
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.kitchen-inventory-title h2 {
+    color: var(--ktch-status-cooking);
+    margin-bottom: 2px;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.kitchen-inventory-title p {
+    color: var(--ktch-text-muted);
+    font-size: 0.95rem;
+}
+
+/* Control Panel Container */
+.ktch-inv-control-panel {
+    display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+/* Search Wrapper */
+.ktch-inv-search-wrapper {
+    position: relative;
+    min-width: 260px;
+}
+
+.ktch-inv-search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ktch-text-muted);
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+.ktch-inv-search-field {
+    width: 100%;
+    background: var(--ktch-surface-light);
+    border: 1px solid var(--ktch-border);
+    border-radius: 10px;
+    padding: 10px 15px 10px 42px;
+    color: #fff;
+    font-size: 0.95rem;
     transition: 0.3s;
 }
 
-.kitchen-inventory-item.warning {
-    border-color: var(--ktch-status-cancel);
-    background: rgba(220, 53, 69, 0.05);
+.ktch-inv-search-field:focus {
+    outline: none;
+    border-color: var(--ktch-status-cooking);
+    box-shadow: 0 0 15px rgba(234, 154, 51, 0.15);
 }
 
-.kitchen-inventory-icon {
-    font-size: 2.5rem;
-    color: var(--ktch-text-muted);
+/* Filter Group */
+.ktch-inv-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.kitchen-inventory-item.warning .kitchen-inventory-icon {
-    color: var(--ktch-status-cancel);
-}
-
-.kitchen-inventory-info {
-    text-align: center;
-}
-
-.kitchen-inventory-name {
-    font-size: 1.2rem;
-    font-weight: 700;
+/* Select Control (Replaces individual filter styles) */
+.ktch-inv-select-control {
+    background: var(--ktch-surface-light);
+    border: 1px solid var(--ktch-border);
     color: #fff;
-    margin-bottom: 5px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    font-family: inherit;
 }
 
-.kitchen-inventory-stock {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--ktch-status-done);
+.ktch-inv-select-control:focus {
+    border-color: var(--ktch-status-cooking);
 }
 
-.kitchen-inventory-item.warning .kitchen-inventory-stock {
-    color: var(--ktch-status-cancel);
+.ktch-inv-select-control option {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Table Container */
+.kitchen-inventory-table-container {
+    background: var(--ktch-surface);
+    border: 1px solid var(--ktch-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.kitchen-inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.kitchen-inventory-table th {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 18px 20px;
+    color: var(--ktch-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--ktch-border);
+    text-align: center;
+    /* Mặc định căn giữa cho tất cả header */
+}
+
+.kitchen-inventory-table th:first-child {
+    text-align: left;
+    /* Riêng cột đầu tiên căn trái */
+}
+
+.kitchen-inventory-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+    vertical-align: middle;
+    transition: 0.2s;
+    text-align: center;
+    /* Mặc định căn giữa cho tất cả nội dung */
+}
+
+.kitchen-inventory-table td:first-child {
+    text-align: left;
+    /* Riêng nội dung cột đầu tiên căn trái */
+}
+
+.kitchen-inventory-table tr:last-child td {
+    border-bottom: none;
+}
+
+.kitchen-inventory-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Item Name with Icon */
+.inventory-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.inventory-item-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ktch-status-cooking);
+    font-size: 1.2rem;
+}
+
+/* Stock Badge */
+.stock-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stock-badge.status-good {
+    background: rgba(40, 167, 69, 0.15);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.stock-badge.status-warning {
+    background: rgba(255, 193, 7, 0.15);
+    color: #f1c40f;
+    border: 1px solid rgba(241, 196, 15, 0.3);
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.1);
+}
+
+.stock-badge.status-critical {
+    background: rgba(220, 53, 69, 0.15);
+    color: #e74c3c;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+/* Action Button (Bell) */
+.btn-notify-warehouse {
+    background: transparent;
+    border: 1px solid var(--ktch-border);
+    color: var(--ktch-text-muted);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    /* Đổi từ flex sang inline-flex để căn giữa trong td tốt hơn */
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-notify-warehouse:hover {
+    background: var(--ktch-status-cooking);
+    border-color: var(--ktch-status-cooking);
+    color: #fff;
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 0 15px rgba(234, 154, 51, 0.4);
+}
+
+.btn-notify-warehouse.notified {
+    background: var(--ktch-status-done);
+    border-color: var(--ktch-status-done);
+    color: #fff;
+    transform: none;
+}
+
+/* Reset Button */
+.ktch-inv-reset-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--ktch-border);
+    color: var(--ktch-text-muted);
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.ktch-inv-reset-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ktch-inv-reset-btn i {
+    transition: 0.5s;
+}
+
+.ktch-inv-reset-btn:hover i {
+    transform: rotate(-180deg);
+}
+
+/* Pagination */
+.ktch-inv-pagination-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.ktch-inv-pagination-info {
+    color: var(--ktch-text-muted);
+    font-size: 0.9rem;
+}
+
+.ktch-inv-pagination-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.ktch-inv-page-btn {
+    min-width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ktch-surface);
+    border: 1px solid var(--ktch-border);
+    color: var(--ktch-text-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+
+.ktch-inv-page-btn:hover:not(:disabled) {
+    border-color: var(--ktch-status-cooking);
+    color: var(--ktch-status-cooking);
+    background: rgba(234, 154, 51, 0.05);
+}
+
+.ktch-inv-page-btn.active {
+    background: var(--ktch-status-cooking);
+    color: #fff;
+    border-color: var(--ktch-status-cooking);
+    box-shadow: 0 4px 12px rgba(234, 154, 51, 0.2);
+}
+
+.ktch-inv-page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Unit Text */
+.unit-text {
+    color: var(--ktch-text-muted);
+    font-size: 0.85rem;
+}
+
+.inventory-stock-cell {
+    font-size: 1.1rem;
+    font-weight: 700;
 }

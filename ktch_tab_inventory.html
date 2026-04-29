@@ -1,12 +1,66 @@
 <section id="kitchen-tab-inventory" class="kitchen-tab-pane">
     <div class="kitchen-inventory-layout">
-        <div class="kitchen-inventory-header">
-            <h2>Quản Lý Nguyên Liệu</h2>
-            <p>Hệ thống tự động cảnh báo khi nguyên liệu dưới mức an toàn (≤ 10)</p>
+        <div class="ktch-inv-header-bar">
+            <div class="kitchen-inventory-title">
+                <h2>Quản Lý Nguyên liệu</h2>
+                <p>Theo dõi và thông báo nhập hàng khi nguyên liệu sắp hết.</p>
+            </div>
+
+            <div class="ktch-inv-control-panel">
+                <div class="ktch-inv-search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass ktch-inv-search-icon"></i>
+                    <input type="text" id="ktch-inv-search-input" class="ktch-inv-search-field"
+                        placeholder="Tìm tên nguyên liệu...">
+                </div>
+
+                <div class="ktch-inv-filter-group">
+                    <select id="ktch-inv-unit-filter" class="ktch-inv-select-control">
+                        <option value="">Tất cả đơn vị</option>
+                        <option value="kg">kg</option>
+                        <option value="g">g</option>
+                        <option value="chai">chai</option>
+                        <option value="lon">lon</option>
+                    </select>
+
+                    <select id="ktch-inv-status-select" class="ktch-inv-select-control">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="good">Ổn định</option>
+                        <option value="warning">Sắp hết</option>
+                        <option value="critical">Cần nhập gấp</option>
+                    </select>
+
+                    <button id="ktch-inv-reset-btn" class="ktch-inv-reset-btn" title="Đặt lại bộ lọc">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div class="kitchen-inventory-grid" id="kitchen-inventory-grid-container">
-            <!-- Dynamic inventory items -->
+        <div class="kitchen-inventory-table-container">
+            <table class="kitchen-inventory-table">
+                <thead>
+                    <tr>
+                        <th>Nguyên Liệu</th>
+                        <th>Trạng Thái</th>
+                        <th>Số Lượng</th>
+                        <th>Đơn Vị</th>
+                        <th style="text-align: center;">Thông Báo</th>
+                    </tr>
+                </thead>
+                <tbody id="kitchen-inventory-table-body">
+                    <!-- Các hàng dữ liệu sẽ được render bởi JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ktch-inv-pagination-container">
+            <div class="ktch-inv-pagination-info" id="ktch-inv-pagination-info">
+                Hiển thị 1-10 trên 50 nguyên liệu
+            </div>
+            <div class="ktch-inv-pagination-controls" id="ktch-inv-pagination-controls">
+                <!-- Nút phân trang sẽ được render bởi JS -->
+            </div>
         </div>
     </div>
 </section>
