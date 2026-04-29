@@ -2,9 +2,13 @@ window.initKitchenOrdersTab = function () {
     const gridContainer = document.getElementById('kitchen-orders-grid-container');
     const filterBtns = document.querySelectorAll('.kitchen-filter-btn');
     const sortSelect = document.getElementById('kitchen-sort-select');
+    const paginationInfo = document.getElementById('ktch-orders-pagination-info');
+    const paginationControls = document.getElementById('ktch-orders-pagination-controls');
 
     let currentFilter = 'all';
     let currentSort = 'oldest';
+    let currentPage = 1;
+    let itemsPerPage = 10;
 
     // Status mapping for UI
     const statusMap = {
@@ -16,29 +20,33 @@ window.initKitchenOrdersTab = function () {
 
     window.renderOrders = function () {
         if (!gridContainer) return;
-        gridContainer.innerHTML = '';
-
-        // 1. Determine which batches should be visible based on the filter
+        
+        // 1. Xác định các lô đơn hàng (batch/table) cần hiển thị dựa trên bộ lọc
         let batchIdsToShow = new Set();
         window.kitchenState.orders.forEach(o => {
-            if (currentFilter === 'all' || o.status === currentFilter) {
+            if (currentFilter === 'all') {
+                // Trang "Tất cả" CHỈ hiển thị đơn chưa hoàn thành và chưa hủy
+                if (o.status !== 'done' && o.status !== 'cancel') {
+                    batchIdsToShow.add(o.batchId || o.tableId);
+                }
+            } else if (o.status === currentFilter) {
                 batchIdsToShow.add(o.batchId || o.tableId);
             }
         });
 
-        // 2. Show all items for the visible batches
+        // 2. Lấy tất cả items của các lô đơn hàng hợp lệ
         let filteredOrders = window.kitchenState.orders.filter(o => {
             const groupKey = o.batchId || o.tableId;
             return batchIdsToShow.has(groupKey);
         });
 
-        // Sort
+        // Sắp xếp
         filteredOrders.sort((a, b) => {
             if (currentSort === 'oldest') return a.timestamp - b.timestamp;
             return b.timestamp - a.timestamp;
         });
 
-        // Group by Batch
+        // 3. Nhóm theo Batch/Bàn
         const grouped = {};
         filteredOrders.forEach(o => {
             const groupKey = o.batchId || o.tableId;
@@ -48,19 +56,50 @@ window.initKitchenOrdersTab = function () {
                     batchId: groupKey,
                     tableId: o.tableId,
                     tableName: tableInfo ? tableInfo.name : o.tableId,
-                    items: []
+                    items: [],
+                    timestamp: o.timestamp // Dùng để sắp xếp lô
                 };
             }
             grouped[groupKey].items.push(o);
+            // Luôn lấy timestamp cũ nhất/mới nhất tùy theo sort để định danh lô
+            if (currentSort === 'oldest') {
+                grouped[groupKey].timestamp = Math.min(grouped[groupKey].timestamp, o.timestamp);
+            } else {
+                grouped[groupKey].timestamp = Math.max(grouped[groupKey].timestamp, o.timestamp);
+            }
         });
+
+        // Chuyển đối tượng grouped sang mảng để dễ phân trang
+        let batchArray = Object.values(grouped);
+        batchArray.sort((a, b) => {
+            if (currentSort === 'oldest') return a.timestamp - b.timestamp;
+            return b.timestamp - a.timestamp;
+        });
+
+        // 4. Tính toán phân trang cho các Lô (Batch)
+        const totalBatches = batchArray.length;
+        const totalPages = Math.ceil(totalBatches / itemsPerPage);
+        
+        if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
+        else if (totalPages === 0) currentPage = 1;
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const paginatedBatches = batchArray.slice(startIndex, startIndex + itemsPerPage);
+
+        // 5. Render giao diện
+        gridContainer.innerHTML = '';
+        if (paginatedBatches.length === 0) {
+            gridContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--ktch-text-muted);">Không có đơn hàng nào trong mục này.</div>';
+            if (paginationInfo) paginationInfo.textContent = 'Hiển thị 0 trên 0 hóa đơn';
+            if (paginationControls) paginationControls.innerHTML = '';
+            return;
+        }
 
         // Check global busy state
         const isKitchenBusy = window.kitchenState.orders.some(o => o.status === 'cooking');
 
-        // Render Groups
-        Object.keys(grouped).forEach(groupKey => {
-            const group = grouped[groupKey];
-
+        paginatedBatches.forEach(group => {
+            const groupKey = group.batchId;
             const groupEl = document.createElement('div');
             groupEl.className = 'kitchen-table-group';
 
@@ -79,7 +118,6 @@ window.initKitchenOrdersTab = function () {
                 if (item.status === 'done') hasDone = true;
                 if (item.status === 'cancel') hasCancel = true;
 
-                // Check inventory warning
                 let warningIconHtml = '';
                 if (item.status === 'pending' || item.status === 'cooking') {
                     const ing = window.kitchenState.inventory.find(i => i.id === item.ingredientId);
@@ -90,7 +128,6 @@ window.initKitchenOrdersTab = function () {
                     }
                 }
 
-                // Delete button and Cancel status
                 let deleteBtnHtml = '';
                 let statusCancelHtml = '';
                 if (item.status === 'pending' || item.status === 'cooking') {
@@ -119,7 +156,6 @@ window.initKitchenOrdersTab = function () {
             });
 
             let footerHtml = '';
-            // Determine Footer Actions
             if (hasPending || hasCooking) {
                 let receiveBtnHtml = '';
                 if (hasCooking) {
@@ -140,31 +176,19 @@ window.initKitchenOrdersTab = function () {
                 `;
             }
 
-            // Determine table overall status
             let tableStatusClass = '';
             let tableStatusLabel = '';
-            if (hasCooking) {
-                tableStatusClass = 'cooking';
-                tableStatusLabel = 'Đang làm';
-            } else if (hasPending) {
-                tableStatusClass = 'pending';
-                tableStatusLabel = 'Chờ xác nhận';
-            } else if (hasDone) {
-                tableStatusClass = 'done';
-                tableStatusLabel = 'Hoàn thành';
-            } else if (hasCancel) {
-                tableStatusClass = 'cancel';
-                tableStatusLabel = 'Đã hủy';
-            }
-
-            const earliestTime = Math.min(...group.items.map(i => i.timestamp));
+            if (hasCooking) { tableStatusClass = 'cooking'; tableStatusLabel = 'Đang làm'; }
+            else if (hasPending) { tableStatusClass = 'pending'; tableStatusLabel = 'Chờ xác nhận'; }
+            else if (hasDone) { tableStatusClass = 'done'; tableStatusLabel = 'Hoàn thành'; }
+            else if (hasCancel) { tableStatusClass = 'cancel'; tableStatusLabel = 'Đã hủy'; }
 
             groupEl.innerHTML = `
                 <div class="kitchen-table-header">
                     <div style="display: flex; flex-direction: column; gap: 5px;">
                         <span><i class="fa-solid fa-utensils"></i> Bàn: ${group.tableName}</span>
                         <span style="font-size: 0.9rem; font-weight: 500; color: var(--ktch-text-muted);">
-                            <i class="fa-regular fa-clock"></i> Gọi lúc: ${window.formatTime(earliestTime)}
+                            <i class="fa-regular fa-clock"></i> Gọi lúc: ${window.formatTime(group.timestamp)}
                         </span>
                     </div>
                     <span class="kitchen-status-badge ${tableStatusClass}">${tableStatusLabel}</span>
@@ -174,9 +198,15 @@ window.initKitchenOrdersTab = function () {
                 </div>
                 ${footerHtml}
             `;
-
             gridContainer.appendChild(groupEl);
         });
+
+        // 6. Cập nhật Pagination UI
+        if (paginationInfo) {
+            const endShow = Math.min(startIndex + itemsPerPage, totalBatches);
+            paginationInfo.textContent = `Hiển thị ${totalBatches > 0 ? startIndex + 1 : 0}-${endShow} trên ${totalBatches} hóa đơn`;
+        }
+        renderPaginationControls(totalPages);
 
         // Remove new highlight after animation
         setTimeout(() => {
@@ -186,12 +216,41 @@ window.initKitchenOrdersTab = function () {
         if (window.updateKitchenPendingBadge) window.updateKitchenPendingBadge();
     };
 
+    function renderPaginationControls(totalPages) {
+        if (!paginationControls) return;
+        paginationControls.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'ktch-orders-page-btn';
+        prevBtn.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => { currentPage--; window.renderOrders(); };
+        paginationControls.appendChild(prevBtn);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `ktch-orders-page-btn ${currentPage === i ? 'active' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.onclick = () => { currentPage = i; window.renderOrders(); };
+            paginationControls.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'ktch-orders-page-btn';
+        nextBtn.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => { currentPage++; window.renderOrders(); };
+        paginationControls.appendChild(nextBtn);
+    }
+
     // Filter & Sort Events
     filterBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             filterBtns.forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
             currentFilter = e.target.getAttribute('data-filter');
+            currentPage = 1; // Reset trang
             window.renderOrders();
         });
     });
@@ -199,6 +258,7 @@ window.initKitchenOrdersTab = function () {
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
             currentSort = e.target.value;
+            currentPage = 1; // Reset trang
             window.renderOrders();
         });
     }
@@ -322,10 +382,16 @@ window.initKitchenOrdersTab = function () {
             if (currentFilter !== 'all' && currentFilter !== 'pending') {
                 currentFilter = 'pending';
                 filterBtns.forEach(b => b.classList.remove('active'));
-                document.querySelector('.kitchen-filter-btn[data-filter="pending"]').classList.add('active');
+                const pendingBtn = document.querySelector('.kitchen-filter-btn[data-filter="pending"]');
+                if (pendingBtn) pendingBtn.classList.add('active');
             }
 
             window.renderOrders();
+            
+            // Hiển thị Toast thông báo đơn mới
+            if (window.showToast) {
+                window.showToast(`Có đơn mới cho bàn số ${table.id}`);
+            }
         });
     }
 

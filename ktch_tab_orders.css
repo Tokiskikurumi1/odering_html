@@ -2,325 +2,379 @@
    KITCHEN ORDERS TAB
    ========================================================================== */
 .kitchen-filter-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--ktch-surface);
-    padding: 15px 20px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    border: 1px solid var(--ktch-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--ktch-surface);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: 1px solid var(--ktch-border);
 }
 
 .kitchen-filter-group {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .kitchen-filter-btn {
-    background: var(--ktch-surface-light);
-    color: var(--ktch-text-muted);
-    border: 1px solid var(--ktch-border);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
+  background: var(--ktch-surface-light);
+  color: var(--ktch-text-muted);
+  border: 1px solid var(--ktch-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .kitchen-filter-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .kitchen-filter-btn.active {
-    background: var(--ktch-primary);
-    color: #fff;
-    border-color: var(--ktch-primary);
+  background: var(--ktch-primary);
+  color: #fff;
+  border-color: var(--ktch-primary);
 }
 
 .kitchen-sort-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
 }
 
 .kitchen-sort-group select {
-    background: var(--ktch-surface-light);
-    color: #fff;
-    border: 1px solid var(--ktch-border);
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 1rem;
-    cursor: pointer;
+  background: var(--ktch-surface-light);
+  color: #fff;
+  border: 1px solid var(--ktch-border);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 /* Orders Grid */
 .kitchen-orders-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 25px;
 }
 
 .kitchen-table-group {
-    background: var(--ktch-surface);
-    border: 1px solid var(--ktch-border);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+  background: var(--ktch-surface);
+  border: 1px solid var(--ktch-border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .kitchen-table-header {
-    background: var(--ktch-surface-light);
-    padding: 15px 20px;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--ktch-text-main);
-    border-bottom: 1px solid var(--ktch-border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: var(--ktch-surface-light);
+  padding: 15px 20px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ktch-text-main);
+  border-bottom: 1px solid var(--ktch-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .kitchen-table-items {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-height: 280px; 
-    overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 280px;
+  overflow-y: auto;
 }
 
 .kitchen-table-items::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 .kitchen-table-items::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 .kitchen-table-items::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }
 
 .kitchen-order-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-    transition: background 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  transition: background 0.3s;
 }
 
 .kitchen-order-row:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .kitchen-order-row.new-item {
-    animation: highlight-new-row 2s ease-out;
+  animation: highlight-new-row 2s ease-out;
 }
 
 .kitchen-row-cancelled {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .kitchen-row-cancelled .kitchen-row-name {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 @keyframes highlight-new-row {
-    0% {
-        background: rgba(13, 110, 253, 0.2);
-    }
+  0% {
+    background: rgba(13, 110, 253, 0.2);
+  }
 
-    100% {
-        background: transparent;
-    }
+  100% {
+    background: transparent;
+  }
 }
 
 .kitchen-row-name {
-    flex: 2;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
-    display: flex;
-    align-items: center;
+  flex: 2;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
 }
 
 .kitchen-row-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .kitchen-row-qty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .kitchen-row-actions {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .kitchen-btn-row-cancel {
-    background: transparent;
-    border: 1px solid var(--ktch-border);
-    color: var(--ktch-text-muted);
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: transparent;
+  border: 1px solid var(--ktch-border);
+  color: var(--ktch-text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .kitchen-btn-row-cancel:hover {
-    background: rgba(220, 53, 69, 0.2);
-    color: var(--ktch-status-cancel);
-    border-color: var(--ktch-status-cancel);
+  background: rgba(220, 53, 69, 0.2);
+  color: var(--ktch-status-cancel);
+  border-color: var(--ktch-status-cancel);
 }
 
 .kitchen-table-footer {
-    display: flex;
-    gap: 15px;
-    padding: 15px 20px;
-    border-top: 1px solid var(--ktch-border);
-    background: var(--ktch-surface-light);
+  display: flex;
+  gap: 15px;
+  padding: 15px 20px;
+  border-top: 1px solid var(--ktch-border);
+  background: var(--ktch-surface-light);
 }
 
 .kitchen-item-qty-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .kitchen-low-stock-warning {
-    color: var(--ktch-status-cooking);
-    /* Orange color */
-    margin-right: 8px;
-    font-size: 1.1rem;
-    animation: pulse-warning 1.5s infinite;
+  color: var(--ktch-status-cooking);
+  /* Orange color */
+  margin-right: 8px;
+  font-size: 1.1rem;
+  animation: pulse-warning 1.5s infinite;
 }
 
 @keyframes pulse-warning {
-    0% {
-        opacity: 0.7;
-        transform: scale(1);
-    }
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
 
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 
-    100% {
-        opacity: 0.7;
-        transform: scale(1);
-    }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
 }
 
 .kitchen-item-qty {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--ktch-status-cooking);
-    background: rgba(253, 126, 20, 0.1);
-    padding: 2px 10px;
-    border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--ktch-status-cooking);
+  background: rgba(253, 126, 20, 0.1);
+  padding: 2px 10px;
+  border-radius: 5px;
 }
 
 .kitchen-item-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    color: var(--ktch-text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--ktch-text-muted);
 }
 
 .kitchen-status-badge {
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
 }
 
 .kitchen-status-badge.pending {
-    background: var(--ktch-status-pending);
-    color: #fff;
+  background: var(--ktch-status-pending);
+  color: #fff;
 }
 
 .kitchen-status-badge.cooking {
-    background: var(--ktch-status-cooking);
-    color: #fff;
+  background: var(--ktch-status-cooking);
+  color: #fff;
 }
 
 .kitchen-status-badge.done {
-    background: var(--ktch-status-done);
-    color: #fff;
+  background: var(--ktch-status-done);
+  color: #fff;
 }
 
 .kitchen-status-badge.cancel {
-    background: var(--ktch-status-cancel);
-    color: #fff;
+  background: var(--ktch-status-cancel);
+  color: #fff;
 }
 
 .kitchen-order-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 5px;
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
 }
 
 .kitchen-btn-action {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .kitchen-btn-receive {
-    background: rgba(253, 126, 20, 0.2);
-    color: var(--ktch-status-cooking);
-    border: 1px solid var(--ktch-status-cooking);
+  background: rgba(253, 126, 20, 0.2);
+  color: var(--ktch-status-cooking);
+  border: 1px solid var(--ktch-status-cooking);
 }
 
 .kitchen-btn-receive:hover {
-    background: var(--ktch-status-cooking);
-    color: #fff;
+  background: var(--ktch-status-cooking);
+  color: #fff;
 }
 
 .kitchen-btn-complete {
-    background: rgba(32, 201, 151, 0.2);
-    color: var(--ktch-status-done);
-    border: 1px solid var(--ktch-status-done);
+  background: rgba(32, 201, 151, 0.2);
+  color: var(--ktch-status-done);
+  border: 1px solid var(--ktch-status-done);
 }
 
 .kitchen-btn-complete:hover {
-    background: var(--ktch-status-done);
-    color: #fff;
+  background: var(--ktch-status-done);
+  color: #fff;
 }
 
 .kitchen-btn-cancel {
-    background: transparent;
-    color: var(--ktch-text-muted);
-    border: 1px solid var(--ktch-border);
+  background: transparent;
+  color: var(--ktch-text-muted);
+  border: 1px solid var(--ktch-border);
 }
 
 .kitchen-btn-cancel:hover {
-    background: rgba(220, 53, 69, 0.2);
-    color: var(--ktch-status-cancel);
-    border-color: var(--ktch-status-cancel);
+  background: rgba(220, 53, 69, 0.2);
+  color: var(--ktch-status-cancel);
+  border-color: var(--ktch-status-cancel);
+}
+
+/* Pagination */
+.ktch-orders-pagination-container {
+  margin-top: 30px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ktch-orders-pagination-info {
+  color: var(--ktch-text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.ktch-orders-pagination-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.ktch-orders-page-btn {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ktch-surface-light);
+  border: 1px solid var(--ktch-border);
+  color: var(--ktch-text-muted);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+  font-size: 0.95rem;
+}
+
+.ktch-orders-page-btn:hover:not(:disabled) {
+  border-color: var(--ktch-primary);
+  color: var(--ktch-primary);
+  background: rgba(13, 110, 253, 0.1);
+}
+
+.ktch-orders-page-btn.active {
+  background: var(--ktch-primary);
+  color: #fff;
+  border-color: var(--ktch-primary);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.ktch-orders-page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }

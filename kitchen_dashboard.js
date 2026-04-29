@@ -103,6 +103,62 @@ function initKitchenDashboard() {
     updateClock();
 
     // ==========================================================================
+    // TOAST NOTIFICATIONS
+    // ==========================================================================
+    window.showToast = function (title, message = "") {
+        const container = document.getElementById('ktch-toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'ktch-toast';
+        
+        let toastHtml = `
+            <div class="ktch-toast-title">
+                <i class="fa-solid fa-bell"></i>
+                <span>${title}</span>
+            </div>
+        `;
+        
+        if (message) {
+            toastHtml += `<div class="ktch-toast-message">${message}</div>`;
+        }
+        
+        toast.innerHTML = toastHtml;
+        container.appendChild(toast);
+
+        // Tự động biến mất sau 3 giây
+        setTimeout(() => {
+            toast.classList.add('hiding');
+            // Đợi animation slide-out kết thúc rồi mới xóa khỏi DOM
+            setTimeout(() => {
+                toast.remove();
+            }, 500);
+        }, 3000);
+    };
+
+    // ==========================================================================
+    // POLLING / SYSTEM CHECK (Every 5 seconds)
+    // ==========================================================================
+    let lastOrderCount = window.kitchenState.orders.length;
+
+    function checkNewOrders() {
+        // Mô phỏng kiểm tra hệ thống (mai này có thể thay bằng fetch hoặc websocket)
+        const currentCount = window.kitchenState.orders.length;
+        if (currentCount > lastOrderCount) {
+            // Có đơn mới (vừa được thêm vào state)
+            const newOrder = window.kitchenState.orders[currentCount - 1];
+            // Nếu là đơn mới thực sự (không phải do reload)
+            if (newOrder.isNew) {
+                window.showToast(`Có đơn mới cho bàn số ${newOrder.tableId}`);
+            }
+        }
+        lastOrderCount = currentCount;
+    }
+
+    // Kiểm tra định kỳ mỗi 5 giây
+    setInterval(checkNewOrders, 5000);
+
+    // ==========================================================================
     // INITIALIZE SUB-MODULES
     // ==========================================================================
     if (typeof window.initKitchenSidebar === 'function') window.initKitchenSidebar();

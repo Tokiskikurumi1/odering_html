@@ -276,3 +276,73 @@
 .kitchen-btn-full {
     width: 100%;
 }
+
+/* ==========================================================================
+   TOAST NOTIFICATIONS
+   ========================================================================== */
+.ktch-toast-container {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: none;
+}
+
+.ktch-toast {
+    background: var(--ktch-surface);
+    border-left: 5px solid var(--ktch-status-cooking);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    pointer-events: all;
+    animation: ktch-toast-slide-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    border: 1px solid var(--ktch-border);
+}
+
+.ktch-toast.hiding {
+    animation: ktch-toast-slide-out 0.5s ease forwards;
+}
+
+.ktch-toast-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--ktch-status-cooking);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ktch-toast-message {
+    color: var(--ktch-text-muted);
+    font-size: 0.95rem;
+}
+
+@keyframes ktch-toast-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ktch-toast-slide-out {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+}
