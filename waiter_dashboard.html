@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giao diện Phục vụ | Hệ thống Quản lý Nhà hàng</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="waiter_dashboard.css">
+</head>
+<body>
+
+  <div class="wt-app-container">
+    
+    <!-- SIDEBAR -->
+    <nav class="wt-sidebar-nav">
+      <div class="wt-brand">
+        <i class="fa-solid fa-bell-concierge"></i>
+        <span>WaiterApp</span>
+      </div>
+      
+      <div class="wt-search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="wt-search-input" placeholder="Tìm số bàn...">
+      </div>
+      
+      <ul class="wt-filter-list" id="wt-filter-list">
+        <li class="wt-filter-item active" data-filter="all">
+          <div><i class="fa-solid fa-layer-group"></i> <span>Tất cả</span></div>
+          <span class="wt-filter-badge" id="badge-all">0</span>
+        </li>
+        <li class="wt-filter-item" data-filter="ready_to_serve">
+          <div><span class="wt-dot ready"></span> <span>Sẵn sàng</span></div>
+          <span class="wt-filter-badge" id="badge-ready">0</span>
+        </li>
+        <li class="wt-filter-item" data-filter="waiting">
+          <div><span class="wt-dot waiting"></span> <span>Đang chờ</span></div>
+          <span class="wt-filter-badge" id="badge-waiting">0</span>
+        </li>
+        <li class="wt-filter-item" data-filter="cooking">
+          <div><span class="wt-dot cooking"></span> <span>Đang nấu</span></div>
+          <span class="wt-filter-badge" id="badge-cooking">0</span>
+        </li>
+        <li class="wt-filter-item" data-filter="completed">
+          <div><span class="wt-dot completed"></span> <span>Hoàn thành</span></div>
+          <span class="wt-filter-badge" id="badge-completed">0</span>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- MAIN DASHBOARD -->
+    <main class="wt-main-content">
+      <header class="wt-top-header">
+        <div class="wt-header-title">Tổng quan bàn</div>
+        
+        <!-- Mock notification to simulate real-time update -->
+        <div class="wt-notification-alert" id="wt-notification">
+          <i class="fa-solid fa-bell"></i>
+          <span>Bàn 5 có món mới sẵn sàng!</span>
+        </div>
+        
+        <div style="display:flex; gap: 10px;">
+          <!-- Nút này chỉ để demo luồng tương tác -->
+          <button id="btn-simulate-kitchen" style="padding: 8px 16px; border-radius: 8px; border: 1px solid var(--wt-border-color); background: white; cursor: pointer; font-family: inherit; font-weight: 600;">
+            <i class="fa-solid fa-fire-burner"></i> Mô phỏng bếp xong món
+          </button>
+        </div>
+      </header>
+      
+      <div class="wt-scroll-area">
+        <div class="wt-table-grid" id="wt-table-grid">
+          <!-- Table cards will be generated here by JS -->
+        </div>
+      </div>
+    </main>
+
+    <!-- OVERLAY FOR DETAIL PANEL -->
+    <div class="wt-detail-overlay" id="wt-detail-overlay"></div>
+
+    <!-- DETAIL PANEL (OFFCANVAS) -->
+    <aside class="wt-detail-panel" id="wt-detail-panel">
+      <div class="wt-detail-header">
+        <div>
+          <h2 class="wt-detail-title" id="wt-detail-table-number">Bàn --</h2>
+          <div class="wt-detail-subtitle" id="wt-detail-info">-- khách | Đang chờ</div>
+        </div>
+        <button class="wt-btn-close" id="wt-btn-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      
+      <div class="wt-item-list" id="wt-item-list">
+        <!-- Order items will be generated here by JS -->
+      </div>
+      
+      <div class="wt-detail-footer">
+        <button class="wt-btn-serve-all" id="wt-btn-serve-all">
+          <i class="fa-solid fa-check-double"></i> Đánh dấu tất cả ĐÃ PHỤC VỤ
+        </button>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="waiter_dashboard.js"></script>
+</body>
+</html>
