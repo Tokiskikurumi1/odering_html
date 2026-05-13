@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         { id: "stdsh-sidebar-placeholder", url: "stdsh_sidebar.html" },
         { id: "stdsh-tab-reservations-placeholder", url: "stdsh_tab_reservations.html" },
         { id: "stdsh-tab-tables-placeholder", url: "stdsh_tab_tables.html" },
-        { id: "stdsh-tab-billing-placeholder", url: "stdsh_tab_billing.html" }
+        { id: "stdsh-tab-billing-placeholder", url: "stdsh_tab_billing.html" },
+        { id: "stdsh-tab-support-placeholder", url: "stdsh_tab_support.html" }
     ];
 
     for (const comp of components) {
@@ -83,4 +84,5 @@ function initStaffDashboard() {
     if (typeof window.initReservationsTab === 'function') window.initReservationsTab();
     if (typeof window.initTablesTab === 'function') window.initTablesTab();
     if (typeof window.initBillingTab === 'function') window.initBillingTab();
+    if (typeof window.initSupportTab === 'function') window.initSupportTab();
 }

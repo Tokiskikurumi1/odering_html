@@ -1,0 +1,164 @@
+<section class="stdsh-tab-pane" id="stdsh-tab-support">
+    <div class="kurumi-chat-wrapper">
+        <!-- Sidebar: Danh sách chat -->
+        <aside class="kurumi-chat-sidebar">
+            <div class="kurumi-sidebar-header">
+                <h3>Danh sách chat</h3>
+                <div class="kurumi-chat-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm hội thoại...">
+                </div>
+            </div>
+
+            <div class="kurumi-chat-list-container">
+                <div class="kurumi-chat-item active" data-chat-id="1">
+                    <div class="kurumi-chat-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Nguyễn+Văn+A&background=0D8ABC&color=fff"
+                            alt="Avatar">
+                        <span class="kurumi-online-status"></span>
+                    </div>
+                    <div class="kurumi-chat-info">
+                        <div class="kurumi-chat-meta">
+                            <span class="kurumi-chat-name">Nguyễn Văn A</span>
+                            <span class="kurumi-chat-time">10:45 AM</span>
+                        </div>
+                        <p class="kurumi-chat-preview">Em ơi cho anh đặt thêm một phần sườn non nữa nhé!</p>
+                    </div>
+                </div>
+
+                <div class="kurumi-chat-item" data-chat-id="2">
+                    <div class="kurumi-chat-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Phạm+Văn+B&background=6610f2&color=fff" alt="Avatar">
+                    </div>
+                    <div class="kurumi-chat-info">
+                        <div class="kurumi-chat-meta">
+                            <span class="kurumi-chat-name">Phạm Văn B</span>
+                            <span class="kurumi-chat-time">9:30 AM</span>
+                        </div>
+                        <p class="kurumi-chat-preview">Bàn của mình có được giảm giá thành viên không?</p>
+                    </div>
+                    <span class="kurumi-unread-badge">2</span>
+                </div>
+
+                <div class="kurumi-chat-item" data-chat-id="3">
+                    <div class="kurumi-chat-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Vũ+Thị+C&background=e83e8c&color=fff" alt="Avatar">
+                        <span class="kurumi-online-status"></span>
+                    </div>
+                    <div class="kurumi-chat-info">
+                        <div class="kurumi-chat-meta">
+                            <span class="kurumi-chat-name">Vũ Thị C</span>
+                            <span class="kurumi-chat-time">Hôm qua</span>
+                        </div>
+                        <p class="kurumi-chat-preview">Cảm ơn shop, đồ ăn rất ngon!</p>
+                    </div>
+                </div>
+
+                <!-- More items to demonstrate scroll -->
+                <div class="kurumi-chat-item" data-chat-id="4">
+                    <div class="kurumi-chat-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Lê+Hồng+D&background=20c997&color=fff" alt="Avatar">
+                    </div>
+                    <div class="kurumi-chat-info">
+                        <div class="kurumi-chat-meta">
+                            <span class="kurumi-chat-name">Lê Hồng D</span>
+                            <span class="kurumi-chat-time">Hôm qua</span>
+                        </div>
+                        <p class="kurumi-chat-preview">Mình muốn hỏi về menu chay...</p>
+                    </div>
+                </div>
+
+                <div class="kurumi-chat-item" data-chat-id="5">
+                    <div class="kurumi-chat-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Hoàng+Hữu+E&background=fd7e14&color=fff"
+                            alt="Avatar">
+                    </div>
+                    <div class="kurumi-chat-info">
+                        <div class="kurumi-chat-meta">
+                            <span class="kurumi-chat-name">Hoàng Hữu E</span>
+                            <span class="kurumi-chat-time">Thứ 2</span>
+                        </div>
+                        <p class="kurumi-chat-preview">Cho mình xin lại hóa đơn bữa trước với.</p>
+                    </div>
+
+                </div>
+                <div class="kurumi-chat-item" data-chat-id="6">
+                    <div class="kurumi-chat-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Hoàng+Hữu+E&background=fd7e14&color=fff"
+                            alt="Avatar">
+                    </div>
+                    <div class="kurumi-chat-info">
+                        <div class="kurumi-chat-meta">
+                            <span class="kurumi-chat-name">Hoàng Hữu E</span>
+                            <span class="kurumi-chat-time">Thứ 2</span>
+                        </div>
+                        <p class="kurumi-chat-preview">Cho mình xin lại hóa đơn bữa trước với.</p>
+                    </div>
+
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content: Nội dung cuộc chat -->
+        <section class="kurumi-chat-main">
+            <header class="kurumi-chat-header">
+                <div class="kurumi-current-contact">
+                    <div class="kurumi-chat-avatar small">
+                        <img src="https://ui-avatars.com/api/?name=Nguyễn+Văn+A&background=0D8ABC&color=fff"
+                            alt="Avatar" id="kurumi-active-avatar">
+                    </div>
+                    <div class="kurumi-contact-status">
+                        <h4 id="kurumi-active-name">Nguyễn Văn A</h4>
+                        <p>Đang trực tuyến</p>
+                    </div>
+                </div>
+                <div class="kurumi-chat-actions">
+                    <button title="Thông tin khách hàng"><i class="fa-solid fa-circle-info"></i></button>
+                    <button title="Gọi điện"><i class="fa-solid fa-phone"></i></button>
+                    <button title="Thêm"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                </div>
+            </header>
+
+            <div class="kurumi-messages-container" id="kurumi-messages-list">
+                <div class="kurumi-message-divider"><span>Hôm nay, 10:30 AM</span></div>
+
+                <div class="kurumi-message incoming">
+                    <div class="kurumi-message-bubble">
+                        Chào Kurumi BBQ, mình đang ở bàn số 5.
+                    </div>
+                    <span class="kurumi-message-time">10:32 AM</span>
+                </div>
+
+                <div class="kurumi-message outgoing">
+                    <div class="kurumi-message-bubble">
+                        Chào anh A, Kurumi nghe đây ạ! Anh cần hỗ trợ gì không ạ?
+                    </div>
+                    <span class="kurumi-message-time">10:33 AM</span>
+                </div>
+
+                <div class="kurumi-message incoming">
+                    <div class="kurumi-message-bubble">
+                        Em ơi cho anh đặt thêm một phần sườn non nữa nhé! Với lại cho anh thêm một ít kim chi.
+                    </div>
+                    <span class="kurumi-message-time">10:45 AM</span>
+                </div>
+
+                <div class="kurumi-message outgoing">
+                    <div class="kurumi-message-bubble">
+                        Dạ vâng, em đã nhận yêu cầu của anh. Nhân viên sẽ mang ra ngay trong ít phút nữa ạ.
+                    </div>
+                    <span class="kurumi-message-time">10:46 AM</span>
+                </div>
+            </div>
+
+            <footer class="kurumi-chat-footer">
+                <button class="kurumi-attachment-btn"><i class="fa-solid fa-paperclip"></i></button>
+                <div class="kurumi-input-container">
+                    <input type="text" placeholder="Nhập tin nhắn..." id="kurumi-chat-input">
+                    <button class="kurumi-emoji-btn"><i class="fa-regular fa-face-smile"></i></button>
+                </div>
+                <button class="kurumi-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </footer>
+        </section>
+    </div>
+</section>
