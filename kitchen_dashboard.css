@@ -54,6 +54,12 @@
     padding: 20px 30px;
     height: 100%;
     overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.kitchen-main-content::-webkit-scrollbar {
+    display: none;
 }
 
 .kitchen-main-header {
@@ -123,6 +129,12 @@
     flex: 1;
     position: relative;
     overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.kitchen-tab-container::-webkit-scrollbar {
+    display: none;
 }
 
 .kitchen-tab-pane {
