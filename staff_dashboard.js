@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ==========================================================================
     const components = [
         { id: "stdsh-sidebar-placeholder", url: "stdsh_sidebar.html" },
+        { id: "stdsh-tab-overview-placeholder", url: "stdsh_tab_overview.html" },
         { id: "stdsh-tab-reservations-placeholder", url: "stdsh_tab_reservations.html" },
         { id: "stdsh-tab-tables-placeholder", url: "stdsh_tab_tables.html" },
         { id: "stdsh-tab-billing-placeholder", url: "stdsh_tab_billing.html" },
@@ -81,6 +82,7 @@ function initStaffDashboard() {
     // INITIALIZE SUB-MODULES
     // ==========================================================================
     if (typeof window.initSidebar === 'function') window.initSidebar();
+    if (typeof window.initOverviewTab === 'function') window.initOverviewTab();
     if (typeof window.initReservationsTab === 'function') window.initReservationsTab();
     if (typeof window.initTablesTab === 'function') window.initTablesTab();
     if (typeof window.initBillingTab === 'function') window.initBillingTab();

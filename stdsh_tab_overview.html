@@ -1,0 +1,147 @@
+<section id="stdsh-tab-overview" class="stdsh-tab-pane active">
+    <!-- Quick Stats Grid -->
+    <div class="stdsh-ov-stats-grid">
+        <div class="stdsh-ov-stat-card">
+            <div class="stdsh-ov-stat-icon accent-orange">
+                <i class="fa-solid fa-coins"></i>
+            </div>
+            <div class="stdsh-ov-stat-info">
+                <p class="stdsh-ov-stat-label">Doanh Thu Hôm Nay</p>
+                <h3 class="stdsh-ov-stat-value" id="ov-revenue">12.450.000đ</h3>
+                <span class="stdsh-ov-stat-trend positive"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+            </div>
+        </div>
+
+        <div class="stdsh-ov-stat-card">
+            <div class="stdsh-ov-stat-icon accent-purple">
+                <i class="fa-solid fa-file-invoice"></i>
+            </div>
+            <div class="stdsh-ov-stat-info">
+                <p class="stdsh-ov-stat-label">Tổng Hóa Đơn</p>
+                <h3 class="stdsh-ov-stat-value" id="ov-total-bills">32</h3>
+                <span class="stdsh-ov-stat-trend">Giao dịch đã hoàn tất</span>
+            </div>
+        </div>
+
+        <div class="stdsh-ov-stat-card">
+            <div class="stdsh-ov-stat-icon accent-blue">
+                <i class="fa-solid fa-chair"></i>
+            </div>
+            <div class="stdsh-ov-stat-info">
+                <p class="stdsh-ov-stat-label">Bàn Đang Phục Vụ</p>
+                <h3 class="stdsh-ov-stat-value" id="ov-occupied-tables">8 / 20</h3>
+                <div class="stdsh-ov-progress-bar">
+                    <div class="stdsh-ov-progress-fill" style="width: 40%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stdsh-ov-stat-card">
+            <div class="stdsh-ov-stat-icon accent-red">
+                <i class="fa-solid fa-calendar-day"></i>
+            </div>
+            <div class="stdsh-ov-stat-info">
+                <p class="stdsh-ov-stat-label">Đặt Bàn Chờ Duyệt</p>
+                <h3 class="stdsh-ov-stat-value" id="ov-pending-res">3</h3>
+                <span class="stdsh-ov-stat-trend warning">Cần xử lý ngay</span>
+            </div>
+        </div>
+
+        <div class="stdsh-ov-stat-card">
+            <div class="stdsh-ov-stat-icon accent-green">
+                <i class="fa-solid fa-comments"></i>
+            </div>
+            <div class="stdsh-ov-stat-info">
+                <p class="stdsh-ov-stat-label">Hỗ Trợ Khách Hàng</p>
+                <h3 class="stdsh-ov-stat-value" id="ov-support-msg">2</h3>
+                <span class="stdsh-ov-stat-trend">Tin nhắn chưa đọc</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts & Activity Row -->
+    <div class="stdsh-ov-content-row">
+        <!-- Left: Activity Timeline -->
+        <div class="stdsh-ov-content-box stdsh-ov-activity-box">
+            <div class="stdsh-ov-box-header">
+                <h4>Hoạt Động Gần Đây</h4>
+                <button class="stdsh-ov-btn-text">Xem tất cả</button>
+            </div>
+            <div class="stdsh-ov-activity-list" id="ov-activity-list">
+                <!-- Timeline items will be injected by JS -->
+                <div class="stdsh-ov-activity-item">
+                    <div class="stdsh-ov-activity-dot active"></div>
+                    <div class="stdsh-ov-activity-content">
+                        <p><strong>Bàn 05</strong> vừa gọi thanh toán.</p>
+                        <span>2 phút trước</span>
+                    </div>
+                </div>
+                <div class="stdsh-ov-activity-item">
+                    <div class="stdsh-ov-activity-dot"></div>
+                    <div class="stdsh-ov-activity-content">
+                        <p><strong>Anh Kiên</strong> vừa đặt bàn cho 4 người (19:00).</p>
+                        <span>15 phút trước</span>
+                    </div>
+                </div>
+                <div class="stdsh-ov-activity-item">
+                    <div class="stdsh-ov-activity-dot"></div>
+                    <div class="stdsh-ov-activity-content">
+                        <p>Hệ thống vừa cập nhật menu: <strong>Sườn Non BBQ</strong>.</p>
+                        <span>45 phút trước</span>
+                    </div>
+                </div>
+                <div class="stdsh-ov-activity-item">
+                    <div class="stdsh-ov-activity-dot warning"></div>
+                    <div class="stdsh-ov-activity-content">
+                        <p>Cảnh báo: <strong>Kim Chi</strong> sắp hết hàng.</p>
+                        <span>1 giờ trước</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Status Summary -->
+        <div class="stdsh-ov-content-box stdsh-ov-summary-box">
+            <div class="stdsh-ov-box-header">
+                <h4>Trạng Thái Hiện Tại</h4>
+            </div>
+            <div class="stdsh-ov-status-summary">
+                <div class="stdsh-ov-summary-item">
+                    <span>Bàn Trống</span>
+                    <span class="stdsh-ov-summary-count">12</span>
+                </div>
+                <div class="stdsh-ov-summary-item">
+                    <span>Đã Đặt Trước</span>
+                    <span class="stdsh-ov-summary-count">2</span>
+                </div>
+                <div class="stdsh-ov-summary-item">
+                    <span>Yêu Cầu Đặc Biệt</span>
+                    <span class="stdsh-ov-summary-count">1</span>
+                </div>
+            </div>
+            <div class="stdsh-ov-capacity-widget">
+                <div class="stdsh-ov-capacity-circle">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle" stroke-dasharray="65, 100"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <text x="18" y="20.35" class="percentage">65%</text>
+                    </svg>
+                </div>
+                <p>Công suất phục vụ</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activity Detail Modal -->
+    <div class="stdsh-modal-overlay" id="stdsh-ov-activity-modal">
+        <div class="stdsh-modal-box">
+            <button class="stdsh-modal-close" id="ov-close-modal"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="stdsh-modal-title">Toàn Bộ Hoạt Động</h3>
+            <div class="stdsh-ov-full-activity-list" id="ov-modal-activity-list">
+                <!-- Content will be injected by JS -->
+            </div>
+        </div>
+    </div>
+</section>
