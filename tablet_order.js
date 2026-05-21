@@ -182,7 +182,6 @@ const DISHES_DATA = [
 // App State
 const tblState = {
   cart: [],
-  guestCount: 4,
   currentTab: 'main',
   searchQuery: { main: '', drinks: '', desserts: '' },
   activeTag: { main: 'all', drinks: 'all', desserts: 'all' },
@@ -239,8 +238,6 @@ async function loadAllComponents() {
 }
 
 function initAppLogic() {
-  document.getElementById('tbl-guest-count-display').textContent = tblState.guestCount;
-  
   updateItemsPerPage();
   window.addEventListener('resize', updateItemsPerPage);
   
@@ -250,10 +247,10 @@ function initAppLogic() {
 
 function updateItemsPerPage() {
   const width = window.innerWidth;
-  if (width <= 1024) {
-    tblState.itemsPerPage = 8; // 2x4
+  if (width >= 768) {
+    tblState.itemsPerPage = 9;
   } else {
-    tblState.itemsPerPage = 9; // 3x3
+    tblState.itemsPerPage = 8;
   }
   
   if (tblState.currentTab !== 'notifications') {
@@ -274,15 +271,6 @@ function startClock() {
   updateTime();
   setInterval(updateTime, 1000);
 }
-
-window.changeGuestCount = function(delta) {
-  const newVal = tblState.guestCount + delta;
-  if (newVal >= 1 && newVal <= 20) {
-    tblState.guestCount = newVal;
-    document.getElementById('tbl-guest-count-display').textContent = newVal;
-    showToast(`Cập nhật số khách: ${newVal} người`, "info");
-  }
-};
 
 // --------------------------------------------------------------------------
 // 4. TAB SWITCHING
@@ -536,9 +524,10 @@ window.addToCart = function(dishId) {
   renderCart();
   showToast(`Đã thêm: ${dishInfo.name}`, "success");
   
-  if (window.innerWidth <= 1024) {
-    setTimeout(() => openCart(), 300);
-  }
+  // Không tự động mở giỏ hàng nữa
+  // if (window.innerWidth <= 1024) {
+  //   setTimeout(() => openCart(), 300);
+  // }
 };
 
 window.adjustCartQty = function(dishId, delta) {
@@ -789,7 +778,7 @@ function renderNotifications() {
  * Simulate food preparation and delivery times
  */
 function simulateKitchenCookCycle(notifId) {
-  // Phase 0: Pending -> Cooking (takes 5 seconds - bếp xác nhận)
+  // Phase 0: Pending -> Cooking (takes 10 seconds - bếp xác nhận)
   setTimeout(() => {
     const notif = tblState.notifications.find(n => n.id === notifId);
     if (!notif || notif.status === 'cancelled') return;
@@ -831,7 +820,7 @@ function simulateKitchenCookCycle(notifId) {
 
     }, 14000);
 
-  }, 5000);
+  }, 10000);
 }
 
 // --------------------------------------------------------------------------
