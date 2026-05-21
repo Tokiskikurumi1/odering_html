@@ -1,0 +1,57 @@
+<div class="tbl-tab-panel-inner">
+  
+  <!-- Filter & Action Bar -->
+  <div class="tbl-filter-action-bar">
+    <div class="tbl-bar-left-group">
+      <!-- Search Input -->
+      <div class="tbl-search-box-wrapper">
+        <i class="fa-solid fa-magnifying-glass tbl-search-icon"></i>
+        <input type="text" class="tbl-search-input" id="tbl-search-desserts" placeholder="Tìm tráng miệng (kem, tiramisu...)" oninput="handleSearch('desserts')">
+      </div>
+    </div>
+    
+    <div class="tbl-bar-right-group">
+      <!-- Category Filter Dropdown -->
+      <div class="tbl-sort-select-wrapper">
+        <i class="fa-solid fa-filter tbl-sort-icon"></i>
+        <select class="tbl-sort-dropdown" id="tbl-filter-desserts" onchange="handleFilterChange('desserts')">
+          <option value="all">Danh mục: Tất cả</option>
+          <option value="cake">Bánh ngọt</option>
+          <option value="ice-cream">Kem lạnh</option>
+          <option value="sweet-soup">Chè & Khác</option>
+        </select>
+      </div>
+
+      <!-- Sort Selection -->
+      <div class="tbl-sort-select-wrapper">
+        <i class="fa-solid fa-arrow-down-wide-short tbl-sort-icon"></i>
+        <select class="tbl-sort-dropdown" id="tbl-sort-desserts" onchange="handleSort('desserts')">
+          <option value="default">Sắp xếp: Mặc định</option>
+          <option value="price-asc">Giá: Thấp → Cao</option>
+          <option value="price-desc">Giá: Cao → Thấp</option>
+          <option value="name-asc">Tên: A → Z</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Food Cards Grid -->
+  <div class="tbl-dishes-grid" id="tbl-grid-desserts">
+    <!-- Grid elements loaded dynamically via JS -->
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="tbl-pagination-wrapper" id="tbl-pagination-desserts" style="display: none;">
+    <span class="tbl-pagination-info" id="tbl-pagination-info-desserts">Trang 1 / 1</span>
+    <button type="button" class="tbl-pagination-btn" id="tbl-pagination-prev-desserts" onclick="changePage('desserts', -1)">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div id="tbl-pagination-numbers-desserts" style="display: flex; gap: 8px;">
+      <!-- Page numbers will be inserted here -->
+    </div>
+    <button type="button" class="tbl-pagination-btn" id="tbl-pagination-next-desserts" onclick="changePage('desserts', 1)">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+</div>

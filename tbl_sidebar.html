@@ -1,0 +1,41 @@
+<nav class="tbl-sidebar-navigation">
+  <ul class="tbl-sidebar-menu-list">
+    <li class="tbl-sidebar-menu-item">
+      <button type="button" class="tbl-sidebar-menu-btn tbl-sidebar-menu-btn-active" id="tbl-tab-btn-main" onclick="switchCategoryTab('main')">
+        <div class="tbl-sidebar-icon-box">
+          <i class="fa-solid fa-drumstick-bite"></i>
+        </div>
+        <span class="tbl-sidebar-menu-label">Món chính</span>
+      </button>
+    </li>
+    
+    <li class="tbl-sidebar-menu-item">
+      <button type="button" class="tbl-sidebar-menu-btn" id="tbl-tab-btn-drinks" onclick="switchCategoryTab('drinks')">
+        <div class="tbl-sidebar-icon-box">
+          <i class="fa-solid fa-beer-mug-empty"></i>
+        </div>
+        <span class="tbl-sidebar-menu-label">Nước uống</span>
+      </button>
+    </li>
+    
+    <li class="tbl-sidebar-menu-item">
+      <button type="button" class="tbl-sidebar-menu-btn" id="tbl-tab-btn-desserts" onclick="switchCategoryTab('desserts')">
+        <div class="tbl-sidebar-icon-box">
+          <i class="fa-solid fa-ice-cream"></i>
+        </div>
+        <span class="tbl-sidebar-menu-label">Tráng miệng</span>
+      </button>
+    </li>
+
+    <li class="tbl-sidebar-menu-item">
+      <button type="button" class="tbl-sidebar-menu-btn" id="tbl-tab-btn-notifications" onclick="switchCategoryTab('notifications')">
+        <div class="tbl-sidebar-icon-box tbl-position-relative">
+          <i class="fa-solid fa-bell"></i>
+          <!-- Badge for new notifications -->
+          <span class="tbl-sidebar-notif-badge" id="tbl-notif-badge-dot"></span>
+        </div>
+        <span class="tbl-sidebar-menu-label">Thông báo</span>
+      </button>
+    </li>
+  </ul>
+</nav>

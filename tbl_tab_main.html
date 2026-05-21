@@ -1,0 +1,57 @@
+<div class="tbl-tab-panel-inner">
+  
+  <!-- Filter & Action Bar -->
+  <div class="tbl-filter-action-bar">
+    <div class="tbl-bar-left-group">
+      <!-- Search Input -->
+      <div class="tbl-search-box-wrapper">
+        <i class="fa-solid fa-magnifying-glass tbl-search-icon"></i>
+        <input type="text" class="tbl-search-input" id="tbl-search-main" placeholder="Tìm món chính (bò, lẩu...)" oninput="handleSearch('main')">
+      </div>
+    </div>
+    
+    <div class="tbl-bar-right-group">
+      <!-- Category Filter Dropdown -->
+      <div class="tbl-sort-select-wrapper">
+        <i class="fa-solid fa-filter tbl-sort-icon"></i>
+        <select class="tbl-sort-dropdown" id="tbl-filter-main" onchange="handleFilterChange('main')">
+          <option value="all">Danh mục: Tất cả</option>
+          <option value="bbq">Nướng BBQ</option>
+          <option value="hotpot">Lẩu nóng</option>
+          <option value="other">Món khác</option>
+        </select>
+      </div>
+
+      <!-- Sort Selection -->
+      <div class="tbl-sort-select-wrapper">
+        <i class="fa-solid fa-arrow-down-wide-short tbl-sort-icon"></i>
+        <select class="tbl-sort-dropdown" id="tbl-sort-main" onchange="handleSort('main')">
+          <option value="default">Sắp xếp: Mặc định</option>
+          <option value="price-asc">Giá: Thấp → Cao</option>
+          <option value="price-desc">Giá: Cao → Thấp</option>
+          <option value="name-asc">Tên: A → Z</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Food Cards Grid -->
+  <div class="tbl-dishes-grid" id="tbl-grid-main">
+    <!-- Grid elements loaded dynamically via JS -->
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="tbl-pagination-wrapper" id="tbl-pagination-main" style="display: none;">
+    <span class="tbl-pagination-info" id="tbl-pagination-info-main">Trang 1 / 1</span>
+    <button type="button" class="tbl-pagination-btn" id="tbl-pagination-prev-main" onclick="changePage('main', -1)">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <div id="tbl-pagination-numbers-main" style="display: flex; gap: 8px;">
+      <!-- Page numbers will be inserted here -->
+    </div>
+    <button type="button" class="tbl-pagination-btn" id="tbl-pagination-next-main" onclick="changePage('main', 1)">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+</div>

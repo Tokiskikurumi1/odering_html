@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Kiosk | Đặt Món Tại Bàn</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="tablet_order.css">
+  <link rel="stylesheet" href="./common.css">
+</head>
+ 
+<body class="tbl-body-kiosk">
+
+  <!-- Main POS App Shell -->
+  <div class="tbl-app-shell">
+
+    <!-- Top Header -->
+    <header class="tbl-header-top">
+      <div class="tbl-header-left">
+        <div class="tbl-header-brand">
+          <i class="fa-solid fa-utensils"></i>
+          <span>KURI-POS Kiosk</span>
+        </div>
+        <div class="tbl-table-badge">
+          <i class="fa-solid fa-circle-dot tbl-status-dot-active"></i>
+          <span id="tbl-display-table-num">BÀN SỐ: 05</span>
+        </div>
+      </div>
+
+      <div class="tbl-header-center">
+        <!-- Guest counter: touch-friendly controls -->
+        <div class="tbl-guest-control-wrapper">
+          <span class="tbl-guest-label"><i class="fa-solid fa-users"></i> Số khách:</span>
+          <div class="tbl-guest-counter">
+            <button type="button" class="tbl-btn-qty-control" id="tbl-btn-guest-desc" onclick="changeGuestCount(-1)">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span class="tbl-guest-count-val" id="tbl-guest-count-display">4</span>
+            <button type="button" class="tbl-btn-qty-control" id="tbl-btn-guest-inc" onclick="changeGuestCount(1)">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tbl-header-right">
+        <div class="tbl-digital-clock" id="tbl-header-clock">
+          20:30
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <div class="tbl-main-body">
+
+      <!-- Left Sidebar Placeholder -->
+      <aside class="tbl-sidebar-left-container" id="tbl-sidebar-left-placeholder">
+        <!-- Fetched from tbl_sidebar.html -->
+      </aside>
+
+      <!-- Center Food Content Area -->
+      <main class="tbl-center-content-area" id="tbl-center-content-placeholder">
+        <!-- Cards will be dynamically inserted here with this structure:
+        <div class="tbl-dish-card">
+          <div class="tbl-dish-image-wrapper">
+            <div class="tbl-dish-badge-container">
+              ${badgeHtml}
+            </div>
+            <img class="tbl-dish-image" src="${dish.image}" alt="${dish.name}" onerror="this.src='images/1.PNG'">
+          </div>
+          <div class="tbl-dish-info">
+            <h4 class="tbl-dish-name">${dish.name}</h4>
+            <div class="tbl-dish-footer">
+              <span class="tbl-dish-price">${formatVNCurrency(dish.price)}</span>
+              <button type="button" class="tbl-dish-add-btn" onclick="addToCart('${dish.id}')" title="Thêm vào giỏ">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        -->
+      </main>
+
+      <!-- Right Sidebar (Cart) Placeholder -->
+      <aside class="tbl-sidebar-right-container" id="tbl-sidebar-right-placeholder">
+        <!-- Fetched from tbl_cart.html -->
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- Cart Toggle Button (Mobile/Tablet) -->
+  <button type="button" class="tbl-cart-toggle-btn" id="tbl-cart-toggle-btn" onclick="toggleCart()">
+    <i class="fa-solid fa-shopping-cart tbl-cart-toggle-icon"></i>
+    <span class="tbl-cart-toggle-badge" id="tbl-cart-toggle-count">0</span>
+  </button>
+
+  <!-- Cart Overlay (Mobile/Tablet) -->
+  <div class="tbl-cart-overlay" id="tbl-cart-overlay" onclick="closeCart()"></div>
+
+  <!-- Toast Message Box -->
+  <div class="tbl-toast-container" id="tbl-toast-container"></div>
+
+  <!-- JS -->
+  <script src="tablet_order.js"></script>
+</body>
+
+</html>

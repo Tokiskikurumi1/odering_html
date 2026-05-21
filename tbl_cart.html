@@ -1,0 +1,53 @@
+<div class="tbl-cart-wrapper">
+  
+  <!-- Cart Title -->
+  <div class="tbl-cart-header">
+    <h3><i class="fa-solid fa-shopping-basket"></i> Giỏ Hàng Của Bạn</h3>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span class="tbl-cart-item-count-badge" id="tbl-cart-count">0 món</span>
+      <button type="button" class="tbl-cart-close-btn" id="tbl-cart-close-btn" onclick="closeCart()" title="Đóng giỏ hàng">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Cart Items List Container -->
+  <div class="tbl-cart-items-container" id="tbl-cart-items-list">
+    <!-- Items dynamically injected by JS. Fallback state: empty cart -->
+    <div class="tbl-cart-empty-state" id="tbl-cart-empty-view">
+      <i class="fa-solid fa-receipt"></i>
+      <p>Chưa có món nào trong giỏ</p>
+      <small>Vui lòng chọn món ngon từ thực đơn bên trái để thêm vào giỏ hàng.</small>
+    </div>
+  </div>
+
+  <!-- Cart Summary Area -->
+  <div class="tbl-cart-summary-box">
+    <div class="tbl-cart-summary-row">
+      <span class="tbl-cart-summary-label">Tạm tính:</span>
+      <span class="tbl-cart-summary-val" id="tbl-cart-subtotal">0₫</span>
+    </div>
+    <div class="tbl-cart-summary-row">
+      <span class="tbl-cart-summary-label">Thuế (VAT 10%):</span>
+      <span class="tbl-cart-summary-val" id="tbl-cart-tax">0₫</span>
+    </div>
+    <div class="tbl-cart-divider"></div>
+    <div class="tbl-cart-summary-row tbl-cart-grand-total">
+      <span class="tbl-cart-summary-label">TỔNG TIỀN:</span>
+      <span class="tbl-cart-summary-val" id="tbl-cart-total-price">0₫</span>
+    </div>
+  </div>
+
+  <!-- Cart Footer Action Buttons -->
+  <div class="tbl-cart-footer-actions">
+    <button type="button" class="tbl-cart-action-btn tbl-cart-btn-kitchen" id="tbl-btn-submit-kitchen" onclick="submitOrderToKitchen()" disabled>
+      <i class="fa-solid fa-paper-plane"></i>
+      <span>GỬI ĐẾN BẾP</span>
+    </button>
+    <button type="button" class="tbl-cart-action-btn tbl-cart-btn-pay" id="tbl-btn-request-checkout" onclick="requestCheckout()">
+      <i class="fa-solid fa-cash-register"></i>
+      <span>Thanh Toán tại Quầy</span>
+    </button>
+  </div>
+
+</div>

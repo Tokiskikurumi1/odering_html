@@ -1,0 +1,34 @@
+<div class="tbl-tab-panel-inner">
+  
+  <!-- Notifications Header -->
+  <div class="tbl-notif-header-box">
+    <div class="tbl-notif-title-area">
+      <h3><i class="fa-solid fa-bell-concierge"></i> Nhật Ký Gọi Món & Báo Bếp</h3>
+      <p>Cập nhật trạng thái chế biến thời gian thực từ nhà bếp cho Bàn số 5</p>
+    </div>
+    <button type="button" class="tbl-btn-clear-notif" onclick="clearNotifications()">
+      <i class="fa-solid fa-trash-can"></i> Xóa lịch sử
+    </button>
+  </div>
+
+  <!-- Notification Status Filters -->
+  <div class="tbl-notif-filter-bar">
+    <button type="button" class="tbl-notif-filter-btn tbl-notif-filter-btn-active" onclick="filterNotifications('all', this)">Tất cả</button>
+    <button type="button" class="tbl-notif-filter-btn" onclick="filterNotifications('pending', this)">Chờ xác nhận</button>
+    <button type="button" class="tbl-notif-filter-btn" onclick="filterNotifications('cooking', this)">Đang chế biến</button>
+    <button type="button" class="tbl-notif-filter-btn" onclick="filterNotifications('ready', this)">Đã xong (Chờ phục vụ)</button>
+    <button type="button" class="tbl-notif-filter-btn" onclick="filterNotifications('served', this)">Đã phục vụ</button>
+    <button type="button" class="tbl-notif-filter-btn" onclick="filterNotifications('cancelled', this)">Đã hủy</button>
+  </div>
+
+  <!-- Notifications List Container -->
+  <div class="tbl-notif-list-container" id="tbl-notifications-list">
+    <!-- Notifications will be injected by JS. Fallback state: empty list -->
+    <div class="tbl-notif-empty-state" id="tbl-notif-empty-view">
+      <i class="fa-solid fa-comment-slash"></i>
+      <p>Không có thông báo nào từ nhà bếp</p>
+      <small>Khi bạn bấm nút "Gửi đến bếp", các món ăn sẽ được cập nhật trạng thái chế biến tại đây.</small>
+    </div>
+  </div>
+
+</div>
