@@ -247,7 +247,7 @@ function initAppLogic() {
 
 function updateItemsPerPage() {
   const width = window.innerWidth;
-  if (width >= 768) {
+  if (width > 768) {
     tblState.itemsPerPage = 9;
   } else {
     tblState.itemsPerPage = 8;
