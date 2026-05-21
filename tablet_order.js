@@ -669,6 +669,19 @@ window.submitOrderToKitchen = function() {
 };
 
 window.requestCheckout = function() {
+  // Clear notifications history when checkout
+  tblState.notifications = [];
+  
+  // Clear unread badge
+  tblState.unreadNotifications = false;
+  const badge = document.getElementById('tbl-notif-badge-dot');
+  if (badge) badge.style.display = 'none';
+  
+  // Re-render notifications if on that tab
+  if (tblState.currentTab === 'notifications') {
+    renderNotifications();
+  }
+  
   showToast("Đã gửi yêu cầu thanh toán tới quầy thu ngân!", "success");
 };
 
@@ -686,12 +699,6 @@ window.filterNotifications = function(status, buttonDom) {
 
   activeNotificationFilter = status;
   renderNotifications();
-};
-
-window.clearNotifications = function() {
-  tblState.notifications = [];
-  renderNotifications();
-  showToast("Đã xóa lịch sử thông báo", "info");
 };
 
 window.cancelDish = function(notifId) {

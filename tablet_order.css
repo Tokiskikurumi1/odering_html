@@ -813,10 +813,12 @@
   z-index: 99;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .tbl-cart-overlay.tbl-cart-overlay-active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .tbl-cart-wrapper {
@@ -1511,14 +1513,15 @@
     display: block;
   }
   
-  .tbl-dishes-grid {
+  /* .tbl-dishes-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
+  } */
   
   .tbl-dish-image-wrapper {
     height: 200px;
   }
 }
+
 
 @media (max-width: 768px) {
   .tbl-sidebar-right-container {
