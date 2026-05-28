@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Nguyên Liệu - Kurumi BBQ POS/ERP</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6.4.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./ingredient_management.css" />
+  </head>
+
+  <body class="ingr-system-body-container">
+    <div class="ingr-app-layout-wrapper">
+      <!-- Sidebar -->
+      <div id="ingr-sidebar-content">
+        <!-- Sidebar content goes here -->
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="ingr-main-viewport-container">
+        <!-- Header -->
+        <div id="ingr-header-content">
+          <!-- Header content goes here -->
+        </div>
+
+        <!-- Content Workspace -->
+        <main
+          class="ingr-main-workspace-scroller"
+          id="ingr-workspace-content-pane"
+        >
+          <section class="ingr-tab-panel" id="ingr-panel-ingredients">
+            <div class="ingr-panel-content-header-bar">
+              <div class="ingr-ingredient-filter-actions">
+                <input
+                  type="text"
+                  class="ingr-filter-text-input"
+                  id="ingr-search-ingredient-input"
+                  placeholder="Tìm tên hoặc mã nguyên liệu..."
+                />
+
+                <select
+                  class="ingr-filter-dropdown-select"
+                  id="ingr-filter-ingredient-category"
+                >
+                  <option value="all">Tất cả danh mục</option>
+                  <!-- Categories populated dynamically -->
+                </select>
+
+                <select
+                  class="ingr-filter-dropdown-select"
+                  id="ingr-filter-ingredient-status"
+                >
+                  <option value="all">Tất cả trạng thái</option>
+                  <option value="good">Tồn kho tốt</option>
+                  <option value="warning">Sắp hết</option>
+                  <option value="critical">Cần nhập gấp</option>
+                  <option value="expired">Hết hạn</option>
+                </select>
+              </div>
+              <button
+                class="ingr-primary-btn-action"
+                id="ingr-btn-add-ingredient"
+              >
+                <i class="fa-solid fa-plus"></i> Thêm Nguyên Liệu
+              </button>
+            </div>
+
+            <!-- Ingredients Table Wrapper -->
+            <div class="ingr-table-scroll-container">
+              <table
+                class="ingr-ingredient-management-table"
+                id="ingr-ingredients-data-table-element"
+              >
+                <thead>
+                  <tr>
+                    <th>Mã NL</th>
+                    <th>Tên nguyên liệu</th>
+                    <th>Danh mục</th>
+                    <th style="text-align: right">Số lượng tồn</th>
+                    <th>Đơn vị</th>
+                    <th>Hạn sử dụng</th>
+                    <th>Trạng thái</th>
+                    <th style="text-align: center">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="ingr-ingredients-table-body">
+                  <!-- Dynamic Rows go here -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="ingr-table-pagination-bar">
+              <div
+                class="ingr-pagination-records-info"
+                id="ingr-ingredients-page-info"
+              >
+                Đang hiển thị 1-10 trên 10 nguyên liệu
+              </div>
+              <div
+                class="ingr-pagination-controls-group"
+                id="ingr-ingredients-page-controls"
+              >
+                <!-- Dynamic controls go here -->
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         MODALS SECTIONS
+         ========================================== -->
+
+    <!-- 1. CRUD Ingredient Modal -->
+    <div class="ingr-modal-backdrop-overlay" id="ingr-ingredient-crud-modal">
+      <div class="ingr-ingredient-category-modal-box">
+        <div class="ingr-modal-box-header">
+          <h4 class="ingr-modal-box-title" id="ingr-ingredient-modal-title">
+            Thêm Nguyên Liệu Mới
+          </h4>
+          <button
+            class="ingr-modal-box-close-btn"
+            id="ingr-ingredient-modal-close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <form id="ingr-ingredient-form-element">
+          <input type="hidden" id="ingr-form-ingredient-id" />
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Mã nguyên liệu
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="text"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-code"
+                placeholder="Ví dụ: NL001"
+                required
+              />
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Tên nguyên liệu
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="text"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-name"
+                placeholder="Ví dụ: Thịt ba chỉ bò Mỹ"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Danh mục <span class="ingr-form-required-star">*</span></label
+              >
+              <select
+                class="ingr-form-dropdown-select"
+                id="ingr-form-ingredient-category"
+                required
+              >
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Đơn vị tính
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="text"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-unit"
+                placeholder="Ví dụ: kg, lít, hộp"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Số lượng tồn kho ban đầu</label
+              >
+              <input
+                type="number"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-stock"
+                value="0"
+                min="0"
+                step="any"
+              />
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Định mức tối thiểu (Ngưỡng cảnh báo)</label
+              >
+              <input
+                type="number"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-min-stock"
+                value="5"
+                min="0"
+                step="any"
+              />
+            </div>
+          </div>
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Hạn sử dụng
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="date"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-expiry"
+                required
+              />
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Đơn giá nhập trung bình (đ)</label
+              >
+              <input
+                type="number"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-price"
+                value="0"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="ingr-modal-box-footer-row">
+            <button
+              type="button"
+              class="ingr-cancel-btn-action"
+              id="ingr-ingredient-modal-cancel-btn"
+            >
+              Hủy bỏ
+            </button>
+            <button
+              type="submit"
+              class="ingr-primary-btn-action"
+              id="ingr-ingredient-modal-submit-btn"
+            >
+              Lưu nguyên liệu
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- ==========================================
+         TOAST NOTIFICATION PLACEMENT
+         ========================================== -->
+    <div class="ingr-toast-notification-dock" id="ingr-global-toast-container">
+      <!-- Toast cards dynamically populated -->
+    </div>
+
+    <!-- Core Script -->
+    <script src="./ingredient_sidebar.js"></script>
+    <script src="./ingredient_management.js"></script>
+  </body>
+</html>

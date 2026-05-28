@@ -1,0 +1,158 @@
+<aside class="ingr-inventory-sidebar" id="ingr-sidebar-element">
+  <div class="ingr-sidebar-brand-section">
+    <div class="ingr-sidebar-brand-icon">
+      <i class="fa-solid fa-fire-burner"></i>
+    </div>
+    <div class="ingr-sidebar-brand-text">
+      <span class="ingr-brand-title">KURUMI BBQ</span>
+      <span class="ingr-brand-subtitle">POS & ERP System</span>
+    </div>
+    <button
+      class="ingr-sidebar-toggle-btn"
+      id="ingr-sidebar-collapse-trigger"
+      title="Thu gọn sidebar"
+    >
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+  </div>
+
+  <nav class="ingr-sidebar-navigation-menu">
+    <!-- Group 1: Dashboard -->
+    <div class="ingr-sidebar-menu-group active">
+      <a
+        href="./ingredient_dashboard.html"
+        class="ingr-sidebar-menu-item active"
+        data-tab="dashboard"
+      >
+        <i class="fa-solid fa-chart-pie ingr-menu-icon"></i>
+        <span class="ingr-menu-text">Dashboard kho</span>
+      </a>
+    </div>
+
+    <!-- Group 2: Nguyên liệu (Accordion) -->
+    <div class="ingr-sidebar-accordion-group">
+      <button class="ingr-sidebar-accordion-header">
+        <span class="ingr-sidebar-accordion-title">
+          <i class="fa-solid fa-box-archive ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Nguyên liệu</span>
+        </span>
+        <i class="fa-solid fa-chevron-down ingr-accordion-arrow"></i>
+      </button>
+      <div class="ingr-sidebar-accordion-content open">
+        <a
+          href="./ingredient_ingredients.html"
+          class="ingr-sidebar-menu-item"
+          data-tab="ingredients"
+        >
+          <i class="fa-solid fa-list-check ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Quản lý nguyên liệu</span>
+        </a>
+        <a
+          href="./ingredient_categories.html"
+          class="ingr-sidebar-menu-item"
+          data-tab="categories"
+        >
+          <i class="fa-solid fa-tags ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Danh mục nguyên liệu</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 3: Quản lý kho (Accordion) -->
+    <div class="ingr-sidebar-accordion-group">
+      <button class="ingr-sidebar-accordion-header">
+        <span class="ingr-sidebar-accordion-title">
+          <i class="fa-solid fa-warehouse ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Quản lý kho</span>
+        </span>
+        <i class="fa-solid fa-chevron-down ingr-accordion-arrow"></i>
+      </button>
+      <div class="ingr-sidebar-accordion-content open">
+        <a
+          href="./ingredient_receipt.html"
+          class="ingr-sidebar-menu-item"
+          data-tab="goods-receipt"
+        >
+          <i class="fa-solid fa-circle-arrow-down ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Nhập kho</span>
+        </a>
+
+        <a href="#" class="ingr-sidebar-menu-item">
+          <i class="fa-solid fa-file-invoice ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Phiếu nhập kho</span>
+        </a>
+
+        <a
+          href="./ingredient_goods_issue.html"
+          class="ingr-sidebar-menu-item"
+          data-tab="goods-issue"
+        >
+          <i class="fa-solid fa-circle-arrow-up ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Xuất kho</span>
+        </a>
+
+        <a href="#" class="ingr-sidebar-menu-item">
+          <i class="fa-solid fa-file-export ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Phiếu xuất kho</span>
+        </a>
+
+        <a
+          href="./ingredient_inventory_audit.html"
+          class="ingr-sidebar-menu-item"
+          data-tab="audit"
+        >
+          <i class="fa-solid fa-clipboard-check ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Kiểm kê kho</span>
+        </a>
+        <a
+          href="./ingredient_warnings.html"
+          class="ingr-sidebar-menu-item"
+          data-tab="warnings"
+        >
+          <i class="fa-solid fa-triangle-exclamation ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Cảnh báo tồn kho</span>
+          <span class="ingr-sidebar-badge-count" id="ingr-badge-global-warnings"
+            >0</span
+          >
+        </a>
+        <a
+          href="./ingredient_transaction_history.html"
+          class="ingr-sidebar-menu-item"
+          data-tab="history"
+        >
+          <i class="fa-solid fa-receipt ingr-menu-icon"></i>
+          <span class="ingr-menu-text">Lịch sử giao dịch kho</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 4: Nhà cung cấp -->
+    <div class="ingr-sidebar-menu-group">
+      <a
+        href="./ingredient_supplier.html"
+        class="ingr-sidebar-menu-item"
+        data-tab="suppliers"
+      >
+        <i class="fa-solid fa-truck-field ingr-menu-icon"></i>
+        <span class="ingr-menu-text">Nhà cung cấp</span>
+      </a>
+    </div>
+
+    <!-- Group 5: Báo cáo -->
+    <div class="ingr-sidebar-menu-group">
+      <a
+        href="./ingredient_report.html"
+        class="ingr-sidebar-menu-item"
+        data-tab="reports"
+      >
+        <i class="fa-solid fa-chart-line ingr-menu-icon"></i>
+        <span class="ingr-menu-text">Báo cáo - thống kê kho</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="ingr-sidebar-footer-info">
+    <p class="ingr-sidebar-footer-text">Chi nhánh: Kurumi BBQ Q1</p>
+    <p class="ingr-sidebar-footer-version">v2.4 - Enterprise</p>
+  </div>
+</aside>

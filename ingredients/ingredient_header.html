@@ -1,0 +1,77 @@
+<header class="ingr-inventory-header">
+  <div class="ingr-header-title-section">
+    <button
+      class="ingr-mobile-sidebar-toggle"
+      id="ingr-mobile-toggle-btn"
+      title="Mở sidebar"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <h2 class="ingr-header-current-tab-title" id="ingr-header-tab-title">
+      Dashboard kho
+    </h2>
+  </div>
+
+  <!-- Search bar in header -->
+  <div class="ingr-header-search-bar-wrapper">
+    <i class="fa-solid fa-magnifying-glass ingr-header-search-icon"></i>
+    <input
+      type="text"
+      class="ingr-header-search-input"
+      id="ingr-global-header-search"
+      placeholder="Tìm kiếm nhanh nguyên liệu, hóa đơn, nhà cung cấp..."
+    />
+  </div>
+
+  <div class="ingr-header-user-actions">
+    <!-- Notification Panel -->
+    <div
+      class="ingr-header-action-button-container"
+      id="ingr-notifications-dropdown-trigger"
+    >
+      <button class="ingr-header-bell-button" title="Thông báo">
+        <i class="fa-regular fa-bell"></i>
+        <span class="ingr-header-bell-badge" id="ingr-header-bell-count"
+          >3</span
+        >
+      </button>
+      <!-- Dropdown list -->
+      <div
+        class="ingr-header-notification-dropdown-panel"
+        id="ingr-notifications-panel"
+      >
+        <div class="ingr-notification-dropdown-header">
+          <span>Thông báo hệ thống</span>
+          <button
+            class="ingr-notification-mark-all-read"
+            id="ingr-notifications-clear-btn"
+          >
+            Xóa tất cả
+          </button>
+        </div>
+        <div
+          class="ingr-notification-dropdown-list-items"
+          id="ingr-notifications-dropdown-list"
+        >
+          <!-- Dynamic notifications go here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Staff Avatar Profile -->
+    <div class="ingr-header-profile-section">
+      <div class="ingr-header-profile-avatar-wrapper">
+        <img
+          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
+          alt="Nhân viên"
+          class="ingr-header-profile-avatar"
+        />
+        <span class="ingr-header-profile-active-dot"></span>
+      </div>
+      <div class="ingr-header-profile-details">
+        <span class="ingr-header-profile-username">Nguyễn Minh Nam</span>
+        <span class="ingr-header-profile-role">Quản lý kho</span>
+      </div>
+    </div>
+  </div>
+</header>

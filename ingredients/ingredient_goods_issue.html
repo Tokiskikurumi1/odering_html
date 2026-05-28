@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Nguyên Liệu - Kurumi BBQ POS/ERP</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6.4.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./ingredient_management.css" />
+  </head>
+
+  <body class="ingr-system-body-container">
+    <div class="ingr-app-layout-wrapper">
+      <!-- Sidebar -->
+      <div id="ingr-sidebar-content">
+        <!-- Sidebar content goes here -->
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="ingr-main-viewport-container">
+        <!-- Header -->
+        <div id="ingr-header-content">
+          <!-- Header content goes here -->
+        </div>
+
+        <!-- Content Workspace -->
+        <main
+          class="ingr-main-workspace-scroller"
+          id="ingr-workspace-content-pane"
+        >
+          <!-- 5. GOODS ISSUE TAB -->
+          <section class="ingr-tab-panel" id="ingr-panel-goods-issue">
+            <div class="ingr-transaction-form-split-grid">
+              <div class="ingr-transaction-card-panel">
+                <h4 class="ingr-transaction-card-title">
+                  <i class="fa-solid fa-circle-arrow-up"></i> Xuất Kho Nguyên
+                  Liệu
+                </h4>
+                <form
+                  id="ingr-issue-creation-form"
+                  class="ingr-transaction-input-form"
+                >
+                  <div class="ingr-form-input-two-column-row">
+                    <div class="ingr-form-field-group">
+                      <label class="ingr-form-input-label"
+                        >Nơi nhận/Lý do xuất
+                        <span class="ingr-form-required-star">*</span></label
+                      >
+                      <select
+                        class="ingr-form-dropdown-select"
+                        id="ingr-issue-reason"
+                        required
+                      >
+                        <option value="">-- Chọn lý do xuất --</option>
+                        <option value="Bếp - Chế biến món ăn">
+                          Bếp chính - Chế biến
+                        </option>
+                        <option value="Quầy Bar - Pha chế">
+                          Quầy Bar - Pha chế
+                        </option>
+                        <option value="Hủy nguyên liệu hết hạn">
+                          Hủy nguyên liệu hết hạn / Hỏng hóc
+                        </option>
+                        <option value="Kiểm kê - Bù trừ hao hụt">
+                          Kiểm kê - Điều chỉnh hao hụt
+                        </option>
+                        <option value="Xuất chuyển kho nội bộ">
+                          Chuyển kho nội bộ
+                        </option>
+                      </select>
+                    </div>
+                    <div class="ingr-form-field-group">
+                      <label class="ingr-form-input-label"
+                        >Người thực hiện</label
+                      >
+                      <input
+                        type="text"
+                        class="ingr-form-text-input"
+                        value="Nguyễn Minh Nam"
+                        readonly
+                      />
+                    </div>
+                  </div>
+
+                  <div class="ingr-form-field-group">
+                    <label class="ingr-form-input-label"
+                      >Ghi chú chi tiết</label
+                    >
+                    <textarea
+                      class="ingr-form-textarea-input"
+                      id="ingr-issue-note"
+                      rows="2"
+                      placeholder="Ví dụ: Xuất thịt bò và sốt cho ca sáng, hủy lô rau xà lách bị hỏng..."
+                    ></textarea>
+                  </div>
+
+                  <div class="ingr-receipt-selected-items-section">
+                    <div class="ingr-receipt-items-header">
+                      <h5>Nguyên liệu yêu cầu xuất</h5>
+                      <button
+                        type="button"
+                        class="ingr-outline-add-btn"
+                        id="ingr-issue-add-item-row-btn"
+                      >
+                        <i class="fa-solid fa-plus"></i> Thêm nguyên liệu
+                      </button>
+                    </div>
+                    <div class="ingr-receipt-items-table-scroller">
+                      <table class="ingr-receipt-items-table">
+                        <thead>
+                          <tr>
+                            <th>Nguyên liệu</th>
+                            <th style="width: 120px">Tồn hiện tại</th>
+                            <th style="width: 150px">Số lượng xuất</th>
+                            <th style="width: 100px">Đơn vị</th>
+                            <th style="width: 50px"></th>
+                          </tr>
+                        </thead>
+                        <tbody id="ingr-issue-items-tbody">
+                          <!-- Dynamic issue rows -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="ingr-receipt-form-submit-row">
+                    <button
+                      type="button"
+                      class="ingr-cancel-btn-action"
+                      id="ingr-issue-reset-btn"
+                    >
+                      Hủy bỏ
+                    </button>
+                    <button
+                      type="submit"
+                      class="ingr-primary-btn-action danger"
+                    >
+                      <i class="fa-solid fa-circle-arrow-up"></i> Xác Nhận Xuất
+                      Kho
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         MODALS SECTIONS
+         ========================================== -->
+
+    <!-- ==========================================
+         TOAST NOTIFICATION PLACEMENT
+         ========================================== -->
+    <div class="ingr-toast-notification-dock" id="ingr-global-toast-container">
+      <!-- Toast cards dynamically populated -->
+    </div>
+
+    <!-- Core Script -->
+    <script src="./ingredient_sidebar.js"></script>
+    <script src="./ingredient_management.js"></script>
+  </body>
+</html>

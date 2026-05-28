@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Nguyên Liệu - Kurumi BBQ POS/ERP</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6.4.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./ingredient_management.css" />
+  </head>
+
+  <body class="ingr-system-body-container">
+    <div class="ingr-app-layout-wrapper">
+      <!-- Sidebar -->
+      <div id="ingr-sidebar-content">
+        <!-- Sidebar content goes here -->
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="ingr-main-viewport-container">
+        <!-- Header -->
+        <div id="ingr-header-content">
+          <!-- Header content goes here -->
+        </div>
+
+        <!-- Content Workspace -->
+        <main
+          class="ingr-main-workspace-scroller"
+          id="ingr-workspace-content-pane"
+        >
+          <!-- 1. DASHBOARD TAB -->
+          <section class="ingr-tab-panel active" id="ingr-panel-dashboard">
+            <!-- Stats Cards Row -->
+            <div class="ingr-dashboard-summary-cards-grid">
+              <div
+                class="ingr-warehouse-summary-card ingr-summary-total-ingredients"
+              >
+                <div class="ingr-summary-card-inner">
+                  <div class="ingr-summary-card-info">
+                    <span class="ingr-summary-card-label"
+                      >Tổng nguyên liệu</span
+                    >
+                    <h3
+                      class="ingr-summary-card-value"
+                      id="ingr-dashboard-stat-total"
+                    >
+                      0
+                    </h3>
+                    <span class="ingr-summary-card-trend positive"
+                      ><i class="fa-solid fa-circle-check"></i> Đang quản
+                      lý</span
+                    >
+                  </div>
+                  <div class="ingr-summary-card-icon-box">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="ingr-warehouse-summary-card ingr-summary-low-stock">
+                <div class="ingr-summary-card-inner">
+                  <div class="ingr-summary-card-info">
+                    <span class="ingr-summary-card-label">Sắp hết hàng</span>
+                    <h3
+                      class="ingr-summary-card-value"
+                      id="ingr-dashboard-stat-low"
+                    >
+                      0
+                    </h3>
+                    <span
+                      class="ingr-summary-card-trend negative"
+                      id="ingr-dashboard-stat-low-trend"
+                      ><i class="fa-solid fa-triangle-exclamation"></i> Cần nhập
+                      gấp</span
+                    >
+                  </div>
+                  <div class="ingr-summary-card-icon-box warning">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="ingr-warehouse-summary-card ingr-summary-expired">
+                <div class="ingr-summary-card-inner">
+                  <div class="ingr-summary-card-info">
+                    <span class="ingr-summary-card-label"
+                      >Nguyên liệu hết hạn</span
+                    >
+                    <h3
+                      class="ingr-summary-card-value"
+                      id="ingr-dashboard-stat-expired"
+                    >
+                      0
+                    </h3>
+                    <span
+                      class="ingr-summary-card-trend danger"
+                      id="ingr-dashboard-stat-expired-trend"
+                      ><i class="fa-solid fa-skull-crossbones"></i> Hủy kho
+                      ngay</span
+                    >
+                  </div>
+                  <div class="ingr-summary-card-icon-box danger">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="ingr-warehouse-summary-card ingr-summary-total-value">
+                <div class="ingr-summary-card-inner">
+                  <div class="ingr-summary-card-info">
+                    <span class="ingr-summary-card-label"
+                      >Tổng giá trị kho</span
+                    >
+                    <h3
+                      class="ingr-summary-card-value"
+                      id="ingr-dashboard-stat-value"
+                    >
+                      0 đ
+                    </h3>
+                    <span class="ingr-summary-card-trend positive"
+                      ><i class="fa-solid fa-chart-line"></i> Định mức ổn
+                      định</span
+                    >
+                  </div>
+                  <div class="ingr-summary-card-icon-box success">
+                    <i class="fa-solid fa-wallet"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Charts and urgent list layout -->
+            <div class="ingr-dashboard-analytical-split-grid">
+              <div class="ingr-dashboard-chart-container-card">
+                <h4 class="ingr-dashboard-card-title">
+                  Tỷ lệ tồn kho theo nhóm nguyên liệu
+                </h4>
+                <div class="ingr-dashboard-chart-wrapper-canvas">
+                  <canvas id="ingr-dashboard-pie-chart"></canvas>
+                </div>
+              </div>
+
+              <div class="ingr-dashboard-urgent-replenish-card">
+                <h4 class="ingr-dashboard-card-title">
+                  Cần Nhập Gấp & Hết Hạn
+                </h4>
+                <div
+                  class="ingr-dashboard-urgent-list-wrapper"
+                  id="ingr-dashboard-urgent-list"
+                >
+                  <!-- Dynamic Urgent items go here -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activities and Quick Stats -->
+            <div class="ingr-dashboard-recent-activities-card">
+              <h4 class="ingr-dashboard-card-title">
+                Hoạt động giao dịch kho gần đây
+              </h4>
+              <div
+                class="ingr-dashboard-activity-timeline"
+                id="ingr-dashboard-activities"
+              >
+                <!-- Dynamic activities go here -->
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TOAST NOTIFICATION PLACEMENT
+         ========================================== -->
+    <div class="ingr-toast-notification-dock" id="ingr-global-toast-container">
+      <!-- Toast cards dynamically populated -->
+    </div>
+
+    <!-- Core Script -->
+    <script src="./ingredient_sidebar.js"></script>
+    <!-- <script src="./ingredient_management.js"></script> -->
+  </body>
+</html>

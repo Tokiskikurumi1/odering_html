@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Nguyên Liệu - Kurumi BBQ POS/ERP</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6.4.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./ingredient_management.css" />
+  </head>
+
+  <body class="ingr-system-body-container">
+    <div class="ingr-app-layout-wrapper">
+      <!-- Sidebar -->
+      <div id="ingr-sidebar-content">
+        <!-- Sidebar content goes here -->
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="ingr-main-viewport-container">
+        <!-- Header -->
+        <div id="ingr-header-content">
+          <!-- Header content goes here -->
+        </div>
+
+        <!-- Content Workspace -->
+        <main
+          class="ingr-main-workspace-scroller"
+          id="ingr-workspace-content-pane"
+        >
+          <!-- 10. REPORTS & STATISTICS TAB -->
+          <section class="ingr-tab-panel" id="ingr-panel-reports">
+            <!-- Summary financial panels -->
+            <div class="ingr-reports-mini-indicators-grid">
+              <div class="ingr-report-stat-card">
+                <span class="ingr-report-stat-card-title"
+                  >Chi phí nhập kho tháng này</span
+                >
+                <h3
+                  class="ingr-report-stat-card-value"
+                  id="ingr-reports-total-cost"
+                >
+                  0 đ
+                </h3>
+                <p class="ingr-report-stat-card-subtitle">
+                  <i class="fa-solid fa-circle-down" style="color: #ef4444"></i>
+                  Chiếm 42% doanh số mua hàng
+                </p>
+              </div>
+              <div class="ingr-report-stat-card">
+                <span class="ingr-report-stat-card-title"
+                  >Hao hụt/Hủy kho tháng này</span
+                >
+                <h3
+                  class="ingr-report-stat-card-value"
+                  id="ingr-reports-waste-cost"
+                >
+                  0 đ
+                </h3>
+                <p class="ingr-report-stat-card-subtitle">
+                  <i class="fa-solid fa-circle-up" style="color: #10b981"></i>
+                  Giảm 12% so với tháng trước
+                </p>
+              </div>
+              <div class="ingr-report-stat-card">
+                <span class="ingr-report-stat-card-title"
+                  >Tổng số đơn nhập hàng</span
+                >
+                <h3
+                  class="ingr-report-stat-card-value"
+                  id="ingr-reports-total-orders"
+                >
+                  0 đơn
+                </h3>
+                <p class="ingr-report-stat-card-subtitle">
+                  <i class="fa-solid fa-truck"></i> Giao hàng đúng hạn 98.4%
+                </p>
+              </div>
+            </div>
+
+            <div class="ingr-reports-charts-visual-grid">
+              <!-- Spending chart -->
+              <div class="ingr-report-chart-card-box">
+                <h4 class="ingr-report-card-heading">
+                  Biến động nhập xuất kho hàng tháng
+                </h4>
+                <div class="ingr-report-canvas-wrapper">
+                  <canvas id="ingr-report-spend-chart"></canvas>
+                </div>
+              </div>
+
+              <!-- Top used ingredient chart -->
+              <div class="ingr-report-chart-card-box">
+                <h4 class="ingr-report-card-heading">
+                  Top 5 nguyên liệu sử dụng nhiều nhất (Tuần này)
+                </h4>
+                <div class="ingr-report-canvas-wrapper">
+                  <canvas id="ingr-report-top-ingredients-chart"></canvas>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         MODALS SECTIONS
+         ========================================== -->
+
+    <!-- 1. CRUD Ingredient Modal -->
+    <div class="ingr-modal-backdrop-overlay" id="ingr-ingredient-crud-modal">
+      <div class="ingr-ingredient-category-modal-box">
+        <div class="ingr-modal-box-header">
+          <h4 class="ingr-modal-box-title" id="ingr-ingredient-modal-title">
+            Thêm Nguyên Liệu Mới
+          </h4>
+          <button
+            class="ingr-modal-box-close-btn"
+            id="ingr-ingredient-modal-close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <form id="ingr-ingredient-form-element">
+          <input type="hidden" id="ingr-form-ingredient-id" />
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Mã nguyên liệu
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="text"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-code"
+                placeholder="Ví dụ: NL001"
+                required
+              />
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Tên nguyên liệu
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="text"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-name"
+                placeholder="Ví dụ: Thịt ba chỉ bò Mỹ"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Danh mục <span class="ingr-form-required-star">*</span></label
+              >
+              <select
+                class="ingr-form-dropdown-select"
+                id="ingr-form-ingredient-category"
+                required
+              >
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Đơn vị tính
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="text"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-unit"
+                placeholder="Ví dụ: kg, lít, hộp"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Số lượng tồn kho ban đầu</label
+              >
+              <input
+                type="number"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-stock"
+                value="0"
+                min="0"
+                step="any"
+              />
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Định mức tối thiểu (Ngưỡng cảnh báo)</label
+              >
+              <input
+                type="number"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-min-stock"
+                value="5"
+                min="0"
+                step="any"
+              />
+            </div>
+          </div>
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Hạn sử dụng
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="date"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-expiry"
+                required
+              />
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Đơn giá nhập trung bình (đ)</label
+              >
+              <input
+                type="number"
+                class="ingr-form-text-input"
+                id="ingr-form-ingredient-price"
+                value="0"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="ingr-modal-box-footer-row">
+            <button
+              type="button"
+              class="ingr-cancel-btn-action"
+              id="ingr-ingredient-modal-cancel-btn"
+            >
+              Hủy bỏ
+            </button>
+            <button
+              type="submit"
+              class="ingr-primary-btn-action"
+              id="ingr-ingredient-modal-submit-btn"
+            >
+              Lưu nguyên liệu
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 2. CRUD Category Modal -->
+    <div class="ingr-modal-backdrop-overlay" id="ingr-category-crud-modal">
+      <div class="ingr-ingredient-category-modal-box">
+        <div class="ingr-modal-box-header">
+          <h4 class="ingr-modal-box-title" id="ingr-category-modal-title">
+            Thêm Danh Mục Nguyên Liệu
+          </h4>
+          <button
+            class="ingr-modal-box-close-btn"
+            id="ingr-category-modal-close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <form id="ingr-category-form-element">
+          <input type="hidden" id="ingr-form-category-id" />
+
+          <div class="ingr-form-field-group">
+            <label class="ingr-form-input-label"
+              >Tên danh mục
+              <span class="ingr-form-required-star">*</span></label
+            >
+            <input
+              type="text"
+              class="ingr-form-text-input"
+              id="ingr-form-category-name"
+              placeholder="Ví dụ: Hải sản tươi sống"
+              required
+            />
+          </div>
+
+          <div class="ingr-form-field-group">
+            <label class="ingr-form-input-label"
+              >Tông màu hiển thị (Mã màu HEX hoặc chọn)</label
+            >
+            <div class="ingr-color-picker-selection-palette">
+              <input
+                type="color"
+                class="ingr-color-picker-input-native"
+                id="ingr-form-category-color-picker"
+                value="#e88735"
+              />
+              <div class="ingr-preset-color-badge-list">
+                <span
+                  class="ingr-preset-color-circle active"
+                  style="background-color: #e88735"
+                  data-color="#e88735"
+                ></span>
+                <span
+                  class="ingr-preset-color-circle"
+                  style="background-color: #10b981"
+                  data-color="#10b981"
+                ></span>
+                <span
+                  class="ingr-preset-color-circle"
+                  style="background-color: #3b82f6"
+                  data-color="#3b82f6"
+                ></span>
+                <span
+                  class="ingr-preset-color-circle"
+                  style="background-color: #ec4899"
+                  data-color="#ec4899"
+                ></span>
+                <span
+                  class="ingr-preset-color-circle"
+                  style="background-color: #8b5cf6"
+                  data-color="#8b5cf6"
+                ></span>
+                <span
+                  class="ingr-preset-color-circle"
+                  style="background-color: #ef4444"
+                  data-color="#ef4444"
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ingr-form-field-group">
+            <label class="ingr-form-input-label">Mô tả danh mục</label>
+            <input
+              type="text"
+              class="ingr-form-text-input"
+              id="ingr-form-category-description"
+              placeholder="Ví dụ: Các loại thịt bò, heo phục vụ nướng..."
+            />
+          </div>
+
+          <div class="ingr-modal-box-footer-row">
+            <button
+              type="button"
+              class="ingr-cancel-btn-action"
+              id="ingr-category-modal-cancel-btn"
+            >
+              Hủy bỏ
+            </button>
+            <button type="submit" class="ingr-primary-btn-action">
+              Lưu danh mục
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 3. CRUD Supplier Modal -->
+    <div class="ingr-modal-backdrop-overlay" id="ingr-supplier-crud-modal">
+      <div class="ingr-ingredient-category-modal-box">
+        <div class="ingr-modal-box-header">
+          <h4 class="ingr-modal-box-title" id="ingr-supplier-modal-title">
+            Thêm Nhà Cung Cấp Mới
+          </h4>
+          <button
+            class="ingr-modal-box-close-btn"
+            id="ingr-supplier-modal-close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <form id="ingr-supplier-form-element">
+          <input type="hidden" id="ingr-form-supplier-id" />
+
+          <div class="ingr-form-field-group">
+            <label class="ingr-form-input-label"
+              >Tên nhà cung cấp
+              <span class="ingr-form-required-star">*</span></label
+            >
+            <input
+              type="text"
+              class="ingr-form-text-input"
+              id="ingr-form-supplier-name"
+              placeholder="Ví dụ: Hợp tác xã thực phẩm Đà Lạt"
+              required
+            />
+          </div>
+
+          <div class="ingr-form-input-two-column-row">
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Email liên hệ
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="email"
+                class="ingr-form-text-input"
+                id="ingr-form-supplier-email"
+                placeholder="example@gmail.com"
+                required
+              />
+            </div>
+            <div class="ingr-form-field-group">
+              <label class="ingr-form-input-label"
+                >Số điện thoại
+                <span class="ingr-form-required-star">*</span></label
+              >
+              <input
+                type="text"
+                class="ingr-form-text-input"
+                id="ingr-form-supplier-phone"
+                placeholder="Ví dụ: 0987654321"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="ingr-form-field-group">
+            <label class="ingr-form-input-label"
+              >Địa chỉ <span class="ingr-form-required-star">*</span></label
+            >
+            <input
+              type="text"
+              class="ingr-form-text-input"
+              id="ingr-form-supplier-address"
+              placeholder="Ví dụ: 123 Nguyễn Thị Minh Khai, Q1, TP.HCM"
+              required
+            />
+          </div>
+
+          <div class="ingr-modal-box-footer-row">
+            <button
+              type="button"
+              class="ingr-cancel-btn-action"
+              id="ingr-supplier-modal-cancel-btn"
+            >
+              Hủy bỏ
+            </button>
+            <button type="submit" class="ingr-primary-btn-action">
+              Lưu nhà cung cấp
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 4. Supplier Purchase History Modal -->
+    <div class="ingr-modal-backdrop-overlay" id="ingr-supplier-history-modal">
+      <div class="ingr-ingredient-category-modal-box" style="max-width: 800px">
+        <div class="ingr-modal-box-header">
+          <h4 class="ingr-modal-box-title" id="ingr-supplier-history-title">
+            Lịch sử nhập hàng của Nhà cung cấp
+          </h4>
+          <button
+            class="ingr-modal-box-close-btn"
+            id="ingr-supplier-history-close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div
+          class="ingr-table-scroll-container"
+          style="max-height: 400px; padding: 20px"
+        >
+          <table class="ingr-ingredient-management-table">
+            <thead>
+              <tr>
+                <th>Thời gian</th>
+                <th>Mã đơn</th>
+                <th>Nguyên liệu</th>
+                <th style="text-align: right">Số lượng</th>
+                <th style="text-align: right">Đơn giá</th>
+                <th style="text-align: right">Thành tiền</th>
+              </tr>
+            </thead>
+            <tbody id="ingr-supplier-history-table-body">
+              <!-- Dynamic supplier import history -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TOAST NOTIFICATION PLACEMENT
+         ========================================== -->
+    <div class="ingr-toast-notification-dock" id="ingr-global-toast-container">
+      <!-- Toast cards dynamically populated -->
+    </div>
+
+    <!-- Core Script -->
+    <script src="./ingredient_sidebar.js"></script>
+    <script src="./ingredient_management.js"></script>
+  </body>
+</html>

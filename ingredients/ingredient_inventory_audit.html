@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Nguyên Liệu - Kurumi BBQ POS/ERP</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6.4.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./ingredient_management.css" />
+  </head>
+
+  <body class="ingr-system-body-container">
+    <div class="ingr-app-layout-wrapper">
+      <!-- Sidebar -->
+      <div id="ingr-sidebar-content">
+        <!-- Sidebar content goes here -->
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="ingr-main-viewport-container">
+        <!-- Header -->
+        <div id="ingr-header-content">
+          <!-- Header content goes here -->
+        </div>
+
+        <!-- Content Workspace -->
+        <main
+          class="ingr-main-workspace-scroller"
+          id="ingr-workspace-content-pane"
+        >
+          <!-- 6. INVENTORY AUDIT TAB -->
+          <section class="ingr-tab-panel" id="ingr-panel-audit">
+            <div class="ingr-panel-content-header-bar">
+              <div>
+                <h4 class="ingr-tab-section-subtitle">
+                  Phiếu kiểm kê định kỳ thực tế so với hệ thống
+                </h4>
+                <p class="ingr-tab-section-helper-text">
+                  Nhập số lượng thực tế đếm được. Hệ thống sẽ tự động đối chiếu,
+                  tính toán chênh lệch và cập nhật trạng thái khớp/dư/thiếu.
+                </p>
+              </div>
+              <div class="ingr-audit-actions-group">
+                <button
+                  class="ingr-outline-add-btn"
+                  id="ingr-btn-audit-load-all"
+                >
+                  <i class="fa-solid fa-rotate"></i> Load Tất Cả Nguyên Liệu
+                </button>
+                <button
+                  class="ingr-primary-btn-action success"
+                  id="ingr-btn-save-audit"
+                >
+                  <i class="fa-solid fa-square-check"></i> Hoàn Tất & Cân Bằng
+                  Kho
+                </button>
+              </div>
+            </div>
+
+            <div class="ingr-table-scroll-container">
+              <table class="ingr-ingredient-management-table">
+                <thead>
+                  <tr>
+                    <th>Mã NL</th>
+                    <th>Tên nguyên liệu</th>
+                    <th style="text-align: right">Tồn hệ thống</th>
+                    <th style="text-align: center; width: 180px">
+                      Tồn thực tế
+                    </th>
+                    <th style="text-align: right">Chênh lệch</th>
+                    <th style="text-align: center">Trạng thái</th>
+                    <th>Ghi chú giải trình</th>
+                  </tr>
+                </thead>
+                <tbody id="ingr-audit-table-body">
+                  <!-- Dynamic audit entries -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TOAST NOTIFICATION PLACEMENT
+         ========================================== -->
+    <div class="ingr-toast-notification-dock" id="ingr-global-toast-container">
+      <!-- Toast cards dynamically populated -->
+    </div>
+
+    <!-- Core Script -->
+    <script src="./ingredient_sidebar.js"></script>
+    <script src="./ingredient_management.js"></script>
+  </body>
+</html>
