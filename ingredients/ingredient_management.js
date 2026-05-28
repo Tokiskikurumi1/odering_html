@@ -2615,8 +2615,6 @@
   // BIND EVENT LISTENERS & ROUTING INITIALIZATION
   // ==========================================================================
 
- 
-
   // Mobile menu drawer overlay toggle
   const mobileToggle = document.getElementById("ingr-mobile-toggle-btn");
   if (mobileToggle) {
