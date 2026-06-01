@@ -48,10 +48,43 @@ const ingredients = [
     price: 85000,
   },
   {
+    id: "NL005",
+    name: "Sườn Tomahawk Mỹ",
+    category: "Thịt",
+    categoryColor: "#ef4444",
+    stock: 2,
+    minStock: 8,
+    unit: "kg",
+    expiry: "2026-06-10",
+    price: 1250000,
+  },
+  {
+    id: "NL006",
+    name: "Sốt BBQ đặc chế Kurumi",
+    category: "Gia vị",
+    categoryColor: "#f59e0b",
+    stock: 35,
+    minStock: 10,
+    unit: "lít",
+    expiry: "2026-09-30",
+    price: 85000,
+  },
+  {
     id: "NL007",
     name: "Sườn Tomahawk Mỹ",
     category: "Thịt",
     categoryColor: "#ef4444",
+    stock: 2,
+    minStock: 8,
+    unit: "kg",
+    expiry: "2026-06-10",
+    price: 1250000,
+  },
+  {
+    id: "NL008",
+    name: "Sườn Tomahawk Mỹ",
+    category: "Khác",
+    categoryColor: "#beb8b8",
     stock: 2,
     minStock: 8,
     unit: "kg",
@@ -221,12 +254,53 @@ function renderChart() {
 
     options: {
       responsive: true,
+      maintainAspectRatio: false,
+
+      layout: {
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+      },
 
       plugins: {
         legend: {
           position: "bottom",
+
+          align: "center",
+
+          labels: {
+            color: "#e2e8f0",
+
+            usePointStyle: false,
+
+            boxWidth: 40,
+            boxHeight: 14,
+
+            padding: 20,
+
+            font: {
+              size: 14,
+              weight: "600",
+            },
+          },
+        },
+
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              return (
+                context.label +
+                ": " +
+                context.raw.toLocaleString("vi-VN") +
+                " đ"
+              );
+            },
+          },
         },
       },
+
+      cutout: "58%",
     },
   });
 }
