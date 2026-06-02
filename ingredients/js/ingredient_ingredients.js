@@ -240,11 +240,17 @@ function renderIngredients() {
         </td>
 
         <td style="text-align:center;">
-          <button class="ingr-ingredient-action-btn-circle">
+          <button
+            class="ingr-ingredient-action-btn-circle"
+            onclick="editIngredient('${item.id}')"
+          >
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
 
-          <button class="ingr-ingredient-action-btn-circle delete">
+          <button
+            class="ingr-ingredient-action-btn-circle delete"
+            onclick="deleteIngredient('${item.id}')"
+          >
             <i class="fa-solid fa-trash-can"></i>
           </button>
         </td>
@@ -261,6 +267,206 @@ function renderIngredients() {
     pageInfo.textContent = `Hiển thị 1-${ingredients.length} trên ${ingredients.length} nguyên liệu`;
   }
 }
+
+// =====================================
+// CRUD INGREDIENT
+// =====================================
+
+const ingrModal = document.getElementById("ingr-ingredient-crud-modal");
+const ingrForm = document.getElementById("ingr-ingredient-form-element");
+
+const addIngredientBtn = document.getElementById("ingr-btn-add-ingredient");
+
+const closeIngrBtn = document.getElementById("ingr-ingredient-modal-close");
+
+const cancelIngrBtn = document.getElementById(
+  "ingr-ingredient-modal-cancel-btn",
+);
+
+// =========================
+// OPEN ADD MODAL
+// =========================
+
+addIngredientBtn.onclick = function () {
+  document.getElementById("ingr-ingredient-modal-title").textContent =
+    "Thêm Nguyên Liệu Mới";
+
+  ingrForm.reset();
+
+  document.getElementById("ingr-form-ingredient-id").value = "";
+
+  ingrModal.classList.add("active");
+};
+
+// =========================
+// CLOSE MODAL
+// =========================
+
+function dismissIngrModal() {
+  ingrModal.classList.remove("active");
+}
+
+closeIngrBtn.onclick = dismissIngrModal;
+cancelIngrBtn.onclick = dismissIngrModal;
+
+// =========================
+// EDIT
+// =========================
+
+function editIngredient(id) {
+  const ingredient = ingredients.find((i) => i.id === id);
+
+  if (!ingredient) return;
+
+  document.getElementById("ingr-ingredient-modal-title").textContent =
+    "Cập Nhật Nguyên Liệu";
+
+  document.getElementById("ingr-form-ingredient-id").value = ingredient.id;
+
+  document.getElementById("ingr-form-ingredient-code").value = ingredient.code;
+
+  document.getElementById("ingr-form-ingredient-name").value = ingredient.name;
+
+  document.getElementById("ingr-form-ingredient-unit").value = ingredient.unit;
+
+  document.getElementById("ingr-form-ingredient-stock").value =
+    ingredient.stock;
+
+  document.getElementById("ingr-form-ingredient-min-stock").value =
+    ingredient.minStock;
+
+  document.getElementById("ingr-form-ingredient-expiry").value =
+    ingredient.expiry;
+
+  document.getElementById("ingr-form-ingredient-price").value =
+    ingredient.price || 0;
+
+  ingrModal.classList.add("active");
+}
+
+// =========================
+// DELETE
+// =========================
+
+function deleteIngredient(id) {
+  const ingredient = ingredients.find((i) => i.id === id);
+
+  if (!ingredient) return;
+
+  const confirmDelete = confirm(
+    `Bạn có chắc muốn xóa nguyên liệu "${ingredient.name}" ?`,
+  );
+
+  if (!confirmDelete) return;
+
+  const index = ingredients.findIndex((i) => i.id === id);
+
+  if (index !== -1) {
+    ingredients.splice(index, 1);
+  }
+
+  renderIngredients();
+
+  if (typeof showToast === "function") {
+    showToast("Xóa thành công", `${ingredient.name} đã được xóa`, "success");
+  }
+}
+
+// =========================
+// SAVE (ADD / UPDATE)
+// =========================
+
+ingrForm.onsubmit = function (e) {
+  e.preventDefault();
+
+  const id = document.getElementById("ingr-form-ingredient-id").value;
+
+  const code = document
+    .getElementById("ingr-form-ingredient-code")
+    .value.trim();
+
+  const name = document
+    .getElementById("ingr-form-ingredient-name")
+    .value.trim();
+
+  const unit = document
+    .getElementById("ingr-form-ingredient-unit")
+    .value.trim();
+
+  const stock =
+    parseFloat(document.getElementById("ingr-form-ingredient-stock").value) ||
+    0;
+
+  const minStock =
+    parseFloat(
+      document.getElementById("ingr-form-ingredient-min-stock").value,
+    ) || 0;
+
+  const expiry = document.getElementById("ingr-form-ingredient-expiry").value;
+
+  const price =
+    parseFloat(document.getElementById("ingr-form-ingredient-price").value) ||
+    0;
+
+  if (!code || !name || !unit || !expiry) {
+    if (typeof showToast === "function") {
+      showToast("Thiếu dữ liệu", "Vui lòng nhập đầy đủ thông tin", "warning");
+    }
+
+    return;
+  }
+
+  // =====================
+  // UPDATE
+  // =====================
+
+  if (id) {
+    const ingredient = ingredients.find((i) => i.id === id);
+
+    if (ingredient) {
+      ingredient.code = code;
+      ingredient.name = name;
+      ingredient.unit = unit;
+      ingredient.stock = stock;
+      ingredient.minStock = minStock;
+      ingredient.expiry = expiry;
+      ingredient.price = price;
+    }
+
+    if (typeof showToast === "function") {
+      showToast("Cập nhật thành công", `${name} đã được cập nhật`, "success");
+    }
+  }
+
+  // =====================
+  // ADD
+  // =====================
+  else {
+    const newIngredient = {
+      id: `NL${Date.now()}`,
+      code,
+      name,
+      stock,
+      unit,
+      minStock,
+      expiry,
+      price,
+
+      category: "Khác",
+      categoryColor: "#64748b",
+    };
+
+    ingredients.push(newIngredient);
+
+    if (typeof showToast === "function") {
+      showToast("Thêm thành công", `${name} đã được thêm`, "success");
+    }
+  }
+
+  dismissIngrModal();
+
+  renderIngredients();
+};
 
 // ===============================
 // LOAD WHEN PAGE READY
