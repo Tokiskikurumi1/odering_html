@@ -1,5 +1,5 @@
 // ===============================
-// SUPPLIERS
+// DATA
 // ===============================
 
 const suppliers = [
@@ -75,28 +75,24 @@ const importHistory = [
   },
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderSuppliers();
+// ===============================
+// ELEMENTS
+// ===============================
 
-  document
-    .getElementById("ingr-supplier-history-close")
-    ?.addEventListener("click", closeSupplierHistoryModal);
+const supplierGrid = document.getElementById("ingr-suppliers-grid-container");
 
-  document
-    .getElementById("ingr-supplier-modal-close")
-    ?.addEventListener("click", closeSupplierCrudModal);
+const supplierModal = document.getElementById("ingr-supplier-crud-modal");
 
-  document
-    .getElementById("ingr-supplier-modal-cancel-btn")
-    ?.addEventListener("click", closeSupplierCrudModal);
-});
+const supplierForm = document.getElementById("ingr-supplier-form-element");
+
+const historyModal = document.getElementById("ingr-supplier-history-modal");
+
+// ===============================
+// RENDER SUPPLIERS
+// ===============================
 
 function renderSuppliers() {
-  const container = document.getElementById("ingr-suppliers-grid-container");
-
-  if (!container) return;
-
-  container.innerHTML = "";
+  supplierGrid.innerHTML = "";
 
   suppliers.forEach((supplier) => {
     const card = document.createElement("div");
@@ -110,7 +106,10 @@ function renderSuppliers() {
           </div>
 
           <div class="ingr-supplier-card-title-box">
-              <h4 class="ingr-supplier-card-name">${supplier.name}</h4>
+              <h4 class="ingr-supplier-card-name">
+                  ${supplier.name}
+              </h4>
+
               <span class="ingr-supplier-card-meta">
                   ID: ${supplier.id}
               </span>
@@ -135,20 +134,27 @@ function renderSuppliers() {
       </div>
 
       <div class="ingr-supplier-card-actions">
+
           <button
               class="ingr-outline-add-btn supplier-history-btn"
-              style="padding: 7px 12px; font-size: 0.75rem;"
+              style="padding:7px 12px;font-size:0.75rem;"
           >
-              <i class="fa-solid fa-history"></i>
+              <i class="fa-solid fa-clock-rotate-left"></i>
               Lịch sử
           </button>
 
           <button
               class="ingr-ingredient-action-btn-circle supplier-edit-btn"
-              title="Sửa nhà cung cấp"
           >
               <i class="fa-solid fa-pen-to-square"></i>
           </button>
+
+          <button
+              class="ingr-ingredient-action-btn-circle delete supplier-delete-btn"
+          >
+              <i class="fa-solid fa-trash-can"></i>
+          </button>
+
       </div>
     `;
 
@@ -162,119 +168,35 @@ function renderSuppliers() {
       editSupplier(supplier.id);
     });
 
-    container.appendChild(card);
+    card.querySelector(".supplier-delete-btn").addEventListener("click", () => {
+      deleteSupplier(supplier.id);
+    });
+
+    supplierGrid.appendChild(card);
   });
 }
 
-function viewSupplierHistory(supplierId, supplierName) {
-  const modal = document.getElementById("ingr-supplier-history-modal");
+// ===============================
+// OPEN ADD MODAL
+// ===============================
 
-  const tbody = document.getElementById("ingr-supplier-history-table-body");
+function openAddSupplierModal() {
+  supplierForm.reset();
 
-  document.getElementById("ingr-supplier-history-title").textContent =
-    `Lịch sử giao hàng: ${supplierName}`;
+  document.getElementById("ingr-form-supplier-id").value = "";
 
-  const history = importHistory.filter(
-    (item) => item.supplierId === supplierId,
-  );
+  document.getElementById("ingr-supplier-modal-title").textContent =
+    "Thêm Nhà Cung Cấp Mới";
 
-  if (!history.length) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="6"
-            style="
-              text-align:center;
-              padding:30px;
-              color:var(--ingr-text-disabled);
-            ">
-          Chưa phát sinh phiếu nhập hàng.
-        </td>
-      </tr>
-    `;
-  } else {
-    tbody.innerHTML = history
-      .map((item) => {
-        const ingredient = ingredients.find(
-          (ing) => ing.id === item.ingredientId,
-        );
-
-        const price = ingredient?.price || 0;
-
-        const total = price * item.quantity;
-
-        return `
-          <tr>
-            <td>
-              ${new Date(item.timestamp).toLocaleDateString("vi-VN")}
-            </td>
-
-            <td>
-              <strong
-                style="
-                  color:var(--ingr-text-muted);
-                  font-size:0.75rem;
-                "
-              >
-                ${item.id}
-              </strong>
-            </td>
-
-            <td>
-              <span
-                style="
-                  font-weight:600;
-                  color:#fff;
-                "
-              >
-                ${ingredient?.name || ""}
-              </span>
-            </td>
-
-            <td
-              style="
-                text-align:right;
-                font-weight:700;
-              "
-            >
-              +${item.quantity}
-            </td>
-
-            <td style="text-align:right">
-              ${price.toLocaleString("vi-VN")} đ
-            </td>
-
-            <td
-              style="
-                text-align:right;
-                color:var(--ingr-accent-amber);
-                font-weight:700;
-              "
-            >
-              ${total.toLocaleString("vi-VN")} đ
-            </td>
-          </tr>
-        `;
-      })
-      .join("");
-  }
-
-  modal.classList.add("active");
+  supplierModal.classList.add("active");
 }
 
-function closeSupplierHistoryModal() {
-  document
-    .getElementById("ingr-supplier-history-modal")
-    ?.classList.remove("active");
-}
+// ===============================
+// EDIT SUPPLIER
+// ===============================
 
-function closeSupplierCrudModal() {
-  document
-    .getElementById("ingr-supplier-crud-modal")
-    ?.classList.remove("active");
-}
-
-function editSupplier(supplierId) {
-  const supplier = suppliers.find((item) => item.id === supplierId);
+function editSupplier(id) {
+  const supplier = suppliers.find((item) => item.id === id);
 
   if (!supplier) return;
 
@@ -290,7 +212,170 @@ function editSupplier(supplierId) {
     supplier.address;
 
   document.getElementById("ingr-supplier-modal-title").textContent =
-    "Chỉnh sửa Nhà Cung Cấp";
+    "Cập Nhật Nhà Cung Cấp";
 
-  document.getElementById("ingr-supplier-crud-modal").classList.add("active");
+  supplierModal.classList.add("active");
 }
+
+// ===============================
+// DELETE SUPPLIER
+// ===============================
+
+function deleteSupplier(id) {
+  const index = suppliers.findIndex((item) => item.id === id);
+
+  if (index === -1) return;
+
+  const supplier = suppliers[index];
+
+  const confirmDelete = confirm(`Bạn có chắc muốn xóa '${supplier.name}' ?`);
+
+  if (!confirmDelete) return;
+
+  suppliers.splice(index, 1);
+
+  renderSuppliers();
+}
+
+// ===============================
+// SAVE SUPPLIER
+// ===============================
+
+function saveSupplier(event) {
+  event.preventDefault();
+
+  const id = document.getElementById("ingr-form-supplier-id").value;
+
+  const name = document.getElementById("ingr-form-supplier-name").value.trim();
+
+  const email = document
+    .getElementById("ingr-form-supplier-email")
+    .value.trim();
+
+  const phone = document
+    .getElementById("ingr-form-supplier-phone")
+    .value.trim();
+
+  const address = document
+    .getElementById("ingr-form-supplier-address")
+    .value.trim();
+
+  if (!name || !email || !phone || !address) {
+    alert("Vui lòng nhập đầy đủ thông tin");
+    return;
+  }
+
+  if (id) {
+    const supplier = suppliers.find((item) => item.id === id);
+
+    supplier.name = name;
+    supplier.email = email;
+    supplier.phone = phone;
+    supplier.address = address;
+  } else {
+    const newId = "SUP" + String(suppliers.length + 1).padStart(3, "0");
+
+    suppliers.push({
+      id: newId,
+      name,
+      email,
+      phone,
+      address,
+    });
+  }
+
+  closeSupplierModal();
+
+  renderSuppliers();
+}
+
+// ===============================
+// HISTORY
+// ===============================
+
+function viewSupplierHistory(supplierId, supplierName) {
+  const tbody = document.getElementById("ingr-supplier-history-table-body");
+
+  document.getElementById("ingr-supplier-history-title").textContent =
+    `Lịch sử giao hàng: ${supplierName}`;
+
+  const history = importHistory.filter(
+    (item) => item.supplierId === supplierId,
+  );
+
+  tbody.innerHTML = "";
+
+  history.forEach((item) => {
+    const ingredient = ingredients.find((i) => i.id === item.ingredientId);
+
+    const price = ingredient?.price || 0;
+
+    const total = price * item.quantity;
+
+    tbody.innerHTML += `
+      <tr>
+        <td>
+          ${new Date(item.timestamp).toLocaleDateString("vi-VN")}
+        </td>
+
+        <td>${item.id}</td>
+
+        <td>
+          ${ingredient?.name || ""}
+        </td>
+
+        <td style="text-align:right">
+          ${item.quantity}
+        </td>
+
+        <td style="text-align:right">
+          ${price.toLocaleString("vi-VN")} đ
+        </td>
+
+        <td style="text-align:right">
+          ${total.toLocaleString("vi-VN")} đ
+        </td>
+      </tr>
+    `;
+  });
+
+  historyModal.classList.add("active");
+}
+
+// ===============================
+// CLOSE MODALS
+// ===============================
+
+function closeSupplierModal() {
+  supplierModal.classList.remove("active");
+}
+
+function closeHistoryModal() {
+  historyModal.classList.remove("active");
+}
+
+// ===============================
+// EVENTS
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderSuppliers();
+
+  document
+    .getElementById("ingr-btn-add-supplier")
+    .addEventListener("click", openAddSupplierModal);
+
+  document
+    .getElementById("ingr-supplier-modal-close")
+    .addEventListener("click", closeSupplierModal);
+
+  document
+    .getElementById("ingr-supplier-modal-cancel-btn")
+    .addEventListener("click", closeSupplierModal);
+
+  document
+    .getElementById("ingr-supplier-history-close")
+    .addEventListener("click", closeHistoryModal);
+
+  supplierForm.addEventListener("submit", saveSupplier);
+});
