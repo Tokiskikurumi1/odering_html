@@ -376,10 +376,6 @@ function renderUrgentList() {
 // RENDER ACTIVITIES
 // ======================================
 
-// ======================================
-// RENDER ACTIVITIES
-// ======================================
-
 function renderActivities() {
   const container = document.getElementById("ingr-dashboard-activities");
 
@@ -483,6 +479,12 @@ function renderActivities() {
     })
     .join("");
 }
+
+showToast(
+  "Chào mừng",
+  "Hệ thống Quản lý kho Kurumi BBQ đã khởi động thành công.",
+  "success",
+);
 
 // ======================================
 // LOAD PAGE
