@@ -240,7 +240,7 @@ function deleteReceiptItemRow(row) {
   const tbody = document.getElementById("ingr-receipt-items-tbody");
 
   if (tbody.children.length <= 1) {
-    window.showToast(
+    showToast(
       "Cảnh báo",
       "Phiếu nhập phải có ít nhất 1 dòng nguyên liệu.",
       "warning",
@@ -295,6 +295,13 @@ function resetReceiptForm() {
 function handleReceiptSubmit(e) {
   e.preventDefault();
 
+  const supplierId = document.getElementById("ingr-receipt-supplier").value;
+
+  if (!supplierId) {
+    showToast("Thiếu thông tin", "Vui lòng chọn nhà cung cấp.", "warning");
+    return;
+  }
+
   const rows = document.querySelectorAll("#ingr-receipt-items-tbody tr");
 
   const items = [];
@@ -302,9 +309,10 @@ function handleReceiptSubmit(e) {
   rows.forEach((row) => {
     const ingredientId = row.querySelector(".ingredient-select").value;
 
-    const quantity = Number(row.querySelector(".ingr-receipt-qty-input").value);
+    const quantity =
+      Number(row.querySelector(".ingr-receipt-qty-input").value) || 0;
 
-    const price = Number(row.querySelector(".price-input").value);
+    const price = Number(row.querySelector(".price-input").value) || 0;
 
     if (ingredientId && quantity > 0) {
       items.push({
@@ -315,14 +323,23 @@ function handleReceiptSubmit(e) {
     }
   });
 
-  if (!items.length) {
-    window.showToast("Lỗi", "Vui lòng chọn ít nhất một nguyên liệu.", "error");
+  if (items.length === 0) {
+    showToast("Lỗi", "Vui lòng chọn ít nhất một nguyên liệu.", "error");
     return;
   }
 
-  console.log(items);
+  console.log("Phiếu nhập:", {
+    supplierId,
+    items,
+  });
 
-  window.showToast("Thành công", "Đã tạo phiếu nhập kho.", "success");
+  showToast(
+    "Nhập kho thành công",
+    `Đã nhập ${items.length} nguyên liệu vào kho.`,
+    "success",
+  );
+
+  resetReceiptForm();
 }
 function loadSuppliers() {
   const supplierSelect = document.getElementById("ingr-receipt-supplier");

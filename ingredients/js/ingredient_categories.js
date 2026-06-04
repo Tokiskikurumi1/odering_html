@@ -177,7 +177,7 @@ function deleteCategory(id) {
   const hasIngredient = ingredients.some((i) => i.categoryId === id);
 
   if (hasIngredient) {
-    alert("Danh mục này đang chứa nguyên liệu.");
+    showToast("Không thể xóa", "Danh mục này đang chứa nguyên liệu", "error");
     return;
   }
 
@@ -188,6 +188,12 @@ function deleteCategory(id) {
   categories = categories.filter((c) => c.id !== id);
 
   renderCategories();
+
+  showToast(
+    "Xóa thành công",
+    `Danh mục "${category.name}" đã được xóa`,
+    "success",
+  );
 }
 
 // =======================================
@@ -210,7 +216,7 @@ catForm.addEventListener("submit", function (e) {
   ).value;
 
   if (!name) {
-    alert("Vui lòng nhập tên danh mục.");
+    showToast("Thiếu thông tin", "Vui lòng nhập tên danh mục", "warning");
     return;
   }
 
@@ -222,6 +228,7 @@ catForm.addEventListener("submit", function (e) {
       color,
       description,
     });
+    showToast("Thêm thành công", `Đã thêm danh mục "${name}"`, "success");
   }
 
   // UPDATE
@@ -232,6 +239,12 @@ catForm.addEventListener("submit", function (e) {
       category.name = name;
       category.color = color;
       category.description = description;
+
+      showToast(
+        "Cập nhật thành công",
+        `Đã cập nhật danh mục "${name}"`,
+        "success",
+      );
     }
   }
 

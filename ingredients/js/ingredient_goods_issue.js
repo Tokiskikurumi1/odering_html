@@ -243,7 +243,8 @@ function handleIssueSubmit(e) {
     return;
   }
 
-  console.log(items);
-
   showToast("Thành công", "Đã tạo phiếu xuất kho.", "success");
+
+  // Reset form sau khi xuất kho thành công
+  resetIssueForm();
 }
