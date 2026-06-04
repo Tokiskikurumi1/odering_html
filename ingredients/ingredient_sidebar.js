@@ -1,52 +1,58 @@
-fetch("./ingredient_header.html")
-  .then((response) => response.text())
-  .then((html) => {
-    document.getElementById("ingr-header-content").innerHTML = html;
-  })
-  .catch((err) => console.error("Lỗi load header:", err));
+function initIngredientSidebar() {
+  console.log("Sidebar Loaded");
 
-fetch("./ingredient_sidebar.html")
-  .then((response) => response.text())
-  .then((html) => {
-    document.getElementById("ingr-sidebar-content").innerHTML = html;
+  const currentPage = location.pathname.split("/").pop();
 
-    // =========================
-    // Accordion
-    // =========================
-    document
-      .querySelectorAll(".ingr-sidebar-accordion-header")
-      .forEach((header) => {
-        header.onclick = function () {
-          const group = header.closest(".ingr-sidebar-accordion-group");
-          const content = group.querySelector(
-            ".ingr-sidebar-accordion-content",
-          );
-          const arrow = group.querySelector(".ingr-accordion-arrow");
+  // Active menu theo trang hiện tại
+  document.querySelectorAll(".ingr-sidebar-menu-item").forEach((link) => {
+    const href = link.getAttribute("href");
 
-          header.classList.toggle("active");
-          content.classList.toggle("open");
-          arrow.classList.toggle("rotated");
-        };
-      });
+    if (href && href.includes(currentPage)) {
+      link.classList.add("active");
 
-    // =========================
-    // Collapse Sidebar
-    // =========================
-    const sidebar = document.getElementById("ingr-sidebar-element");
-    const collapseTrigger = document.getElementById(
-      "ingr-sidebar-collapse-trigger",
-    );
+      const accordion = link.closest(".ingr-sidebar-accordion-group");
 
-    if (collapseTrigger) {
-      collapseTrigger.onclick = function () {
-        sidebar.classList.toggle("collapsed");
+      if (accordion) {
+        accordion
+          .querySelector(".ingr-sidebar-accordion-content")
+          ?.classList.add("open");
 
-        if (sidebar.classList.contains("collapsed")) {
-          collapseTrigger.setAttribute("title", "Mở rộng sidebar");
-        } else {
-          collapseTrigger.setAttribute("title", "Thu gọn sidebar");
-        }
-      };
+        accordion
+          .querySelector(".ingr-sidebar-accordion-header")
+          ?.classList.add("active");
+
+        accordion
+          .querySelector(".ingr-accordion-arrow")
+          ?.classList.add("rotated");
+      }
     }
-  })
-  .catch((err) => console.error("Lỗi load sidebar:", err));
+  });
+
+  // Accordion dropdown
+  document
+    .querySelectorAll(".ingr-sidebar-accordion-header")
+    .forEach((header) => {
+      header.addEventListener("click", () => {
+        const group = header.closest(".ingr-sidebar-accordion-group");
+
+        const content = group.querySelector(".ingr-sidebar-accordion-content");
+
+        const arrow = group.querySelector(".ingr-accordion-arrow");
+
+        header.classList.toggle("active");
+        content.classList.toggle("open");
+        arrow.classList.toggle("rotated");
+      });
+    });
+
+  // Collapse sidebar
+  const sidebar = document.getElementById("ingr-sidebar-element");
+
+  const collapseBtn = document.getElementById("ingr-sidebar-collapse-trigger");
+
+  if (collapseBtn) {
+    collapseBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+    });
+  }
+}
