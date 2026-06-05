@@ -474,3 +474,31 @@ ingrForm.onsubmit = function (e) {
 document.addEventListener("DOMContentLoaded", () => {
   renderIngredients();
 });
+
+// Pagination Info Render
+const startNum = totalItems > 0 ? startIndex + 1 : 0;
+const endNum = Math.min(startIndex + pag.limit, totalItems);
+document.getElementById("ingr-ingredients-page-info").textContent =
+  `Hiển thị ${startNum}-${endNum} trên ${totalItems} nguyên liệu`;
+
+// Render Pagination Controls
+const controls = document.getElementById("ingr-ingredients-page-controls");
+if (controls) {
+  controls.innerHTML = `
+                <button class="ingr-pagination-number-btn" ${pag.page === 1 ? "disabled" : ""} onclick="window.setIngredientsPage(${pag.page - 1})" title="Trang trước">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                ${Array.from({ length: totalPages })
+                  .map(
+                    (_, idx) => `
+                    <button class="ingr-pagination-number-btn ${pag.page === idx + 1 ? "active" : ""}" onclick="window.setIngredientsPage(${idx + 1})">
+                        ${idx + 1}
+                    </button>
+                `,
+                  )
+                  .join("")}
+                <button class="ingr-pagination-number-btn" ${pag.page === totalPages ? "disabled" : ""} onclick="window.setIngredientsPage(${pag.page + 1})" title="Trang sau">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            `;
+}
