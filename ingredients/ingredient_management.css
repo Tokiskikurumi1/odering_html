@@ -1201,6 +1201,18 @@
   color: var(--ingr-text-disabled) !important;
 }
 
+.ingr-pagination-ellipsis {
+  color: var(--ingr-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  user-select: none;
+}
+
 /* ==========================================================================
    3. CATEGORIES VIEW COMPONENTS
    ========================================================================== */

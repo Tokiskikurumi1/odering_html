@@ -175,7 +175,13 @@ function getIngredientStatus(item) {
 }
 
 // ===============================
-// RENDER TABLE
+// PAGINATION STATE
+// ===============================
+let currentPage = 1;
+const itemsPerPage = 10;
+
+// ===============================
+// RENDER TABLE WITH PAGINATION
 // ===============================
 function renderIngredients() {
   const tbody = document.getElementById("ingr-ingredients-table-body");
@@ -184,7 +190,16 @@ function renderIngredients() {
 
   tbody.innerHTML = "";
 
-  ingredients.forEach((item) => {
+  // Calculate pagination
+  const totalItems = ingredients.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+  
+  // Get items for current page
+  const paginatedItems = ingredients.slice(startIndex, endIndex);
+
+  paginatedItems.forEach((item) => {
     const status = getIngredientStatus(item);
 
     const expiryDate = new Date(item.expiry).toLocaleDateString("vi-VN");
@@ -260,12 +275,115 @@ function renderIngredients() {
     tbody.innerHTML += row;
   });
 
-  // Pagination Info
+  // Update pagination info
+  renderPaginationInfo(startIndex, endIndex, totalItems);
+  
+  // Render pagination controls
+  renderPaginationControls(totalPages);
+}
+
+// ===============================
+// RENDER PAGINATION INFO
+// ===============================
+function renderPaginationInfo(startIndex, endIndex, totalItems) {
   const pageInfo = document.getElementById("ingr-ingredients-page-info");
 
   if (pageInfo) {
-    pageInfo.textContent = `Hiển thị 1-${ingredients.length} trên ${ingredients.length} nguyên liệu`;
+    const startNum = totalItems > 0 ? startIndex + 1 : 0;
+    pageInfo.textContent = `Hiển thị ${startNum}-${endIndex} trên ${totalItems} nguyên liệu`;
   }
+}
+
+// ===============================
+// RENDER PAGINATION CONTROLS
+// Smart pagination: < 1 2 3 ... n-2 n-1 n >
+// ===============================
+function renderPaginationControls(totalPages) {
+  const controls = document.getElementById("ingr-ingredients-page-controls");
+  
+  if (!controls) return;
+  
+  if (totalPages <= 1) {
+    controls.innerHTML = "";
+    return;
+  }
+
+  let pages = [];
+  
+  // Always show first page
+  pages.push(1);
+  
+  // Logic for middle pages
+  if (totalPages <= 7) {
+    // If total pages <= 7, show all
+    for (let i = 2; i <= totalPages; i++) {
+      pages.push(i);
+    }
+  } else {
+    // Smart pagination
+    if (currentPage <= 3) {
+      // Near start: 1 2 3 4 ... n-1 n
+      pages.push(2, 3, 4, '...', totalPages - 1, totalPages);
+    } else if (currentPage >= totalPages - 2) {
+      // Near end: 1 2 ... n-3 n-2 n-1 n
+      pages.push(2, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      // Middle: 1 2 ... current-1 current current+1 ... n-1 n
+      pages.push(2, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages - 1, totalPages);
+    }
+  }
+
+  // Build HTML
+  let html = `
+    <button 
+      class="ingr-pagination-number-btn" 
+      ${currentPage === 1 ? 'disabled' : ''} 
+      onclick="setIngredientsPage(${currentPage - 1})" 
+      title="Trang trước"
+    >
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+  `;
+
+  pages.forEach(page => {
+    if (page === '...') {
+      html += `<span class="ingr-pagination-ellipsis">...</span>`;
+    } else {
+      html += `
+        <button 
+          class="ingr-pagination-number-btn ${currentPage === page ? 'active' : ''}" 
+          onclick="setIngredientsPage(${page})"
+        >
+          ${page}
+        </button>
+      `;
+    }
+  });
+
+  html += `
+    <button 
+      class="ingr-pagination-number-btn" 
+      ${currentPage === totalPages ? 'disabled' : ''} 
+      onclick="setIngredientsPage(${currentPage + 1})" 
+      title="Trang sau"
+    >
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  `;
+
+  controls.innerHTML = html;
+}
+
+// ===============================
+// SET PAGE FUNCTION
+// ===============================
+function setIngredientsPage(pageNum) {
+  const totalPages = Math.ceil(ingredients.length / itemsPerPage);
+  
+  if (pageNum < 1 || pageNum > totalPages) return;
+  
+  currentPage = pageNum;
+  renderIngredients();
 }
 
 // =====================================
@@ -474,31 +592,3 @@ ingrForm.onsubmit = function (e) {
 document.addEventListener("DOMContentLoaded", () => {
   renderIngredients();
 });
-
-// Pagination Info Render
-const startNum = totalItems > 0 ? startIndex + 1 : 0;
-const endNum = Math.min(startIndex + pag.limit, totalItems);
-document.getElementById("ingr-ingredients-page-info").textContent =
-  `Hiển thị ${startNum}-${endNum} trên ${totalItems} nguyên liệu`;
-
-// Render Pagination Controls
-const controls = document.getElementById("ingr-ingredients-page-controls");
-if (controls) {
-  controls.innerHTML = `
-                <button class="ingr-pagination-number-btn" ${pag.page === 1 ? "disabled" : ""} onclick="window.setIngredientsPage(${pag.page - 1})" title="Trang trước">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                ${Array.from({ length: totalPages })
-                  .map(
-                    (_, idx) => `
-                    <button class="ingr-pagination-number-btn ${pag.page === idx + 1 ? "active" : ""}" onclick="window.setIngredientsPage(${idx + 1})">
-                        ${idx + 1}
-                    </button>
-                `,
-                  )
-                  .join("")}
-                <button class="ingr-pagination-number-btn" ${pag.page === totalPages ? "disabled" : ""} onclick="window.setIngredientsPage(${pag.page + 1})" title="Trang sau">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-            `;
-}
