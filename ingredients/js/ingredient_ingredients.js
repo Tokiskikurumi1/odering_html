@@ -797,6 +797,10 @@ const ingredients = [
   }, // Warning Low
 ];
 
+let searchKeyword = "";
+let selectedCategory = "all";
+let selectedStatus = "all";
+
 // ===============================
 // GET STATUS
 // ===============================
@@ -835,6 +839,69 @@ function getIngredientStatus(item) {
   };
 }
 
+function getFilteredIngredients() {
+  return ingredients.filter((item) => {
+    // Search theo mã hoặc tên
+    const matchSearch =
+      searchKeyword === "" ||
+      item.code.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      item.name.toLowerCase().includes(searchKeyword.toLowerCase());
+
+    // Filter danh mục
+    const matchCategory =
+      selectedCategory === "all" || item.category === selectedCategory;
+
+    // Filter trạng thái
+    const status = getIngredientStatus(item);
+
+    const matchStatus =
+      selectedStatus === "all" || status.className === selectedStatus;
+
+    return matchSearch && matchCategory && matchStatus;
+  });
+}
+
+function applyFilters() {
+  const filteredData = getFilteredIngredients();
+
+  ingredientPagination.setData(filteredData);
+}
+
+function loadCategories() {
+  const categories = [
+    ...new Set(ingredients.filter((x) => x.category).map((x) => x.category)),
+  ];
+
+  const filterSelect = document.getElementById(
+    "ingr-filter-ingredient-category",
+  );
+
+  const formSelect = document.getElementById("ingr-form-ingredient-category");
+
+  if (filterSelect) {
+    filterSelect.innerHTML = '<option value="all">Tất cả danh mục</option>';
+
+    categories.forEach((cat) => {
+      filterSelect.innerHTML += `
+        <option value="${cat}">
+          ${cat}
+        </option>
+      `;
+    });
+  }
+
+  if (formSelect) {
+    formSelect.innerHTML = "";
+
+    categories.forEach((cat) => {
+      formSelect.innerHTML += `
+        <option value="${cat}">
+          ${cat}
+        </option>
+      `;
+    });
+  }
+}
 // ===============================
 // PAGINATION STATE
 // ===============================
@@ -989,7 +1056,9 @@ cancelIngrBtn.onclick = dismissIngrModal;
 
 function editIngredient(id) {
   const ingredient = ingredients.find((i) => i.id === id);
-
+document.getElementById(
+  "ingr-form-ingredient-category",
+).value = ingredient.category;
   if (!ingredient) return;
 
   document.getElementById("ingr-ingredient-modal-title").textContent =
@@ -1096,7 +1165,9 @@ ingrForm.onsubmit = function (e) {
 
   if (id) {
     const ingredient = ingredients.find((i) => i.id === id);
-
+ingredient.category = document.getElementById(
+  "ingr-form-ingredient-category",
+).value;
     if (ingredient) {
       ingredient.code = code;
       ingredient.name = name;
@@ -1116,6 +1187,10 @@ ingrForm.onsubmit = function (e) {
   // ADD
   // =====================
   else {
+    const category = document.getElementById(
+      "ingr-form-ingredient-category",
+    ).value;
+
     const newIngredient = {
       id: `NL${Date.now()}`,
       code,
@@ -1125,8 +1200,7 @@ ingrForm.onsubmit = function (e) {
       minStock,
       expiry,
       price,
-
-      category: "Khác",
+      category,
       categoryColor: "#64748b",
     };
 
@@ -1142,9 +1216,64 @@ ingrForm.onsubmit = function (e) {
   ingredientPagination.setData(ingredients);
 };
 
+const categoryFilter = document.getElementById(
+  "ingr-filter-ingredient-category",
+);
+
+if (categoryFilter) {
+  categoryFilter.addEventListener("change", (e) => {
+    selectedCategory = e.target.value;
+
+    applyFilters();
+  });
+}
+const statusFilter = document.getElementById("ingr-filter-ingredient-status");
+
+if (statusFilter) {
+  statusFilter.addEventListener("change", (e) => {
+    selectedStatus = e.target.value;
+
+    applyFilters();
+  });
+}
 // ===============================
 // LOAD WHEN PAGE READY
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-  ingredientPagination.render();
+  loadCategories();
+
+  applyFilters();
+
+  const searchInput = document.getElementById(
+    "ingr-search-ingredient-input",
+  );
+
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      searchKeyword = e.target.value;
+      applyFilters();
+    });
+  }
+
+  const categoryFilter = document.getElementById(
+    "ingr-filter-ingredient-category",
+  );
+
+  if (categoryFilter) {
+    categoryFilter.addEventListener("change", (e) => {
+      selectedCategory = e.target.value;
+      applyFilters();
+    });
+  }
+
+  const statusFilter = document.getElementById(
+    "ingr-filter-ingredient-status",
+  );
+
+  if (statusFilter) {
+    statusFilter.addEventListener("change", (e) => {
+      selectedStatus = e.target.value;
+      applyFilters();
+    });
+  }
 });
