@@ -2241,3 +2241,373 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   INVENTORY SLIPS & INVOICE DETAILS PRINT SYSTEM
+   ========================================================================== */
+.ingr-slip-container {
+  padding: 15px 25px;
+  color: var(--ingr-text-normal);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.ingr-slip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed var(--ingr-border-color);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.ingr-slip-logo-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ingr-slip-logo-icon {
+  font-size: 1.8rem;
+  color: var(--ingr-accent-amber);
+}
+
+.ingr-slip-company-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ingr-text-bright);
+}
+
+.ingr-slip-company-sub {
+  font-size: 0.75rem;
+  color: var(--ingr-text-muted);
+}
+
+.ingr-slip-meta {
+  text-align: right;
+}
+
+.ingr-slip-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ingr-accent-amber);
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+}
+
+.ingr-slip-code {
+  font-size: 0.9rem;
+  color: var(--ingr-text-bright);
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.ingr-slip-date {
+  font-size: 0.75rem;
+  color: var(--ingr-text-muted);
+  margin-top: 3px;
+}
+
+.ingr-slip-grid-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.ingr-slip-detail-block {
+  background: var(--ingr-bg-surface);
+  border: 1px solid var(--ingr-border-color);
+  border-radius: var(--ingr-border-radius-md);
+  padding: 15px;
+}
+
+.ingr-slip-block-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ingr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid var(--ingr-border-color);
+  padding-bottom: 6px;
+}
+
+.ingr-slip-detail-item {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ingr-slip-detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.ingr-slip-detail-label {
+  color: var(--ingr-text-muted);
+}
+
+.ingr-slip-detail-value {
+  font-weight: 600;
+  color: var(--ingr-text-bright);
+  text-align: right;
+}
+
+.ingr-slip-table-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ingr-text-bright);
+  margin: 0 0 10px 0;
+}
+
+.ingr-slip-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.ingr-slip-table th {
+  background-color: var(--ingr-bg-surface);
+  color: var(--ingr-text-muted);
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 10px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--ingr-border-color);
+}
+
+.ingr-slip-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--ingr-border-color);
+  font-size: 0.85rem;
+  color: var(--ingr-text-normal);
+}
+
+.ingr-slip-totals-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ingr-slip-total-line {
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
+  font-size: 0.85rem;
+  color: var(--ingr-text-muted);
+}
+
+.ingr-slip-total-line.grand-total {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ingr-accent-amber);
+  border-top: 1px solid var(--ingr-border-color);
+  padding-top: 8px;
+}
+
+.ingr-slip-signatures-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--ingr-border-color);
+}
+
+.ingr-signature-box {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.ingr-signature-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ingr-text-bright);
+  text-transform: uppercase;
+}
+
+.ingr-signature-subtitle {
+  font-size: 0.7rem;
+  color: var(--ingr-text-muted);
+  font-style: italic;
+  margin-top: -45px;
+}
+
+.ingr-signature-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ingr-text-bright);
+}
+
+.ingr-slip-invoice-preview {
+  margin-top: 15px;
+  border: 1px solid var(--ingr-border-color);
+  border-radius: var(--ingr-border-radius-md);
+  padding: 12px;
+  background-color: var(--ingr-bg-surface);
+}
+
+.ingr-slip-invoice-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ingr-text-muted);
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ingr-slip-invoice-thumb-container {
+  width: 120px;
+  height: 80px;
+  border: 1px solid var(--ingr-border-color);
+  border-radius: var(--ingr-border-radius-sm);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.ingr-slip-invoice-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: opacity var(--ingr-transition-fast);
+}
+
+.ingr-slip-invoice-thumb:hover {
+  opacity: 1;
+}
+
+.ingr-slip-invoice-zoom-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--ingr-text-bright);
+  font-size: 1.2rem;
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Image preview modal (specific zoom view) */
+.ingr-image-preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ingr-transition-smooth);
+}
+
+.ingr-image-preview-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.ingr-image-preview-box {
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+}
+
+.ingr-image-preview-img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: var(--ingr-border-radius-md);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.ingr-image-preview-close-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Print Styling Rules */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .ingr-modal-backdrop-overlay.active {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    background: white !important;
+    backdrop-filter: none !important;
+  }
+  .ingr-modal-backdrop-overlay.active .ingr-ingredient-category-modal-box {
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .ingr-modal-backdrop-overlay.active .ingr-ingredient-category-modal-box * {
+    visibility: visible;
+  }
+  .ingr-modal-box-header,
+  .ingr-modal-box-footer-row,
+  .ingr-slip-invoice-preview,
+  .ingr-modal-box-close-btn {
+    display: none !important;
+  }
+  .ingr-slip-container {
+    color: black !important;
+    background: white !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  .ingr-slip-company-name,
+  .ingr-slip-title,
+  .ingr-slip-code,
+  .ingr-slip-detail-value,
+  .ingr-slip-table-title,
+  .ingr-slip-table td,
+  .ingr-slip-total-line.grand-total,
+  .ingr-signature-title,
+  .ingr-signature-name {
+    color: black !important;
+  }
+  .ingr-slip-detail-block {
+    background: white !important;
+    border: 1px solid #ddd !important;
+  }
+  .ingr-slip-table th {
+    background: #f0f0f0 !important;
+    color: black !important;
+    border-bottom: 2px solid #000 !important;
+  }
+  .ingr-slip-table td {
+    border-bottom: 1px solid #ddd !important;
+  }
+  .ingr-slip-total-line.grand-total {
+    border-top: 1px solid #000 !important;
+  }
+}

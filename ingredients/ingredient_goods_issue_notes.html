@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh Sách Phiếu Xuất Kho - Kurumi BBQ POS/ERP</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6.4.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./ingredient_management.css" />
+  </head>
+
+  <body class="ingr-system-body-container">
+    <div class="ingr-app-layout-wrapper">
+      <!-- Sidebar -->
+      <div id="ingr-sidebar-content">
+        <!-- Sidebar content loaded dynamically -->
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="ingr-main-viewport-container">
+        <!-- Header -->
+        <div id="ingr-header-content">
+          <!-- Header content loaded dynamically -->
+        </div>
+
+        <!-- Content Workspace -->
+        <main
+          class="ingr-main-workspace-scroller"
+          id="ingr-workspace-content-pane"
+        >
+          <!-- GOODS ISSUE LIST TAB -->
+          <section class="ingr-tab-panel" id="ingr-panel-issue-notes">
+            <!-- Filter Bar -->
+            <div class="ingr-panel-content-header-bar" style="margin-bottom: 25px;">
+              <div class="ingr-ingredient-filter-actions" style="flex-wrap: wrap; gap: 15px; width: 100%;">
+                <div style="position: relative; flex: 1; min-width: 200px;">
+                  <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ingr-text-disabled); font-size: 0.85rem;"></i>
+                  <input
+                    type="text"
+                    class="ingr-filter-text-input"
+                    id="ingr-issue-search"
+                    placeholder="Mã phiếu, lý do, người nhận..."
+                    style="padding-left: 35px; width: 100%; box-sizing: border-box;"
+                  />
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <label class="ingr-filter-inline-label">Từ:</label>
+                  <input
+                    type="date"
+                    class="ingr-filter-text-input"
+                    id="ingr-issue-date-start"
+                  />
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <label class="ingr-filter-inline-label">Đến:</label>
+                  <input
+                    type="date"
+                    class="ingr-filter-text-input"
+                    id="ingr-issue-date-end"
+                  />
+                </div>
+
+                <select
+                  class="ingr-filter-dropdown-select"
+                  id="ingr-issue-reason-filter"
+                  style="min-width: 180px;"
+                >
+                  <option value="all">Tất cả lý do xuất</option>
+                  <option value="Bếp - Chế biến món ăn">Bếp chính - Chế biến</option>
+                  <option value="Quầy Bar - Pha chế">Quầy Bar - Pha chế</option>
+                  <option value="Hủy nguyên liệu hết hạn">Hủy hết hạn / Hỏng hóc</option>
+                  <option value="Kiểm kê - Bù trừ hao hụt">Kiểm kê - Điều chỉnh</option>
+                  <option value="Xuất chuyển kho nội bộ">Chuyển kho nội bộ</option>
+                </select>
+
+                <button
+                  class="ingr-outline-add-btn"
+                  id="ingr-issue-filter-reset"
+                  style="margin-left: auto;"
+                >
+                  <i class="fa-solid fa-rotate-left"></i> Đặt lại
+                </button>
+              </div>
+            </div>
+
+            <!-- List Table -->
+            <div class="ingr-table-scroll-container">
+              <table class="ingr-ingredient-management-table">
+                <thead>
+                  <tr>
+                    <th style="width: 160px">Thời gian xuất</th>
+                    <th style="width: 150px">Mã phiếu xuất</th>
+                    <th style="width: 200px">Nơi nhận / Lý do xuất</th>
+                    <th style="text-align: center; width: 110px">Mặt hàng</th>
+                    <th style="width: 160px">Người lập phiếu</th>
+                    <th>Ghi chú chi tiết</th>
+                    <th style="width: 140px">Trạng thái</th>
+                    <th style="text-align: center; width: 130px">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="ingr-issue-notes-tbody">
+                  <!-- Dynamic goods issue note rows -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination Grid -->
+            <div class="ingr-table-pagination-control-row" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+              <span class="ingr-pagination-stats-text" id="ingr-issue-pagination-stats">Hiển thị 0-0 trên 0 phiếu</span>
+              <div class="ingr-pagination-nav-btn-group" style="display: flex; gap: 8px;">
+                <button class="ingr-pagination-chevron-btn" id="ingr-issue-prev-page" disabled>
+                  <i class="fa-solid fa-angle-left"></i> Prev
+                </button>
+                <button class="ingr-pagination-chevron-btn" id="ingr-issue-next-page" disabled>
+                  Next <i class="fa-solid fa-angle-right"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         DETAIL MODAL SECTION
+         ========================================== -->
+    <div class="ingr-modal-backdrop-overlay" id="ingr-issue-detail-modal">
+      <div class="ingr-ingredient-category-modal-box" style="max-width: 800px; width: 90%;">
+        <div class="ingr-modal-box-header">
+          <h4 class="ingr-modal-box-title">
+            <i class="fa-solid fa-file-export" style="color: var(--ingr-accent-amber); margin-right: 8px;"></i>
+            Chi Tiết Phiếu Xuất Kho
+          </h4>
+          <button class="ingr-modal-box-close-btn" id="ingr-issue-detail-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        
+        <div class="ingr-slip-container" id="ingr-issue-detail-body">
+          <!-- Dynamic details content goes here -->
+        </div>
+
+        <div class="ingr-modal-box-footer-row" style="padding: 15px 25px; background-color: var(--ingr-bg-surface);">
+          <button type="button" class="ingr-cancel-btn-action" id="ingr-issue-detail-close-btn" style="margin-right: auto;">
+            Đóng
+          </button>
+          <button type="button" class="ingr-outline-add-btn" id="ingr-issue-print-btn" style="border-color: var(--ingr-text-muted); color: var(--ingr-text-bright);">
+            <i class="fa-solid fa-print"></i> In Phiếu
+          </button>
+          <button type="button" class="ingr-primary-btn-action danger" id="ingr-issue-pdf-btn" style="background-color: var(--ingr-status-danger); border-color: var(--ingr-status-danger);">
+            <i class="fa-solid fa-file-pdf"></i> Xuất PDF
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Placement -->
+    <div class="ingr-toast-notification-dock" id="ingr-global-toast-container"></div>
+
+    <!-- Core Script -->
+    <script src="./ingredient_header.js"></script>
+    <script src="./ingredient_sidebar.js"></script>
+    <script src="./ingredient_layout.js"></script>
+    <script src="./js/ingredient_toast.js"></script>
+    <script src="./js/ingredient_goods_issue_notes.js"></script>
+  </body>
+</html>

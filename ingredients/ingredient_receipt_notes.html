@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh Sách Phiếu Nhập Kho - Kurumi BBQ POS/ERP</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6.4.2 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./ingredient_management.css" />
+  </head>
+
+  <body class="ingr-system-body-container">
+    <div class="ingr-app-layout-wrapper">
+      <!-- Sidebar -->
+      <div id="ingr-sidebar-content">
+        <!-- Sidebar content loaded dynamically -->
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="ingr-main-viewport-container">
+        <!-- Header -->
+        <div id="ingr-header-content">
+          <!-- Header content loaded dynamically -->
+        </div>
+
+        <!-- Content Workspace -->
+        <main
+          class="ingr-main-workspace-scroller"
+          id="ingr-workspace-content-pane"
+        >
+          <!-- GOODS RECEIPT LIST TAB -->
+          <section class="ingr-tab-panel" id="ingr-panel-receipt-notes">
+            <!-- Filter Bar -->
+            <div class="ingr-panel-content-header-bar" style="margin-bottom: 25px;">
+              <div class="ingr-ingredient-filter-actions" style="flex-wrap: wrap; gap: 15px; width: 100%;">
+                <div style="position: relative; flex: 1; min-width: 200px;">
+                  <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ingr-text-disabled); font-size: 0.85rem;"></i>
+                  <input
+                    type="text"
+                    class="ingr-filter-text-input"
+                    id="ingr-receipt-search"
+                    placeholder="Mã phiếu, nhà cung cấp..."
+                    style="padding-left: 35px; width: 100%; box-sizing: border-box;"
+                  />
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <label class="ingr-filter-inline-label">Từ:</label>
+                  <input
+                    type="date"
+                    class="ingr-filter-text-input"
+                    id="ingr-receipt-date-start"
+                  />
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <label class="ingr-filter-inline-label">Đến:</label>
+                  <input
+                    type="date"
+                    class="ingr-filter-text-input"
+                    id="ingr-receipt-date-end"
+                  />
+                </div>
+
+                <select
+                  class="ingr-filter-dropdown-select"
+                  id="ingr-receipt-supplier-filter"
+                  style="min-width: 180px;"
+                >
+                  <option value="all">Tất cả nhà cung cấp</option>
+                  <!-- Dynamic options -->
+                </select>
+
+                <button
+                  class="ingr-outline-add-btn"
+                  id="ingr-receipt-filter-reset"
+                  style="margin-left: auto;"
+                >
+                  <i class="fa-solid fa-rotate-left"></i> Đặt lại
+                </button>
+              </div>
+            </div>
+
+            <!-- List Table -->
+            <div class="ingr-table-scroll-container">
+              <table class="ingr-ingredient-management-table">
+                <thead>
+                  <tr>
+                    <th style="width: 160px">Thời gian lập</th>
+                    <th style="width: 150px">Mã phiếu nhập</th>
+                    <th>Nhà cung cấp</th>
+                    <th style="text-align: center; width: 110px">Mặt hàng</th>
+                    <th style="text-align: right; width: 160px">Tổng thanh toán</th>
+                    <th style="width: 160px">Người lập phiếu</th>
+                    <th style="width: 140px">Trạng thái</th>
+                    <th style="text-align: center; width: 130px">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="ingr-receipt-notes-tbody">
+                  <!-- Dynamic goods receipt note rows -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination Grid -->
+            <div class="ingr-table-pagination-control-row" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+              <span class="ingr-pagination-stats-text" id="ingr-receipt-pagination-stats">Hiển thị 0-0 trên 0 phiếu</span>
+              <div class="ingr-pagination-nav-btn-group" style="display: flex; gap: 8px;">
+                <button class="ingr-pagination-chevron-btn" id="ingr-receipt-prev-page" disabled>
+                  <i class="fa-solid fa-angle-left"></i> Prev
+                </button>
+                <button class="ingr-pagination-chevron-btn" id="ingr-receipt-next-page" disabled>
+                  Next <i class="fa-solid fa-angle-right"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         DETAIL MODAL SECTION
+         ========================================== -->
+    <div class="ingr-modal-backdrop-overlay" id="ingr-receipt-detail-modal">
+      <div class="ingr-ingredient-category-modal-box" style="max-width: 800px; width: 90%;">
+        <div class="ingr-modal-box-header">
+          <h4 class="ingr-modal-box-title">
+            <i class="fa-solid fa-file-invoice" style="color: var(--ingr-accent-amber); margin-right: 8px;"></i>
+            Chi Tiết Phiếu Nhập Kho
+          </h4>
+          <button class="ingr-modal-box-close-btn" id="ingr-receipt-detail-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        
+        <div class="ingr-slip-container" id="ingr-receipt-detail-body">
+          <!-- Dynamic details content goes here -->
+        </div>
+
+        <div class="ingr-modal-box-footer-row" style="padding: 15px 25px; background-color: var(--ingr-bg-surface);">
+          <button type="button" class="ingr-cancel-btn-action" id="ingr-receipt-detail-close-btn" style="margin-right: auto;">
+            Đóng
+          </button>
+          <button type="button" class="ingr-outline-add-btn" id="ingr-receipt-print-btn" style="border-color: var(--ingr-text-muted); color: var(--ingr-text-bright);">
+            <i class="fa-solid fa-print"></i> In Phiếu
+          </button>
+          <button type="button" class="ingr-primary-btn-action" id="ingr-receipt-pdf-btn">
+            <i class="fa-solid fa-file-pdf"></i> Xuất PDF
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         IMAGE PREVIEW ZOOM MODAL
+         ========================================== -->
+    <div class="ingr-image-preview-overlay" id="ingr-image-preview-zoom-modal">
+      <div class="ingr-image-preview-box">
+        <button class="ingr-image-preview-close-btn" id="ingr-image-preview-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img src="" alt="Hóa đơn đính kèm" class="ingr-image-preview-img" id="ingr-image-preview-large-img">
+      </div>
+    </div>
+
+    <!-- Toast Placement -->
+    <div class="ingr-toast-notification-dock" id="ingr-global-toast-container"></div>
+
+    <!-- Core Script -->
+    <script src="./ingredient_header.js"></script>
+    <script src="./ingredient_sidebar.js"></script>
+    <script src="./ingredient_layout.js"></script>
+    <script src="./js/ingredient_toast.js"></script>
+    <script src="./js/ingredient_receipt_notes.js"></script>
+  </body>
+</html>
