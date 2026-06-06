@@ -838,29 +838,34 @@ function getIngredientStatus(item) {
 // ===============================
 // PAGINATION STATE
 // ===============================
-let currentPage = 1;
-const itemsPerPage = 10;
 
 // ===============================
 // RENDER TABLE WITH PAGINATION
 // ===============================
-function renderIngredients() {
+
+// ===============================
+// RENDER PAGINATION INFO
+// ===============================
+
+const ingredientPagination = new Pagination({
+  data: ingredients,
+  itemsPerPage: 10,
+
+  infoElementId: "ingr-ingredients-page-info",
+
+  controlsElementId: "ingr-ingredients-page-controls",
+
+  onRender: renderIngredientRows,
+});
+
+function renderIngredientRows(pageData) {
   const tbody = document.getElementById("ingr-ingredients-table-body");
 
   if (!tbody) return;
 
   tbody.innerHTML = "";
 
-  // Calculate pagination
-  const totalItems = ingredients.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-
-  // Get items for current page
-  const paginatedItems = ingredients.slice(startIndex, endIndex);
-
-  paginatedItems.forEach((item) => {
+  pageData.forEach((item) => {
     const status = getIngredientStatus(item);
 
     const expiryDate = new Date(item.expiry).toLocaleDateString("vi-VN");
@@ -868,12 +873,12 @@ function renderIngredients() {
     const row = `
       <tr>
         <td>
-          <strong style="color: #f59e0b;">
+          <strong style="color:#f59e0b;">
             ${item.code}
           </strong>
         </td>
 
-        <td style="font-weight: 600; color: white;">
+        <td style="font-weight:600;color:white;">
           ${item.name}
         </td>
 
@@ -935,132 +940,6 @@ function renderIngredients() {
 
     tbody.innerHTML += row;
   });
-
-  // Update pagination info
-  renderPaginationInfo(startIndex, endIndex, totalItems);
-
-  // Render pagination controls
-  renderPaginationControls(totalPages);
-}
-
-// ===============================
-// RENDER PAGINATION INFO
-// ===============================
-function renderPaginationInfo(startIndex, endIndex, totalItems) {
-  const pageInfo = document.getElementById("ingr-ingredients-page-info");
-
-  if (pageInfo) {
-    const startNum = totalItems > 0 ? startIndex + 1 : 0;
-    pageInfo.textContent = `Hiển thị ${startNum}-${endIndex} trên ${totalItems} nguyên liệu`;
-  }
-}
-
-// ===============================
-// RENDER PAGINATION CONTROLS
-// Smart pagination: < 1 2 3 ... n-2 n-1 n >
-// ===============================
-function renderPaginationControls(totalPages) {
-  const controls = document.getElementById("ingr-ingredients-page-controls");
-
-  if (!controls) return;
-
-  if (totalPages <= 1) {
-    controls.innerHTML = "";
-    return;
-  }
-
-  let pages = [];
-
-  // Always show first page
-  pages.push(1);
-
-  // Logic for middle pages
-  if (totalPages <= 7) {
-    // If total pages <= 7, show all
-    for (let i = 2; i <= totalPages; i++) {
-      pages.push(i);
-    }
-  } else {
-    // Smart pagination
-    if (currentPage <= 3) {
-      // Near start: 1 2 3 4 ... n-1 n
-      pages.push(2, 3, 4, "...", totalPages - 1, totalPages);
-    } else if (currentPage >= totalPages - 2) {
-      // Near end: 1 2 ... n-3 n-2 n-1 n
-      pages.push(
-        2,
-        "...",
-        totalPages - 3,
-        totalPages - 2,
-        totalPages - 1,
-        totalPages,
-      );
-    } else {
-      // Middle: 1 2 ... current-1 current current+1 ... n-1 n
-      pages.push(
-        2,
-        "...",
-        currentPage - 1,
-        currentPage,
-        currentPage + 1,
-        "...",
-        totalPages - 1,
-        totalPages,
-      );
-    }
-  }
-
-  // Build HTML
-  let html = `
-    <button 
-      class="ingr-pagination-number-btn" 
-      ${currentPage === 1 ? "disabled" : ""} 
-      onclick="setIngredientsPage(${currentPage - 1})" 
-      title="Trang trước"
-    >
-      <i class="fa-solid fa-chevron-left"></i>
-    </button>
-  `;
-
-  pages.forEach((page) => {
-    if (page === "...") {
-      html += `<span class="ingr-pagination-ellipsis">...</span>`;
-    } else {
-      html += `
-        <button 
-          class="ingr-pagination-number-btn ${currentPage === page ? "active" : ""}" 
-          onclick="setIngredientsPage(${page})"
-        >
-          ${page}
-        </button>
-      `;
-    }
-  });
-
-  html += `
-    <button 
-      class="ingr-pagination-number-btn" 
-      ${currentPage === totalPages ? "disabled" : ""} 
-      onclick="setIngredientsPage(${currentPage + 1})" 
-      title="Trang sau"
-    >
-      <i class="fa-solid fa-chevron-right"></i>
-    </button>
-  `;
-
-  controls.innerHTML = html;
-}
-
-// ===============================
-// SET PAGE FUNCTION
-// ===============================
-function setIngredientsPage(pageNum) {
-  const totalPages = Math.ceil(ingredients.length / itemsPerPage);
-
-  if (pageNum < 1 || pageNum > totalPages) return;
-
-  currentPage = pageNum;
-  renderIngredients();
 }
 
 // =====================================
@@ -1160,7 +1039,7 @@ function deleteIngredient(id) {
     ingredients.splice(index, 1);
   }
 
-  renderIngredients();
+  ingredientPagination.setData(ingredients);
 
   if (typeof showToast === "function") {
     showToast("Xóa thành công", `${ingredient.name} đã được xóa`, "success");
@@ -1260,12 +1139,12 @@ ingrForm.onsubmit = function (e) {
 
   dismissIngrModal();
 
-  renderIngredients();
+  ingredientPagination.setData(ingredients);
 };
 
 // ===============================
 // LOAD WHEN PAGE READY
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-  renderIngredients();
+  ingredientPagination.render();
 });
