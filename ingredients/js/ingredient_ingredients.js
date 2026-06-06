@@ -134,6 +134,667 @@ const ingredients = [
     expiry: "2026-05-29",
     price: 12000,
   }, // Warning Low
+  {
+    id: "NL013",
+    code: "NL013",
+    name: "Thịt ba chỉ bò Mỹ",
+    category: "Thịt",
+    categoryColor: "#ef4444",
+    stock: 45.5,
+    unit: "kg",
+    minStock: 15,
+    expiry: "2026-06-15",
+  },
+  {
+    id: "NL014",
+    code: "NL014",
+    name: "Tôm sú tươi sống",
+    category: "Hải sản",
+    categoryColor: "#06b6d4",
+    stock: 4.2,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-05-27",
+  },
+  {
+    id: "NL015",
+    code: "NL015",
+    name: "Xà lách thủy canh",
+    category: "Rau củ",
+    categoryColor: "#22c55e",
+    stock: 12,
+    unit: "kg",
+    minStock: 5,
+    expiry: "2026-05-24",
+  },
+  {
+    id: "NL016",
+    code: "NL016",
+    name: "Sốt BBQ đặc chế",
+    category: "Gia vị",
+    categoryColor: "#f59e0b",
+    stock: 35,
+    unit: "lít",
+    minStock: 10,
+    expiry: "2026-09-30",
+  },
+  {
+    id: "NL017",
+    code: "NL017",
+    name: "Than nướng không khói",
+    category: "Khác",
+    categoryColor: "#64748b",
+    stock: 250,
+    unit: "kg",
+    minStock: 50,
+    expiry: "2027-12-31",
+  },
+  {
+    id: "NL018",
+    code: "NL018",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL019",
+    code: "NL019",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL020",
+    code: "NL020",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL021",
+    code: "NL021",
+    name: "Coca-Cola 330ml",
+    categoryId: "cat-3",
+    stock: 100.0,
+    unit: "chai",
+    minStock: 20.0,
+    expiry: "2027-06-30",
+    price: 15000,
+  }, // Excess stock
+  {
+    id: "NL022",
+    code: "NL022",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL023",
+    code: "NL023",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL024",
+    code: "NL024",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+
+  {
+    id: "NL001",
+    code: "NL001",
+    name: "Thịt ba chỉ bò Mỹ",
+    category: "Thịt",
+    categoryColor: "#ef4444",
+    stock: 45.5,
+    unit: "kg",
+    minStock: 15,
+    expiry: "2026-06-15",
+  },
+  {
+    id: "NL002",
+    code: "NL002",
+    name: "Tôm sú tươi sống",
+    category: "Hải sản",
+    categoryColor: "#06b6d4",
+    stock: 4.2,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-05-27",
+  },
+  {
+    id: "NL003",
+    code: "NL003",
+    name: "Xà lách thủy canh",
+    category: "Rau củ",
+    categoryColor: "#22c55e",
+    stock: 12,
+    unit: "kg",
+    minStock: 5,
+    expiry: "2026-05-24",
+  },
+  {
+    id: "NL004",
+    code: "NL004",
+    name: "Sốt BBQ đặc chế",
+    category: "Gia vị",
+    categoryColor: "#f59e0b",
+    stock: 35,
+    unit: "lít",
+    minStock: 10,
+    expiry: "2026-09-30",
+  },
+  {
+    id: "NL005",
+    code: "NL005",
+    name: "Than nướng không khói",
+    category: "Khác",
+    categoryColor: "#64748b",
+    stock: 250,
+    unit: "kg",
+    minStock: 50,
+    expiry: "2027-12-31",
+  },
+  {
+    id: "NL006",
+    code: "NL006",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL007",
+    code: "NL007",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL008",
+    code: "NL008",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL009",
+    code: "NL009",
+    name: "Coca-Cola 330ml",
+    categoryId: "cat-3",
+    stock: 100.0,
+    unit: "chai",
+    minStock: 20.0,
+    expiry: "2027-06-30",
+    price: 15000,
+  }, // Excess stock
+  {
+    id: "NL010",
+    code: "NL010",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL011",
+    code: "NL011",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL012",
+    code: "NL012",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL013",
+    code: "NL013",
+    name: "Thịt ba chỉ bò Mỹ",
+    category: "Thịt",
+    categoryColor: "#ef4444",
+    stock: 45.5,
+    unit: "kg",
+    minStock: 15,
+    expiry: "2026-06-15",
+  },
+  {
+    id: "NL014",
+    code: "NL014",
+    name: "Tôm sú tươi sống",
+    category: "Hải sản",
+    categoryColor: "#06b6d4",
+    stock: 4.2,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-05-27",
+  },
+  {
+    id: "NL015",
+    code: "NL015",
+    name: "Xà lách thủy canh",
+    category: "Rau củ",
+    categoryColor: "#22c55e",
+    stock: 12,
+    unit: "kg",
+    minStock: 5,
+    expiry: "2026-05-24",
+  },
+  {
+    id: "NL016",
+    code: "NL016",
+    name: "Sốt BBQ đặc chế",
+    category: "Gia vị",
+    categoryColor: "#f59e0b",
+    stock: 35,
+    unit: "lít",
+    minStock: 10,
+    expiry: "2026-09-30",
+  },
+  {
+    id: "NL017",
+    code: "NL017",
+    name: "Than nướng không khói",
+    category: "Khác",
+    categoryColor: "#64748b",
+    stock: 250,
+    unit: "kg",
+    minStock: 50,
+    expiry: "2027-12-31",
+  },
+  {
+    id: "NL018",
+    code: "NL018",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL019",
+    code: "NL019",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL020",
+    code: "NL020",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL021",
+    code: "NL021",
+    name: "Coca-Cola 330ml",
+    categoryId: "cat-3",
+    stock: 100.0,
+    unit: "chai",
+    minStock: 20.0,
+    expiry: "2027-06-30",
+    price: 15000,
+  }, // Excess stock
+  {
+    id: "NL022",
+    code: "NL022",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL023",
+    code: "NL023",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL024",
+    code: "NL024",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL001",
+    code: "NL001",
+    name: "Thịt ba chỉ bò Mỹ",
+    category: "Thịt",
+    categoryColor: "#ef4444",
+    stock: 45.5,
+    unit: "kg",
+    minStock: 15,
+    expiry: "2026-06-15",
+  },
+  {
+    id: "NL002",
+    code: "NL002",
+    name: "Tôm sú tươi sống",
+    category: "Hải sản",
+    categoryColor: "#06b6d4",
+    stock: 4.2,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-05-27",
+  },
+  {
+    id: "NL003",
+    code: "NL003",
+    name: "Xà lách thủy canh",
+    category: "Rau củ",
+    categoryColor: "#22c55e",
+    stock: 12,
+    unit: "kg",
+    minStock: 5,
+    expiry: "2026-05-24",
+  },
+  {
+    id: "NL004",
+    code: "NL004",
+    name: "Sốt BBQ đặc chế",
+    category: "Gia vị",
+    categoryColor: "#f59e0b",
+    stock: 35,
+    unit: "lít",
+    minStock: 10,
+    expiry: "2026-09-30",
+  },
+  {
+    id: "NL005",
+    code: "NL005",
+    name: "Than nướng không khói",
+    category: "Khác",
+    categoryColor: "#64748b",
+    stock: 250,
+    unit: "kg",
+    minStock: 50,
+    expiry: "2027-12-31",
+  },
+  {
+    id: "NL006",
+    code: "NL006",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL007",
+    code: "NL007",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL008",
+    code: "NL008",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL009",
+    code: "NL009",
+    name: "Coca-Cola 330ml",
+    categoryId: "cat-3",
+    stock: 100.0,
+    unit: "chai",
+    minStock: 20.0,
+    expiry: "2027-06-30",
+    price: 15000,
+  }, // Excess stock
+  {
+    id: "NL010",
+    code: "NL010",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL011",
+    code: "NL011",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL012",
+    code: "NL012",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL013",
+    code: "NL013",
+    name: "Thịt ba chỉ bò Mỹ",
+    category: "Thịt",
+    categoryColor: "#ef4444",
+    stock: 45.5,
+    unit: "kg",
+    minStock: 15,
+    expiry: "2026-06-15",
+  },
+  {
+    id: "NL014",
+    code: "NL014",
+    name: "Tôm sú tươi sống",
+    category: "Hải sản",
+    categoryColor: "#06b6d4",
+    stock: 4.2,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-05-27",
+  },
+  {
+    id: "NL015",
+    code: "NL015",
+    name: "Xà lách thủy canh",
+    category: "Rau củ",
+    categoryColor: "#22c55e",
+    stock: 12,
+    unit: "kg",
+    minStock: 5,
+    expiry: "2026-05-24",
+  },
+  {
+    id: "NL016",
+    code: "NL016",
+    name: "Sốt BBQ đặc chế",
+    category: "Gia vị",
+    categoryColor: "#f59e0b",
+    stock: 35,
+    unit: "lít",
+    minStock: 10,
+    expiry: "2026-09-30",
+  },
+  {
+    id: "NL017",
+    code: "NL017",
+    name: "Than nướng không khói",
+    category: "Khác",
+    categoryColor: "#64748b",
+    stock: 250,
+    unit: "kg",
+    minStock: 50,
+    expiry: "2027-12-31",
+  },
+  {
+    id: "NL018",
+    code: "NL018",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL019",
+    code: "NL019",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL020",
+    code: "NL020",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
+  {
+    id: "NL021",
+    code: "NL021",
+    name: "Coca-Cola 330ml",
+    categoryId: "cat-3",
+    stock: 100.0,
+    unit: "chai",
+    minStock: 20.0,
+    expiry: "2027-06-30",
+    price: 15000,
+  }, // Excess stock
+  {
+    id: "NL022",
+    code: "NL022",
+    name: "Bia Heineken đóng chai",
+    categoryId: "cat-3",
+    stock: 40.0,
+    unit: "thùng",
+    minStock: 12.0,
+    expiry: "2027-04-10",
+    price: 410000,
+  },
+  {
+    id: "NL023",
+    code: "NL023",
+    name: "Thịt sườn Tomahawk Mỹ",
+    categoryId: "cat-1",
+    stock: 2.0,
+    unit: "kg",
+    minStock: 8.0,
+    expiry: "2026-06-10",
+    price: 1250000,
+  }, // Critical Low
+  {
+    id: "NL024",
+    code: "NL024",
+    name: "Nấm kim châm Đà Lạt",
+    categoryId: "cat-2",
+    stock: 9.0,
+    unit: "gói",
+    minStock: 15.0,
+    expiry: "2026-05-29",
+    price: 12000,
+  }, // Warning Low
 ];
 
 // ===============================
@@ -195,7 +856,7 @@ function renderIngredients() {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-  
+
   // Get items for current page
   const paginatedItems = ingredients.slice(startIndex, endIndex);
 
@@ -277,7 +938,7 @@ function renderIngredients() {
 
   // Update pagination info
   renderPaginationInfo(startIndex, endIndex, totalItems);
-  
+
   // Render pagination controls
   renderPaginationControls(totalPages);
 }
@@ -300,19 +961,19 @@ function renderPaginationInfo(startIndex, endIndex, totalItems) {
 // ===============================
 function renderPaginationControls(totalPages) {
   const controls = document.getElementById("ingr-ingredients-page-controls");
-  
+
   if (!controls) return;
-  
+
   if (totalPages <= 1) {
     controls.innerHTML = "";
     return;
   }
 
   let pages = [];
-  
+
   // Always show first page
   pages.push(1);
-  
+
   // Logic for middle pages
   if (totalPages <= 7) {
     // If total pages <= 7, show all
@@ -323,13 +984,29 @@ function renderPaginationControls(totalPages) {
     // Smart pagination
     if (currentPage <= 3) {
       // Near start: 1 2 3 4 ... n-1 n
-      pages.push(2, 3, 4, '...', totalPages - 1, totalPages);
+      pages.push(2, 3, 4, "...", totalPages - 1, totalPages);
     } else if (currentPage >= totalPages - 2) {
       // Near end: 1 2 ... n-3 n-2 n-1 n
-      pages.push(2, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      pages.push(
+        2,
+        "...",
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      );
     } else {
       // Middle: 1 2 ... current-1 current current+1 ... n-1 n
-      pages.push(2, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages - 1, totalPages);
+      pages.push(
+        2,
+        "...",
+        currentPage - 1,
+        currentPage,
+        currentPage + 1,
+        "...",
+        totalPages - 1,
+        totalPages,
+      );
     }
   }
 
@@ -337,7 +1014,7 @@ function renderPaginationControls(totalPages) {
   let html = `
     <button 
       class="ingr-pagination-number-btn" 
-      ${currentPage === 1 ? 'disabled' : ''} 
+      ${currentPage === 1 ? "disabled" : ""} 
       onclick="setIngredientsPage(${currentPage - 1})" 
       title="Trang trước"
     >
@@ -345,13 +1022,13 @@ function renderPaginationControls(totalPages) {
     </button>
   `;
 
-  pages.forEach(page => {
-    if (page === '...') {
+  pages.forEach((page) => {
+    if (page === "...") {
       html += `<span class="ingr-pagination-ellipsis">...</span>`;
     } else {
       html += `
         <button 
-          class="ingr-pagination-number-btn ${currentPage === page ? 'active' : ''}" 
+          class="ingr-pagination-number-btn ${currentPage === page ? "active" : ""}" 
           onclick="setIngredientsPage(${page})"
         >
           ${page}
@@ -363,7 +1040,7 @@ function renderPaginationControls(totalPages) {
   html += `
     <button 
       class="ingr-pagination-number-btn" 
-      ${currentPage === totalPages ? 'disabled' : ''} 
+      ${currentPage === totalPages ? "disabled" : ""} 
       onclick="setIngredientsPage(${currentPage + 1})" 
       title="Trang sau"
     >
@@ -379,9 +1056,9 @@ function renderPaginationControls(totalPages) {
 // ===============================
 function setIngredientsPage(pageNum) {
   const totalPages = Math.ceil(ingredients.length / itemsPerPage);
-  
+
   if (pageNum < 1 || pageNum > totalPages) return;
-  
+
   currentPage = pageNum;
   renderIngredients();
 }
