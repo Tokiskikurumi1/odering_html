@@ -1,5 +1,46 @@
+// ==========================================
+// PAGE TITLE MAPPING
+// ==========================================
+
+const pageTitleMap = {
+  "ingredient_dashboard.html": "Dashboard kho",
+  "ingredient_ingredients.html": "Quản lý nguyên liệu",
+  "ingredient_categories.html": "Danh mục nguyên liệu",
+  "ingredient_receipt.html": "Nhập kho",
+  "ingredient_receipt_notes.html": "Phiếu nhập kho",
+  "ingredient_goods_issue.html": "Xuất kho",
+  "ingredient_goods_issue_notes.html": "Phiếu xuất kho",
+  "ingredient_inventory_audit.html": "Kiểm kê kho",
+  "ingredient_warnings.html": "Cảnh báo tồn kho",
+  "ingredient_transaction_history.html": "Lịch sử giao dịch kho",
+  "ingredient_supplier.html": "Nhà cung cấp",
+  "ingredient_report.html": "Báo cáo - thống kê kho"
+};
+
+// ==========================================
+// UPDATE HEADER TITLE
+// ==========================================
+
+function updateHeaderTitle() {
+  const currentPage = location.pathname.split("/").pop();
+  const title = pageTitleMap[currentPage] || "Dashboard kho";
+  
+  const headerTitle = document.getElementById("ingr-header-tab-title");
+  
+  if (headerTitle) {
+    headerTitle.textContent = title;
+  }
+}
+
+// ==========================================
+// INIT SIDEBAR
+// ==========================================
+
 function initIngredientSidebar() {
   console.log("Sidebar Loaded");
+
+  // Update header title based on current page
+  updateHeaderTitle();
 
   const currentPage = location.pathname.split("/").pop();
 
