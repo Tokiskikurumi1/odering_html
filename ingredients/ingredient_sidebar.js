@@ -33,6 +33,57 @@ function updateHeaderTitle() {
 }
 
 // ==========================================
+// MOBILE SIDEBAR OVERLAY & TOGGLE
+// ==========================================
+
+function createSidebarOverlay() {
+  // Kiểm tra xem overlay đã tồn tại chưa
+  let overlay = document.getElementById("ingr-sidebar-overlay");
+  
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.id = "ingr-sidebar-overlay";
+    overlay.className = "ingr-sidebar-overlay";
+    document.body.appendChild(overlay);
+    
+    // Click overlay để đóng sidebar
+    overlay.addEventListener("click", closeMobileSidebar);
+  }
+  
+  return overlay;
+}
+
+function openMobileSidebar() {
+  const sidebar = document.getElementById("ingr-sidebar-element");
+  const overlay = createSidebarOverlay();
+  
+  if (sidebar) {
+    sidebar.classList.add("mobile-open");
+  }
+  
+  overlay.classList.add("active");
+  
+  // Prevent body scroll
+  document.body.classList.add("ingr-sidebar-open");
+}
+
+function closeMobileSidebar() {
+  const sidebar = document.getElementById("ingr-sidebar-element");
+  const overlay = document.getElementById("ingr-sidebar-overlay");
+  
+  if (sidebar) {
+    sidebar.classList.remove("mobile-open");
+  }
+  
+  if (overlay) {
+    overlay.classList.remove("active");
+  }
+  
+  // Enable body scroll
+  document.body.classList.remove("ingr-sidebar-open");
+}
+
+// ==========================================
 // INIT SIDEBAR
 // ==========================================
 
@@ -86,14 +137,26 @@ function initIngredientSidebar() {
       });
     });
 
-  // Collapse sidebar
-  const sidebar = document.getElementById("ingr-sidebar-element");
-
-  const collapseBtn = document.getElementById("ingr-sidebar-collapse-trigger");
-
-  if (collapseBtn) {
-    collapseBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("collapsed");
+  // Mobile toggle button
+  const mobileToggle = document.getElementById("ingr-mobile-toggle-btn");
+  
+  if (mobileToggle) {
+    mobileToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openMobileSidebar();
     });
   }
+
+  // Đóng sidebar khi click vào menu item (mobile)
+  document.querySelectorAll(".ingr-sidebar-menu-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      // Chỉ đóng sidebar nếu đang ở chế độ mobile
+      if (window.innerWidth <= 900) {
+        closeMobileSidebar();
+      }
+    });
+  });
+
+  // Tạo overlay ngay từ đầu
+  createSidebarOverlay();
 }

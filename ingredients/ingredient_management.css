@@ -2219,10 +2219,35 @@
     top: 0;
     z-index: 1000;
     box-shadow: var(--ingr-shadow-heavy);
+    transition: left var(--ingr-transition-smooth);
   }
 
   .ingr-inventory-sidebar.mobile-open {
     left: 0;
+  }
+
+  /* Overlay khi sidebar mở */
+  .ingr-sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--ingr-transition-smooth), visibility var(--ingr-transition-smooth);
+  }
+
+  .ingr-sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Prevent body scroll khi sidebar mở */
+  body.ingr-sidebar-open {
+    overflow: hidden;
   }
 
   .ingr-mobile-sidebar-toggle {
