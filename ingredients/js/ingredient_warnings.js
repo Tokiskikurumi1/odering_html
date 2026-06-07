@@ -59,9 +59,10 @@ function getIngredientStatus(ingr) {
   return "normal";
 }
 let activeWarningTypeFilter = "all";
+let warningsPagination;
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderWarnings();
+  refreshWarningsTable();
 
   const warningPillFilters = document.querySelectorAll(
     ".ingr-warning-pill-filter",
@@ -75,17 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       activeWarningTypeFilter = pill.dataset.type;
 
-      renderWarnings();
+      refreshWarningsTable();
     });
   });
 });
 
-function renderWarnings() {
-  const tbody = document.getElementById("ingr-warnings-table-body");
-
-  if (!tbody) return;
-
-  const warningIngredients = ingredients.filter((ingr) => {
+function getFilteredWarnings() {
+  return ingredients.filter((ingr) => {
     const status = getIngredientStatus(ingr);
 
     if (activeWarningTypeFilter === "all") {
@@ -99,8 +96,31 @@ function renderWarnings() {
 
     return status === activeWarningTypeFilter;
   });
+}
 
-  if (!warningIngredients.length) {
+function refreshWarningsTable() {
+  const warningIngredients = getFilteredWarnings();
+
+  if (!warningsPagination) {
+    warningsPagination = new Pagination({
+      data: warningIngredients,
+      itemsPerPage: 10,
+      infoElementId: "ingr-ingredients-page-info",
+      controlsElementId: "ingr-ingredients-page-controls",
+      onRender: renderWarnings,
+    });
+    warningsPagination.render();
+  } else {
+    warningsPagination.setData(warningIngredients);
+  }
+}
+
+function renderWarnings(pageData) {
+  const tbody = document.getElementById("ingr-warnings-table-body");
+
+  if (!tbody) return;
+
+  if (!pageData || pageData.length === 0) {
     tbody.innerHTML = `
       <tr>
         <td colspan="9">
@@ -120,7 +140,7 @@ function renderWarnings() {
     return;
   }
 
-  tbody.innerHTML = warningIngredients
+  tbody.innerHTML = pageData
     .map((ingr) => {
       const status = getIngredientStatus(ingr);
 
@@ -277,7 +297,7 @@ function bindWarningEvents() {
 
       ingredient.stock = 0;
 
-      renderWarnings();
+      refreshWarningsTable();
 
       showToast("Thành công", "Đã tiêu hủy nguyên liệu hết hạn", "success");
     });

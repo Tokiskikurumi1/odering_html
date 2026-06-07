@@ -34,9 +34,117 @@ const ingredients = [
     stock: 20,
     unit: "kg",
   },
+  {
+    id: 6,
+    code: "ING001",
+    name: "Ba chỉ bò Mỹ",
+    stock: 25.5,
+    unit: "kg",
+  },
+  {
+    id: 7,
+    code: "ING002",
+    name: "Nạc vai bò Mỹ",
+    stock: 18,
+    unit: "kg",
+  },
+  {
+    id: 8,
+    code: "ING003",
+    name: "Tôm sú",
+    stock: 12,
+    unit: "kg",
+  },
+  {
+    id: 9,
+    code: "ING004",
+    name: "Mực ống",
+    stock: 9,
+    unit: "kg",
+  },
+  {
+    id: 10,
+    code: "ING005",
+    name: "Kim chi",
+    stock: 20,
+    unit: "kg",
+  },
+  {
+    id: 1,
+    code: "ING001",
+    name: "Ba chỉ bò Mỹ",
+    stock: 25.5,
+    unit: "kg",
+  },
+  {
+    id: 2,
+    code: "ING002",
+    name: "Nạc vai bò Mỹ",
+    stock: 18,
+    unit: "kg",
+  },
+  {
+    id: 3,
+    code: "ING003",
+    name: "Tôm sú",
+    stock: 12,
+    unit: "kg",
+  },
+  {
+    id: 4,
+    code: "ING004",
+    name: "Mực ống",
+    stock: 9,
+    unit: "kg",
+  },
+  {
+    id: 5,
+    code: "ING005",
+    name: "Kim chi",
+    stock: 20,
+    unit: "kg",
+  },
+  {
+    id: 6,
+    code: "ING001",
+    name: "Ba chỉ bò Mỹ",
+    stock: 25.5,
+    unit: "kg",
+  },
+  {
+    id: 7,
+    code: "ING002",
+    name: "Nạc vai bò Mỹ",
+    stock: 18,
+    unit: "kg",
+  },
+  {
+    id: 8,
+    code: "ING003",
+    name: "Tôm sú",
+    stock: 12,
+    unit: "kg",
+  },
+  {
+    id: 9,
+    code: "ING004",
+    name: "Mực ống",
+    stock: 9,
+    unit: "kg",
+  },
+  {
+    id: 10,
+    code: "ING005",
+    name: "Kim chi",
+    stock: 20,
+    unit: "kg",
+  },
 ];
+// State management
+let auditPagination;
+
 document.addEventListener("DOMContentLoaded", () => {
-  renderAudit();
+  refreshAuditTable();
 
   document
     .getElementById("ingr-btn-audit-load-all")
@@ -47,12 +155,27 @@ document.addEventListener("DOMContentLoaded", () => {
     ?.addEventListener("click", saveAudit);
 });
 
-function renderAudit() {
+function refreshAuditTable() {
+  if (!auditPagination) {
+    auditPagination = new Pagination({
+      data: ingredients,
+      itemsPerPage: 10,
+      infoElementId: "ingr-ingredients-page-info",
+      controlsElementId: "ingr-ingredients-page-controls",
+      onRender: renderAudit,
+    });
+    auditPagination.render();
+  } else {
+    auditPagination.setData(ingredients);
+  }
+}
+
+function renderAudit(pageData) {
   const tbody = document.getElementById("ingr-audit-table-body");
 
   if (!tbody) return;
 
-  if (ingredients.length === 0) {
+  if (!pageData || pageData.length === 0) {
     tbody.innerHTML = `
       <tr>
         <td colspan="7">
@@ -71,7 +194,7 @@ function renderAudit() {
     return;
   }
 
-  tbody.innerHTML = ingredients
+  tbody.innerHTML = pageData
     .map(
       (ingr) => `
       <tr id="ingr-audit-row-${ingr.id}">

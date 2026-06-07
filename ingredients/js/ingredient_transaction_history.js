@@ -77,8 +77,12 @@ const ingredients = [
   },
 ];
 
+// State management
+let historyPagination;
+let currentFilteredHistory = [...historyData];
+
 document.addEventListener("DOMContentLoaded", () => {
-  renderHistory();
+  refreshHistoryTable();
 
   document
     .getElementById("ingr-history-filter-reset")
@@ -89,13 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "ingr-history-date-end",
     "ingr-history-type-filter",
   ].forEach((id) => {
-    document.getElementById(id)?.addEventListener("change", renderHistory);
+    document.getElementById(id)?.addEventListener("change", applyHistoryFilter);
   });
 });
 
-function renderHistory() {
-  const tbody = document.getElementById("ingr-history-table-body");
-
+function applyHistoryFilter() {
   const startDate =
     document.getElementById("ingr-history-date-start")?.value || "";
 
@@ -104,7 +106,7 @@ function renderHistory() {
   const typeFilter =
     document.getElementById("ingr-history-type-filter")?.value || "all";
 
-  const filteredData = historyData.filter((tx) => {
+  currentFilteredHistory = historyData.filter((tx) => {
     const txDate = new Date(tx.timestamp);
 
     const matchStart =
@@ -117,7 +119,30 @@ function renderHistory() {
     return matchStart && matchEnd && matchType;
   });
 
-  if (!filteredData.length) {
+  refreshHistoryTable();
+}
+
+function refreshHistoryTable() {
+  if (!historyPagination) {
+    historyPagination = new Pagination({
+      data: currentFilteredHistory,
+      itemsPerPage: 10,
+      infoElementId: "ingr-ingredients-page-info",
+      controlsElementId: "ingr-ingredients-page-controls",
+      onRender: renderHistory,
+    });
+    historyPagination.render();
+  } else {
+    historyPagination.setData(currentFilteredHistory);
+  }
+}
+
+function renderHistory(pageData) {
+  const tbody = document.getElementById("ingr-history-table-body");
+
+  if (!tbody) return;
+
+  if (!pageData || !pageData.length) {
     tbody.innerHTML = `
       <tr>
         <td colspan="7">
@@ -136,7 +161,7 @@ function renderHistory() {
     return;
   }
 
-  tbody.innerHTML = filteredData
+  tbody.innerHTML = pageData
     .map((tx) => {
       const ingredient = ingredients.find(
         (item) => item.id === tx.ingredientId,
@@ -214,5 +239,6 @@ function resetHistoryFilter() {
   document.getElementById("ingr-history-date-end").value = "";
   document.getElementById("ingr-history-type-filter").value = "all";
 
-  renderHistory();
+  currentFilteredHistory = [...historyData];
+  refreshHistoryTable();
 }

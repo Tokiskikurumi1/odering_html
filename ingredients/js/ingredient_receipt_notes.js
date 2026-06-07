@@ -116,8 +116,7 @@ const mockReceiptNotes = [
 ];
 
 // State management
-let currentPage = 1;
-const recordsPerPage = 5;
+let receiptPagination;
 let filteredNotes = [...mockReceiptNotes];
 let selectedNote = null;
 
@@ -126,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
   populateSupplierFilter();
 
   // Initial render
-  renderReceiptNotes();
+  refreshReceiptTable();
 
   // Listeners for filters
   document.getElementById("ingr-receipt-search")?.addEventListener("input", handleFiltersChange);
@@ -136,22 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Reset filter button
   document.getElementById("ingr-receipt-filter-reset")?.addEventListener("click", resetFilters);
-
-  // Pagination buttons
-  document.getElementById("ingr-receipt-prev-page")?.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      renderReceiptNotes();
-    }
-  });
-
-  document.getElementById("ingr-receipt-next-page")?.addEventListener("click", () => {
-    const totalPages = Math.ceil(filteredNotes.length / recordsPerPage);
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderReceiptNotes();
-    }
-  });
 
   // Modal events
   document.getElementById("ingr-receipt-detail-close")?.addEventListener("click", closeDetailModal);
@@ -205,8 +188,7 @@ function handleFiltersChange() {
     return matchesQuery && matchesStart && matchesEnd && matchesSupplier;
   });
 
-  currentPage = 1;
-  renderReceiptNotes();
+  refreshReceiptTable();
 }
 
 function resetFilters() {
@@ -216,44 +198,33 @@ function resetFilters() {
   document.getElementById("ingr-receipt-supplier-filter").value = "all";
 
   filteredNotes = [...mockReceiptNotes];
-  currentPage = 1;
-  renderReceiptNotes();
+  refreshReceiptTable();
 
   if (typeof showToast === "function") {
     showToast("Bộ lọc", "Đã thiết lập lại các bộ lọc về mặc định", "info");
   }
 }
 
-function renderReceiptNotes() {
+function refreshReceiptTable() {
+  if (!receiptPagination) {
+    receiptPagination = new Pagination({
+      data: filteredNotes,
+      itemsPerPage: 5,
+      infoElementId: "ingr-ingredients-page-info",
+      controlsElementId: "ingr-ingredients-page-controls",
+      onRender: renderReceiptNotes,
+    });
+    receiptPagination.render();
+  } else {
+    receiptPagination.setData(filteredNotes);
+  }
+}
+
+function renderReceiptNotes(pageData) {
   const tbody = document.getElementById("ingr-receipt-notes-tbody");
   if (!tbody) return;
 
-  // Pagination bounds
-  const totalRecords = filteredNotes.length;
-  const totalPages = Math.ceil(totalRecords / recordsPerPage);
-  
-  if (currentPage > totalPages && totalPages > 0) {
-    currentPage = totalPages;
-  }
-
-  const startIdx = (currentPage - 1) * recordsPerPage;
-  const endIdx = Math.min(startIdx + recordsPerPage, totalRecords);
-
-  // Enable/disable pagination buttons
-  const prevBtn = document.getElementById("ingr-receipt-prev-page");
-  const nextBtn = document.getElementById("ingr-receipt-next-page");
-  if (prevBtn) prevBtn.disabled = currentPage === 1 || totalRecords === 0;
-  if (nextBtn) nextBtn.disabled = currentPage === totalPages || totalRecords === 0;
-
-  // Pagination stats text
-  const statsLabel = document.getElementById("ingr-receipt-pagination-stats");
-  if (statsLabel) {
-    statsLabel.textContent = totalRecords > 0 
-      ? `Hiển thị ${startIdx + 1}-${endIdx} trên tổng số ${totalRecords} phiếu nhập`
-      : "Hiển thị 0-0 trên tổng số 0 phiếu nhập";
-  }
-
-  if (totalRecords === 0) {
+  if (!pageData || pageData.length === 0) {
     tbody.innerHTML = `
       <tr>
         <td colspan="8">
@@ -268,9 +239,7 @@ function renderReceiptNotes() {
     return;
   }
 
-  const pageRecords = filteredNotes.slice(startIdx, endIdx);
-
-  tbody.innerHTML = pageRecords.map(note => {
+  tbody.innerHTML = pageData.map(note => {
     const supplier = suppliers.find(s => s.id === note.supplierId);
     const supplierName = supplier ? supplier.name : "N/A";
     
