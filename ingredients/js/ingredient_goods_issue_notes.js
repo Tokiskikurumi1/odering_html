@@ -10,35 +10,32 @@ const mockIssueNotes = [
     receiverName: "Trần Quốc Bảo (Bếp trưởng)",
     items: [
       { code: "ING001", name: "Ba chỉ bò Mỹ", unit: "kg", quantity: 8.0 },
-      { code: "ING002", name: "Nạc vai bò Mỹ", unit: "kg", quantity: 5.5 }
+      { code: "ING002", name: "Nạc vai bò Mỹ", unit: "kg", quantity: 5.5 },
     ],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    notes: "Xuất ba chỉ bò Mỹ và nạc vai bò Mỹ làm nguyên liệu chế biến ca sáng."
+    notes:
+      "Xuất ba chỉ bò Mỹ và nạc vai bò Mỹ làm nguyên liệu chế biến ca sáng.",
   },
   {
     id: "GI-20260601-002",
     timestamp: "2026-06-01T16:30:00",
     reason: "Quầy Bar - Pha chế",
     receiverName: "Lê Thị Thảo (Bar trưởng)",
-    items: [
-      { code: "ING009", name: "Khoai tây", unit: "kg", quantity: 10.0 }
-    ],
+    items: [{ code: "ING009", name: "Khoai tây", unit: "kg", quantity: 10.0 }],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    notes: "Xuất khoai tây bổ sung làm món khoai tây chiên giòn ca tối."
+    notes: "Xuất khoai tây bổ sung làm món khoai tây chiên giòn ca tối.",
   },
   {
     id: "GI-20260602-001",
     timestamp: "2026-06-02T09:00:00",
     reason: "Kiểm kê - Bù trừ hao hụt",
     receiverName: "Nguyễn Minh Nam (Thủ kho)",
-    items: [
-      { code: "ING003", name: "Tôm sú tươi", unit: "kg", quantity: 2.0 }
-    ],
+    items: [{ code: "ING003", name: "Tôm sú tươi", unit: "kg", quantity: 2.0 }],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    notes: "Điều chỉnh hao hụt sau khi kiểm kê kho định kỳ tuần."
+    notes: "Điều chỉnh hao hụt sau khi kiểm kê kho định kỳ tuần.",
   },
   {
     id: "GI-20260603-001",
@@ -46,11 +43,11 @@ const mockIssueNotes = [
     reason: "Hủy nguyên liệu hết hạn",
     receiverName: "Trần Văn Hải (Giám sát)",
     items: [
-      { code: "ING005", name: "Xà lách thủy canh", unit: "kg", quantity: 3.5 }
+      { code: "ING005", name: "Xà lách thủy canh", unit: "kg", quantity: 3.5 },
     ],
     createdBy: "Trần Văn Hải",
     status: "COMPLETED",
-    notes: "Hủy rau xà lách bị hỏng, úng nước do lỗi tủ mát ca tối hôm qua."
+    notes: "Hủy rau xà lách bị hỏng, úng nước do lỗi tủ mát ca tối hôm qua.",
   },
   {
     id: "GI-20260604-001",
@@ -60,11 +57,11 @@ const mockIssueNotes = [
     items: [
       { code: "ING001", name: "Ba chỉ bò Mỹ", unit: "kg", quantity: 12.0 },
       { code: "ING004", name: "Mực ống", unit: "kg", quantity: 6.0 },
-      { code: "ING007", name: "Nấm đùi gà", unit: "kg", quantity: 4.0 }
+      { code: "ING007", name: "Nấm đùi gà", unit: "kg", quantity: 4.0 },
     ],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    notes: "Xuất nguyên liệu lẩu nướng cho tiệc đặt bàn lớn ca tối."
+    notes: "Xuất nguyên liệu lẩu nướng cho tiệc đặt bàn lớn ca tối.",
   },
   {
     id: "GI-20260605-001",
@@ -72,11 +69,11 @@ const mockIssueNotes = [
     reason: "Xuất chuyển kho nội bộ",
     receiverName: "Phạm Văn Đức (Thủ kho chi nhánh Q3)",
     items: [
-      { code: "ING002", name: "Nạc vai bò Mỹ", unit: "kg", quantity: 15.0 }
+      { code: "ING002", name: "Nạc vai bò Mỹ", unit: "kg", quantity: 15.0 },
     ],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    notes: "Chuyển kho hỗ trợ chi nhánh Quận 3 hết hàng đột xuất."
+    notes: "Chuyển kho hỗ trợ chi nhánh Quận 3 hết hàng đột xuất.",
   },
   {
     id: "GI-20260606-001",
@@ -85,83 +82,94 @@ const mockIssueNotes = [
     receiverName: "Nguyễn Văn Hùng (Bếp phụ)",
     items: [
       { code: "ING006", name: "Cà chua bi", unit: "kg", quantity: 5.0 },
-      { code: "ING008", name: "Ớt chuông Đà Lạt", unit: "kg", quantity: 3.0 }
+      { code: "ING008", name: "Ớt chuông Đà Lạt", unit: "kg", quantity: 3.0 },
     ],
     createdBy: "Trần Văn Hải",
     status: "COMPLETED",
-    notes: "Xuất rau củ làm món salad ăn kèm."
-  }
+    notes: "Xuất rau củ làm món salad ăn kèm.",
+  },
 ];
 
 // State management
-let currentPage = 1;
-const recordsPerPage = 5;
+let issuePagination;
 let filteredNotes = [...mockIssueNotes];
 let selectedNote = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initial render
-  renderIssueNotes();
+  refreshIssueTable();
 
   // Listeners for filters
-  document.getElementById("ingr-issue-search")?.addEventListener("input", handleFiltersChange);
-  document.getElementById("ingr-issue-date-start")?.addEventListener("change", handleFiltersChange);
-  document.getElementById("ingr-issue-date-end")?.addEventListener("change", handleFiltersChange);
-  document.getElementById("ingr-issue-reason-filter")?.addEventListener("change", handleFiltersChange);
+  document
+    .getElementById("ingr-issue-search")
+    ?.addEventListener("input", handleFiltersChange);
+  document
+    .getElementById("ingr-issue-date-start")
+    ?.addEventListener("change", handleFiltersChange);
+  document
+    .getElementById("ingr-issue-date-end")
+    ?.addEventListener("change", handleFiltersChange);
+  document
+    .getElementById("ingr-issue-reason-filter")
+    ?.addEventListener("change", handleFiltersChange);
 
   // Reset filter button
-  document.getElementById("ingr-issue-filter-reset")?.addEventListener("click", resetFilters);
-
-  // Pagination buttons
-  document.getElementById("ingr-issue-prev-page")?.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      renderIssueNotes();
-    }
-  });
-
-  document.getElementById("ingr-issue-next-page")?.addEventListener("click", () => {
-    const totalPages = Math.ceil(filteredNotes.length / recordsPerPage);
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderIssueNotes();
-    }
-  });
+  document
+    .getElementById("ingr-issue-filter-reset")
+    ?.addEventListener("click", resetFilters);
 
   // Modal events
-  document.getElementById("ingr-issue-detail-close")?.addEventListener("click", closeDetailModal);
-  document.getElementById("ingr-issue-detail-close-btn")?.addEventListener("click", closeDetailModal);
-  document.getElementById("ingr-issue-print-btn")?.addEventListener("click", printIssueNote);
-  document.getElementById("ingr-issue-pdf-btn")?.addEventListener("click", exportPDFIssueNote);
+  document
+    .getElementById("ingr-issue-detail-close")
+    ?.addEventListener("click", closeDetailModal);
+  document
+    .getElementById("ingr-issue-detail-close-btn")
+    ?.addEventListener("click", closeDetailModal);
+  document
+    .getElementById("ingr-issue-print-btn")
+    ?.addEventListener("click", printIssueNote);
+  document
+    .getElementById("ingr-issue-pdf-btn")
+    ?.addEventListener("click", exportPDFIssueNote);
 });
 
 function handleFiltersChange() {
-  const query = document.getElementById("ingr-issue-search").value.toLowerCase().trim();
+  const query = document
+    .getElementById("ingr-issue-search")
+    .value.toLowerCase()
+    .trim();
   const dateStart = document.getElementById("ingr-issue-date-start").value;
   const dateEnd = document.getElementById("ingr-issue-date-end").value;
-  const reasonFilter = document.getElementById("ingr-issue-reason-filter").value;
+  const reasonFilter = document.getElementById(
+    "ingr-issue-reason-filter",
+  ).value;
 
-  filteredNotes = mockIssueNotes.filter(note => {
+  filteredNotes = mockIssueNotes.filter((note) => {
     const reasonText = note.reason.toLowerCase();
     const receiverText = note.receiverName.toLowerCase();
     const noteId = note.id.toLowerCase();
-    
+
     // Check search query
-    const matchesQuery = !query || noteId.includes(query) || reasonText.includes(query) || receiverText.includes(query);
+    const matchesQuery =
+      !query ||
+      noteId.includes(query) ||
+      reasonText.includes(query) ||
+      receiverText.includes(query);
 
     // Check dates
     const txDate = new Date(note.timestamp);
-    const matchesStart = !dateStart || txDate >= new Date(dateStart + "T00:00:00");
+    const matchesStart =
+      !dateStart || txDate >= new Date(dateStart + "T00:00:00");
     const matchesEnd = !dateEnd || txDate <= new Date(dateEnd + "T23:59:59");
 
     // Check reason dropdown
-    const matchesReason = reasonFilter === "all" || note.reason === reasonFilter;
+    const matchesReason =
+      reasonFilter === "all" || note.reason === reasonFilter;
 
     return matchesQuery && matchesStart && matchesEnd && matchesReason;
   });
 
-  currentPage = 1;
-  renderIssueNotes();
+  refreshIssueTable();
 }
 
 function resetFilters() {
@@ -171,66 +179,56 @@ function resetFilters() {
   document.getElementById("ingr-issue-reason-filter").value = "all";
 
   filteredNotes = [...mockIssueNotes];
-  currentPage = 1;
-  renderIssueNotes();
+  refreshIssueTable();
 
   if (typeof showToast === "function") {
     showToast("Bộ lọc", "Đã thiết lập lại các bộ lọc về mặc định", "info");
   }
 }
 
-function renderIssueNotes() {
+function refreshIssueTable() {
+  if (!issuePagination) {
+    issuePagination = new Pagination({
+      data: filteredNotes,
+      itemsPerPage: 5,
+
+      infoElementId: "ingr-ingredients-page-info",
+
+      controlsElementId: "ingr-ingredients-page-controls",
+
+      onRender: renderIssueNotes,
+    });
+
+    issuePagination.render();
+  } else {
+    issuePagination.setData(filteredNotes);
+  }
+}
+
+function renderIssueNotes(pageData) {
   const tbody = document.getElementById("ingr-issue-notes-tbody");
   if (!tbody) return;
 
-  // Pagination bounds
-  const totalRecords = filteredNotes.length;
-  const totalPages = Math.ceil(totalRecords / recordsPerPage);
-  
-  if (currentPage > totalPages && totalPages > 0) {
-    currentPage = totalPages;
-  }
-
-  const startIdx = (currentPage - 1) * recordsPerPage;
-  const endIdx = Math.min(startIdx + recordsPerPage, totalRecords);
-
-  // Enable/disable pagination buttons
-  const prevBtn = document.getElementById("ingr-issue-prev-page");
-  const nextBtn = document.getElementById("ingr-issue-next-page");
-  if (prevBtn) prevBtn.disabled = currentPage === 1 || totalRecords === 0;
-  if (nextBtn) nextBtn.disabled = currentPage === totalPages || totalRecords === 0;
-
-  // Pagination stats text
-  const statsLabel = document.getElementById("ingr-issue-pagination-stats");
-  if (statsLabel) {
-    statsLabel.textContent = totalRecords > 0 
-      ? `Hiển thị ${startIdx + 1}-${endIdx} trên tổng số ${totalRecords} phiếu xuất`
-      : "Hiển thị 0-0 trên tổng số 0 phiếu xuất";
-  }
-
-  if (totalRecords === 0) {
+  if (!pageData || pageData.length === 0) {
     tbody.innerHTML = `
-      <tr>
-        <td colspan="8">
-          <div class="ingr-empty-state-card-wrapper" style="text-align: center; padding: 40px;">
-            <i class="fa-solid fa-file-export" style="font-size: 2.5rem; color: var(--ingr-text-disabled); margin-bottom: 15px;"></i>
-            <p class="ingr-empty-state-headline" style="font-weight: 700; color: var(--ingr-text-bright); margin: 0 0 5px 0;">Không tìm thấy phiếu xuất nào</p>
-            <p class="ingr-empty-state-guidance" style="color: var(--ingr-text-muted); font-size: 0.85rem; margin: 0;">Không có dữ liệu phù hợp với điều kiện lọc.</p>
-          </div>
-        </td>
-      </tr>
-    `;
+    <tr>
+      <td colspan="8">
+        <div class="ingr-empty-state-card-wrapper">
+          Không tìm thấy dữ liệu
+        </div>
+      </td>
+    </tr>
+  `;
     return;
   }
+  const pageRecords = pageData;
+  tbody.innerHTML = pageRecords
+    .map((note) => {
+      // Calculations
+      const itemsCount = note.items.length;
+      const totalQty = note.items.reduce((sum, item) => sum + item.quantity, 0);
 
-  const pageRecords = filteredNotes.slice(startIdx, endIdx);
-
-  tbody.innerHTML = pageRecords.map(note => {
-    // Calculations
-    const itemsCount = note.items.length;
-    const totalQty = note.items.reduce((sum, item) => sum + item.quantity, 0);
-
-    return `
+      return `
       <tr style="cursor: pointer;" onclick="openIssueDetailModalByCode('${note.id}')">
         <td>
           <span style="font-size: 0.8rem; color: var(--ingr-text-muted);">
@@ -238,7 +236,7 @@ function renderIssueNotes() {
           </span>
           <br>
           <span style="font-size: 0.75rem; color: var(--ingr-text-disabled);">
-            ${new Date(note.timestamp).toLocaleTimeString("vi-VN", {hour: '2-digit', minute:'2-digit'})}
+            ${new Date(note.timestamp).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })}
           </span>
         </td>
         <td>
@@ -279,12 +277,13 @@ function renderIssueNotes() {
         </td>
       </tr>
     `;
-  }).join("");
+    })
+    .join("");
 }
 
 // Open modal functions
-window.openIssueDetailModalByCode = function(code) {
-  const note = mockIssueNotes.find(n => n.id === code);
+window.openIssueDetailModalByCode = function (code) {
+  const note = mockIssueNotes.find((n) => n.id === code);
   if (!note) return;
 
   selectedNote = note;
@@ -299,7 +298,9 @@ function renderDetailModalContent(note) {
   if (!container) return;
 
   // Build items rows
-  const itemsHTML = note.items.map((item, idx) => `
+  const itemsHTML = note.items
+    .map(
+      (item, idx) => `
     <tr>
       <td style="text-align: center;">${idx + 1}</td>
       <td style="font-family: monospace; font-weight: 700;">${item.code}</td>
@@ -307,7 +308,9 @@ function renderDetailModalContent(note) {
       <td>${item.unit}</td>
       <td style="text-align: right; font-weight: 700; color: var(--ingr-status-warning);">${item.quantity.toFixed(1)}</td>
     </tr>
-  `).join("");
+  `,
+    )
+    .join("");
 
   container.innerHTML = `
     <!-- Slip Container Wrapper -->
@@ -421,17 +424,25 @@ function exportPDFIssueNote() {
   if (!selectedNote) return;
 
   if (typeof showToast === "function") {
-    showToast("Đang kết xuất", "Đang chuyển đổi phiếu xuất sang định dạng PDF...", "info");
-    
+    showToast(
+      "Đang kết xuất",
+      "Đang chuyển đổi phiếu xuất sang định dạng PDF...",
+      "info",
+    );
+
     setTimeout(() => {
-      showToast("Xuất PDF thành công", `Đã lưu phiếu ${selectedNote.id}.pdf về máy của bạn.`, "success");
+      showToast(
+        "Xuất PDF thành công",
+        `Đã lưu phiếu ${selectedNote.id}.pdf về máy của bạn.`,
+        "success",
+      );
     }, 1500);
   }
 }
 
 // Action button triggers directly from listing
-window.printIssueDirectly = function(code) {
-  const note = mockIssueNotes.find(n => n.id === code);
+window.printIssueDirectly = function (code) {
+  const note = mockIssueNotes.find((n) => n.id === code);
   if (!note) return;
 
   selectedNote = note;
@@ -441,15 +452,19 @@ window.printIssueDirectly = function(code) {
   }, 100);
 };
 
-window.exportPDFIssueDirectly = function(code) {
-  const note = mockIssueNotes.find(n => n.id === code);
+window.exportPDFIssueDirectly = function (code) {
+  const note = mockIssueNotes.find((n) => n.id === code);
   if (!note) return;
 
   selectedNote = note;
   if (typeof showToast === "function") {
     showToast("Đang kết xuất", `Bắt đầu xuất PDF cho phiếu ${code}...`, "info");
     setTimeout(() => {
-      showToast("Xuất PDF thành công", `Tệp ${code}.pdf đã được tải xuống.`, "success");
+      showToast(
+        "Xuất PDF thành công",
+        `Tệp ${code}.pdf đã được tải xuống.`,
+        "success",
+      );
     }, 1200);
   }
 };
