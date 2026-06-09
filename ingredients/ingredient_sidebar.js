@@ -14,7 +14,7 @@ const pageTitleMap = {
   "ingredient_warnings.html": "Cảnh báo tồn kho",
   "ingredient_transaction_history.html": "Lịch sử giao dịch kho",
   "ingredient_supplier.html": "Nhà cung cấp",
-  "ingredient_report.html": "Báo cáo - thống kê kho"
+  "ingredient_report.html": "Báo cáo - thống kê kho",
 };
 
 // ==========================================
@@ -24,9 +24,9 @@ const pageTitleMap = {
 function updateHeaderTitle() {
   const currentPage = location.pathname.split("/").pop();
   const title = pageTitleMap[currentPage] || "Dashboard kho";
-  
+
   const headerTitle = document.getElementById("ingr-header-tab-title");
-  
+
   if (headerTitle) {
     headerTitle.textContent = title;
   }
@@ -39,30 +39,30 @@ function updateHeaderTitle() {
 function createSidebarOverlay() {
   // Kiểm tra xem overlay đã tồn tại chưa
   let overlay = document.getElementById("ingr-sidebar-overlay");
-  
+
   if (!overlay) {
     overlay = document.createElement("div");
     overlay.id = "ingr-sidebar-overlay";
     overlay.className = "ingr-sidebar-overlay";
     document.body.appendChild(overlay);
-    
+
     // Click overlay để đóng sidebar
     overlay.addEventListener("click", closeMobileSidebar);
   }
-  
+
   return overlay;
 }
 
 function openMobileSidebar() {
   const sidebar = document.getElementById("ingr-sidebar-element");
   const overlay = createSidebarOverlay();
-  
+
   if (sidebar) {
     sidebar.classList.add("mobile-open");
   }
-  
+
   overlay.classList.add("active");
-  
+
   // Prevent body scroll
   document.body.classList.add("ingr-sidebar-open");
 }
@@ -70,15 +70,15 @@ function openMobileSidebar() {
 function closeMobileSidebar() {
   const sidebar = document.getElementById("ingr-sidebar-element");
   const overlay = document.getElementById("ingr-sidebar-overlay");
-  
+
   if (sidebar) {
     sidebar.classList.remove("mobile-open");
   }
-  
+
   if (overlay) {
     overlay.classList.remove("active");
   }
-  
+
   // Enable body scroll
   document.body.classList.remove("ingr-sidebar-open");
 }
@@ -139,7 +139,7 @@ function initIngredientSidebar() {
 
   // Mobile toggle button
   const mobileToggle = document.getElementById("ingr-mobile-toggle-btn");
-  
+
   if (mobileToggle) {
     mobileToggle.addEventListener("click", (e) => {
       e.stopPropagation();

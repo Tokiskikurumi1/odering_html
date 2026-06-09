@@ -866,7 +866,9 @@ function applyFilters() {
 
   ingredientPagination.setData(filteredData);
 }
-
+window.initPage = function () {
+  applyFilters();
+};
 function loadCategories() {
   const categories = [
     ...new Set(ingredients.filter((x) => x.category).map((x) => x.category)),
@@ -1056,9 +1058,8 @@ cancelIngrBtn.onclick = dismissIngrModal;
 
 function editIngredient(id) {
   const ingredient = ingredients.find((i) => i.id === id);
-document.getElementById(
-  "ingr-form-ingredient-category",
-).value = ingredient.category;
+  document.getElementById("ingr-form-ingredient-category").value =
+    ingredient.category;
   if (!ingredient) return;
 
   document.getElementById("ingr-ingredient-modal-title").textContent =
@@ -1165,9 +1166,9 @@ ingrForm.onsubmit = function (e) {
 
   if (id) {
     const ingredient = ingredients.find((i) => i.id === id);
-ingredient.category = document.getElementById(
-  "ingr-form-ingredient-category",
-).value;
+    ingredient.category = document.getElementById(
+      "ingr-form-ingredient-category",
+    ).value;
     if (ingredient) {
       ingredient.code = code;
       ingredient.name = name;
@@ -1244,9 +1245,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   applyFilters();
 
-  const searchInput = document.getElementById(
-    "ingr-search-ingredient-input",
-  );
+  const searchInput = document.getElementById("ingr-search-ingredient-input");
 
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
@@ -1266,9 +1265,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const statusFilter = document.getElementById(
-    "ingr-filter-ingredient-status",
-  );
+  const statusFilter = document.getElementById("ingr-filter-ingredient-status");
 
   if (statusFilter) {
     statusFilter.addEventListener("change", (e) => {

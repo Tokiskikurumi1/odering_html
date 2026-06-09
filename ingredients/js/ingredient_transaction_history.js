@@ -48,6 +48,87 @@ const historyData = [
     user: "Admin",
     details: "Cập nhật thông tin nguyên liệu",
   },
+  {
+    id: "TX0001",
+    timestamp: "2026-06-01T08:30:00",
+    type: "IMPORT",
+    ingredientId: 1,
+    qty: 50,
+    user: "Nguyễn Minh Nam",
+    details: "Nhập thịt bò từ NCC An Phát",
+  },
+  {
+    id: "TX0002",
+    timestamp: "2026-06-01T10:15:00",
+    type: "EXPORT",
+    ingredientId: 1,
+    qty: -8,
+    user: "Nguyễn Minh Nam",
+    details: "Xuất cho bếp chế biến",
+  },
+  {
+    id: "TX0003",
+    timestamp: "2026-06-01T14:20:00",
+    type: "IMPORT",
+    ingredientId: 2,
+    qty: 30,
+    user: "Trần Văn Hải",
+    details: "Nhập rau xà lách",
+  },
+  {
+    id: "TX0004",
+    timestamp: "2026-06-02T09:00:00",
+    type: "AUDIT",
+    ingredientId: 3,
+    qty: -2,
+    user: "Nguyễn Minh Nam",
+    details: "Điều chỉnh sau kiểm kê",
+  },
+  {
+    id: "TX0005",
+    timestamp: "2026-06-02T11:45:00",
+    type: "CRUD",
+    ingredientId: 4,
+    qty: 0,
+    user: "Admin",
+    details: "Cập nhật thông tin nguyên liệu",
+  },
+  {
+    id: "TX0001",
+    timestamp: "2026-06-01T08:30:00",
+    type: "IMPORT",
+    ingredientId: 1,
+    qty: 50,
+    user: "Nguyễn Minh Nam",
+    details: "Nhập thịt bò từ NCC An Phát",
+  },
+  {
+    id: "TX0002",
+    timestamp: "2026-06-01T10:15:00",
+    type: "EXPORT",
+    ingredientId: 1,
+    qty: -8,
+    user: "Nguyễn Minh Nam",
+    details: "Xuất cho bếp chế biến",
+  },
+  {
+    id: "TX0003",
+    timestamp: "2026-06-01T14:20:00",
+    type: "IMPORT",
+    ingredientId: 2,
+    qty: 30,
+    user: "Trần Văn Hải",
+    details: "Nhập rau xà lách",
+  },
+  {
+    id: "TX0004",
+    timestamp: "2026-06-02T09:00:00",
+    type: "AUDIT",
+    ingredientId: 3,
+    qty: -2,
+    user: "Nguyễn Minh Nam",
+    details: "Điều chỉnh sau kiểm kê",
+  },
 ];
 
 const ingredients = [
@@ -80,10 +161,12 @@ const ingredients = [
 // State management
 let historyPagination;
 let currentFilteredHistory = [...historyData];
-
+window.initPage = function () {
+  if (!historyPagination) {
+    refreshHistoryTable();
+  }
+};
 document.addEventListener("DOMContentLoaded", () => {
-  refreshHistoryTable();
-
   document
     .getElementById("ingr-history-filter-reset")
     ?.addEventListener("click", resetHistoryFilter);

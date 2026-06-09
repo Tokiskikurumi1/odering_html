@@ -35,6 +35,78 @@ const ingredients = [
     minStock: 20,
     expiry: "2026-12-31",
   },
+  {
+    id: "NL001",
+    code: "THITBO",
+    name: "Thịt bò Mỹ",
+    stock: 5,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-06-01",
+  },
+  {
+    id: "NL002",
+    code: "RAUXL",
+    name: "Rau xà lách",
+    stock: 2,
+    unit: "kg",
+    minStock: 8,
+    expiry: "2026-05-20",
+  },
+  {
+    id: "NL003",
+    code: "NAMKIM",
+    name: "Nấm kim châm",
+    stock: 7,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-06-05",
+  },
+  {
+    id: "NL004",
+    code: "SOOTBBQ",
+    name: "Sốt BBQ",
+    stock: 80,
+    unit: "chai",
+    minStock: 20,
+    expiry: "2026-12-31",
+  },
+  {
+    id: "NL001",
+    code: "THITBO",
+    name: "Thịt bò Mỹ",
+    stock: 5,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-06-01",
+  },
+  {
+    id: "NL002",
+    code: "RAUXL",
+    name: "Rau xà lách",
+    stock: 2,
+    unit: "kg",
+    minStock: 8,
+    expiry: "2026-05-20",
+  },
+  {
+    id: "NL003",
+    code: "NAMKIM",
+    name: "Nấm kim châm",
+    stock: 7,
+    unit: "kg",
+    minStock: 10,
+    expiry: "2026-06-05",
+  },
+  {
+    id: "NL004",
+    code: "SOOTBBQ",
+    name: "Sốt BBQ",
+    stock: 80,
+    unit: "chai",
+    minStock: 20,
+    expiry: "2026-12-31",
+  },
 ];
 function getIngredientStatus(ingr) {
   const today = new Date();
@@ -60,10 +132,12 @@ function getIngredientStatus(ingr) {
 }
 let activeWarningTypeFilter = "all";
 let warningsPagination;
-
+window.initPage = function () {
+  if (!warningsPagination) {
+    refreshWarningsTable();
+  }
+};
 document.addEventListener("DOMContentLoaded", () => {
-  refreshWarningsTable();
-
   const warningPillFilters = document.querySelectorAll(
     ".ingr-warning-pill-filter",
   );

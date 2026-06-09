@@ -19,3 +19,13 @@ fetch("./ingredient_sidebar.html")
     }
   })
   .catch((err) => console.error("Sidebar:", err));
+
+fetch("./ingredient_pagination.html")
+  .then((response) => response.text())
+  .then((html) => {
+    document.getElementById("ingr-pagination-content").innerHTML = html;
+
+    if (typeof window.initPage === "function") {
+      window.initPage();
+    }
+  });

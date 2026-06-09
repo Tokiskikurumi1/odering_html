@@ -97,7 +97,6 @@ let selectedNote = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initial render
-  refreshIssueTable();
 
   // Listeners for filters
   document
@@ -204,7 +203,9 @@ function refreshIssueTable() {
     issuePagination.setData(filteredNotes);
   }
 }
-
+window.initPage = function () {
+  refreshIssueTable();
+};
 function renderIssueNotes(pageData) {
   const tbody = document.getElementById("ingr-issue-notes-tbody");
   if (!tbody) return;

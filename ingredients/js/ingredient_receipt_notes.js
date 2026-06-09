@@ -9,7 +9,7 @@ const suppliers = [
     name: "Công ty Thực phẩm Minh Phát",
     phone: "0901 234 567",
     email: "contact@minhphatfood.vn",
-    address: "Đường số 7, KCN Vĩnh Lộc, Bình Tân, TP.HCM"
+    address: "Đường số 7, KCN Vĩnh Lộc, Bình Tân, TP.HCM",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const suppliers = [
     name: "Công ty Hải Sản Đại Dương",
     phone: "0918 765 432",
     email: "sales@daiduongseafood.com",
-    address: "128 Cảng Trần Đề, Sóc Trăng"
+    address: "128 Cảng Trần Đề, Sóc Trăng",
   },
   {
     id: 3,
@@ -25,8 +25,8 @@ const suppliers = [
     name: "Công ty Rau Sạch Đà Lạt",
     phone: "0989 333 444",
     email: "info@dalatcleanveg.vn",
-    address: "Thôn Đa Quý, Xuân Thọ, TP. Đà Lạt"
-  }
+    address: "Thôn Đa Quý, Xuân Thọ, TP. Đà Lạt",
+  },
 ];
 
 const mockReceiptNotes = [
@@ -35,84 +35,154 @@ const mockReceiptNotes = [
     timestamp: "2026-06-01T09:15:00",
     supplierId: 1,
     items: [
-      { code: "ING001", name: "Ba chỉ bò Mỹ", unit: "kg", quantity: 50.0, price: 285000 },
-      { code: "ING002", name: "Nạc vai bò Mỹ", unit: "kg", quantity: 30.0, price: 320000 }
+      {
+        code: "ING001",
+        name: "Ba chỉ bò Mỹ",
+        unit: "kg",
+        quantity: 50.0,
+        price: 285000,
+      },
+      {
+        code: "ING002",
+        name: "Nạc vai bò Mỹ",
+        unit: "kg",
+        quantity: 30.0,
+        price: 320000,
+      },
     ],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    invoiceDoc: "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80",
+    invoiceDoc:
+      "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80",
     vatPercent: 8,
-    notes: "Nhập hàng thịt bò nhập khẩu phục vụ cho tuần lễ Buffet."
+    notes: "Nhập hàng thịt bò nhập khẩu phục vụ cho tuần lễ Buffet.",
   },
   {
     id: "GR-20260602-001",
     timestamp: "2026-06-02T10:30:00",
     supplierId: 3,
     items: [
-      { code: "ING005", name: "Xà lách thủy canh", unit: "kg", quantity: 15.5, price: 45000 },
-      { code: "ING006", name: "Cà chua bi", unit: "kg", quantity: 10.0, price: 35000 },
-      { code: "ING007", name: "Nấm đùi gà", unit: "kg", quantity: 12.0, price: 85000 }
+      {
+        code: "ING005",
+        name: "Xà lách thủy canh",
+        unit: "kg",
+        quantity: 15.5,
+        price: 45000,
+      },
+      {
+        code: "ING006",
+        name: "Cà chua bi",
+        unit: "kg",
+        quantity: 10.0,
+        price: 35000,
+      },
+      {
+        code: "ING007",
+        name: "Nấm đùi gà",
+        unit: "kg",
+        quantity: 12.0,
+        price: 85000,
+      },
     ],
     createdBy: "Trần Văn Hải",
     status: "COMPLETED",
-    invoiceDoc: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=400&q=80",
+    invoiceDoc:
+      "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=400&q=80",
     vatPercent: 8,
-    notes: "Nhà cung cấp giao rau củ tươi ngon, đúng hẹn ca sáng."
+    notes: "Nhà cung cấp giao rau củ tươi ngon, đúng hẹn ca sáng.",
   },
   {
     id: "GR-20260603-001",
     timestamp: "2026-06-03T15:45:00",
     supplierId: 2,
     items: [
-      { code: "ING003", name: "Tôm sú tươi", unit: "kg", quantity: 20.0, price: 420000 },
-      { code: "ING004", name: "Mực ống", unit: "kg", quantity: 15.0, price: 250000 }
+      {
+        code: "ING003",
+        name: "Tôm sú tươi",
+        unit: "kg",
+        quantity: 20.0,
+        price: 420000,
+      },
+      {
+        code: "ING004",
+        name: "Mực ống",
+        unit: "kg",
+        quantity: 15.0,
+        price: 250000,
+      },
     ],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    invoiceDoc: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=400&q=80",
+    invoiceDoc:
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=400&q=80",
     vatPercent: 10,
-    notes: "Hải sản bảo quản thùng xốp đông đá tốt, tươi sống."
+    notes: "Hải sản bảo quản thùng xốp đông đá tốt, tươi sống.",
   },
   {
     id: "GR-20260604-001",
     timestamp: "2026-06-04T08:00:00",
     supplierId: 1,
     items: [
-      { code: "ING001", name: "Ba chỉ bò Mỹ", unit: "kg", quantity: 40.0, price: 285000 }
+      {
+        code: "ING001",
+        name: "Ba chỉ bò Mỹ",
+        unit: "kg",
+        quantity: 40.0,
+        price: 285000,
+      },
     ],
     createdBy: "Trần Văn Hải",
     status: "COMPLETED",
     invoiceDoc: "",
     vatPercent: 8,
-    notes: "Nhập bổ sung khẩn cấp do lượng khách tăng đột biến."
+    notes: "Nhập bổ sung khẩn cấp do lượng khách tăng đột biến.",
   },
   {
     id: "GR-20260605-001",
     timestamp: "2026-06-05T11:20:00",
     supplierId: 3,
     items: [
-      { code: "ING008", name: "Ớt chuông Đà Lạt", unit: "kg", quantity: 8.0, price: 65000 },
-      { code: "ING009", name: "Khoai tây", unit: "kg", quantity: 25.0, price: 28000 }
+      {
+        code: "ING008",
+        name: "Ớt chuông Đà Lạt",
+        unit: "kg",
+        quantity: 8.0,
+        price: 65000,
+      },
+      {
+        code: "ING009",
+        name: "Khoai tây",
+        unit: "kg",
+        quantity: 25.0,
+        price: 28000,
+      },
     ],
     createdBy: "Nguyễn Minh Nam",
     status: "COMPLETED",
-    invoiceDoc: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80",
+    invoiceDoc:
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80",
     vatPercent: 8,
-    notes: "Nhập kho củ quả định kỳ."
+    notes: "Nhập kho củ quả định kỳ.",
   },
   {
     id: "GR-20260606-001",
     timestamp: "2026-06-06T14:10:00",
     supplierId: 2,
     items: [
-      { code: "ING003", name: "Tôm sú tươi", unit: "kg", quantity: 15.0, price: 420000 }
+      {
+        code: "ING003",
+        name: "Tôm sú tươi",
+        unit: "kg",
+        quantity: 15.0,
+        price: 420000,
+      },
     ],
     createdBy: "Trần Văn Hải",
     status: "COMPLETED",
     invoiceDoc: "",
     vatPercent: 10,
-    notes: "Hàng hải sản chiều."
-  }
+    notes: "Hàng hải sản chiều.",
+  },
 ];
 
 // State management
@@ -120,42 +190,65 @@ let receiptPagination;
 let filteredNotes = [...mockReceiptNotes];
 let selectedNote = null;
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Populate Supplier filter options
-  populateSupplierFilter();
+window.initPage = function () {
+  if (!receiptPagination) {
+    populateSupplierFilter();
+  }
 
-  // Initial render
   refreshReceiptTable();
-
+};
+document.addEventListener("DOMContentLoaded", () => {
   // Listeners for filters
-  document.getElementById("ingr-receipt-search")?.addEventListener("input", handleFiltersChange);
-  document.getElementById("ingr-receipt-date-start")?.addEventListener("change", handleFiltersChange);
-  document.getElementById("ingr-receipt-date-end")?.addEventListener("change", handleFiltersChange);
-  document.getElementById("ingr-receipt-supplier-filter")?.addEventListener("change", handleFiltersChange);
+  document
+    .getElementById("ingr-receipt-search")
+    ?.addEventListener("input", handleFiltersChange);
+  document
+    .getElementById("ingr-receipt-date-start")
+    ?.addEventListener("change", handleFiltersChange);
+  document
+    .getElementById("ingr-receipt-date-end")
+    ?.addEventListener("change", handleFiltersChange);
+  document
+    .getElementById("ingr-receipt-supplier-filter")
+    ?.addEventListener("change", handleFiltersChange);
 
   // Reset filter button
-  document.getElementById("ingr-receipt-filter-reset")?.addEventListener("click", resetFilters);
+  document
+    .getElementById("ingr-receipt-filter-reset")
+    ?.addEventListener("click", resetFilters);
 
   // Modal events
-  document.getElementById("ingr-receipt-detail-close")?.addEventListener("click", closeDetailModal);
-  document.getElementById("ingr-receipt-detail-close-btn")?.addEventListener("click", closeDetailModal);
-  document.getElementById("ingr-receipt-print-btn")?.addEventListener("click", printReceiptNote);
-  document.getElementById("ingr-receipt-pdf-btn")?.addEventListener("click", exportPDFReceiptNote);
+  document
+    .getElementById("ingr-receipt-detail-close")
+    ?.addEventListener("click", closeDetailModal);
+  document
+    .getElementById("ingr-receipt-detail-close-btn")
+    ?.addEventListener("click", closeDetailModal);
+  document
+    .getElementById("ingr-receipt-print-btn")
+    ?.addEventListener("click", printReceiptNote);
+  document
+    .getElementById("ingr-receipt-pdf-btn")
+    ?.addEventListener("click", exportPDFReceiptNote);
 
   // Image preview zoom close
-  document.getElementById("ingr-image-preview-close")?.addEventListener("click", closeImageZoom);
-  document.getElementById("ingr-image-preview-zoom-modal")?.addEventListener("click", (e) => {
-    if (e.target.id === "ingr-image-preview-zoom-modal") {
-      closeImageZoom();
-    }
-  });
+  document
+    .getElementById("ingr-image-preview-close")
+    ?.addEventListener("click", closeImageZoom);
+  document
+    .getElementById("ingr-image-preview-zoom-modal")
+    ?.addEventListener("click", (e) => {
+      if (e.target.id === "ingr-image-preview-zoom-modal") {
+        closeImageZoom();
+      }
+    });
 });
 
 function populateSupplierFilter() {
   const filterSelect = document.getElementById("ingr-receipt-supplier-filter");
   if (!filterSelect) return;
 
-  suppliers.forEach(supplier => {
+  suppliers.forEach((supplier) => {
     const opt = document.createElement("option");
     opt.value = supplier.id;
     opt.textContent = supplier.name;
@@ -164,26 +257,34 @@ function populateSupplierFilter() {
 }
 
 function handleFiltersChange() {
-  const query = document.getElementById("ingr-receipt-search").value.toLowerCase().trim();
+  const query = document
+    .getElementById("ingr-receipt-search")
+    .value.toLowerCase()
+    .trim();
   const dateStart = document.getElementById("ingr-receipt-date-start").value;
   const dateEnd = document.getElementById("ingr-receipt-date-end").value;
-  const supplierId = document.getElementById("ingr-receipt-supplier-filter").value;
+  const supplierId = document.getElementById(
+    "ingr-receipt-supplier-filter",
+  ).value;
 
-  filteredNotes = mockReceiptNotes.filter(note => {
-    const supplier = suppliers.find(s => s.id === note.supplierId);
+  filteredNotes = mockReceiptNotes.filter((note) => {
+    const supplier = suppliers.find((s) => s.id === note.supplierId);
     const supplierName = supplier ? supplier.name.toLowerCase() : "";
     const noteId = note.id.toLowerCase();
-    
+
     // Check search query
-    const matchesQuery = !query || noteId.includes(query) || supplierName.includes(query);
+    const matchesQuery =
+      !query || noteId.includes(query) || supplierName.includes(query);
 
     // Check dates
     const txDate = new Date(note.timestamp);
-    const matchesStart = !dateStart || txDate >= new Date(dateStart + "T00:00:00");
+    const matchesStart =
+      !dateStart || txDate >= new Date(dateStart + "T00:00:00");
     const matchesEnd = !dateEnd || txDate <= new Date(dateEnd + "T23:59:59");
 
     // Check supplier dropdown
-    const matchesSupplier = supplierId === "all" || note.supplierId == supplierId;
+    const matchesSupplier =
+      supplierId === "all" || note.supplierId == supplierId;
 
     return matchesQuery && matchesStart && matchesEnd && matchesSupplier;
   });
@@ -239,17 +340,21 @@ function renderReceiptNotes(pageData) {
     return;
   }
 
-  tbody.innerHTML = pageData.map(note => {
-    const supplier = suppliers.find(s => s.id === note.supplierId);
-    const supplierName = supplier ? supplier.name : "N/A";
-    
-    // Calculations
-    const itemsCount = note.items.length;
-    const subtotal = note.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
-    const vatAmount = subtotal * (note.vatPercent / 100);
-    const grandTotal = subtotal + vatAmount;
+  tbody.innerHTML = pageData
+    .map((note) => {
+      const supplier = suppliers.find((s) => s.id === note.supplierId);
+      const supplierName = supplier ? supplier.name : "N/A";
 
-    return `
+      // Calculations
+      const itemsCount = note.items.length;
+      const subtotal = note.items.reduce(
+        (sum, item) => sum + item.quantity * item.price,
+        0,
+      );
+      const vatAmount = subtotal * (note.vatPercent / 100);
+      const grandTotal = subtotal + vatAmount;
+
+      return `
       <tr style="cursor: pointer;" onclick="openDetailModalByCode('${note.id}')">
         <td>
           <span style="font-size: 0.8rem; color: var(--ingr-text-muted);">
@@ -257,7 +362,7 @@ function renderReceiptNotes(pageData) {
           </span>
           <br>
           <span style="font-size: 0.75rem; color: var(--ingr-text-disabled);">
-            ${new Date(note.timestamp).toLocaleTimeString("vi-VN", {hour: '2-digit', minute:'2-digit'})}
+            ${new Date(note.timestamp).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })}
           </span>
         </td>
         <td>
@@ -267,7 +372,7 @@ function renderReceiptNotes(pageData) {
         </td>
         <td>
           <div style="font-weight: 600; color: var(--ingr-text-bright);">${supplierName}</div>
-          <span style="font-size: 0.75rem; color: var(--ingr-text-muted);">Mã NCC: ${supplier ? supplier.code : 'N/A'}</span>
+          <span style="font-size: 0.75rem; color: var(--ingr-text-muted);">Mã NCC: ${supplier ? supplier.code : "N/A"}</span>
         </td>
         <td style="text-align: center; font-weight: 700; color: var(--ingr-text-muted);">
           ${itemsCount}
@@ -296,12 +401,13 @@ function renderReceiptNotes(pageData) {
         </td>
       </tr>
     `;
-  }).join("");
+    })
+    .join("");
 }
 
 // Open modal functions
-window.openDetailModalByCode = function(code) {
-  const note = mockReceiptNotes.find(n => n.id === code);
+window.openDetailModalByCode = function (code) {
+  const note = mockReceiptNotes.find((n) => n.id === code);
   if (!note) return;
 
   selectedNote = note;
@@ -315,15 +421,20 @@ function renderDetailModalContent(note) {
   const container = document.getElementById("ingr-receipt-detail-body");
   if (!container) return;
 
-  const supplier = suppliers.find(s => s.id === note.supplierId);
-  
+  const supplier = suppliers.find((s) => s.id === note.supplierId);
+
   // Calculate Totals
-  const subtotal = note.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+  const subtotal = note.items.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0,
+  );
   const vatAmount = subtotal * (note.vatPercent / 100);
   const grandTotal = subtotal + vatAmount;
 
   // Build items rows
-  const itemsHTML = note.items.map((item, idx) => `
+  const itemsHTML = note.items
+    .map(
+      (item, idx) => `
     <tr>
       <td style="text-align: center;">${idx + 1}</td>
       <td style="font-family: monospace; font-weight: 700;">${item.code}</td>
@@ -333,7 +444,9 @@ function renderDetailModalContent(note) {
       <td style="text-align: right;">${item.price.toLocaleString("vi-VN")} đ</td>
       <td style="text-align: right; font-weight: 700; color: var(--ingr-accent-amber);">${(item.quantity * item.price).toLocaleString("vi-VN")} đ</td>
     </tr>
-  `).join("");
+  `,
+    )
+    .join("");
 
   // Invoice Preview Section HTML
   let invoiceHTML = "";
@@ -384,19 +497,19 @@ function renderDetailModalContent(note) {
           <h5 class="ingr-slip-block-title">Đơn vị cung cấp</h5>
           <div class="ingr-slip-detail-item">
             <span class="ingr-slip-detail-label">Nhà cung cấp:</span>
-            <span class="ingr-slip-detail-value">${supplier ? supplier.name : 'N/A'}</span>
+            <span class="ingr-slip-detail-value">${supplier ? supplier.name : "N/A"}</span>
           </div>
           <div class="ingr-slip-detail-item">
             <span class="ingr-slip-detail-label">Điện thoại:</span>
-            <span class="ingr-slip-detail-value">${supplier ? supplier.phone : 'N/A'}</span>
+            <span class="ingr-slip-detail-value">${supplier ? supplier.phone : "N/A"}</span>
           </div>
           <div class="ingr-slip-detail-item">
             <span class="ingr-slip-detail-label">Email liên hệ:</span>
-            <span class="ingr-slip-detail-value">${supplier ? supplier.email : 'N/A'}</span>
+            <span class="ingr-slip-detail-value">${supplier ? supplier.email : "N/A"}</span>
           </div>
           <div class="ingr-slip-detail-item">
             <span class="ingr-slip-detail-label">Địa chỉ:</span>
-            <span class="ingr-slip-detail-value" style="max-width: 70%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${supplier ? supplier.address : 'N/A'}</span>
+            <span class="ingr-slip-detail-value" style="max-width: 70%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${supplier ? supplier.address : "N/A"}</span>
           </div>
         </div>
 
@@ -488,7 +601,7 @@ function closeDetailModal() {
 }
 
 // Invoice zoom preview
-window.zoomInvoiceImage = function(src) {
+window.zoomInvoiceImage = function (src) {
   const zoomModal = document.getElementById("ingr-image-preview-zoom-modal");
   const img = document.getElementById("ingr-image-preview-large-img");
   if (zoomModal && img) {
@@ -511,17 +624,25 @@ function exportPDFReceiptNote() {
   if (!selectedNote) return;
 
   if (typeof showToast === "function") {
-    showToast("Đang kết xuất", "Đang chuyển đổi hóa đơn sang định dạng PDF...", "info");
-    
+    showToast(
+      "Đang kết xuất",
+      "Đang chuyển đổi hóa đơn sang định dạng PDF...",
+      "info",
+    );
+
     setTimeout(() => {
-      showToast("Xuất PDF thành công", `Đã lưu phiếu ${selectedNote.id}.pdf về máy của bạn.`, "success");
+      showToast(
+        "Xuất PDF thành công",
+        `Đã lưu phiếu ${selectedNote.id}.pdf về máy của bạn.`,
+        "success",
+      );
     }, 1500);
   }
 }
 
 // Action button triggers directly from listing
-window.printDirectly = function(code) {
-  const note = mockReceiptNotes.find(n => n.id === code);
+window.printDirectly = function (code) {
+  const note = mockReceiptNotes.find((n) => n.id === code);
   if (!note) return;
 
   selectedNote = note;
@@ -531,15 +652,19 @@ window.printDirectly = function(code) {
   }, 100);
 };
 
-window.exportPDFDirectly = function(code) {
-  const note = mockReceiptNotes.find(n => n.id === code);
+window.exportPDFDirectly = function (code) {
+  const note = mockReceiptNotes.find((n) => n.id === code);
   if (!note) return;
 
   selectedNote = note;
   if (typeof showToast === "function") {
     showToast("Đang kết xuất", `Bắt đầu xuất PDF cho phiếu ${code}...`, "info");
     setTimeout(() => {
-      showToast("Xuất PDF thành công", `Tệp ${code}.pdf đã được tải xuống.`, "success");
+      showToast(
+        "Xuất PDF thành công",
+        `Tệp ${code}.pdf đã được tải xuống.`,
+        "success",
+      );
     }, 1200);
   }
 };

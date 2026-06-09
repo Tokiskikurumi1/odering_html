@@ -132,20 +132,13 @@ const ingredients = [
     stock: 9,
     unit: "kg",
   },
-  {
-    id: 10,
-    code: "ING005",
-    name: "Kim chi",
-    stock: 20,
-    unit: "kg",
-  },
 ];
 // State management
 let auditPagination;
-
-document.addEventListener("DOMContentLoaded", () => {
+window.initPage = function () {
   refreshAuditTable();
-
+};
+document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("ingr-btn-audit-load-all")
     ?.addEventListener("click", loadAllIngredients);
